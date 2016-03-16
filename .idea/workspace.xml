@@ -1,0 +1,1067 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1ab4c4a8-132d-46f1-aa09-99522c457339" name="Default" comment="" />
+    <ignored path="zhaohulu.com.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DatabaseView">
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="zhaohulu.com" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="func_resume_upload.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/genv/func_resume_upload.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.49889624">
+              <caret line="434" column="46" selection-start-line="434" selection-start-column="46" selection-end-line="434" selection-end-column="46" />
+              <folding>
+                <marker date="1458145489000" expanded="true" signature="272:349" placeholder="SELECT * FRO... ${table('resume_upload')}" />
+                <marker date="1458145489000" expanded="true" signature="675:889" placeholder="SELECT r.*,l... ${table('resume_temp')}" />
+                <marker date="1458145489000" expanded="true" signature="753:832" placeholder="select * fro... qs_resume_check_log" />
+                <marker date="1458145489000" expanded="true" signature="1501:1567" placeholder="select * fro... ${table('resume_temp')}" />
+                <marker date="1458145489000" expanded="true" signature="4153:4284" placeholder="select c_id,... ${table('category')}" />
+                <marker date="1458145489000" expanded="true" signature="4468:4539" placeholder="select c_id,... ${table('category')}" />
+                <marker date="1458145489000" expanded="true" signature="4916:4983" placeholder="select * fro... ${table('category_jobs')}" />
+                <marker date="1458145489000" expanded="true" signature="5090:5170" placeholder="select * fro... ${table('category_major')}" />
+                <marker date="1458145489000" expanded="true" signature="5348:5413" placeholder="Delete from " />
+                <marker date="1458145489000" expanded="true" signature="6044:6125" placeholder="select * fro... ${table('category_jobs')}" />
+                <marker date="1458145489000" expanded="true" signature="7196:7267" placeholder="select * fro... ${table('category_district')}" />
+                <marker date="1458145489000" expanded="true" signature="7703:7788" placeholder="select * fro... ${table('category_district')}" />
+                <marker date="1458145489000" expanded="true" signature="22909:22985" placeholder="select * fro... ${table('resume')}" />
+                <marker date="1458145489000" expanded="true" signature="23382:23482" placeholder="SELECT * FRO... ${table('resume_education')}" />
+                <marker date="1458145489000" expanded="true" signature="23595:23680" placeholder="select * fro... ${table('resume_work')}" />
+                <marker date="1458145489000" expanded="true" signature="23798:23897" placeholder="select * fro... ${table('resume_training')}" />
+                <marker date="1458145489000" expanded="true" signature="24027:24094" placeholder="select * fro... ${table('resume_jobs')}" />
+                <marker date="1458145489000" expanded="true" signature="24213:24312" placeholder="select * fro... ${table('resume_language')}" />
+                <marker date="1458145489000" expanded="true" signature="24426:24526" placeholder="SELECT * FRO... ${table('resume_img')}" />
+                <marker date="1458145489000" expanded="true" signature="24643:24741" placeholder="select * fro... ${table('resume_credent')}" />
+                <marker date="1458145489000" expanded="true" signature="27560:27623" placeholder="select * fro... ${table('members')}" />
+                <marker date="1458145489000" expanded="true" signature="29912:29979" placeholder="select * fro... ${table('members')}" />
+                <marker date="1458145489000" expanded="true" signature="30069:30142" placeholder="select * fro... ${table('members')}" />
+                <marker date="1458145489000" expanded="true" signature="30458:30527" placeholder="select * fro... ${table('members')}" />
+                <marker date="1458145489000" expanded="true" signature="34574:34633" placeholder="Delete from " />
+                <marker date="1458145489000" expanded="true" signature="34722:34787" placeholder="Delete from " />
+                <marker date="1458145489000" expanded="true" signature="36129:36163" placeholder="select resul... " />
+                <marker date="1458145489000" expanded="true" signature="36450:36525" placeholder="select * fro... ${table('members')}" />
+                <marker date="1458145489000" expanded="true" signature="36675:36704" placeholder="select * fro... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fun_personal.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/fun_personal.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.375">
+              <caret line="209" column="28" selection-start-line="209" selection-start-column="9" selection-end-line="209" selection-end-column="28" />
+              <folding>
+                <marker date="1455545382000" expanded="true" signature="721:749" placeholder="SELECT COUNT... ${table('company_interview')}" />
+                <marker date="1455545382000" expanded="true" signature="936:964" placeholder="SELECT COUNT... ${table('company_down_resume')}" />
+                <marker date="1455545382000" expanded="true" signature="1157:1185" placeholder="SELECT COUNT... ${table('personal_jobs_apply')}" />
+                <marker date="1455545382000" expanded="true" signature="1473:1559" placeholder="select id,pa... ${table('category_jobs')}" />
+                <marker date="1455545382000" expanded="true" signature="1895:1962" placeholder="SELECT * FRO... ${table('resume')}" />
+                <marker date="1455545382000" expanded="true" signature="2488:2564" placeholder="select * fro... ${table('resume')}" />
+                <marker date="1455545382000" expanded="true" signature="3119:3219" placeholder="SELECT * FRO... ${table('resume_img')}" />
+                <marker date="1455545382000" expanded="true" signature="3367:3467" placeholder="SELECT * FRO... ${table('resume_education')}" />
+                <marker date="1455545382000" expanded="true" signature="3586:3718" placeholder="select * fro... ${table('resume_education')}" />
+                <marker date="1455545382000" expanded="true" signature="3820:3905" placeholder="select * fro... ${table('resume_work')}" />
+                <marker date="1455545382000" expanded="true" signature="4018:4145" placeholder="select * fro... ${table('resume_work')}" />
+                <marker date="1455545382000" expanded="true" signature="4254:4353" placeholder="select * fro... ${table('resume_training')}" />
+                <marker date="1455545382000" expanded="true" signature="4471:4604" placeholder="select * fro... ${table('resume_training')}" />
+                <marker date="1455545382000" expanded="true" signature="4713:4812" placeholder="select * fro... ${table('resume_language')}" />
+                <marker date="1455545382000" expanded="true" signature="4931:5064" placeholder="select * fro... ${table('resume_language')}" />
+                <marker date="1455545382000" expanded="true" signature="5170:5268" placeholder="select * fro... ${table('resume_credent')}" />
+                <marker date="1455545382000" expanded="true" signature="5385:5517" placeholder="select * fro... ${table('resume_credent')}" />
+                <marker date="1455545382000" expanded="true" signature="5635:5702" placeholder="select * fro... ${table('resume_jobs')}" />
+                <marker date="1455545382000" expanded="true" signature="5813:5878" placeholder="Delete from " />
+                <marker date="1455545382000" expanded="true" signature="6384:6455" placeholder="select * fro... ${table('resume_district')}" />
+                <marker date="1455545382000" expanded="true" signature="6570:6639" placeholder="Delete from " />
+                <marker date="1455545382000" expanded="true" signature="7101:7167" placeholder="Delete from " />
+                <marker date="1455545382000" expanded="true" signature="7559:7623" placeholder="Delete from " />
+                <marker date="1455545382000" expanded="true" signature="7987:8058" placeholder="select * fro... ${table('members')}" />
+                <marker date="1455545382000" expanded="true" signature="8139:8205" placeholder="select * fro... ${table('tpl')}" />
+                <marker date="1455545382000" expanded="true" signature="8292:8368" placeholder="select * fro... ${table('members_info')}" />
+                <marker date="1455545382000" expanded="true" signature="9022:9152" placeholder="SELECT sum(p... ${table('members_handsel')}" />
+                <marker date="1455545382000" expanded="true" signature="10530:10596" placeholder="Delete from " />
+                <marker date="1455545382000" expanded="true" signature="10633:10705" placeholder="Delete from " />
+                <marker date="1455545382000" expanded="true" signature="10742:10815" placeholder="Delete from " />
+                <marker date="1455545382000" expanded="true" signature="10852:10923" placeholder="Delete from " />
+                <marker date="1455545382000" expanded="true" signature="10960:11037" placeholder="Delete from " />
+                <marker date="1455545382000" expanded="true" signature="11074:11150" placeholder="Delete from " />
+                <marker date="1455545382000" expanded="true" signature="11187:11259" placeholder="Delete from " />
+                <marker date="1455545382000" expanded="true" signature="11296:11371" placeholder="Delete from " />
+                <marker date="1455545382000" expanded="true" signature="11408:11484" placeholder="Delete from " />
+                <marker date="1455545382000" expanded="true" signature="11521:11600" placeholder="Delete from " />
+                <marker date="1455545382000" expanded="true" signature="11637:11714" placeholder="Delete from " />
+                <marker date="1455545382000" expanded="true" signature="11751:11811" placeholder="Delete from " />
+                <marker date="1455545382000" expanded="true" signature="11842:11891" placeholder="delete from " />
+                <marker date="1455545382000" expanded="true" signature="16835:16924" placeholder="SELECT ${{$s... " />
+                <marker date="1455545382000" expanded="true" signature="17416:17503" placeholder="SELECT ${{$s... " />
+                <marker date="1455545382000" expanded="true" signature="17647:17719" placeholder="select * fro... ${table('jobs_tmp')}" />
+                <marker date="1455545382000" expanded="true" signature="18856:18987" placeholder="SELECT i.*,j... ${table('hunter_interview')}" />
+                <marker date="1455545382000" expanded="true" signature="19365:19412" placeholder="select title... ${table('resume')}" />
+                <marker date="1455545382000" expanded="true" signature="19895:19976" placeholder="Delete from " />
+                <marker date="1455545382000" expanded="true" signature="20390:20470" placeholder="Delete from " />
+                <marker date="1455545382000" expanded="true" signature="20990:21131" placeholder="select m.use... ${table('company_interview')}" />
+                <marker date="1455545382000" expanded="true" signature="21724:21863" placeholder="select m.use... ${table('hunter_interview')}" />
+                <marker date="1455545382000" expanded="true" signature="22329:22380" placeholder="select * fro... ${table('jobs')}" />
+                <marker date="1455545382000" expanded="true" signature="22456:22572" placeholder="select jobs_... ${table('personal_favorites')}" />
+                <marker date="1455545382000" expanded="true" signature="23185:23275" placeholder="SELECT ${{$s... " />
+                <marker date="1455545382000" expanded="true" signature="23391:23463" placeholder="select * fro... ${table('jobs_tmp')}" />
+                <marker date="1455545382000" expanded="true" signature="24502:24584" placeholder="Delete from " />
+                <marker date="1455545382000" expanded="true" signature="24825:24998" placeholder="select did f... ${table('personal_jobs_apply')}" />
+                <marker date="1455545382000" expanded="true" signature="25115:25295" placeholder="select did f... ${table('personal_hunter_jobs_apply')}" />
+                <marker date="1455545382000" expanded="true" signature="25536:25564" placeholder="SELECT COUNT... ${table('personal_jobs_apply')}" />
+                <marker date="1455545382000" expanded="true" signature="25620:25648" placeholder="SELECT COUNT... ${table('personal_hunter_jobs_apply')}" />
+                <marker date="1455545382000" expanded="true" signature="26121:26212" placeholder="SELECT ${{$s... " />
+                <marker date="1455545382000" expanded="true" signature="26399:26471" placeholder="select * fro... ${table('jobs_tmp')}" />
+                <marker date="1455545382000" expanded="true" signature="26881:26928" placeholder="select title... ${table('resume')}" />
+                <marker date="1455545382000" expanded="true" signature="28184:28315" placeholder="SELECT a.*,j... ${table('personal_hunter_jobs_apply')}" />
+                <marker date="1455545382000" expanded="true" signature="28740:28787" placeholder="select title... ${table('resume')}" />
+                <marker date="1455545382000" expanded="true" signature="29582:29633" placeholder="select * fro... ${table('jobs')}" />
+                <marker date="1455545382000" expanded="true" signature="29892:29950" placeholder="select * fro... ${table('hunter_jobs')}" />
+                <marker date="1455545382000" expanded="true" signature="30264:30347" placeholder="Delete from " />
+                <marker date="1455545382000" expanded="true" signature="30794:30884" placeholder="Delete from " />
+                <marker date="1455545382000" expanded="true" signature="31157:31185" placeholder="SELECT COUNT... ${table('resume')}" />
+                <marker date="1455545382000" expanded="true" signature="31471:31499" placeholder="SELECT COUNT... ${table('hunter_interview')}" />
+                <marker date="1455545382000" expanded="true" signature="31564:31623" placeholder="SELECT COUNT... ${table('company_interview')}" />
+                <marker date="1455545382000" expanded="true" signature="32014:32074" placeholder="SELECT COUNT... ${table('personal_favorites')}" />
+                <marker date="1455545382000" expanded="true" signature="32425:32478" placeholder="SELECT COUNT... ${table('view_resume')}" />
+                <marker date="1455545382000" expanded="true" signature="32767:32795" placeholder="SELECT COUNT... ${table('personal_hunter_jobs_apply')}" />
+                <marker date="1455545382000" expanded="true" signature="32870:32898" placeholder="SELECT COUNT... ${table('personal_jobs_apply')}" />
+                <marker date="1455545382000" expanded="true" signature="33233:33261" placeholder="SELECT COUNT... ${table('personal_favorites')}" />
+                <marker date="1455545382000" expanded="true" signature="33392:33473" placeholder="select * fro... ${table('feedback')}" />
+                <marker date="1455545382000" expanded="true" signature="33574:33665" placeholder="Delete from " />
+                <marker date="1455545382000" expanded="true" signature="33865:33928" placeholder="select id fr... ${table('resume')}" />
+                <marker date="1455545382000" expanded="true" signature="34355:34434" placeholder="select id fr... ${table('resume')}" />
+                <marker date="1455545382000" expanded="true" signature="35122:35136" placeholder="select * fro... ${table('jobs')}" />
+                <marker date="1455545382000" expanded="true" signature="35219:35266" placeholder="select * fro... ${table('jobs')}" />
+                <marker date="1455545382000" expanded="true" signature="35346:35360" placeholder="select * fro... ${table(&quot;jobs&quot;)}" />
+                <marker date="1455545382000" expanded="true" signature="35486:35594" placeholder="select id fr... ${table('report')}" />
+                <marker date="1455545382000" expanded="true" signature="36020:36188" placeholder="SELECT COUNT... ${table('pms')}" />
+                <marker date="1455545382000" expanded="true" signature="36727:36784" placeholder="select * fro... ${table('course')}" />
+                <marker date="1455545382000" expanded="true" signature="37031:37059" placeholder="SELECT COUNT... ${table('personal_course_apply')}" />
+                <marker date="1455545382000" expanded="true" signature="37215:37351" placeholder="select did f... ${table('personal_course_apply')}" />
+                <marker date="1455545382000" expanded="true" signature="37517:37596" placeholder="SELECT * FRO... ${table('personal_course_apply')}" />
+                <marker date="1455545382000" expanded="true" signature="38072:38100" placeholder="SELECT COUNT... ${table('personal_course_apply')}" />
+                <marker date="1455545382000" expanded="true" signature="38443:38514" placeholder="Delete from " />
+                <marker date="1455545382000" expanded="true" signature="38764:38792" placeholder="SELECT COUNT... ${table('company_down_resume')}" />
+                <marker date="1455545382000" expanded="true" signature="39078:39161" placeholder="SELECT ${{$s... " />
+                <marker date="1455545382000" expanded="true" signature="39275:39348" placeholder="select * fro... ${table('jobs_tmp')}" />
+                <marker date="1455545382000" expanded="true" signature="39651:39723" placeholder="select `id`,... ${table('company_profile')}" />
+                <marker date="1455545382000" expanded="true" signature="40447:40546" placeholder="select did f... ${table('personal_jobs_apply')}" />
+                <marker date="1455545382000" expanded="true" signature="40663:40761" placeholder="select did f... ${table('personal_favorites')}" />
+                <marker date="1455545382000" expanded="true" signature="41153:41211" placeholder="Delete from " />
+                <marker date="1455545382000" expanded="true" signature="41511:41596" placeholder="SELECT ${{$s... " />
+                <marker date="1455545382000" expanded="true" signature="41807:41879" placeholder="select `id`,... ${table('company_profile')}" />
+                <marker date="1455545382000" expanded="true" signature="42168:42212" placeholder="select * fro... ${table('jobs')}" />
+                <marker date="1455545382000" expanded="true" signature="42521:42657" placeholder="select did f... ${table('company_down_resume')}" />
+                <marker date="1455545382000" expanded="true" signature="42902:42917" placeholder="SELECT id FR... ${table('resume')}" />
+                <marker date="1455545382000" expanded="true" signature="43329:43388" placeholder="Delete from " />
+                <marker date="1455545382000" expanded="true" signature="43605:43650" placeholder="select id fr... ${table('resume')}" />
+                <marker date="1455545382000" expanded="true" signature="43826:43910" placeholder="select count... ${table(&quot;view_resume&quot;)}" />
+                <marker date="1455545382000" expanded="true" signature="44023:44101" placeholder="select * fro... ${table('personal_shield_company')}" />
+                <marker date="1455545382000" expanded="true" signature="44211:44303" placeholder="delete from " />
+                <marker date="1455545382000" expanded="true" signature="44427:44519" placeholder="select count... ${table('personal_shield_company')}" />
+                <marker date="1455545382000" expanded="true" signature="44635:44703" placeholder="select audit... ${table('resume')}" />
+                <marker date="1455545382000" expanded="true" signature="44768:44819" placeholder="select 1 fro... ${table('resume_entrust')}" />
+                <marker date="1455545382000" expanded="true" signature="45155:45204" placeholder="delete from " />
+                <marker date="1455545382000" expanded="true" signature="45348:45439" placeholder="SELECT disti... ${table('company_interview')}" />
+                <marker date="1455545382000" expanded="true" signature="45568:45651" placeholder="SELECT disti... ${table('personal_jobs_apply')}" />
+                <marker date="1455545382000" expanded="true" signature="45893:45961" placeholder="SELECT id, t... ${table('resume')}" />
+                <marker date="1455545382000" expanded="true" signature="46123:46205" placeholder="SELECT disti... ${table('resume_outward')}" />
+                <marker date="1455545382000" expanded="true" signature="46563:46733" placeholder="..." />
+                <marker date="1455545382000" expanded="true" signature="47196:47240" placeholder="..." />
+                <marker date="1455545382000" expanded="true" signature="47241:48421" placeholder="..." />
+                <marker date="1455545382000" expanded="false" signature="47257:47275" placeholder="..." />
+                <marker date="1455545382000" expanded="true" signature="47276:47682" placeholder="..." />
+                <marker date="1455545382000" expanded="false" signature="47293:47305" placeholder="..." />
+                <marker date="1455545382000" expanded="false" signature="47537:47567" placeholder="..." />
+                <marker date="1455545382000" expanded="false" signature="47656:47666" placeholder="..." />
+                <marker date="1455545382000" expanded="false" signature="47698:47719" placeholder="..." />
+                <marker date="1455545382000" expanded="true" signature="47720:48079" placeholder="..." />
+                <marker date="1455545382000" expanded="false" signature="47738:47771" placeholder="..." />
+                <marker date="1455545382000" expanded="false" signature="48095:48116" placeholder="..." />
+                <marker date="1455545382000" expanded="true" signature="48117:48326" placeholder="..." />
+                <marker date="1455545382000" expanded="false" signature="48132:48165" placeholder="..." />
+                <marker date="1455545382000" expanded="false" signature="48342:48363" placeholder="..." />
+                <marker date="1455545382000" expanded="true" signature="48364:48421" placeholder="..." />
+                <marker date="1455545382000" expanded="false" signature="48379:48412" placeholder="..." />
+                <marker date="1455545382000" expanded="true" signature="48522:48928" placeholder="..." />
+                <marker date="1455545382000" expanded="false" signature="48542:48575" placeholder="..." />
+                <marker date="1455545382000" expanded="false" signature="48757:48782" placeholder="..." />
+                <marker date="1455545382000" expanded="false" signature="48816:48842" placeholder="..." />
+                <marker date="1455545382000" expanded="false" signature="48897:48907" placeholder="..." />
+                <marker date="1455545382000" expanded="true" signature="48977:49008" placeholder="..." />
+                <marker date="1455545382000" expanded="true" signature="49101:49122" placeholder="..." />
+                <marker date="1455545382000" expanded="true" signature="49123:49233" placeholder="..." />
+                <marker date="1455545382000" expanded="false" signature="49139:49172" placeholder="..." />
+                <marker date="1455545382000" expanded="true" signature="49262:49296" placeholder="..." />
+                <marker date="1455545382000" expanded="true" signature="49297:49396" placeholder="..." />
+                <marker date="1455545382000" expanded="true" signature="49663:49725" placeholder="Delete from " />
+                <marker date="1455545382000" expanded="true" signature="56192:56266" placeholder="select point... ${table('members_points')}" />
+                <marker date="1455545382000" expanded="true" signature="58298:58376" placeholder="select * fro... ${table('payment')}" />
+                <marker date="1455545382000" expanded="true" signature="58496:58608" placeholder="select * fro... ${table('order')}" />
+                <marker date="1455545382000" expanded="true" signature="58763:58855" placeholder="select * fro... ${table('payment')}" />
+                <marker date="1455545382000" expanded="true" signature="60538:60648" placeholder="select * fro... ${table('order')}" />
+                <marker date="1455545382000" expanded="true" signature="60889:60952" placeholder="SELECT * FRO... ${table('order')}" />
+                <marker date="1455545382000" expanded="true" signature="61264:61369" placeholder="Delete from " />
+                <marker date="1455545382000" expanded="true" signature="61427:61505" placeholder="select * fro... ${table('members_points_rule')}" />
+                <marker date="1455545382000" expanded="true" signature="61692:61765" placeholder="SELECT * FRO... ${table('members_log')}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin_personal.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/admin_personal.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.6470588">
+              <caret line="1094" column="30" selection-start-line="1094" selection-start-column="30" selection-end-line="1094" selection-end-column="30" />
+              <folding>
+                <marker date="1458142287000" expanded="true" signature="3035:3063" placeholder="SELECT COUNT... ${table('resume')}" />
+                <marker date="1458142287000" expanded="true" signature="3519:3547" placeholder="SELECT COUNT... ${table('resume')}" />
+                <marker date="1458142287000" expanded="true" signature="3807:3821" placeholder="SELECT * FRO... ${table('resume')}" />
+                <marker date="1458142287000" expanded="true" signature="4272:4306" placeholder="SELECT * FRO... ${table('resume')}" />
+                <marker date="1458142287000" expanded="true" signature="4429:4457" placeholder="SELECT COUNT... ${table('resume')}" />
+                <marker date="1458142287000" expanded="true" signature="4504:4579" placeholder="SELECT COUNT... ${table('resume')}" />
+                <marker date="1458142287000" expanded="true" signature="4674:4749" placeholder="SELECT COUNT... ${table('resume')}" />
+                <marker date="1458142287000" expanded="true" signature="4780:4841" placeholder="SELECT COUNT... ${table('resume')}" />
+                <marker date="1458142287000" expanded="true" signature="4873:4934" placeholder="SELECT COUNT... ${table('resume')}" />
+                <marker date="1458142287000" expanded="true" signature="7943:7997" placeholder="SELECT COUNT... ${table('members')}" />
+                <marker date="1458142287000" expanded="true" signature="15525:15594" placeholder="INSERT INTO ${table('members_points')}... " />
+                <marker date="1458142287000" expanded="true" signature="18501:18570" placeholder="select * fro... ${table(&quot;resume_jobs&quot;)}" />
+                <marker date="1458142287000" expanded="true" signature="19285:19359" placeholder="select * fro... ${table('personal_shield_company')}" />
+                <marker date="1458142287000" expanded="true" signature="19406:19471" placeholder="select * fro... ${table('resume_entrust')}" />
+                <marker date="1458142287000" expanded="true" signature="19628:19691" placeholder="select * fro... ${table('resume_work')}" />
+                <marker date="1458142287000" expanded="true" signature="19788:19863" placeholder="select * fro... ${table('personal_shield_company')}" />
+                <marker date="1458142287000" expanded="true" signature="20915:21144" placeholder="select * fro... ${table('jobs')}" />
+                <marker date="1458142287000" expanded="true" signature="21198:21381" placeholder="select * fro... ${table('jobs')}" />
+                <marker date="1458142287000" expanded="true" signature="21465:21644" placeholder="select count... ${table('jobs')}" />
+                <marker date="1458142287000" expanded="true" signature="22646:22705" placeholder="select * fro... ${table('jobs')}" />
+                <marker date="1458142287000" expanded="true" signature="22815:22880" placeholder="select * fro... ${table('resume')}" />
+                <marker date="1458142287000" expanded="true" signature="24028:24101" placeholder="select * fro... ${table('jobs_contact')}" />
+                <marker date="1458142287000" expanded="true" signature="25081:25156" placeholder="select usern... ${table('members')}" />
+                <marker date="1458142287000" expanded="true" signature="36175:36203" placeholder="SELECT COUNT... ${table('resume_temp')}" />
+                <marker date="1458142287000" expanded="true" signature="36440:36479" placeholder="SELECT * FRO... ${table('resume_temp')}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/user/user_reg.php" />
+        <option value="$PROJECT_DIR$/user/company/company_upload.php" />
+        <option value="$PROJECT_DIR$/user/company/company_common.php" />
+        <option value="$PROJECT_DIR$/user/login.php" />
+        <option value="$PROJECT_DIR$/include/fun_user.php" />
+        <option value="$PROJECT_DIR$/user/company/company_jobs.php" />
+        <option value="$PROJECT_DIR$/include/common.fun.php" />
+        <option value="&lt;deb25ba6-d038-44c9-a589-8d5ad0ae127c&gt;/data/config.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/data/config.php" />
+        <option value="$PROJECT_DIR$/admin/admin_personal.php" />
+        <option value="$PROJECT_DIR$/genv/func_resume_upload.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsBuildToolPackageJson" detection-done="true" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="53" />
+    <option name="y" value="23" />
+    <option name="width" value="1227" />
+    <option name="height" value="777" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zhaohulu.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zhaohulu.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zhaohulu.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zhaohulu.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zhaohulu.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zhaohulu.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zhaohulu.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="install删除" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zhaohulu.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zhaohulu.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="install删除" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zhaohulu.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zhaohulu.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="install删除" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="include" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zhaohulu.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zhaohulu.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="install删除" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="compile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zhaohulu.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zhaohulu.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="genv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zhaohulu.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zhaohulu.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zhaohulu.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zhaohulu.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="options.lastSelected" value="File.Encoding" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="" />
+      <working_directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <method />
+    </configuration>
+    <configuration default="true" type="GoRunFileConfiguration" factoryName="Go Single File">
+      <module name="" />
+      <working_directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <method />
+    </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="" />
+      <working_directory value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <kind value="DIRECTORY" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <envs />
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1ab4c4a8-132d-46f1-aa09-99522c457339" name="Default" comment="" />
+      <created>1458127988032</created>
+      <option name="number" value="Default" />
+      <updated>1458127988032</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="53" y="23" width="1227" height="777" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19726859" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.067510545" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1164557" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299578" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2124431" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/genv/lib.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5065666">
+          <caret line="91" column="1" selection-start-line="56" selection-start-column="0" selection-end-line="91" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/common.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30669144">
+          <caret line="13" column="46" selection-start-line="13" selection-start-column="46" selection-end-line="13" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/include/admin_common.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.67542213">
+          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/company/company_upload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.916667">
+          <caret line="85" column="22" selection-start-line="85" selection-start-column="22" selection-end-line="85" selection-end-column="22" />
+          <folding>
+            <marker date="1458134321000" expanded="true" signature="355:415" placeholder="SELECT COUNT... ${table('resume_upload')}" />
+            <marker date="1458134321000" expanded="true" signature="3255:3315" placeholder="SELECT COUNT... ${table('resume_upload')}" />
+            <marker date="1458134321000" expanded="true" signature="4347:4410" placeholder="SELECT COUNT... ${table('resume_temp')}" />
+            <marker date="1458134321000" expanded="true" signature="4878:4938" placeholder="select * fro... ${table(&quot;resume_check_apply&quot;)}" />
+            <marker date="1458134321000" expanded="true" signature="5013:5108" placeholder="SELECT * FRO... ${table('resume_check_apply_log')}" />
+            <marker date="1458134321000" expanded="true" signature="5668:5728" placeholder="SELECT COUNT... ${table('resume_upload')}" />
+            <marker date="1458134321000" expanded="true" signature="6566:6626" placeholder="select * fro... ${table(&quot;resume_check_apply&quot;)}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/default/member_company/company_addjobs.htm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26915115">
+          <caret line="657" column="51" selection-start-line="657" selection-start-column="43" selection-end-line="657" selection-end-column="51" />
+          <folding>
+            <marker date="1457869881000" expanded="true" signature="12248:12287" placeholder="..." />
+            <marker date="1457869881000" expanded="true" signature="18508:18535" placeholder="..." />
+            <marker date="1457869881000" expanded="true" signature="18693:18741" placeholder="..." />
+            <marker date="1457869881000" expanded="true" signature="18890:18959" placeholder="..." />
+            <marker date="1457869881000" expanded="true" signature="26367:26394" placeholder="..." />
+            <marker date="1457869881000" expanded="true" signature="26557:26605" placeholder="..." />
+            <marker date="1457869881000" expanded="true" signature="26721:26790" placeholder="..." />
+            <marker date="1457869881000" expanded="true" signature="40746:40776" placeholder="..." />
+            <marker date="1457869881000" expanded="true" signature="40877:40890" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/company/company_common.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7058824">
+          <caret line="26" column="32" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/user_reg.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="9.901186">
+          <caret line="359" column="19" selection-start-line="359" selection-start-column="19" selection-end-line="359" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24705882">
+          <caret line="47" column="14" selection-start-line="47" selection-start-column="14" selection-end-line="47" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/fun_user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.8181818">
+          <caret line="322" column="52" selection-start-line="322" selection-start-column="52" selection-end-line="322" selection-end-column="52" />
+          <folding>
+            <marker date="1458138247000" expanded="true" signature="2649:2726" placeholder="select uid f... ${table(&quot;members&quot;)}" />
+            <marker date="1458138247000" expanded="true" signature="9674:9788" placeholder="SELECT COUNT... ${table('members')}" />
+            <marker date="1458138247000" expanded="true" signature="11575:11703" placeholder="SELECT uid F... ${table('members_handsel')}" />
+            <marker date="1458138247000" expanded="true" signature="12763:12891" placeholder="SELECT uid F... ${table('members_handsel')}" />
+            <marker date="1458138247000" expanded="true" signature="13952:14080" placeholder="SELECT uid F... ${table('members_handsel')}" />
+            <marker date="1458138247000" expanded="true" signature="15122:15250" placeholder="SELECT uid F... ${table('members_handsel')}" />
+            <marker date="1458138247000" expanded="true" signature="16178:16306" placeholder="SELECT uid F... ${table('members_handsel')}" />
+            <marker date="1458138247000" expanded="true" signature="16632:16738" placeholder="SELECT pmid ${table('pms_sys_log')}" />
+            <marker date="1458138247000" expanded="true" signature="16805:16946" placeholder="SELECT * FRO... ${table('pms_sys')}" />
+            <marker date="1458138247000" expanded="true" signature="17474:17642" placeholder="SELECT COUNT... ${table('pms')}" />
+            <marker date="1458138247000" expanded="true" signature="17812:17879" placeholder="select * fro... ${table('members')}" />
+            <marker date="1458138247000" expanded="true" signature="17949:18022" placeholder="select * fro... ${table('members')}" />
+            <marker date="1458138247000" expanded="true" signature="18127:18190" placeholder="select * fro... ${table('members')}" />
+            <marker date="1458138247000" expanded="true" signature="18282:18351" placeholder="select * fro... ${table('members')}" />
+            <marker date="1458138247000" expanded="true" signature="18487:18559" placeholder="select * fro... ${table('members')}" />
+            <marker date="1458138247000" expanded="true" signature="18704:18784" placeholder="select * fro... ${table('members')}" />
+            <marker date="1458138247000" expanded="true" signature="18931:19013" placeholder="select * fro... ${table('members')}" />
+            <marker date="1458138247000" expanded="true" signature="20363:20470" placeholder="SELECT * FRO... ${table('members')}" />
+            <marker date="1458138247000" expanded="true" signature="20997:21065" placeholder="SELECT * FRO... ${table('members')}" />
+            <marker date="1458138247000" expanded="true" signature="21709:21782" placeholder="SELECT * FRO... ${table('members_log')}" />
+            <marker date="1458138247000" expanded="true" signature="21942:22053" placeholder="SELECT * FRO... ${table('members_log')}" />
+            <marker date="1458138247000" expanded="true" signature="22168:22279" placeholder="SELECT * FRO... ${table('members_log')}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/company/company_jobs.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38509318">
+          <caret line="1202" column="36" selection-start-line="1202" selection-start-column="36" selection-end-line="1202" selection-end-column="36" />
+          <folding>
+            <marker date="1458139215000" expanded="true" signature="2027:2055" placeholder="SELECT COUNT... ${table('jobs')}" />
+            <marker date="1458139215000" expanded="true" signature="2027:2122" placeholder="SELECT COUNT... " />
+            <marker date="1458139215000" expanded="true" signature="2094:2122" placeholder="SELECT COUNT... ${table('jobs_tmp')}" />
+            <marker date="1458139215000" expanded="true" signature="2178:2206" placeholder="SELECT COUNT... ${table($tabletype)}" />
+            <marker date="1458139215000" expanded="true" signature="2568:2582" placeholder="SELECT * FRO... ${table('jobs')}" />
+            <marker date="1458139215000" expanded="true" signature="2568:2634" placeholder="SELECT * FRO... " />
+            <marker date="1458139215000" expanded="true" signature="2620:2634" placeholder="SELECT * FRO... ${table('jobs_tmp')}" />
+            <marker date="1458139215000" expanded="true" signature="2693:2707" placeholder="SELECT * FRO... ${table($tabletype)}" />
+            <marker date="1458139215000" expanded="true" signature="2777:2879" placeholder="SELECT COUNT... ${table('jobs')}" />
+            <marker date="1458139215000" expanded="true" signature="2911:3003" placeholder="SELECT COUNT... ${table('jobs_tmp')}" />
+            <marker date="1458139215000" expanded="true" signature="3087:3163" placeholder="SELECT COUNT... ${table('jobs')}" />
+            <marker date="1458139215000" expanded="true" signature="3200:3369" placeholder="SELECT COUNT... ${table('jobs')}" />
+            <marker date="1458139215000" expanded="true" signature="3406:3499" placeholder="SELECT COUNT... ${table('jobs_tmp')}" />
+            <marker date="1458139215000" expanded="true" signature="3536:3727" placeholder="SELECT COUNT... ${table('jobs_tmp')}" />
+            <marker date="1458139215000" expanded="true" signature="4649:4752" placeholder="SELECT j.id,... ${table('jobs')}" />
+            <marker date="1458139215000" expanded="true" signature="8243:8336" placeholder="select count... ${table(&quot;jobs&quot;)}" />
+            <marker date="1458139215000" expanded="true" signature="8376:8473" placeholder="select count... ${table(&quot;jobs_tmp&quot;)}" />
+            <marker date="1458139215000" expanded="true" signature="10712:10805" placeholder="select count... ${table(&quot;jobs&quot;)}" />
+            <marker date="1458139215000" expanded="true" signature="10843:10940" placeholder="select count... ${table(&quot;jobs_tmp&quot;)}" />
+            <marker date="1458139215000" expanded="true" signature="17553:17659" placeholder="select count... ${table(&quot;jobs&quot;)}" />
+            <marker date="1458139215000" expanded="true" signature="32110:32203" placeholder="select count... ${table(&quot;jobs&quot;)}" />
+            <marker date="1458139215000" expanded="true" signature="32242:32339" placeholder="select count... ${table(&quot;jobs_tmp&quot;)}" />
+            <marker date="1458139215000" expanded="true" signature="51525:51652" placeholder="SELECT COUNT... ${table('company_praise')}" />
+            <marker date="1458139215000" expanded="true" signature="51703:51857" placeholder="SELECT COUNT... ${table('company_praise')}" />
+            <marker date="1458139215000" expanded="true" signature="53252:53350" placeholder="SELECT id,co... ${table('company_praise')}" />
+            <marker date="1458139215000" expanded="true" signature="54233:54353" placeholder="SELECT COUNT... ${table('company_praise')}" />
+            <marker date="1458139215000" expanded="true" signature="54407:54527" placeholder="SELECT COUNT... ${table('company_praise')}" />
+            <marker date="1458139215000" expanded="true" signature="54581:54738" placeholder="SELECT COUNT... ${table('company_praise')}" />
+            <marker date="1458139215000" expanded="true" signature="54801:54921" placeholder="SELECT COUNT... ${table('company_praise')}" />
+            <marker date="1458139215000" expanded="true" signature="54981:55134" placeholder="SELECT COUNT... ${table('company_praise')}" />
+            <marker date="1458139215000" expanded="true" signature="55193:55276" placeholder="SELECT COUNT... ${table('company_praise')}" />
+            <marker date="1458139215000" expanded="true" signature="55967:56137" placeholder="select * fro... ${table('company_praise')}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/common.fun.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.50931674">
+          <caret line="990" column="89" selection-start-line="990" selection-start-column="89" selection-end-line="990" selection-end-column="89" />
+          <folding>
+            <marker date="1458139270000" expanded="true" signature="6783:6789" placeholder="..." />
+            <marker date="1458139270000" expanded="true" signature="14947:15051" placeholder="select * fro... ${table('crons')}" />
+            <marker date="1458139270000" expanded="true" signature="15497:15647" placeholder="SELECT p.tpl... ${table('company_news')}" />
+            <marker date="1458139270000" expanded="true" signature="15766:15827" placeholder="SELECT tpl F... ${table($type)}" />
+            <marker date="1458139270000" expanded="true" signature="15892:15958" placeholder="SELECT tpl F... ${table('jobs_tmp')}" />
+            <marker date="1458139270000" expanded="true" signature="16014:16075" placeholder="SELECT tpl F... ${table($type)}" />
+            <marker date="1458139270000" expanded="true" signature="19534:19615" placeholder="select * fro... ${table('members')}" />
+            <marker date="1458139270000" expanded="true" signature="23740:23868" placeholder="select max(a... ${table('refresh_log')}" />
+            <marker date="1458139270000" expanded="true" signature="24085:24266" placeholder="select count... ${table('refresh_log')}" />
+            <marker date="1458139270000" expanded="true" signature="31920:31934" placeholder="SELECT * FRO... ${table('config')}" />
+            <marker date="1458139270000" expanded="true" signature="34691:34749" placeholder="select * fro... ${table('subsite')}" />
+            <marker date="1458139270000" expanded="true" signature="34825:34887" placeholder="select * fro... ${table('subsite')}" />
+            <marker date="1458139270000" expanded="true" signature="34825:34893" placeholder="select * fro... ${table('subsite')}" />
+            <marker date="1458139270000" expanded="true" signature="44438:44502" placeholder="select * fro... ${table(&quot;category_district&quot;)}" />
+            <marker date="1458139270000" expanded="true" signature="45640:45814" placeholder="select * fro... ${table('subsite')}" />
+            <marker date="1458139270000" expanded="true" signature="46503:46677" placeholder="select * fro... ${table('subsite')}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.1764706">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leven.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1454059352000" expanded="true" signature="8100:8229" placeholder="select TABLE... tables" />
+            <marker date="1454059352000" expanded="true" signature="9260:9330" placeholder="alter table ${table('jobs')}... " />
+            <marker date="1454059352000" expanded="true" signature="9347:9421" placeholder="alter table ${table('jobs_tmp')}... " />
+            <marker date="1454059352000" expanded="true" signature="9437:9502" placeholder="alter table ${table('resume')}... " />
+            <marker date="1454059352000" expanded="true" signature="9518:9569" placeholder="CREATE table... qs_resume_temp" />
+            <marker date="1454059352000" expanded="true" signature="9586:9669" placeholder="alter table ${table('jobs_search_rtime')}... " />
+            <marker date="1454059352000" expanded="true" signature="9715:9793" placeholder="alter table ${table('members_points')}... " />
+            <marker date="1454059352000" expanded="true" signature="9822:9906" placeholder="alter table ${table('members_points')}... " />
+            <marker date="1454059352000" expanded="true" signature="9924:9993" placeholder="CREATE table... qs_members_person_points" />
+            <marker date="1454059352000" expanded="true" signature="10028:10079" placeholder="alter table ${table('promotion')}... " />
+            <marker date="1454059352000" expanded="true" signature="10096:10156" placeholder="alter table ${table('promotion_category')}... " />
+            <marker date="1454059352000" expanded="true" signature="10174:10241" placeholder="alter table ${table('resume_temp')}... " />
+            <marker date="1454059352000" expanded="true" signature="10257:10325" placeholder="alter table ${table('resume_temp')}... " />
+            <marker date="1454059352000" expanded="true" signature="10341:10405" placeholder="alter table ${table('resume_temp')}... " />
+            <marker date="1454059352000" expanded="true" signature="10421:10490" placeholder="alter table ${table('resume_temp')}... " />
+            <marker date="1454059352000" expanded="true" signature="10506:10584" placeholder="alter table ${table('resume_temp')}... " />
+            <marker date="1454059352000" expanded="true" signature="10600:10669" placeholder="alter table ${table('resume_temp')}... " />
+            <marker date="1454059352000" expanded="true" signature="10687:10775" placeholder="alter table ${table('evaluation_paper')}... " />
+            <marker date="1454059352000" expanded="true" signature="11249:11293" placeholder="ALTER TABLE qs_resume_temp... " />
+            <marker date="1454059352000" expanded="true" signature="11495:11662" placeholder="ALTER TABLE `qs_resume_temp`... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.875">
+          <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/install删除/sql-data.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/install删除/sql-hotword.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/install删除/sql-hrtools.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/install删除/sql-structure.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18139535">
+          <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/admin_personal.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.6470588">
+          <caret line="1094" column="30" selection-start-line="1094" selection-start-column="30" selection-end-line="1094" selection-end-column="30" />
+          <folding>
+            <marker date="1458142287000" expanded="true" signature="3035:3063" placeholder="SELECT COUNT... ${table('resume')}" />
+            <marker date="1458142287000" expanded="true" signature="3519:3547" placeholder="SELECT COUNT... ${table('resume')}" />
+            <marker date="1458142287000" expanded="true" signature="3807:3821" placeholder="SELECT * FRO... ${table('resume')}" />
+            <marker date="1458142287000" expanded="true" signature="4272:4306" placeholder="SELECT * FRO... ${table('resume')}" />
+            <marker date="1458142287000" expanded="true" signature="4429:4457" placeholder="SELECT COUNT... ${table('resume')}" />
+            <marker date="1458142287000" expanded="true" signature="4504:4579" placeholder="SELECT COUNT... ${table('resume')}" />
+            <marker date="1458142287000" expanded="true" signature="4674:4749" placeholder="SELECT COUNT... ${table('resume')}" />
+            <marker date="1458142287000" expanded="true" signature="4780:4841" placeholder="SELECT COUNT... ${table('resume')}" />
+            <marker date="1458142287000" expanded="true" signature="4873:4934" placeholder="SELECT COUNT... ${table('resume')}" />
+            <marker date="1458142287000" expanded="true" signature="7943:7997" placeholder="SELECT COUNT... ${table('members')}" />
+            <marker date="1458142287000" expanded="true" signature="15525:15594" placeholder="INSERT INTO ${table('members_points')}... " />
+            <marker date="1458142287000" expanded="true" signature="18501:18570" placeholder="select * fro... ${table(&quot;resume_jobs&quot;)}" />
+            <marker date="1458142287000" expanded="true" signature="19285:19359" placeholder="select * fro... ${table('personal_shield_company')}" />
+            <marker date="1458142287000" expanded="true" signature="19406:19471" placeholder="select * fro... ${table('resume_entrust')}" />
+            <marker date="1458142287000" expanded="true" signature="19628:19691" placeholder="select * fro... ${table('resume_work')}" />
+            <marker date="1458142287000" expanded="true" signature="19788:19863" placeholder="select * fro... ${table('personal_shield_company')}" />
+            <marker date="1458142287000" expanded="true" signature="20915:21144" placeholder="select * fro... ${table('jobs')}" />
+            <marker date="1458142287000" expanded="true" signature="21198:21381" placeholder="select * fro... ${table('jobs')}" />
+            <marker date="1458142287000" expanded="true" signature="21465:21644" placeholder="select count... ${table('jobs')}" />
+            <marker date="1458142287000" expanded="true" signature="22646:22705" placeholder="select * fro... ${table('jobs')}" />
+            <marker date="1458142287000" expanded="true" signature="22815:22880" placeholder="select * fro... ${table('resume')}" />
+            <marker date="1458142287000" expanded="true" signature="24028:24101" placeholder="select * fro... ${table('jobs_contact')}" />
+            <marker date="1458142287000" expanded="true" signature="25081:25156" placeholder="select usern... ${table('members')}" />
+            <marker date="1458142287000" expanded="true" signature="36175:36203" placeholder="SELECT COUNT... ${table('resume_temp')}" />
+            <marker date="1458142287000" expanded="true" signature="36440:36479" placeholder="SELECT * FRO... ${table('resume_temp')}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/fun_personal.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.375">
+          <caret line="209" column="28" selection-start-line="209" selection-start-column="9" selection-end-line="209" selection-end-column="28" />
+          <folding>
+            <marker date="1455545382000" expanded="true" signature="721:749" placeholder="SELECT COUNT... ${table('company_interview')}" />
+            <marker date="1455545382000" expanded="true" signature="936:964" placeholder="SELECT COUNT... ${table('company_down_resume')}" />
+            <marker date="1455545382000" expanded="true" signature="1157:1185" placeholder="SELECT COUNT... ${table('personal_jobs_apply')}" />
+            <marker date="1455545382000" expanded="true" signature="1473:1559" placeholder="select id,pa... ${table('category_jobs')}" />
+            <marker date="1455545382000" expanded="true" signature="1895:1962" placeholder="SELECT * FRO... ${table('resume')}" />
+            <marker date="1455545382000" expanded="true" signature="2488:2564" placeholder="select * fro... ${table('resume')}" />
+            <marker date="1455545382000" expanded="true" signature="3119:3219" placeholder="SELECT * FRO... ${table('resume_img')}" />
+            <marker date="1455545382000" expanded="true" signature="3367:3467" placeholder="SELECT * FRO... ${table('resume_education')}" />
+            <marker date="1455545382000" expanded="true" signature="3586:3718" placeholder="select * fro... ${table('resume_education')}" />
+            <marker date="1455545382000" expanded="true" signature="3820:3905" placeholder="select * fro... ${table('resume_work')}" />
+            <marker date="1455545382000" expanded="true" signature="4018:4145" placeholder="select * fro... ${table('resume_work')}" />
+            <marker date="1455545382000" expanded="true" signature="4254:4353" placeholder="select * fro... ${table('resume_training')}" />
+            <marker date="1455545382000" expanded="true" signature="4471:4604" placeholder="select * fro... ${table('resume_training')}" />
+            <marker date="1455545382000" expanded="true" signature="4713:4812" placeholder="select * fro... ${table('resume_language')}" />
+            <marker date="1455545382000" expanded="true" signature="4931:5064" placeholder="select * fro... ${table('resume_language')}" />
+            <marker date="1455545382000" expanded="true" signature="5170:5268" placeholder="select * fro... ${table('resume_credent')}" />
+            <marker date="1455545382000" expanded="true" signature="5385:5517" placeholder="select * fro... ${table('resume_credent')}" />
+            <marker date="1455545382000" expanded="true" signature="5635:5702" placeholder="select * fro... ${table('resume_jobs')}" />
+            <marker date="1455545382000" expanded="true" signature="5813:5878" placeholder="Delete from " />
+            <marker date="1455545382000" expanded="true" signature="6384:6455" placeholder="select * fro... ${table('resume_district')}" />
+            <marker date="1455545382000" expanded="true" signature="6570:6639" placeholder="Delete from " />
+            <marker date="1455545382000" expanded="true" signature="7101:7167" placeholder="Delete from " />
+            <marker date="1455545382000" expanded="true" signature="7559:7623" placeholder="Delete from " />
+            <marker date="1455545382000" expanded="true" signature="7987:8058" placeholder="select * fro... ${table('members')}" />
+            <marker date="1455545382000" expanded="true" signature="8139:8205" placeholder="select * fro... ${table('tpl')}" />
+            <marker date="1455545382000" expanded="true" signature="8292:8368" placeholder="select * fro... ${table('members_info')}" />
+            <marker date="1455545382000" expanded="true" signature="9022:9152" placeholder="SELECT sum(p... ${table('members_handsel')}" />
+            <marker date="1455545382000" expanded="true" signature="10530:10596" placeholder="Delete from " />
+            <marker date="1455545382000" expanded="true" signature="10633:10705" placeholder="Delete from " />
+            <marker date="1455545382000" expanded="true" signature="10742:10815" placeholder="Delete from " />
+            <marker date="1455545382000" expanded="true" signature="10852:10923" placeholder="Delete from " />
+            <marker date="1455545382000" expanded="true" signature="10960:11037" placeholder="Delete from " />
+            <marker date="1455545382000" expanded="true" signature="11074:11150" placeholder="Delete from " />
+            <marker date="1455545382000" expanded="true" signature="11187:11259" placeholder="Delete from " />
+            <marker date="1455545382000" expanded="true" signature="11296:11371" placeholder="Delete from " />
+            <marker date="1455545382000" expanded="true" signature="11408:11484" placeholder="Delete from " />
+            <marker date="1455545382000" expanded="true" signature="11521:11600" placeholder="Delete from " />
+            <marker date="1455545382000" expanded="true" signature="11637:11714" placeholder="Delete from " />
+            <marker date="1455545382000" expanded="true" signature="11751:11811" placeholder="Delete from " />
+            <marker date="1455545382000" expanded="true" signature="11842:11891" placeholder="delete from " />
+            <marker date="1455545382000" expanded="true" signature="16835:16924" placeholder="SELECT ${{$s... " />
+            <marker date="1455545382000" expanded="true" signature="17416:17503" placeholder="SELECT ${{$s... " />
+            <marker date="1455545382000" expanded="true" signature="17647:17719" placeholder="select * fro... ${table('jobs_tmp')}" />
+            <marker date="1455545382000" expanded="true" signature="18856:18987" placeholder="SELECT i.*,j... ${table('hunter_interview')}" />
+            <marker date="1455545382000" expanded="true" signature="19365:19412" placeholder="select title... ${table('resume')}" />
+            <marker date="1455545382000" expanded="true" signature="19895:19976" placeholder="Delete from " />
+            <marker date="1455545382000" expanded="true" signature="20390:20470" placeholder="Delete from " />
+            <marker date="1455545382000" expanded="true" signature="20990:21131" placeholder="select m.use... ${table('company_interview')}" />
+            <marker date="1455545382000" expanded="true" signature="21724:21863" placeholder="select m.use... ${table('hunter_interview')}" />
+            <marker date="1455545382000" expanded="true" signature="22329:22380" placeholder="select * fro... ${table('jobs')}" />
+            <marker date="1455545382000" expanded="true" signature="22456:22572" placeholder="select jobs_... ${table('personal_favorites')}" />
+            <marker date="1455545382000" expanded="true" signature="23185:23275" placeholder="SELECT ${{$s... " />
+            <marker date="1455545382000" expanded="true" signature="23391:23463" placeholder="select * fro... ${table('jobs_tmp')}" />
+            <marker date="1455545382000" expanded="true" signature="24502:24584" placeholder="Delete from " />
+            <marker date="1455545382000" expanded="true" signature="24825:24998" placeholder="select did f... ${table('personal_jobs_apply')}" />
+            <marker date="1455545382000" expanded="true" signature="25115:25295" placeholder="select did f... ${table('personal_hunter_jobs_apply')}" />
+            <marker date="1455545382000" expanded="true" signature="25536:25564" placeholder="SELECT COUNT... ${table('personal_jobs_apply')}" />
+            <marker date="1455545382000" expanded="true" signature="25620:25648" placeholder="SELECT COUNT... ${table('personal_hunter_jobs_apply')}" />
+            <marker date="1455545382000" expanded="true" signature="26121:26212" placeholder="SELECT ${{$s... " />
+            <marker date="1455545382000" expanded="true" signature="26399:26471" placeholder="select * fro... ${table('jobs_tmp')}" />
+            <marker date="1455545382000" expanded="true" signature="26881:26928" placeholder="select title... ${table('resume')}" />
+            <marker date="1455545382000" expanded="true" signature="28184:28315" placeholder="SELECT a.*,j... ${table('personal_hunter_jobs_apply')}" />
+            <marker date="1455545382000" expanded="true" signature="28740:28787" placeholder="select title... ${table('resume')}" />
+            <marker date="1455545382000" expanded="true" signature="29582:29633" placeholder="select * fro... ${table('jobs')}" />
+            <marker date="1455545382000" expanded="true" signature="29892:29950" placeholder="select * fro... ${table('hunter_jobs')}" />
+            <marker date="1455545382000" expanded="true" signature="30264:30347" placeholder="Delete from " />
+            <marker date="1455545382000" expanded="true" signature="30794:30884" placeholder="Delete from " />
+            <marker date="1455545382000" expanded="true" signature="31157:31185" placeholder="SELECT COUNT... ${table('resume')}" />
+            <marker date="1455545382000" expanded="true" signature="31471:31499" placeholder="SELECT COUNT... ${table('hunter_interview')}" />
+            <marker date="1455545382000" expanded="true" signature="31564:31623" placeholder="SELECT COUNT... ${table('company_interview')}" />
+            <marker date="1455545382000" expanded="true" signature="32014:32074" placeholder="SELECT COUNT... ${table('personal_favorites')}" />
+            <marker date="1455545382000" expanded="true" signature="32425:32478" placeholder="SELECT COUNT... ${table('view_resume')}" />
+            <marker date="1455545382000" expanded="true" signature="32767:32795" placeholder="SELECT COUNT... ${table('personal_hunter_jobs_apply')}" />
+            <marker date="1455545382000" expanded="true" signature="32870:32898" placeholder="SELECT COUNT... ${table('personal_jobs_apply')}" />
+            <marker date="1455545382000" expanded="true" signature="33233:33261" placeholder="SELECT COUNT... ${table('personal_favorites')}" />
+            <marker date="1455545382000" expanded="true" signature="33392:33473" placeholder="select * fro... ${table('feedback')}" />
+            <marker date="1455545382000" expanded="true" signature="33574:33665" placeholder="Delete from " />
+            <marker date="1455545382000" expanded="true" signature="33865:33928" placeholder="select id fr... ${table('resume')}" />
+            <marker date="1455545382000" expanded="true" signature="34355:34434" placeholder="select id fr... ${table('resume')}" />
+            <marker date="1455545382000" expanded="true" signature="35122:35136" placeholder="select * fro... ${table('jobs')}" />
+            <marker date="1455545382000" expanded="true" signature="35219:35266" placeholder="select * fro... ${table('jobs')}" />
+            <marker date="1455545382000" expanded="true" signature="35346:35360" placeholder="select * fro... ${table(&quot;jobs&quot;)}" />
+            <marker date="1455545382000" expanded="true" signature="35486:35594" placeholder="select id fr... ${table('report')}" />
+            <marker date="1455545382000" expanded="true" signature="36020:36188" placeholder="SELECT COUNT... ${table('pms')}" />
+            <marker date="1455545382000" expanded="true" signature="36727:36784" placeholder="select * fro... ${table('course')}" />
+            <marker date="1455545382000" expanded="true" signature="37031:37059" placeholder="SELECT COUNT... ${table('personal_course_apply')}" />
+            <marker date="1455545382000" expanded="true" signature="37215:37351" placeholder="select did f... ${table('personal_course_apply')}" />
+            <marker date="1455545382000" expanded="true" signature="37517:37596" placeholder="SELECT * FRO... ${table('personal_course_apply')}" />
+            <marker date="1455545382000" expanded="true" signature="38072:38100" placeholder="SELECT COUNT... ${table('personal_course_apply')}" />
+            <marker date="1455545382000" expanded="true" signature="38443:38514" placeholder="Delete from " />
+            <marker date="1455545382000" expanded="true" signature="38764:38792" placeholder="SELECT COUNT... ${table('company_down_resume')}" />
+            <marker date="1455545382000" expanded="true" signature="39078:39161" placeholder="SELECT ${{$s... " />
+            <marker date="1455545382000" expanded="true" signature="39275:39348" placeholder="select * fro... ${table('jobs_tmp')}" />
+            <marker date="1455545382000" expanded="true" signature="39651:39723" placeholder="select `id`,... ${table('company_profile')}" />
+            <marker date="1455545382000" expanded="true" signature="40447:40546" placeholder="select did f... ${table('personal_jobs_apply')}" />
+            <marker date="1455545382000" expanded="true" signature="40663:40761" placeholder="select did f... ${table('personal_favorites')}" />
+            <marker date="1455545382000" expanded="true" signature="41153:41211" placeholder="Delete from " />
+            <marker date="1455545382000" expanded="true" signature="41511:41596" placeholder="SELECT ${{$s... " />
+            <marker date="1455545382000" expanded="true" signature="41807:41879" placeholder="select `id`,... ${table('company_profile')}" />
+            <marker date="1455545382000" expanded="true" signature="42168:42212" placeholder="select * fro... ${table('jobs')}" />
+            <marker date="1455545382000" expanded="true" signature="42521:42657" placeholder="select did f... ${table('company_down_resume')}" />
+            <marker date="1455545382000" expanded="true" signature="42902:42917" placeholder="SELECT id FR... ${table('resume')}" />
+            <marker date="1455545382000" expanded="true" signature="43329:43388" placeholder="Delete from " />
+            <marker date="1455545382000" expanded="true" signature="43605:43650" placeholder="select id fr... ${table('resume')}" />
+            <marker date="1455545382000" expanded="true" signature="43826:43910" placeholder="select count... ${table(&quot;view_resume&quot;)}" />
+            <marker date="1455545382000" expanded="true" signature="44023:44101" placeholder="select * fro... ${table('personal_shield_company')}" />
+            <marker date="1455545382000" expanded="true" signature="44211:44303" placeholder="delete from " />
+            <marker date="1455545382000" expanded="true" signature="44427:44519" placeholder="select count... ${table('personal_shield_company')}" />
+            <marker date="1455545382000" expanded="true" signature="44635:44703" placeholder="select audit... ${table('resume')}" />
+            <marker date="1455545382000" expanded="true" signature="44768:44819" placeholder="select 1 fro... ${table('resume_entrust')}" />
+            <marker date="1455545382000" expanded="true" signature="45155:45204" placeholder="delete from " />
+            <marker date="1455545382000" expanded="true" signature="45348:45439" placeholder="SELECT disti... ${table('company_interview')}" />
+            <marker date="1455545382000" expanded="true" signature="45568:45651" placeholder="SELECT disti... ${table('personal_jobs_apply')}" />
+            <marker date="1455545382000" expanded="true" signature="45893:45961" placeholder="SELECT id, t... ${table('resume')}" />
+            <marker date="1455545382000" expanded="true" signature="46123:46205" placeholder="SELECT disti... ${table('resume_outward')}" />
+            <marker date="1455545382000" expanded="true" signature="46563:46733" placeholder="..." />
+            <marker date="1455545382000" expanded="true" signature="47196:47240" placeholder="..." />
+            <marker date="1455545382000" expanded="true" signature="47241:48421" placeholder="..." />
+            <marker date="1455545382000" expanded="false" signature="47257:47275" placeholder="..." />
+            <marker date="1455545382000" expanded="true" signature="47276:47682" placeholder="..." />
+            <marker date="1455545382000" expanded="false" signature="47293:47305" placeholder="..." />
+            <marker date="1455545382000" expanded="false" signature="47537:47567" placeholder="..." />
+            <marker date="1455545382000" expanded="false" signature="47656:47666" placeholder="..." />
+            <marker date="1455545382000" expanded="false" signature="47698:47719" placeholder="..." />
+            <marker date="1455545382000" expanded="true" signature="47720:48079" placeholder="..." />
+            <marker date="1455545382000" expanded="false" signature="47738:47771" placeholder="..." />
+            <marker date="1455545382000" expanded="false" signature="48095:48116" placeholder="..." />
+            <marker date="1455545382000" expanded="true" signature="48117:48326" placeholder="..." />
+            <marker date="1455545382000" expanded="false" signature="48132:48165" placeholder="..." />
+            <marker date="1455545382000" expanded="false" signature="48342:48363" placeholder="..." />
+            <marker date="1455545382000" expanded="true" signature="48364:48421" placeholder="..." />
+            <marker date="1455545382000" expanded="false" signature="48379:48412" placeholder="..." />
+            <marker date="1455545382000" expanded="true" signature="48522:48928" placeholder="..." />
+            <marker date="1455545382000" expanded="false" signature="48542:48575" placeholder="..." />
+            <marker date="1455545382000" expanded="false" signature="48757:48782" placeholder="..." />
+            <marker date="1455545382000" expanded="false" signature="48816:48842" placeholder="..." />
+            <marker date="1455545382000" expanded="false" signature="48897:48907" placeholder="..." />
+            <marker date="1455545382000" expanded="true" signature="48977:49008" placeholder="..." />
+            <marker date="1455545382000" expanded="true" signature="49101:49122" placeholder="..." />
+            <marker date="1455545382000" expanded="true" signature="49123:49233" placeholder="..." />
+            <marker date="1455545382000" expanded="false" signature="49139:49172" placeholder="..." />
+            <marker date="1455545382000" expanded="true" signature="49262:49296" placeholder="..." />
+            <marker date="1455545382000" expanded="true" signature="49297:49396" placeholder="..." />
+            <marker date="1455545382000" expanded="true" signature="49663:49725" placeholder="Delete from " />
+            <marker date="1455545382000" expanded="true" signature="56192:56266" placeholder="select point... ${table('members_points')}" />
+            <marker date="1455545382000" expanded="true" signature="58298:58376" placeholder="select * fro... ${table('payment')}" />
+            <marker date="1455545382000" expanded="true" signature="58496:58608" placeholder="select * fro... ${table('order')}" />
+            <marker date="1455545382000" expanded="true" signature="58763:58855" placeholder="select * fro... ${table('payment')}" />
+            <marker date="1455545382000" expanded="true" signature="60538:60648" placeholder="select * fro... ${table('order')}" />
+            <marker date="1455545382000" expanded="true" signature="60889:60952" placeholder="SELECT * FRO... ${table('order')}" />
+            <marker date="1455545382000" expanded="true" signature="61264:61369" placeholder="Delete from " />
+            <marker date="1455545382000" expanded="true" signature="61427:61505" placeholder="select * fro... ${table('members_points_rule')}" />
+            <marker date="1455545382000" expanded="true" signature="61692:61765" placeholder="SELECT * FRO... ${table('members_log')}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/genv/func_resume_upload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49889624">
+          <caret line="434" column="46" selection-start-line="434" selection-start-column="46" selection-end-line="434" selection-end-column="46" />
+          <folding>
+            <marker date="1458145489000" expanded="true" signature="272:349" placeholder="SELECT * FRO... ${table('resume_upload')}" />
+            <marker date="1458145489000" expanded="true" signature="675:889" placeholder="SELECT r.*,l... ${table('resume_temp')}" />
+            <marker date="1458145489000" expanded="true" signature="753:832" placeholder="select * fro... qs_resume_check_log" />
+            <marker date="1458145489000" expanded="true" signature="1501:1567" placeholder="select * fro... ${table('resume_temp')}" />
+            <marker date="1458145489000" expanded="true" signature="4153:4284" placeholder="select c_id,... ${table('category')}" />
+            <marker date="1458145489000" expanded="true" signature="4468:4539" placeholder="select c_id,... ${table('category')}" />
+            <marker date="1458145489000" expanded="true" signature="4916:4983" placeholder="select * fro... ${table('category_jobs')}" />
+            <marker date="1458145489000" expanded="true" signature="5090:5170" placeholder="select * fro... ${table('category_major')}" />
+            <marker date="1458145489000" expanded="true" signature="5348:5413" placeholder="Delete from " />
+            <marker date="1458145489000" expanded="true" signature="6044:6125" placeholder="select * fro... ${table('category_jobs')}" />
+            <marker date="1458145489000" expanded="true" signature="7196:7267" placeholder="select * fro... ${table('category_district')}" />
+            <marker date="1458145489000" expanded="true" signature="7703:7788" placeholder="select * fro... ${table('category_district')}" />
+            <marker date="1458145489000" expanded="true" signature="22909:22985" placeholder="select * fro... ${table('resume')}" />
+            <marker date="1458145489000" expanded="true" signature="23382:23482" placeholder="SELECT * FRO... ${table('resume_education')}" />
+            <marker date="1458145489000" expanded="true" signature="23595:23680" placeholder="select * fro... ${table('resume_work')}" />
+            <marker date="1458145489000" expanded="true" signature="23798:23897" placeholder="select * fro... ${table('resume_training')}" />
+            <marker date="1458145489000" expanded="true" signature="24027:24094" placeholder="select * fro... ${table('resume_jobs')}" />
+            <marker date="1458145489000" expanded="true" signature="24213:24312" placeholder="select * fro... ${table('resume_language')}" />
+            <marker date="1458145489000" expanded="true" signature="24426:24526" placeholder="SELECT * FRO... ${table('resume_img')}" />
+            <marker date="1458145489000" expanded="true" signature="24643:24741" placeholder="select * fro... ${table('resume_credent')}" />
+            <marker date="1458145489000" expanded="true" signature="27560:27623" placeholder="select * fro... ${table('members')}" />
+            <marker date="1458145489000" expanded="true" signature="29912:29979" placeholder="select * fro... ${table('members')}" />
+            <marker date="1458145489000" expanded="true" signature="30069:30142" placeholder="select * fro... ${table('members')}" />
+            <marker date="1458145489000" expanded="true" signature="30458:30527" placeholder="select * fro... ${table('members')}" />
+            <marker date="1458145489000" expanded="true" signature="34574:34633" placeholder="Delete from " />
+            <marker date="1458145489000" expanded="true" signature="34722:34787" placeholder="Delete from " />
+            <marker date="1458145489000" expanded="true" signature="36129:36163" placeholder="select resul... " />
+            <marker date="1458145489000" expanded="true" signature="36450:36525" placeholder="select * fro... ${table('members')}" />
+            <marker date="1458145489000" expanded="true" signature="36675:36704" placeholder="select * fro... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
