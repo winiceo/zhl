@@ -1,0 +1,30 @@
+<div style="text-align:right;font-size:8px;position: absolute;top: 187px;left: 355px;color:#7e7e7e;">我要提供员工职业信用信息</div>
+<div style="text-align:center;font-size:24px;font-weight:bold;margin:20px auto;font-family:'宋体';color:#7e7e7e;">职业信用查询系统</div>
+<div style="text-align:center;margin-bottom:80px;">
+    <form onsubmit="return baiduWithHttps(this)" action="http://www.baidu.com/baidu" target="_blank">
+        <input name="tn" type="hidden" value="SE_zzsearchcode_shhzc78w">
+        <input type="text" class="f-left" id="shuru" onfocus="checkHttps" name="word"  value="请输入真实姓名，身份证号，手机号即可查询职业信用记录" size="30" style="color:#CCCCCC;height:42px;width:387px;border:3px solid #ff7800;border-right: none;border-top-left-radius: 5px;border-bottom-left-radius: 5px;padding-left: 10px;">
+        <div class="submit_img f-left"></div>
+        <div class="clearfix"></div>
+    </form>
+</div>
+<script src="http://s1.bdstatic.com/r/www/cache/global/js/BaiduHttps_20150714_zhanzhang.js"></script>
+<script>
+    function checkHttps () {
+        BaiduHttps.useHttps();    
+    };
+    function baiduWithHttps (formname) {
+        var data = BaiduHttps.useHttps();
+        if (data.s === 0) {
+            return true;
+        }
+        else {
+            formname.action = 'https://www.baidu.com/baidu' + '?ssl_s=1&ssl_c' + data.ssl_code;
+            return true;
+        }
+    };
+	$("#shuru").click(function(){
+			$("#shuru").attr('value','');
+			
+		});
+</script>

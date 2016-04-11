@@ -67,6 +67,8 @@ job_filldata("#job_list", QS_jobs_parent, QS_jobs, "#result-list-job", "#aui_out
 trade_filldata("#trad_list", QS_trade, "#aui_outer", "#result-list-trade", "#trade_result_show", "#trade", "{#$QISHI.site_dir#}");
 // 所学专业填充数据
 major_filldata("#major_list", QS_major_parent, QS_major, "#major_tabnav", "#aui_outer_major", "#result-list-major", "#major_result_show", "#major", "{#$QISHI.site_dir#}");
+// 新的所学专业填充数据
+new_major_filldata("#major_list", QS_major_parent, QS_major, "#result-list-major", "#aui_outer_major", "#major_result_show", "#major", "{#$QISHI.site_dir#}");
 //填写基本信息,打开选填项按钮效果
 $("#displaymore").hover(
   function () {
@@ -485,11 +487,11 @@ jQuery.validator.addMethod("isPhoneNumber", function(value, element) {
 			</td>
 			<td>&nbsp;</td>
 		  </tr>
-		  <tr>
+		  <!--<tr>
 			<td align="right"><span class="">所学专业</span>：</td>
 			<td style="position:relative;z-index:2;">
 				<div class="input_text_200_bg ucc-default" id="majorText">{#if $userprofile.major#}{#$userprofile.major_cn#}{#else#}请选择{#/if#}</div>
-				<!-- 所学专业弹出框 -->
+				<!-- 所学专业弹出框
 				<div class="aui_outer" id="aui_outer_major">
 					<table class="aui_border">
 						<tbody>
@@ -504,7 +506,6 @@ jQuery.validator.addMethod("isPhoneNumber", function(value, element) {
 															<div class="items jquery-localdata">
 																<div class="selector-header"><span class="selector-title">所学专业</span><div></div><span class="selector-close">X</span><div class="clear"></div></div>
 																<ul class="tabnav" id="major_tabnav"></ul>
-
 																<div class="item-table majorbb">
 																	<table class="options-table options-table-7">
 																		<tbody class="item-list"><tr><td class="bno"><table id="major_list"></table></td></tr>
@@ -523,13 +524,53 @@ jQuery.validator.addMethod("isPhoneNumber", function(value, element) {
 						</tbody>
 					</table>
 				</div>
-				<!-- 所学专业弹出框 End-->	
+				<!-- 所学专业弹出框 End	
 			    <input name="major" type="hidden" id="major" value="{#$userprofile.major#}" />
              	<input name="major_cn" type="hidden" id="major_cn" value="{#$userprofile.major_cn#}" />
 			</td>
 			<td>&nbsp;</td>
 		   </tr>
-		   <tr>
+		  <tr>-->
+		<td align="right"><span class="">所学专业</span>：</td>
+		<td style="position:relative;z-index:2;">
+			<div class="input_text_200_bg ucc-default" id="majorText">{#if $userprofile.major#}{#$userprofile.major_cn#}{#else#}请选择{#/if#}</div>
+			<!-- 所学专业弹出框 -->
+			<div class="aui_outer" id="aui_outer_major">
+				<table class="aui_border">
+					<tbody>
+						<tr>
+							<td class="aui_c">
+								<div class="aui_inner">
+									<table class="aui_dialog">
+										<tbody>
+											<tr>
+												<td class="aui_main">
+													<div class="aui_content" style="padding: 0px;">
+														<div class="LocalDataMultiC" style="width:623px;">
+															<div class="selector-header"><span class="selector-title">专业选择</span><div></div><span class="selector-close">X</span><div class="clear"></div></div>
+
+															<div class="data-row-list data-row-main" id="major_list">
+																<!-- 列表内容 -->
+															</div>
+														</div>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- 所学专业弹出框 End-->	
+		    <input name="major" type="hidden" id="major" value="{#$userprofile.major#}" />
+	     	<input name="major_cn" type="hidden" id="major_cn" value="{#$userprofile.major_cn#}" />
+		</td>
+		<td>&nbsp;</td>
+	</tr>
+           <tr>
 			<td align="right"><span class="nec">工作经验</span>：</td>
 			<td>
 				<div style="position:relateve;">

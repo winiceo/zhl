@@ -14,6 +14,13 @@ if($act == 'del_record')
 	$db = new mysql($dbhost,$dbuser,$dbpass,$dbname);
 	//记录id
 	$id=intval($_GET['id']);
+    $sql = "select * from " . table('undelete_test') . " where cate=2 and test_id=" . $id . " LIMIT 1";
+	$rs = $db->getone($sql);
+ 
+	if($rs){
+		exit('已关联简历,不允许删除！');
+	}
+
 	if ($db->query("Delete from ".table('evaluation_record')." WHERE id='{$id}'  "))
 	{
 		exit('1');
@@ -113,6 +120,8 @@ elseif($act == 'next_page')
 					$score[trim($value['score'])][]=$value['score'];
 				}
 			}
+			gv($score);
+			exit;
 			$temp=array();
 			foreach($score as $key=>$v){
 				$temp[]=$key."共".count($v)."个";
@@ -122,7 +131,7 @@ elseif($act == 'next_page')
 
 
 
-			$setsqlarr['result_description']="您的得分为{$result}<br>分析结果如下:".get_result_abcd($score,$paper_info["id"]);
+			$setsqlarr['result_description']="您的得分为{$result}分析结果如下:".get_result_abcd($score,$paper_info["id"]);
 
 		}elseif($paper_info["result_type"]==2){
 			$score = 0;
@@ -138,7 +147,7 @@ elseif($act == 'next_page')
 			}
 			$setsqlarr['score'] = $score;
 
-			$setsqlarr['result_description']="您的得分为{$score}<br>分析结果如下:".get_result_score($score,$paper_info["id"]);
+			$setsqlarr['result_description']="您的得分为{$score} ;分析结果如下:".get_result_score($score,$paper_info["id"]);
 
 
 		}
@@ -180,7 +189,7 @@ elseif($act == 'next_page')
 		$smarty->display('../tpl_evaluation/default/paper_answer.htm');
 	}
 }
-// 判断个人积分
+// 判断个人葫芦币
 elseif($act == 'is_answer')
 {
 	$uid = intval($_SESSION['uid']);
@@ -188,7 +197,7 @@ elseif($act == 'is_answer')
 	{
 		exit("2|只有个人会员才能进行测评！");
 	}
-	//判断积分是否足够
+	//判断葫芦币是否足够
 	$paperid = intval($_GET['paperid']);
 	if($paperid <= 0)
 	{
@@ -206,11 +215,11 @@ elseif($act == 'is_answer')
 	$user_points = $db->getone("SELECT * FROM ".table('members_points')." WHERE uid=".$uid);
 	if(!$user_points)
 	{
-		exit("2|会员积分发生错误！");
+		exit("2|会员葫芦币发生错误！");
 	}
 	elseif(intval($user_points['points']) < intval($paper_info['price']) && intval($paper_info['price']) != 0 )
 	{
-		exit("2|积分不足，请立即充值！");
+		exit("2|葫芦币不足，请立即充值！");
 	}
 	else
 	{
@@ -221,11 +230,11 @@ elseif($act == 'is_answer')
 		}
 		else
 		{
-			exit('1|您是否消耗'.$paper_info['price'].'积分来答此问卷？');
+			exit('1|您是否消耗'.$paper_info['price'].'葫芦币来答此问卷？');
 		}
 	}
 }
-// 扣除个人积分
+// 扣除个人葫芦币
 elseif($act == 'is_answer_next')
 {
 	$uid = intval($_SESSION['uid']);
@@ -233,7 +242,7 @@ elseif($act == 'is_answer_next')
 	{
 		exit("只有个人会员才能进行测评！");
 	}
-	//判断积分是否足够
+	//判断葫芦币是否足够
 	$paperid = intval($_POST['paperid']);
 	if($paperid <= 0)
 	{
@@ -251,17 +260,17 @@ elseif($act == 'is_answer_next')
 	$user_points = $db->getone("SELECT * FROM ".table('members_points')." WHERE uid=".$uid);
 	if(!$user_points)
 	{
-		exit("会员积分发生错误！");
+		exit("会员葫芦币发生错误！");
 	}
 	elseif(intval($user_points['points']) < intval($paper_info['price']) && intval($paper_info['price']) != 0 )
 	{
-		exit("积分不足，请立即充值！");
+		exit("葫芦币不足，请立即充值！");
 	}
 	else
 	{
 		$points_val=intval($user_points['points']) - intval($paper_info['price']);
 		$sql = "UPDATE ".table('members_points')." SET points= '{$points_val}' WHERE uid='{$uid}' LIMIT 1";
-		if (!$db->query($sql)) exit('更新积分失败！');
+		if (!$db->query($sql)) exit('更新葫芦币失败！');
 		exit('ok');
 	}
 }
@@ -271,7 +280,7 @@ function get_result_score($score,$paper_id){
 	$sql = "SELECT * FROM ".table('evaluation_result')." WHERE paper_id=".$paper_id." ORDER BY result_score desc ";
 	$list = $db->getall($sql);
 	foreach($list as $key=>$value){
-		if($value["result_score"]>=$score){
+		if($score>=$value["result_score"]&&$score<=$value["result_score1"]){
 			return $value["result_description"];
 		}
 	}
@@ -294,7 +303,9 @@ function get_abcd($key,$num,$paper_id){
 	$list = $db->getall($sql);
 
 	foreach($list as $p=>$value){
-		if($value["result_num"]>=$num){
+		if($num>=$value["result_num"]&&$num<=$value["result_num1"]){
+
+
 			return $value["result_description"];
 		}
 	}

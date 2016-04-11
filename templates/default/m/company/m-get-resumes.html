@@ -24,7 +24,7 @@
 			<header class="global-header flex-box">
 				<div class="header-left flex1"><div class="prev" id="pageback"></div></div>
 				<div class="header-center flex2"><span class="title-only"> ’µΩºÚ¿˙</span></div>
-				<div class="header-right flex3"></div>
+				{#include file="m/company/navi.html"#}
 			</header>
 			<div class="select_bar clear">
 				<ul class="clear">
@@ -62,7 +62,7 @@
 			{#if $jobs_apply#}
 			{#foreach from=$jobs_apply  item=list#}
 			{#if $list.fullname#}
-			<article class="classifylist interviewlist nomb thisurl" url="../{#$list.resume_url#}">
+			<article class="classifylist interviewlist nomb thisurl" url="{#$list.resume_url#}">
 				<section class="title flex-box">
 					<div class="name {#if $list.resume_state==1#}suitable{#elseif $list.resume_state==2#}nosuitable{#elseif $list.resume_state==3#}undetermined{#elseif $list.resume_state==4#}inappropriate{#/if#}">{#$list.fullname#}</div>
 					<div class="status flex2">{#$list.apply_addtime|date_format:'%Y-%m-%d'#}</div>

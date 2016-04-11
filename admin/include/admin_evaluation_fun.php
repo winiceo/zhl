@@ -39,7 +39,9 @@ function get_evaluation_one($id)
 {
 	global $db,$_CFG;
 	$id=intval($id);
-	return $db->getone("SELECT * FROM ".table('evaluation_paper')." where id=$id limit 1 ");
+	$rs=$db->getone("SELECT * FROM ".table('evaluation_paper')." where id=$id limit 1 ");
+	$rs["question"]=$db->getall("SELECT * FROM ".table('evaluation_option')." where question_id=$id  ");
+	return $rs;
 }
 // É¾³ýÊÔ¾í
 function del_paper($id)

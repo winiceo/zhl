@@ -15,18 +15,18 @@ if ($act=='index')
 {
 	$uid=intval($_SESSION['uid']);
 	$smarty->assign('title','企业会员中心 - '.$_CFG['site_name']);
-	//首页顶部提示信息(套餐或者积分已失效或快失效时提醒)
+	//首页顶部提示信息(套餐或者葫芦币已失效或快失效时提醒)
 	$message = array();
 	if ($_CFG['operation_mode']=='1' || $_CFG['operation_mode']=='3')
 	{
 		$my_points = get_user_points($uid);
 		if($my_points < $_CFG['points_min_remind'] && intval($my_points) > 0 && !empty($_CFG['points_min_remind']))
 		{
-			$message[] = '提醒：您的积分不足，为避免造成不必要的麻烦，请<a href="company_service.php?act=order_add">立即充值</a>';
+			$message[] = '提醒：您的葫芦币不足，为避免造成不必要的麻烦，请<a href="company_service.php?act=order_add">立即充值</a>';
 		}
 		elseif(intval($my_points) <= 0 && !empty($_CFG['points_min_remind']))
 		{
-			$message[] = '提醒：您的积分已为0，为避免造成不必要的麻烦，请<a href="company_service.php?act=order_add">立即充值</a>';
+			$message[] = '提醒：您的葫芦币已为0，为避免造成不必要的麻烦，请<a href="company_service.php?act=order_add">立即充值</a>';
 		}
 		$smarty->assign('points',$my_points);
 	}

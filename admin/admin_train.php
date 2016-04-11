@@ -827,8 +827,8 @@ elseif($act == 'userpoints_edit')
 {
 	check_token();
 	check_permissions($_SESSION['admin_purview'],"tra_user_edit");
-	if (intval($_POST['points'])<1) adminmsg('请输入积分！',1);
-	if (trim($_POST['points_notes'])=='') adminmsg('请填写积分操作说明！',1);
+	if (intval($_POST['points'])<1) adminmsg('请输入葫芦币！',1);
+	if (trim($_POST['points_notes'])=='') adminmsg('请填写葫芦币操作说明！',1);
 	$link[0]['text'] = "返回列表";
 	$link[0]['href'] = $_POST['url'];
 	$user=get_user($_POST['train_uid']);
@@ -836,7 +836,7 @@ elseif($act == 'userpoints_edit')
 	$t=$points_type==1?"+":"-";
 	report_deal($user['uid'],$points_type,intval($_POST['points']));
 	$points=get_user_points($user['uid']);
-	write_memberslog(intval($_POST['train_uid']),4,9101,$user['username']," 管理员操作积分({$t}{$_POST['points']})，(剩余:{$points})，备注：".$_POST['points_notes']);
+	write_memberslog(intval($_POST['train_uid']),4,9101,$user['username']," 管理员操作葫芦币({$t}{$_POST['points']})，(剩余:{$points})，备注：".$_POST['points_notes']);
 	$user=get_user($_POST['train_uid']);
 		if(intval($_POST['is_money']) && $_POST['log_amount']){
 			$amount=round($_POST['log_amount'],2);
@@ -845,9 +845,9 @@ elseif($act == 'userpoints_edit')
 			$amount='0.00';
 			$ismoney=1;
 		}
-		$notes="操作人：{$_SESSION['admin_name']},说明：修改会员 {$user['username']} 积分 ({$t}{$_POST['points']})。收取积分金额：{$amount} 元，备注：{$_POST['points_notes']}";
+		$notes="操作人：{$_SESSION['admin_name']},说明：修改会员 {$user['username']} 葫芦币 ({$t}{$_POST['points']})。收取葫芦币金额：{$amount} 元，备注：{$_POST['points_notes']}";
 		write_setmeallog($_POST['train_uid'],$user['username'],$notes,3,$amount,$ismoney,1,4);
-		write_log("修改会员uid为".$_POST['train_uid']."积分", $_SESSION['admin_name'],3);
+		write_log("修改会员uid为".$_POST['train_uid']."葫芦币", $_SESSION['admin_name'],3);
 	adminmsg('保存成功！',2);
 }
 elseif($act == 'edit_setmeal_save')
@@ -1059,7 +1059,7 @@ elseif($act == 'meal_log')
 	$key=isset($_GET['key'])?trim($_GET['key']):"";
 	$key_type=isset($_GET['key_type'])?intval($_GET['key_type']):"";
 	$operation_mode=$_CFG['operation_train_mode'];
-	//积分、套餐两种模式变更记录
+	//葫芦币、套餐两种模式变更记录
 	if($operation_mode=='1')
 	{
 		$wheresql=" WHERE a.log_mode=1 AND a.log_utype=4";
@@ -1237,7 +1237,7 @@ elseif($act == 'members_add_save')
 				if ($_POST['regpoints']=="y")
 				{
 				write_memberslog($insert_id,4,9101,$sql['username'],"<span style=color:#FF6600>注册会员系统自动赠送!(+{$regpoints_num})</span>");
-				$notes="操作人：{$_SESSION['admin_name']},说明：后台添加机构会员并赠送(+{$regpoints_num})积分，收取费用：{$amount}元";
+				$notes="操作人：{$_SESSION['admin_name']},说明：后台添加机构会员并赠送(+{$regpoints_num})葫芦币，收取费用：{$amount}元";
 				write_setmeallog($insert_id,$sql['username'],$notes,4,$amount,$ismoney,1,4);
 				report_deal($insert_id,1,$regpoints_num);
 				}
@@ -1251,7 +1251,7 @@ elseif($act == 'members_add_save')
 				write_setmeallog($insert_id,$sql['username'],$notes,4,$amount,$ismoney,2,4);
 				}
 				if(intval($_POST['is_money']) && $_POST['log_amount'] && !$notes){
-				$notes="操作人：{$_SESSION['admin_name']},说明：后台添加机构会员，未赠送积分，未开通套餐，收取费用：{$amount}元";
+				$notes="操作人：{$_SESSION['admin_name']},说明：后台添加机构会员，未赠送葫芦币，未开通套餐，收取费用：{$amount}元";
 				write_setmeallog($insert_id,$sql['username'],$notes,4,$amount,2,2,4);
 				}			
 			}

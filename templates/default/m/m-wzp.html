@@ -120,7 +120,7 @@
     <div class="job_btn_con">
       <div class="job_btn_list" jqmoldstyle="block">
           <a href="javascript:;" class="job_btn add" id="jobs_apply">投个简历</a>
-          <a href="javascript:;" class="job_btn tel">电话联系</a>
+          <a href="javascript:;"  class="job_btn tel" id='jobs_phone' phone='1'>电话联系</a>
       </div>
     </div>
 </section>
@@ -163,6 +163,28 @@
     <div class="clear"></div>
   </div>
 </div>
+<!-- 电话联系 弹出框 -->
+
+<div class="menu choose_menu" id="jobs_phone_menu" style="opacity:0;position:absolute;z-index:9999;">
+  <div class="menu_title">电话联系</div>
+  <ul>
+    	<li id='phone_error'>{#$phone_error#}</li>
+  </ul>
+  <div class="choose_but">
+
+  
+    <div class="but_left" id="">
+      <a id="jobs_phone_code" code="{#$phone_code#}" href = '{#$phone_url#}'>{#$phone_error_tet#}</a>
+    </div>
+   
+    <div class="but_right" id="">
+      <a>取消</a>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+
+
 <!-- 左侧划出内容  -->
 {#if $show_menue=="1"#}
 <section class="reward_manager_list_con">

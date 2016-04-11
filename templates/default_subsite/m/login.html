@@ -10,8 +10,8 @@
 	<title>{#$QISHI.site_name#}-登录</title>
 	<meta name="description" content="{#$page.description#}" id="description">
 	<meta name="keywords" content="{#$page.keywords#}">
-<meta name="author" content="找葫芦网" />
-<meta name="copyright" content="zhaohulu.com" />
+	<meta name="author" content="找葫芦" />
+	<meta name="copyright" content="zhaohulu.com" />
 	<link rel="stylesheet" href="./css/common.css">
 	<link rel="stylesheet" href="./css/login-reg.css">
 	<script type="text/javascript" src="./js/jquery-1.11.3.js" ></script>
@@ -128,22 +128,9 @@
 		                    $("#err .user-form-error").hide();
 		                }, 1000);
 					}
-					else
+					else if(data=="3")
 					{
-						window.location.href=data;
-					}
-				})
-			});
-			//发送手机验证码
-			$('#codeBtn').on('click', function() {
-				$.post('?act=login_send_code', {'act':'login_send_code','mobile':$('#mobile').val()}, function(data) {
-					if($.trim(data)!='success')
-					{
-						if(data=='请60秒后重新验证！')
-						{
-							showTime(60);
-						}
-						var html = '<div class="user-form-error" style="display: block;"><i class="error-icon"></i>'+data+'</div>';
+						html = '<div class="user-form-error" style="display: block;"><i class="error-icon"></i>猎头或者培训会员不能在手机端登录</div>';
 						$("#err").html(html);
 						setTimeout(function () {
 		                    $("#err .user-form-error").hide();
@@ -151,10 +138,36 @@
 					}
 					else
 					{
-						showTime(60);
-						$('.mobile_login').removeAttr("disabled"); 
+						window.location.href=data;
 					}
-				});
+				})
+			});
+			//发送手机验证码
+			var isFirstcodeBtn = true;
+			$('#codeBtn').on('click', function() {
+				if (isFirstcodeBtn) {
+					isFirstcodeBtn =false;
+					$.post('?act=login_send_code', {'act':'login_send_code','mobile':$('#mobile').val()}, function(data) {
+						isFirstcodeBtn = true;
+						if($.trim(data)!='success')
+						{
+							if(data=='请60秒后重新验证！')
+							{
+								showTime(60);
+							}
+							var html = '<div class="user-form-error" style="display: block;"><i class="error-icon"></i>'+data+'</div>';
+							$("#err").html(html);
+							setTimeout(function () {
+			                    $("#err .user-form-error").hide();
+			                }, 1000);
+						}
+						else
+						{
+							showTime(60);
+							$('.mobile_login').removeAttr("disabled"); 
+						}
+					});
+				}
 			});
 			//手机登录
 			$('.mobile_login').on('click', function() {

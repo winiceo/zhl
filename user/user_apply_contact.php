@@ -13,7 +13,7 @@ if((empty($_SESSION['uid']) || empty($_SESSION['username']) || empty($_SESSION['
 	if(check_cookie($_COOKIE['QS']['uid'],$_COOKIE['QS']['username'],$_COOKIE['QS']['password']))
 	{
 	update_user_info($_COOKIE['QS']['uid'],false,false);
-	header("Location:".get_member_url($_SESSION['utype']));
+	//header("Location:".get_member_url($_SESSION['utype']));
 	}
 	else
 	{

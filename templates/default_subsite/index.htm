@@ -211,7 +211,7 @@ jQuery(document).ready(function($) {
 				{#qishi_jobs_list  set="列表名:jobs,显示数目:40,推荐:1"#}
 				{#foreach from=$jobs item=list#}
 				<div class="reco-job-item f-left">
-					<div class="rjob-top clearfix"><div class="f-left"><a target="_blank" href="{#$list.jobs_url#}" class="underline">{#$list.jobs_name#}</a></div><span class="f-right">{#$list.amount#}</span></div>
+					<div class="rjob-top clearfix"><div class="f-left"><a target="_blank" href="{#$list.jobs_url#}" class="underline">{#$list.jobs_name#}</a></div><span class="f-right">{#$list.wage_cn#}</span></div>
 					<div class="rjon-company"><a href="{#$list.company_url#}" target="_blank" class="underline">{#$list.companyname#}</a></div>
 				</div>
 				{#/foreach#}

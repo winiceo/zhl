@@ -9,6 +9,7 @@ require_once(QISHI_ROOT_PATH.'include/fun_wap.php');
 require_once(QISHI_ROOT_PATH.'include/mysql.class.php');
 $smarty->cache = false;
 $db = new mysql($dbhost,$dbuser,$dbpass,$dbname);
+wap_weixin_openid($_GET['code']);
 //ÍøÕ¾¼ò½é£¨ËµÃ÷Ò³£© 
 $site_detail = $db->getone("SELECT * FROM ".table('explain')." WHERE id=2 ");
 $smarty->assign('site_detail',htmlspecialchars_decode($site_detail["content"],ENT_QUOTES));

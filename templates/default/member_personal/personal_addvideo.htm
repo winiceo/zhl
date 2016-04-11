@@ -1,0 +1,420 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>{#$title#}</title>
+<link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
+<meta name="author" content="找葫芦" />
+<meta name="copyright" content="zhaohulu.com" />
+<meta name="renderer" content="webkit"> 
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="{#$QISHI.site_template#}css/user_common.css" rel="stylesheet" type="text/css" />
+<link href="{#$QISHI.site_template#}css/user_company.css" rel="stylesheet" type="text/css" />
+<link href="{#$QISHI.site_template#}css/jobs.css" rel="stylesheet" type="text/css" />
+<link href="{#$QISHI.site_template#}css/ui-dialog.css" rel="stylesheet" type="text/css" />
+<script src="{#$QISHI.site_template#}js/jquery.js" type="text/javascript" language="javascript"></script>
+<script src="{#$QISHI.site_template#}js/jquery.validate.min.js" type='text/javascript' language="javascript"></script>
+<script src="{#$QISHI.site_template#}js/dialog-min.js" type="text/javascript" language="javascript"></script>
+<script src="{#$QISHI.site_template#}js/dialog-min-common.js" type="text/javascript" language="javascript"></script>
+<script src="{#$QISHI.site_dir#}data/cache_classify.js" type="text/javascript" charset="utf-8"></script>
+<script src="{#$QISHI.site_template#}js/jquery.company.selectlayer.js" type='text/javascript' language="javascript"></script>
+<link rel="stylesheet" href="{#$QISHI.site_template#}kindeditor/themes/default/default.css" />
+<script charset="utf-8" src="{#$QISHI.site_template#}kindeditor/kindeditor-min.js"></script>
+<script charset="utf-8" src="{#$QISHI.site_template#}kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+$("#Form1 input, #Form1 textarea, #Form1 select").each(function(index, el) {
+	$(this).attr('_value', jQuery(this).val());
+});
+//绑定beforeunload事件
+function is_form_changed() {
+	//检测页面是否有保存按钮
+	var t_save = $("#submitsave");
+	if(t_save.length>0) {
+		var is_changed = false;
+		$("#Form1 input, #Form1 textarea, #Form1 select").each(function(index, el) {
+			var _v = $(this).attr('_value');
+			if(typeof(_v) == 'undefined') {
+				_v = '';
+			}
+			if(_v != jQuery(this).val()) {
+				is_changed = true;
+			}
+		});
+		return is_changed;
+	}
+	return false;
+}
+if ($.browser.msie){
+    window.onunload = function(){
+        return "您正在编辑的内容尚未保存，确定要离开此页吗？";
+    }
+}
+else{
+    window.onbeforeunload = function(){
+        if (is_form_changed()) {
+			return '您正在编辑的内容尚未保存，确定要离开此页吗？';
+		}
+    }
+}
+menuDown("#education_menu","#education","#education_cn","#menu1","218px");
+menuDown("#experience_menu","#experience","#experience_cn","#menu2","218px");
+menuDown("#wage_menu","#wage","#wage_cn","#menu3","218px");
+menuDown("#tpl_menu","","","#menu4","218px");
+function menuDown(menuId,input,input_cn,menuList,width){
+	$(menuId).click(function(){
+		$(menuList).css("width",width);
+		$(menuList).slideDown('fast');
+		//生成背景
+		$(menuId).parent("div").before("<div class=\"menu_bg_layer\"></div>");
+		$(".menu_bg_layer").height($(document).height());
+		$(".menu_bg_layer").css({ width: $(document).width(), position: "absolute", left: "0", top: "0" , "z-index": "0", "background-color": "#ffffff"});
+		$(".menu_bg_layer").css("opacity","0");
+		$(".menu_bg_layer").click(function(){
+			$(".menu_bg_layer").remove();
+			$(menuList).slideUp("fast");
+			$(menuId).parent("div").css("position","");
+		});
+	});
+
+	$(menuList+" li").click(function(){
+		var id = $(this).attr("id");
+		var title = $(this).attr("title");
+		$(input).val(id);
+		$(input_cn).val(title);
+		$(menuId).html(title);
+		$(input).parent().find('.input_text_200_bg').removeClass('error');
+		$(input).parent().next().find('.error').hide();
+		$(menuList).slideUp('fast');
+		$(".menu_bg_layer").remove();
+	});
+}
+showagebox("#minage_div","#minage");
+showagebox("#maxage_div","#maxage");
+function showagebox(divname,inputname)
+{
+	$(divname).click(function(){
+		var inputdiv=$(this);
+		$(inputdiv).parent("div").before("<div class=\"menu_bg_layer\"></div>");
+		$(".menu_bg_layer").height($(document).height());
+		$(".menu_bg_layer").css({ width: $(document).width(), position: "absolute", left: "0", top: "0" , "z-index": "0"});
+		$(inputdiv).parent("div").css("position","relative");
+		
+		var y=16;
+		var ymax=60;
+		htm="<div class=\"showyearbox yearlist\">";		
+		htm+="<ul>";
+		for (i=y;i<=ymax;i++)
+		{
+		htm+="<li title=\""+i+"\">"+i+"岁</li>";
+		}
+		htm+="<div class=\"clear\"></div>";
+		htm+="</ul>";
+		htm+="</div>";
+		$(inputdiv).blur();
+		if ($(inputdiv).parent("div").find(".showyearbox").html())
+		{
+			$(inputdiv).parent("div").children(".showyearbox.yearlist").slideToggle("fast");
+		}
+		else
+		{
+			$(inputdiv).parent("div").append(htm);
+			$(inputdiv).parent("div").children(".showyearbox.yearlist").slideToggle("fast");
+		}
+		//
+		$(inputdiv).parent("div").children(".yearlist").find("li").unbind("click").click(function()
+		{
+			var tt = $(this).attr("title");
+			$(inputname).val(tt);
+			$(inputdiv).html(tt);
+			if (inputname == "#minage") {
+				var maxval = $("#maxage").val();
+				if(maxval) {
+					tt >= maxval ? $("#ageerr").show() : $("#ageerr").hide();
+				}
+			}
+			if (inputname == "#maxage") {
+				var minval = $("#minage").val();
+				if(minval) {
+					tt <= minval ? $("#ageerr").show() : $("#ageerr").hide();
+				}
+			}
+			$(inputdiv).parent("div").children(".yearlist").hide();
+			$(".menu_bg_layer").remove();
+		});	
+		//
+		$(".showyearbox>ul>li").hover(
+		function()
+		{
+		$(this).css("background-color","#DAECF5");
+		$(this).css("color","#ff0000");
+		},
+		function()
+		{
+		$(this).css("background-color","");
+		$(this).css("color","");
+		}
+		);
+		//
+		$(".menu_bg_layer").click(function(){
+			$(".menu_bg_layer").hide();
+			$(inputdiv).parent("div").css("position","");
+			$(inputdiv).parent("div").find(".showyearbox").hide();	
+		});
+	});
+}
+$("#Form1").validate({
+ //debug: true,
+// onsubmit:false,
+//onfocusout :true,
+   rules:{
+	   u_name:{
+		required: true,
+		minlength:2,
+		maxlength:5
+	   },
+	   video_name:{
+		required: true,
+		minlength:2,
+		maxlength:20
+	   },
+	   video_img:{
+		required: true,
+		minlength:3
+	   },
+	   video_url:{
+		required: true,
+		minlength:3
+	   },
+	   video_describe:{
+		required: true,
+		minlength:3
+	   }
+	},
+    messages: {
+		u_name: {
+		required: "请输入您的昵称",
+		minlength: jQuery.format("昵称不能小于{0}个字符"),
+		maxlength: jQuery.format("昵称不能大于{0}个字符")
+	   },
+	   u_name: {
+		required: "请输入视频名称",
+		minlength: jQuery.format("昵称不能小于{0}个字符"),
+		maxlength: jQuery.format("昵称不能大于{0}个字符")
+	   },
+	   video_url: {
+		required: "请输入视频链接",
+	   },
+	   video_describe: {
+		required: jQuery.format("请填写视频描述"),
+		minlength: jQuery.format("视频描述内容不能小于{0}个字符")
+	   }
+	
+  },
+  errorPlacement: function(error, element) {
+    if ( element.is(":radio") )
+        error.appendTo( element.parent().next().next() );
+    else if ( element.is(":checkbox") )
+        error.appendTo ( element.next());
+    else
+        error.appendTo(element.parent().next());
+    	element.parent().find('.input_text_200_bg').addClass('error');
+	},
+	success: function (label) {
+        label.parent().prev().find('.input_text_200_bg').removeClass('error');
+    },
+	submitHandler: function(form) {
+		window.onbeforeunload = null;
+		form.submit();
+	}
+    });
+    jQuery.validator.addMethod("IScaptchastr", function(value, element) {
+	var str="点击获取验证码";
+	var flag=true;
+	if (str==value)
+	{
+	flag=false;
+	}
+	return  flag || this.optional(element) ;
+	}, "请填写验证码");
+		/////验证码部分
+{#if $verify_addjob=="1"#}
+function imgcaptcha(inputID,imgdiv)
+{
+	$(inputID).focus(function(){
+		if ($(inputID).val()=="点击获取验证码")
+		{
+		$(inputID).val("");
+		$(inputID).css("color","#333333");
+		}
+		$(inputID).parent("div").css("position","relative");
+		//设置验证码DIV
+		$(imgdiv).css({position: "absolute", left:  $(inputID).width(), "bottom": "0px" , "z-index": "10", "background-color": "#FFFFFF", "border": "1px #A3C8DC solid","display": "none","margin-left": "25px"});
+		$(imgdiv).show();
+		if ($(imgdiv).html()=='')
+		{
+		$(imgdiv).append("<img src=\"{#$QISHI.site_dir#}include/imagecaptcha.php?t={#$random#}\" id=\"getcode\" align=\"absmiddle\"  style=\"cursor:pointer; margin:3px; height:28px\" title=\"看不请验证码？点击更换一张\"  border=\"0\"/>");
+		}
+		$(imgdiv+" img").click(function()
+		{
+			$(imgdiv+" img").attr("src",$(imgdiv+" img").attr("src")+"1");
+			$(inputID).val("");
+			$("#Form1").validate().element("#postcaptcha");	
+		});
+		$(document).click(function(event)
+		{
+			var clickid=$(event.target).attr("id");
+			if (clickid!="getcode" &&  clickid!="postcaptcha")
+			{
+			$(imgdiv).hide();
+			$(inputID).parent("div").css("position","");
+			}			
+		});
+	});
+}
+imgcaptcha("#postcaptcha","#imgdiv");
+//验证码结束
+{#/if#}
+
+
+});
+</script>
+</head>
+<body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
+{#include file="user/header.htm"#}
+<div class="page_location link_bk">当前位置：<a href="{#$QISHI.site_dir#}">首页</a> > <a href="{#$userindexurl#}">会员中心</a> > 发布视频</div>
+<div class="usermain">
+  <div class="leftmenu link_bk">
+  {#include file="member_personal/left.htm"#}
+  </div>
+  <div class="rightmain">
+	<div class="bbox1">	
+	  <div class="addjob">
+	    <div class="titleH1">
+	      <div class="h1-title">发布视频</div>
+        </div>
+		<form id="Form1" name="Form1" method="post" action="?act=addvideo_save"  enctype="multipart/form-data" >
+		<input name="addrand" type="hidden"  id="addrand" value="{#$addrand#}" />
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
+		  <tr>
+			<td width="125" align="right"><span class="nec">您的昵称</span>：</td>
+			<td width="230"><input name="u_name" type="text" class="input_text_200" id="u_name" maxlength="80" value=""/></td>
+			<td></td>
+		  </tr>
+          <tr>
+			<td width="125" align="right"><span class="nec">视频名称</span>：</td>
+			<td width="230"><input name="video_name" type="text" class="input_text_200" id="video_name" maxlength="80" value=""/></td>
+			<td></td>
+		  </tr>
+           <tr>
+			<td width="125" align="right"><span class="nec">视频链接</span>：</td>
+			<td width="230"><input name="video_url" type="text" class="input_text_500" id="video_url" maxlength="80" value=""/></td>
+			<td></td>
+		  </tr>
+          <tr>
+              <td width="100" align="right"><span class="nec">视频图片</span>：</td>
+              <td >
+             <input name="video_img" type="file"   id="video_img"  class="input_text_200"/>
+              <span class="admin_note">(格式：gif/jpg/bmp/png，文件大小：1000KB)</span>
+         	 </td>
+         	 <td></td>
+          </tr>
+		  <tr>
+			<td width="125" align="right" valign="top"><span class="nec">视频描述</span>：</td>
+			<td width="500">
+			<div style="display:none;" id="template">
+				<span class="tdTemplateTitle">&nbsp;</span><font style="color:#FF6600">（点击职位模板后会自动填充职位描述）</font>
+				<span id="JobRequInfoTemplate"><a href="javascript:void(0);"></a></span>
+			</div>
+			<textarea id="video_describe" name="video_describe" style="width:700px;height:300px;visibility:hidden;"></textarea>
+				<script type="text/javascript">
+					var editor;
+					KindEditor.ready(function(K) {
+						editor = K.create('textarea[name="video_describe"]', {
+							allowFileManager : false,
+							width:600,
+							height:250,
+							afterBlur: function(){this.sync();}
+						});
+					});
+				</script>
+			</td>
+			<td></td>
+		  </tr>
+		   <tr>
+			<td width="125" align="right"> </td>
+			<td ><input type="submit" name="submitsave" id="submitsave" value="发布"  class="but180lan" onclick="$(window).unbind('beforeunload');"/></td>
+		  </tr>
+	    </table>
+	    <input name="add_mode" type="hidden" id="add_mode" value="{#$add_mode#}" />
+
+{#if $add_mode=="1"#}
+<script type="text/javascript">
+$(document).ready(function()
+{
+	//葫芦币默认
+	total();
+	//计算总计葫芦币
+	function total()
+	{
+			var points = {#$points_total#};
+			var jobs_add = {#$points.jobs_add.value#};
+			var totals=jobs_add;
+			if (jobs_add>0)
+			{			
+			$("#total").html("发布本条信息总计扣除&nbsp;<span style=\"font-size:20px; color: #FF0000\" >"+totals+"</span>&nbsp;{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}，你目前共有<strong style=\"color:#0033FF\"> {#$points_total#}  </strong>{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}；<br />");
+			$("#totals").val({#$points_total#}-totals);	
+			}
+	}				
+	$("#addsubmit").click(function()
+	{
+		if ($("#totals").val()<0)
+		{
+			{#if $QISHI.operation_mode=="2"#}
+			dialog({
+			  title: '系统提示',
+			  content: "您的葫芦币不足，请申请新的服务或者充值葫芦币！",
+			  width:'300px'
+			}).showModal();
+			{#else#}
+			dialog({
+			  title: '系统提示',
+			  content: "您的葫芦币不足，请充值后再发布！",
+			  width:'300px'
+			}).showModal();
+			{#/if#}
+		}
+		else
+		{
+		$("form[name=Form1]").submit();
+		}
+	});	
+});
+</script>
+<div style="position:relative;padding-left:125px;">
+	  <table width="100%" border="0" cellpadding="20" cellspacing="0" class="link_lan" bgcolor="F9F9F9" >
+            <tr>               
+              <td align="center" >
+              	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall"  bgcolor="F9F9F9">
+		   <tr>
+			<td width="360" align="left">
+				<div id="total"></div>
+			</td>
+		  </tr>
+	    </table>
+              	</td>
+            </tr>
+      </table>
+</div>
+{#/if#}
+</form> 
+	  </div>
+	</div>
+  </div>
+  <div class="clear"></div>
+</div>
+<!-- 职位亮点选择框 -->
+ {#include file="user/footer.htm"#}
+</body>
+</html>

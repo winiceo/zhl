@@ -20,10 +20,10 @@ if(array_key_exists("return_code", $result) && array_key_exists("result_code", $
 		$sql = "UPDATE ".table('order')." SET is_paid= '2',payment_time='{$timestamp}' WHERE oid='".$result['out_trade_no']."' LIMIT 1 ";
 		if (!$db->query($sql)) return false;
 	
-		//Ì×²Í¡¢»ý·ÖÖ§¸¶
+		//Ì×²Í¡¢ºùÂ«±ÒÖ§¸¶
 		if($order['pay_type'] == '1' || $order['pay_type'] == '4')			
 		{		 
-			$order_name = "Ì×²Í»ý·Ö¶©µ¥";
+			$order_name = "Ì×²ÍºùÂ«±Ò¶©µ¥";
 			$user=get_user_info($order['uid']);
 			if($order['amount']=='0.00'){
 				$ismoney=1;

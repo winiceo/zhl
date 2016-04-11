@@ -290,5 +290,10 @@ $data = array (
     'type' => '1',
     'value' => '3',
   ),
+  'resume_checked' => 
+  array (
+    'type' => '1',
+    'value' => '10',
+  ),
 );
 ?>

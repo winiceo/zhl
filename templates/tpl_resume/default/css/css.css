@@ -20,8 +20,9 @@ input.radio{position: relative;top:2px;margin-right: 5px;}
 .container{width: 1000px;margin:0 auto;}
 a.underline:hover{text-decoration: underline;}
 
-/*皮肤*/
-body.default{background: #f6f6f6;}
+/*皮肤
+body.default{background: #f6f6f6;}*/
+body.default{background: #fff;}
 body.tpl-one{background: url(../images/tpl-bg1.jpg) no-repeat top center #eef9f1;}
 body.tpl-two{background: url(../images/tpl-bg2.png) no-repeat top center #afdbdf;}
 body.tpl-three{background: url(../images/tpl-bg3.jpg) no-repeat top center #fff8e6;}
@@ -32,7 +33,7 @@ body.tpl-three{background: url(../images/tpl-bg3.jpg) no-repeat top center #fff8
 /*main*/
 #wrap{width: 900px;margin:0 auto;font-family: "SimSun";font-size: 12px;overflow: hidden;}
 #wrap .left-main{width: 710px;background-color: #fff;border:1px solid #ccc;padding:20px;padding-bottom: 0;min-height:500px;}
-#wrap .fix-control{position: fixed;margin-left: 772px;width: 127px;overflow: hidden;*margin-left:20px;}
+#wrap .fix-control{position: fixed;margin-left: 772px;width: 127px;overflow: hidden;*margin-left:20px;z-index: 1;}
 .fix-control .fix-wrap{width: 127px;min-height:30px;text-align: center;padding:16px 0;}
 .fix-control .fix-wrap .code-box{margin-bottom: 10px;}
 .fix-control .fix-wrap .download{width: 127px;height: 65px;line-height: 65px;}
@@ -40,9 +41,9 @@ body.tpl-three{background: url(../images/tpl-bg3.jpg) no-repeat top center #fff8
 .fix-control .fix-wrap .download .download-btn:hover{background-color: #ff7700;}
 .fix-control .fix-wrap .ctrl-text{width: 127px;margin-top: 12px;height:35px;background: url(../images/control-text.png) no-repeat center center;}
 .fix-control .fix-wrap .resume-ctrl{display: block;margin-bottom: 5px;width: 127px;height: 40px;font-size: 14px;background-color: #e7e7e7;color:#333;line-height: 40px;text-align: center;}
-.fix-control .fix-wrap .resume-ctrl:hover{background-color: #0180cf;color:#fff;}
+.fix-control .fix-wrap .resume-ctrl:hover{background-color: #f60;color:#fff;}
 
-.left-main .top-streamer{position: relative;padding-left: 20px;height:35px;line-height: 35px;color:#666;font-size: 12px;background-color: #fbeedd;margin-bottom: 30px;}
+.left-main .top-streamer{position: relative;padding-left: 20px;height:35px;line-height: 35px;color:#666;font-size: 12px;background-color: #f6f7f9;margin-bottom: 30px;}
 .left-main .top-streamer .streamer-angle{position: absolute;top:0;left:-6px;width: 0;height: 0;border-width:3px;border-color:transparent #ebd9c3 #ebd9c3 transparent;border-style:dashed solid solid dashed;}
 .left-main .personal-info{margin-bottom: 30px;padding-left: 20px;}
 .left-main .personal-info .personal-pic{width: 160px;height: 178px;overflow: hidden;border:1px solid #c5c5c5;}
@@ -59,11 +60,11 @@ body.tpl-three{background: url(../images/tpl-bg3.jpg) no-repeat top center #fff8
 .left-main .personal-info .info-text .info-detail{line-height: 200%;color:#999;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
 .left-main .personal-info .info-text .info-detail span{color:#333;}
 .left-main .personal-info .info-text .personal-tag{margin-top: 10px;}
-.left-main .personal-info .info-text .personal-tag .tag-item{position: relative;margin-right: 19px;height: 29px;line-height: 29px;border-left: 2px solid #80a7e5;color:#38588c;background: #e0ecff;border-bottom: 1px solid #c9d4e5;padding:0 10px;}
-.left-main .personal-info .info-text .personal-tag .tag-item .tag-angle{position: absolute;width: 11px;height: 29px;top:0;right:-11px;background: url(../images/tpl-resume-icon.png) no-repeat 0px 0px;}
-.left-main .job-item{background-color: #f6f7f9;padding:0 20px;position: relative;margin-bottom: 30px;}
-.left-main .job-item .right-top-angle{position: absolute;top:0;right:0;width: 23px;height: 25px;background: url(../images/angle.jpg) no-repeat 0px 0px;}
-.left-main .job-item h3{line-height: 36px;height:36px;color:#333;border-bottom:1px solid #e2e2e2;font-size: 14px;}
+.left-main .personal-info .info-text .personal-tag .tag-item{position: relative;margin-right: 19px;height: 29px;line-height: 29px;border-left: 2px solid #80a7e5;color:#fff;background: #FFA50F;border-bottom: 1px solid #c9d4e5;padding:0 10px;}
+.left-main .personal-info .info-text .personal-tag .tag-item .tag-angle{position: absolute;width: 11px;height: 29px;top:100;right:-11px;background: url(../images/tpl-resume-icon.png) no-repeat 0px 0px;}
+.left-main .job-item{background-color: #f6f7f9;padding-left:10px;position: relative;margin-bottom: 30px;}
+.left-main .job-item .right-top-angle{position: absolute;top:0;right:0;width: 23px;height: 25px;}/*background: url(../images/angle.jpg) no-repeat 0px 0px;*/
+.left-main .job-item h3{font-weight:bold;line-height: 36px;height:36px;color:#333;border-bottom:1px solid #e2e2e2;font-size: 14px;}
 .left-main .job-item .percent-block{width: 330px;padding:20px 0;}
 .left-main .job-item .percent-block.last{width: 340px;}
 .left-main .job-item .percent-block .percent-star{padding-right: 100px;font-size: 14px;color:#333;background: url(../images/tpl-resume-icon.png) no-repeat right -279px;margin-top: 26px;}
@@ -75,14 +76,17 @@ body.tpl-three{background: url(../images/tpl-bg3.jpg) no-repeat top center #fff8
 .left-main .job-item .percent-block .star-state{padding-left: 30px;background: url(../images/tpl-resume-icon.png) no-repeat 0px -167px;height: 73px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
 .left-main .job-item .percent-block .star-state p{margin-bottom:14px;color:#333;}
 .left-main .job-item .percent-block .star-state p span{color:#ff9900;}
-.left-main .contact-block{margin-bottom: 30px;padding-left: 20px;}
+.left-main .contact-block{margin-top:15px;margin-bottom: 15px;padding-left: 20px;}
 .left-main .contact-block .contact-text{font-size: 14px;color:#333;margin-bottom: 15px;}
 .left-main .contact-block .contact-text span{font-size: 16px;color:#ee2828;font-family: "Microsoft Yahei";}
 .left-main .contact-block .contact-text span em{font-style: normal;color:#999;margin:0 12px;font-size: 14px;}
 .left-main .contact-block .contact-text span a{color:#0180cf;margin:0 12px;font-size: 14px; display: inline-block;}
 .left-main .contact-block .contact-text span a:hover{text-decoration:underline;}
-.contact-btn{width: 130px;height: 32px;background-color: #ff6600;color:#fff;font-size: 12px;font-family: "SimSun";cursor: pointer;border:0;margin-right: 22px;}
-.contact-btn:hover{background-color: #ff7700;}
+/*.contact-btn{width: 130px;height: 32px;background-color: #ff6600;color:#fff;font-size: 12px;font-family: "SimSun";cursor: pointer;border:0;margin-right: 22px;}
+.contact-btn:hover{background-color: #ff7700;}*/
+.contact-btn{height:35px;width:150px;background-color:#FF6600;color:#FFFFFF;border-radius:3px;text-align:center;line-height:35px;font-size:16px;font-weight:bold;}
+.contact-btn:hover{height:35px;width:150px;background-color:#FF7600;color:#FFFFFF;border-radius:3px;text-align:center;line-height:35px;font-size:16px;font-weight:bold;}
+
 .interview-state{height: 32px;border:1px solid #d9d9d9;background-color: #fff;margin-right:8px;padding:0 15px;font-size: 12px;color:#666;cursor: pointer;}
 .interview-state:hover{background-color: #f5f5f5;}
 .interview-state.selected{background-color: #ffeee3;border:1px solid #ff6600;height:30px;color:#666666;}
@@ -119,7 +123,7 @@ input.radio{position: relative;top:2px;margin-right: 3px;}
 /*邀请面试弹出*/
 .dialog-block{font-family: "SimSun";}
 .dialog-block .dialog-item{margin-bottom: 13px;font-size: 12px;}
-.dialog-block .dialog-item .d-type{width: 60px;color:#666;line-height: 30px;}
+.dialog-block .dialog-item .d-type{width: 70px;color:#666;line-height: 30px;}
 .dialog-block .dialog-item .d-content{line-height: 30px;}
 .dialog-block .dialog-item .d-content input.checkbox{margin-right: 5px;}
 .short-text-tip{margin-left:10px;line-height: 24px;height:24px;border:1px solid #ff9900;background-color: #fff1e5;padding:0 10px;font-size: 12px;color:#666;border-radius: 3px;font-family: "SimSun";}

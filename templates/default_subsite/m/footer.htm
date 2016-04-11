@@ -11,7 +11,7 @@
   </section>
   <section class="copyright">
     <p>
-      <a href="{#$QISHI.wap_domain#}" class="curr">触屏版</a><span>-</span><a href="{#$QISHI.site_domain#}{#$QISHI.site_dir#}?iswap=1">电脑版</a><span>-</span><a href="{#$QISHI.site_domain#}{#$QISHI.site_dir#}{#$QISHI.android_download#}">客户端</a><span>-</span><a href="javascript:;">微信版</a>
+      <a href="{#$QISHI.wap_domain#}" class="curr">触屏版</a><span>-</span><a href="{#$QISHI.main_domain#}?iswap=1">电脑版</a><span>-</span><a href="{#$QISHI.main_domain#}{#$QISHI.android_download#}">客户端</a><span>-</span><a href="javascript:;">微信版</a>
     </p>
     <div class="site">Powered by 74cms v{#$QISHI.version#}</div>
   </section>
@@ -37,7 +37,7 @@
       var linkUrl = "";//放链接
       var title = "";
       var desc =  $("#description").attr('content');
-      var imgUrl="{#$QISHI.site_domain#}{#$QISHI.site_dir#}data/images/weixin_default_pic.png";//图片链接
+      var imgUrl="{#$QISHI.main_domain#}data/images/weixin_default_pic.png";//图片链接
       
       wx.onMenuShareTimeline({
           title: title, // 分享标题

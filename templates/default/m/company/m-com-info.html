@@ -8,14 +8,14 @@
 		<meta name="copyright" content="zhaohulu.com" />
 		<link rel="stylesheet" href="../css/user-common.css" />
 		<link rel="stylesheet" href="../css/user-company.css" />
-		<script src="{#$QISHI.site_domain#}{#$QISHI.site_template#}js/jquery.js"></script>
+		<script src="{#$QISHI.main_domain#}templates/{#$QISHI.template_dir#}js/jquery.js"></script>
 		<script type='text/javascript' src="../js/jquery.common.js" ></script>
 		<script type="text/javascript" src="../js/layer/layer.js" ></script>
 		<script type="text/javascript" src="../js/jquery.editCM.js" ></script>
 		<script type="text/javascript" src="../js/iscroll.js" ></script>
 		<script type="text/javascript" src="../js/popWin.js" ></script>
-		<script src="{#$QISHI.site_domain#}{#$QISHI.site_dir#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
-		<script src="{#$QISHI.site_domain#}{#$QISHI.site_template#}js/ajaxfileupload.js" type='text/javascript' language="javascript"></script>
+		<script src="{#$QISHI.main_domain#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
+		<script src="{#$QISHI.main_domain#}templates/{#$QISHI.template_dir#}js/ajaxfileupload.js" type='text/javascript' language="javascript"></script>
 		<script type="text/javascript">
 			$(document).ready(function() {
 				//  修改企业信息
@@ -95,11 +95,11 @@
 			<header class="global-header flex-box">
 				<div class="header-left flex1"><div class="prev" id="pageback"></div></div>
 				<div class="header-center flex2"><span class="title-only">企业资料</span></div>
-				<div class="header-right flex3"></div>
+				{#include file="m/company/navi.html"#}
 			</header>
 			{#if $company_info#}
 			<article class="makeresumetitbox flex-box companyinfotitbox">
-				<div class="left" style="margin-top: 20px;"><img src="{#if $company_info.logo#}{#$QISHI.site_domain#}{#$QISHI.site_dir#}data/logo/{#$company_info.logo#}{#else#}../images/companyinfotitbox-left-bg.gif{#/if#}" alt="点击修改logo" width='150px' height='49px' id="logo">
+				<div class="left" style="margin-top: 20px;"><img src="{#if $company_info.logo#}{#$QISHI.main_domain#}data/logo/{#$company_info.logo#}{#else#}../images/companyinfotitbox-left-bg.gif{#/if#}" alt="点击修改logo" width='150px' height='49px' id="logo">
 				<input type="file" name="logo_img" id="logo_img" style="display: none;">
 				</div>
 				<div class="right">

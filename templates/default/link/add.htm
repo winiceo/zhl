@@ -3,12 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>友情链接申请 - {#$QISHI.site_name#}</title>
-<meta name="author" content="骑士CMS" />
-<meta name="copyright" content="74cms.com" />
+<meta name="author" content="找葫芦" />
+<meta name="copyright" content="zhaohulu.com" />
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
 <link href="{#$QISHI.site_template#}css/common.css" rel="stylesheet" type="text/css" />
+<link href="{#$QISHI.site_template#}css/header.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/link.css" rel="stylesheet" type="text/css" />
 <script src="{#$QISHI.site_template#}js/jquery.js" type='text/javascript'></script>
+<script src="{#$QISHI.site_template#}js/dialog-min.js" type="text/javascript" language="javascript"></script>
+<script src="{#$QISHI.site_template#}js/dialog-min-common.js" type="text/javascript" language="javascript"></script>
+<link href="{#$QISHI.site_template#}css/ui-dialog.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript">
 $(function(){
@@ -70,8 +74,9 @@ imgcaptcha("#postcaptcha","#imgdiv");
   <div class="container link_bk">
     <!-- 左边内容 -->
     <div class="left_area subscribe">
+      <div class="blue_line"></div>
       <div class="left_tit_box">
-        <h5>友情链接申请</h5>
+        <h4>友情链接申请</h4>
       </div>
       <div class="company_list">
          <form action="?act=save" method="post">
@@ -136,8 +141,9 @@ imgcaptcha("#postcaptcha","#imgdiv");
     <!-- 右边内容 -->
     <div class="right_area">
       <div class="right_box">
+        <div class="blue_line"></div>
         <div class="title_box">
-          <h5>申请说明</h5>
+          <h4>申请说明</h4>
         </div>
         <div class="list sub_right">
           <p>{#$link_application_txt#}</p>

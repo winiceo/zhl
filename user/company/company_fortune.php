@@ -29,7 +29,7 @@ elseif ($act=='fotrune_save')
     $user_points=get_user_points($_SESSION["uid"]);
 
     if($user_points<$points_rule['fotrune_points']['value']){
-        showmsg("»ý·Ö²»¹»,Çë³äÖµ",2);
+        showmsg("ºùÂ«±Ò²»¹»,Çë³äÖµ",2);
     }
     $_POST["id"]=$_POST["category"];;
 
@@ -150,7 +150,7 @@ elseif ($act=='fotrune_save')
 
 
 
-//ËãÃü¼õ»ý·Ö
+//ËãÃü¼õºùÂ«±Ò
 function fortune($uid,$username,$pid,$type="2")
 {
     $uid = intval($_SESSION['uid']);

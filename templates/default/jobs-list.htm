@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>{#if $smarty.get.key#}{#$smarty.get.key#} - {#/if#}{#if $smarty.get.jobcategory#}{#"QS_jobs,jobcategory:"|cat:$smarty.get.jobcategory|qishi_categoryname#} - {#/if#}{#if $smarty.get.trade#}{#"QS_trade,trade:"|cat:$smarty.get.trade|qishi_categoryname#} - {#/if#}{#if $smarty.get.citycategory#}{#"QS_district,"|cat:$smarty.get.citycategory|qishi_categoryname#} - {#/if#}{#if $smarty.get.wage#}{#"QS_wage,"|cat:$smarty.get.wage|qishi_categoryname#} - {#/if#}{#if $smarty.get.jobtag#}{#"QS_jobtag,"|cat:$smarty.get.jobtag|qishi_categoryname#} - {#/if#}{#if $smarty.get.education#}{#"QS_education,"|cat:$smarty.get.education|qishi_categoryname#} - {#/if#}{#if $smarty.get.experience#}{#"QS_experience,"|cat:$smarty.get.experience|qishi_categoryname#} - {#/if#}{#if $smarty.get.settr#}{#$smarty.get.settr#}天内 - {#/if#}{#if $smarty.get.nature#}{#"QS_jobs_nature,"|cat:$smarty.get.nature|qishi_categoryname#} - {#/if#}{#if $smarty.get.scale#}{#"QS_scale,"|cat:$smarty.get.scale|qishi_categoryname#} - {#/if#}职位列表  - {#$QISHI.site_name#}</title>
+<title>{#if $smarty.get.key#}{#$smarty.get.key#} - {#/if#}{#if $smarty.get.jobcategory#}{#"QS_jobs,jobcategory:"|cat:$smarty.get.jobcategory|qishi_categoryname#} - {#/if#}{#if $smarty.get.trade#}{#"QS_trade,trade:"|cat:$smarty.get.trade|qishi_categoryname#} - {#/if#}{#if $smarty.get.citycategory#}{#"QS_district,"|cat:$smarty.get.citycategory|qishi_categoryname#} - {#/if#}{#if $smarty.get.wage#}{#"QS_wage,"|cat:$smarty.get.wage|qishi_categoryname#} - {#/if#}{#if $smarty.get.jobtag#}{#"QS_jobtag,"|cat:$smarty.get.jobtag|qishi_categoryname#} - {#/if#}{#if $smarty.get.education#}{#"QS_education,"|cat:$smarty.get.education|qishi_categoryname#} - {#/if#}{#if $smarty.get.experience#}{#"QS_experience,"|cat:$smarty.get.experience|qishi_categoryname#} - {#/if#}{#if $smarty.get.settr#}{#$smarty.get.settr#}天内 - {#/if#}{#if $smarty.get.nature#}{#"QS_jobs_nature,"|cat:$smarty.get.nature|qishi_categoryname#} - {#/if#}{#if $smarty.get.scale#}{#"QS_scale,"|cat:$smarty.get.scale|qishi_categoryname#} - {#/if#}招聘贴  - {#$QISHI.site_name#}</title>
 {#qishi_pageinfo set="列表名:page_info,调用:QS_jobs"#}
 <meta name="description" content="{#$page_info.description#}">
 <meta name="keywords" content="{#$page_info.keywords#}">
@@ -13,15 +13,19 @@
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
 <link href="{#$QISHI.site_template#}css/common.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/jobs.css" rel="stylesheet" type="text/css" />
-<link href="{#$QISHI.site_template#}css/ui-dialog.css" rel="stylesheet" type="text/css" />
+<link href="{#$QISHI.site_template#}css/header.css" rel="stylesheet" type="text/css" />
+
 <script src="{#$QISHI.site_template#}js/jquery.js" type='text/javascript'></script>
 <script src="{#$QISHI.site_template#}js/jquery.jobs-search.js" type='text/javascript'></script>
 <script src="{#$QISHI.site_template#}js/jquery.jobs-list.js" type='text/javascript' ></script>
 <script src="{#$QISHI.site_template#}js/dialog-min.js" type="text/javascript" language="javascript"></script>
 <script src="{#$QISHI.site_template#}js/dialog-min-common.js" type="text/javascript" language="javascript"></script>
 <script src="{#$QISHI.site_template#}js/jquery.cookie.js" type='text/javascript'></script>
+
 <script src="{#$QISHI.site_dir#}data/cache_classify.js" type="text/javascript" charset="utf-8"></script>
 <script src="{#$QISHI.site_template#}js/jquery.autocomplete.js" type="text/javascript"></script>
+<link href="{#$QISHI.site_template#}css/ui-dialog.css" rel="stylesheet" type="text/css" />
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		//详细下拉
@@ -140,7 +144,7 @@
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="header.htm"#}
 <div class="page_location link_bk">
-当前位置：<a href="{#$QISHI.site_dir#}">首页</a>&nbsp;>>&nbsp;<a href="{#"QS_jobs"|qishi_url#}">招聘信息</a>
+当前位置：<a href="{#$QISHI.site_dir#}">首页</a>&nbsp;>&nbsp;<a href="{#"QS_jobs"|qishi_url#}">招聘贴</a>
 </div>
 <div class="container">
 	<div id="filterSearch">
@@ -171,7 +175,7 @@
 			</div>
 			<div class="t-search-btn f-left"><input type="button" detype="QS_jobslist" id="searcnbtn" value="搜&nbsp;索" /></div>
 		</div>
-		<div class="fliter-wrap">
+		<div class="fliter-wrap" style="border:none;">
 			<div class="filter-drop clearfix">
 				<div class="filter-item f-left">
 					<div class="choose-item">
@@ -257,10 +261,12 @@
 					</div>
 				</div>
 			</div>
-			<div id="subsiteBox" data-txt="工作地区,{#if $QISHI.districtid#}工作地区{#else#}地区子类{#/if#}"></div>
+			<div id="subsiteBox" data-txt="工作地区,{#if $QISHI.districtid==''#}全部{#/if#}{#if $QISHI.districtid#}工作地区{#else#}地区子类{#/if#}"></div>
+         
 			<div class="filter-list-wrap clearfix">
 				<div class="fl-type f-left">职位月薪：</div>
 				<div class="fl-content r-choice f-left">
+                	<div class="fl-content-li{#if ''== $smarty.get.wage#} select{#/if#}" type="wage" style="margin-right: 20px;">全部</div>
 					{#qishi_get_classify set="列表名:wage,类型:QS_wage,显示数目:100"#}
 					{#foreach from=$wage item=list#}
 					<div class="fl-content-li{#if $list.id == $smarty.get.wage#} select{#/if#}" type="wage" code="{#$list.id#}">{#$list.categoryname#}</div>
@@ -270,13 +276,15 @@
 			<div class="filter-list-wrap clearfix">
 				<div class="fl-type f-left">福利亮点：</div>
 				<div class="fl-content f-left forShowMore" id="fliterMore">
+                	<div class="fl-content-li{#if ''== $smarty.get.jobtag#} select{#/if#}" type="jobtag" code="" style="margin-right: 20px;">全部</div>
 					{#qishi_get_classify set="列表名:jobtag,类型:QS_jobtag,显示数目:100"#}
 					{#foreach from=$jobtag item=list#}
 					<div class="fl-content-li" type="jobtag" code="{#$list.id#}">{#$list.categoryname#}</div>
 					{#/foreach#}
 					<a href="javascript:;" class="show-more">展开</a>
-				</div>
+				</div> 
 			</div>
+            
 			<div class="filter-list-wrap clearfix">
 				<div class="fl-type f-left">更多筛选：</div>
 				<div class="fl-content f-left">
@@ -329,10 +337,11 @@
 							{#/foreach#}
 						</div>
 						企业规模
-					</div>
-				</div>
+					</div> 
+				</div>        
 			</div>
 		</div>
+        
 		<div class="fliter-result clearfix" id="has_result">
 			<div class="fr-type f-left">已选条件：</div>
 			<div class="fr-content f-left rl">
@@ -403,7 +412,7 @@
 
 
 <!-- 职位列表 -->
-{#qishi_jobs_list  set="分页显示:1,列表名:jobslist,填补字符:...,职位名长度:13,企业名长度:22,描述长度:135,关键字:GET[key],职位分类:GET[jobcategory],地区分类:GET[citycategory],行业:GET[trade],日期范围:GET[settr],学历:GET[education],工作经验:GET[experience],工资:GET[wage],职位性质:GET[nature],标签:GET[jobtag],公司规模:GET[scale],排序:GET[sort],合并:$smarty.cookie.com_list"#}
+{#qishi_jobs_list  set="分页显示:1,列表名:jobslist,显示数目:20,填补字符:...,职位名长度:13,企业名长度:22,描述长度:135,关键字:GET[key],职位分类:GET[jobcategory],地区分类:GET[citycategory],行业:GET[trade],日期范围:GET[settr],学历:GET[education],工作经验:GET[experience],工资:GET[wage],职位性质:GET[nature],标签:GET[jobtag],公司规模:GET[scale],排序:GET[sort],合并:$smarty.cookie.com_list"#}
 <div class="jobinfolists">
 	<div class="tit">
 		<div class="sort">
@@ -470,7 +479,7 @@
 											<div class="pop_job_name"><a target="_black" href="{#$job_list.jobs_url#}">{#$job_list.jobs_name#}</a></div>
 										</div>
 										<div class="pop_top_right">
-											<input type="button" value="申请职位" jobs_id="{#$job_list.id#}" id="{#$job_list.id#}" class="merger_btn app_jobs" />
+											<input type="button" value="投递简历" jobs_id="{#$job_list.id#}" id="{#$job_list.id#}" class="merger_btn app_jobs" />
 											<a href="javascript:void(0);" jobs_id="{#$job_list.id#}" class="pop_collect add_favorites">收藏</a>
 										</div>
 										<div class="clear"></div>
@@ -521,25 +530,33 @@
 						{#if $list.graduate=="1"#}<img title="欢迎应届生投递简历" src="{#$QISHI.site_template#}images/ying.jpg" border="0" class="vtip"/>{#/if#}
 					</div>
 					<div class="list-item item2 f-left"><a href="{#$list.company_url#}" target="_blank" class="underline job-company">{#$list.companyname#} {#if $list.company_audit=="1"#}<img src="{#$QISHI.site_template#}images/yan.gif" alt="已验证" />{#/if#}{#if $QISHI.operation_mode>="2" &&  $list.setmeal_id>1 #} <img src="{#$QISHI.site_dir#}data/setmealimg/{#$list.setmeal_id#}.gif" border="0" title="{#$list.setmeal_name#}" class="vtip" width="14px" height="17px"/>{#/if#}</a></div>
-					<div class="list-item item3 f-left"><span>{#$list.wage_cn#}</span></div>
-					<div class="list-item item4 f-left">{#$list.district_cn#}</div>
-					<div class="list-item item5{#if $list.stick=='1'#} pt{#/if#} f-left" style="line-height:50px;">
+					<div class="list-item item3 f-left"><span>薪资：{#$list.wage_cn#}</span></div>
+					<!--<div class="list-item item4 f-left">{#$list.district_cn#}</div>-->
+				<!--	<div class="list-item item5{#if $list.stick=='1'#} pt{#/if#} f-left" style="line-height:50px;">
 						{#if $list.stick=='1'#}
 							<img  src="{#$QISHI.site_template#}images/stick.gif" alt="" title="置顶职位"  style="display: inline-bock;" />
 						{#else#}
 							{#$list.refreshtime_cn#}
 						{#/if#}
-					</div>
+					</div>-->
 					<a href="javascript:;" class="list-item-ctrl f-left"></a>
 				</div>
 				<div class="info-list-detail clearfix">
 					<div class="info-text f-left">
-						<p>学历要求：{#$list.education_cn|default:"不限"#}&nbsp;&nbsp;|&nbsp;&nbsp;工作经验：{#$list.experience_cn#}&nbsp;&nbsp;|&nbsp;&nbsp;职位性质：{#$list.nature_cn|default:"全职"#}&nbsp;&nbsp;|&nbsp;&nbsp;招聘人数：{#$list.amount#}人&nbsp;&nbsp;|&nbsp;&nbsp;性别要求：{#$list.sex_cn|default:"不限"#}</p>
+						<p>学历要求：{#$list.education_cn|default:"不限"#}&nbsp;&nbsp;|&nbsp;&nbsp;工作经验：{#$list.experience_cn#}&nbsp;&nbsp;|&nbsp;&nbsp;职位性质：{#$list.nature_cn|default:"全职"#}&nbsp;&nbsp;|&nbsp;&nbsp;招聘人数：{#$list.amount#}人&nbsp;&nbsp;|&nbsp;&nbsp;性别要求：{#$list.sex_cn|default:"不限"#}&nbsp;&nbsp;|&nbsp;&nbsp;地址：{#$list.district_cn#}</p>
 						<div>岗位职责：{#$list.briefly#}</div>
 					</div>
 					<div class="info-control f-left">
-						<input type="button" value="申请职位" jobs_id="{#$list.id#}" class="apply-job-btn app_jobs" />
-						<p><a href="javascript:;" class="collect-btn add_favorites" jobs_id="{#$list.id#}"></a></p>
+						<input type="button" value="" jobs_id="{#$list.id#}" class="apply-job-btn app_jobs" />
+						<p class="clearfix">
+                        <a href="javascript:;" class="job-list-time f-left {#if $list.stick=='1'#} pt{#/if#}">
+                        {#if $list.stick=='1'#}
+							<img  src="{#$QISHI.site_template#}images/stick.gif" alt="" title="置顶职位"  style="display: inline-bock;" />
+						{#else#}
+							{#$list.refreshtime_cn#}
+						{#/if#}</a>
+                        <a href="javascript:;" class="collect-btn add_favorites f-left" jobs_id="{#$list.id#}"></a>
+                        </p>
 					</div>
 				</div>
 				<div class="clear"></div>
@@ -553,17 +570,19 @@
 			<div class="all-ctrl f-left"><input type="button" value="申请职位" class="all-down-btn deliver" /></div>
 			<div class="all-ctrl f-left"><a href="javascript:;" class="collect-link collecter">收藏职位</a></div>
 		</div>
-			{#if $page#}
-			<table border="0" align="center" cellpadding="0" cellspacing="0" class="link_bk">
-			        	<tr>
-			          		<td height="50" align="center"> <div class="page link_bk">{#$page#}</div></td>
-			          	</tr>
-	      		</table>
-			{#/if#}
-		{#else#}
-		<div class="emptytip">抱歉，没有符合此条件的信息！</div>
-		{#/if#}
 	</div>
+</div>
+{#if $page#}
+<table border="0" align="center" cellpadding="0" cellspacing="0" class="link_bk">
+            <tr>
+                <td height="50" align="center"> <div class="page link_bk">{#$page#}</div></td>
+            </tr>
+    </table>
+{#/if#}
+{#else#}
+<div class="emptytip">抱歉，没有符合此条件的信息！</div>
+{#/if#}
+</div>
 </div>
 <script src="{#$QISHI.site_template#}js/jquery.jobs-list.js" type='text/javascript' ></script>
 {#include file="footer.htm"#}

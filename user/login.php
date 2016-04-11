@@ -12,8 +12,11 @@ unset($dbhost,$dbuser,$dbpass,$dbname);
 $smarty->cache = false;
 $act = !empty($_REQUEST['act']) ? trim($_REQUEST['act']) : 'login';
 $smarty->assign('header_nav',"login");
+//error_reporting(-1);
 if($act == 'logout')
 {
+
+	//echo $QS_cookiepath;
 	//require_once(QISHI_ROOT_PATH.'genv/lib.php');
 
 	setcookie("QS[uid]","",time() - 3600,$QS_cookiepath, $QS_cookiedomain);
@@ -35,6 +38,7 @@ if($act == 'logout')
 		include_once(QISHI_ROOT_PATH.'uc_client/client.php');	
 		$logoutjs=uc_user_synlogout();
 	}
+
 
 
 

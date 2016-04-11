@@ -38,6 +38,8 @@
     <tr>
         <td align="right" >ÏÔÊ¾ÔÚ£º</td>
         <td colspan="3" >
+          <label ><input name="subsite_id" class="choose_subsite" type="radio" value="0"  {#if $QISHI.subsite_id=="0"#}checked="checked"{#/if#} />×ÜÕ¾</label>
+          &nbsp;&nbsp;&nbsp;
     {#foreach from=$subsite item=li#}
     <label ><input name="subsite_id" type="radio" value="{#$li.s_id#}"   {#if $edit_article.subsite_id==$li.s_id#}checked="checked"{#/if#}/>{#$li.s_sitename#}</label>
     &nbsp;&nbsp;&nbsp;

@@ -52,8 +52,8 @@
 			<header class="global-header flex-box">
 				<div class="header-left flex1"><div class="prev" id="pageback"></div></div>
 				<div class="header-center flex2"><span class="title-only">职位管理</span></div>
-				<div class="header-right flex3"></div>
-			</header>
+				{#include file="m/company/navi.html"#}
+		</header>
 			{#if $row#}
 			{#foreach from=$row  item=list#}
 			<article class="classifylist resumelist">
@@ -71,7 +71,7 @@
 					<div class="handle refresh {#if $list.display==1#}jobs_refresh{#/if#}" jid="{#$list.id#}"><div class="icon"><span class="icon-user-refresh"></span></div><div class="txt">刷新</div></div>
 					<div class="handle compile" onclick="window.location.href='?act=jobs_edit&id={#$list.id#}'"><div class="icon"><span class="icon-user-compile"></span></div><div class="txt">编辑</div></div>
 					<div class="handle popularize" data-name="{#$list.jobs_name_#}" data-jobsid="{#$list.id#}"  data-type="{#$QISHI.operation_mode#}"><div class="icon"><span class="icon-user-popularize"></span></div><div class="txt">推广</div></div>
-					<div class="handle share" data-url="{#$QISHI.wap_domain#}/jobs-show.php?id={#$list.id#}" data-title="【{#$list.jobs_name_#}_{#$list.companyname#}】" data-img="{#$QISHI.site_domain#}{#$QISHI.site_dir#}data/images/logo.gif" data-from="{#$QISHI.site_name#}" data-imgtitle="薪资{#$list.wage_cn#}|学历{#$list.education_cn#}|工作经验{#$list.experience_cn#}{#if $list.tag_cn#}|标签{#$list.tag_cn#}{#/if#}"><div class="icon"><span class="icon-user-share"></span></div><div class="txt">分享</div></div>
+					<div class="handle share" data-url="{#$QISHI.wap_domain#}/jobs-show.php?id={#$list.id#}" data-title="【{#$list.jobs_name_#}_{#$list.companyname#}】" data-img="{#$QISHI.main_domain#}data/images/logo.gif" data-from="{#$QISHI.site_name#}" data-imgtitle="薪资{#$list.wage_cn#}|学历{#$list.education_cn#}|工作经验{#$list.experience_cn#}{#if $list.tag_cn#}|标签{#$list.tag_cn#}{#/if#}"><div class="icon"><span class="icon-user-share"></span></div><div class="txt">分享</div></div>
 					<div class="handle more setMore" data-jid="{#$list.id#}" data-state="{#$list.display#}"><div class="icon"><span class="icon-user-more"></span></div><div class="txt">更多</div></div>
 				</section>
 				<section class="bottom"></section>

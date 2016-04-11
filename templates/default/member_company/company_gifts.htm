@@ -126,9 +126,17 @@ $(document).ready(function()
 				<div class="topnav get_resume">
 					<div class="titleH1"><div class="h1-title">充值/订单</div></div>
 					<div class="navs link_bk">
-                        {#include file="member_company/order_nav.htm"#}
-
-                        <div class="clear"></div>
+						{#if $QISHI.operation_mode=="1" || $QISHI.operation_mode=="3"#}
+						<a href="?act=order_add">葫芦币充值</a>
+						{#/if#}
+						{#if $QISHI.operation_mode=="2" || $QISHI.operation_mode=="3"#}
+				        <a href="?act=setmeal_list">申请VIP套餐</a>
+						{#/if#}
+						<a href="?act=order_list">我的订单</a>
+				        {#if $QISHI.operation_mode=="1" || $QISHI.operation_mode=="3"#}
+				        <a href="?act=gifts" class="se">礼品卡</a>
+				        {#/if#}
+						<div class="clear"></div>
 					</div>
 				</div>
 				<div class="gifts-wrap">
@@ -164,14 +172,14 @@ $(document).ready(function()
 						</div>
 						<div class="gifts-tip f-left">
 							<div class="g-tip-block">
-								<p>1.在左侧输入礼品卡卡号密码进行积分充值</p>
+								<p>1.在左侧输入礼品卡卡号密码进行葫芦币充值</p>
 								<p>2.使用后您可以在下方记录中查看相关的使用情况。</p>
 							</div>
 						</div>
 						<div class="gift-shop-enter f-left">
 							<div class="shop-up-block"><img src="{#$QISHI.site_template#}images/gift-img.jpg" alt="" width="138" height="70" /></div>
 							<div class="shop-down-block">
-								<a href="{#"QS_shop_index"|qishi_url#}" target="_black">积分商城<br /><span>立即前往</span></a>
+								<a href="{#"QS_shop_index"|qishi_url#}" target="_black">葫芦币商城<br /><span>立即前往</span></a>
 							</div>
 						</div>
 					</div>
@@ -182,7 +190,7 @@ $(document).ready(function()
 									<th class="align-left" width="250">礼品卡卡号</th>
 									<th class="align-left" width="195">类型</th>
 									<th width="155">使用时间</th>
-									<th width="135">面值（积分）</th>
+									<th width="135">面值（葫芦币）</th>
 								</tr>
 							</thead>
 							<tbody>

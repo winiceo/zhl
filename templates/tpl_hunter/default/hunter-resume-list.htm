@@ -2,33 +2,50 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>{#if $smarty.get.jobcategory#}{#"QS_jobs,jobcategory:"|cat:$smarty.get.jobcategory|qishi_categoryname#} - {#/if#}{#if $smarty.get.trade#}{#"QS_trade,trade:"|cat:$smarty.get.trade|qishi_categoryname#} - {#/if#}{#if $smarty.get.citycategory#}{#"QS_district,"|cat:$smarty.get.citycategory|qishi_categoryname#} - {#/if#}{#if $smarty.get.experience#}{#"QS_experience,"|cat:$smarty.get.experience|qishi_categoryname#} - {#/if#}{#if $smarty.get.resumetag#}{#"QS_resumetag,"|cat:$smarty.get.resumetag|qishi_categoryname#} - {#/if#}{#if $smarty.get.education#}{#"QS_education,"|cat:$smarty.get.education|qishi_categoryname#} - {#/if#}{#if $smarty.get.sex=="1"#}男 - {#/if#}{#if $smarty.get.sex=="2"#}女 - {#/if#}{#if $smarty.get.photo=="1"#}有照片 - {#/if#}{#if $smarty.get.photo=="0"#}无照片 - {#/if#}{#if $smarty.get.settr#}{#$smarty.get.settr#}天内 - {#/if#}高级简历列表  - {#$QISHI.site_name#}</title>
+<title>
+{#if $smarty.get.jobcategory#}{#"QS_jobs,jobcategory:"|cat:$smarty.get.jobcategory|qishi_categoryname#} - {#/if#}
+{#if $smarty.get.trade#}{#"QS_trade,trade:"|cat:$smarty.get.trade|qishi_categoryname#} - {#/if#}
+{#if $smarty.get.citycategory#}{#"QS_district,"|cat:$smarty.get.citycategory|qishi_categoryname#} - {#/if#}
+{#if $smarty.get.experience#}{#"QS_experience,"|cat:$smarty.get.experience|qishi_categoryname#} - {#/if#}
+{#if $smarty.get.resumetag#}{#"QS_resumetag,"|cat:$smarty.get.resumetag|qishi_categoryname#} - {#/if#}
+{#if $smarty.get.age#}{#"age_type,"|cat:$smarty.get.age|qishi_categoryname#} - {#/if#}
+{#if $smarty.get.education#}{#"QS_education,"|cat:$smarty.get.education|qishi_categoryname#} - {#/if#}
+{#if $smarty.get.sex=="1"#}男 - {#/if#}{#if $smarty.get.sex=="2"#}女 - {#/if#}
+{#if $smarty.get.photo=="1"#}有照片 - {#/if#}{#if $smarty.get.photo=="0"#}无照片 - {#/if#}
+{#if $smarty.get.settr#}{#$smarty.get.settr#}天内 - {#/if#}葫芦谷  - {#$QISHI.site_name#}
+</title>
 <meta name="description" content="{#$QISHI.site_name#}人才信息,人才简历">
 <meta name="keywords" content="{#$QISHI.site_name#}人才信息，高级人才，求职信息，推荐人才">
-<meta name="author" content="找葫芦网" />
+<meta name="author" content="找葫芦" />
 <meta name="copyright" content="zhaohulu.com" />
 <meta name="renderer" content="webkit"> 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
 <link href="{#$QISHI.site_template#}css/common.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_hunter_template#}css/hunter.css" rel="stylesheet" type="text/css" />
+<link href="{#$QISHI.site_template#}css/header.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_hunter_template#}css/ui-dialog.css" rel="stylesheet" type="text/css" />
+<link href="{#$QISHI.site_template#}css/video_css/video-js.css" rel="stylesheet">
+<script src="{#$QISHI.site_template#}js/index_foucs.js" type="text/javascript" language="javascript"></script>
+<script src="{#$QISHI.site_template#}js/jquery.newindex.js" type="text/javascript" language="javascript"></script>
+<script src="{#$QISHI.site_template#}js/jquery.lazyload.js" type="text/javascript" language="javascript"></script>
+<script src="{#$QISHI.site_template#}js/video_js/video.js"></script>
+<script src="{#$QISHI.site_template#}js/video_js/videojs-ie8.min.js"></script>
 <script src="{#$QISHI.site_template#}js/jquery.js" type='text/javascript' ></script>
 <script src="{#$QISHI.site_template#}js/jquery.resume-search.js" type='text/javascript'></script>
+<script src="{#$QISHI.site_template#}js/jquery.dropDownWidget.js" type="text/javascript" language="javascript"></script>
+<script src="{#$QISHI.site_template#}js/jquery.resume-list.js" type='text/javascript'></script>
 <script src="{#$QISHI.site_dir#}data/cache_classify.js" type="text/javascript" charset="utf-8"></script>
 <script src="{#$QISHI.site_template#}js/jquery.autocomplete.js" type="text/javascript"></script>
 <script src="{#$QISHI.site_hunter_template#}js/jquery.resume-list.js" type='text/javascript' ></script>
 <script src="{#$QISHI.site_hunter_template#}js/dialog-min.js" type="text/javascript" language="javascript"></script>
 <script src="{#$QISHI.site_hunter_template#}js/dialog-min-common.js" type="text/javascript" language="javascript"></script>
+<script src="{#$QISHI.site_template#}js/jquery.autocomplete.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+	
 		allaround("{#$QISHI.site_dir#}");
-	    // 职位类别填充数据 
-		job_filldata("#job_list", QS_jobs_parent, QS_jobs, "#result-list-job", "#aui_outer_job", "#job_result_show", "#jobcategory", "{#$QISHI.site_dir#}");
-		// 所属行业填充数据
-		trade_filldata("#trad_list", QS_trade, "#aui_outer", "#result-list-trade", "#trade_result_show", "#trade", "{#$QISHI.site_dir#}");
-		// 专业类别填充数据
-		major_filldata("#major_list", QS_major_parent, QS_major, "#major_tabnav", "#aui_outer_major", "#result-list-major", "#major_result_show", "#major", "{#$QISHI.site_dir#}");
+	   
 		//收藏简历
 		allfavorites("{#$QISHI.site_dir#}");
 		//下载简历
@@ -82,14 +99,53 @@
 			$('.infolist-row').removeClass('infolist-row').addClass('infolist-row');
 		});
 		$("#infolists .infolist-row:last").css("border-bottom","none");
+		
+		//发布需求
+		$("#add").click(function(){
+			var url="{#$QISHI.site_dir#}user/user_ajax_login.php";
+			var myDialog = dialog();
+			myDialog.title('登录后即可发布简历');
+			myDialog.width('500');
+			myDialog.content("加载中...");
+			myDialog.showModal();
+			$.get(url, function(data){
+				myDialog.content(data);
+			});
+		});	
+		//查看视频
+		$(".video_click").click(function(){
+			var url="{#$QISHI.site_dir#}plus/ajax_video.php";
+			
+			var html='';
+			var video_id=$(this).attr('video_id');
+			$.get(url,{'id':video_id}, function(data){
+				$("#video_play").html(data);
+				$("#video_play").show();
+				var x=($(document).width()-850)/2;
+				$("#video_play").css("left",x+'px');
+				$("#heimu").show();
+			
+			});
+			$("#heimu").click(function(){
+				$("#video_play").hide();
+				$("#video_play").html('');
+				$(this).hide();
+			});
+		});	
+		
 	});
 </script>
 </head>
+<div id="heimu" class="ui-popup-backdrop" style="display:none;opacity: 0.7; position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; overflow: hidden; -webkit-user-select: none; z-index: 1024; background: rgb(0, 0, 0);" ></div>
+<div id="video_play" style="position:fixed;left:200px;top:100px;z-index:9999;display:none"></div>
 <body class="bgf5">
 {#include file="../tpl_hunter/default/header-hunter.htm"#}
+<div style="height:12px;line-height:12px;width:1200px;margin:0 auto;padding-top:10px;padding-bottom:10px;color:#999999;">
+		当前位置：<a href="{#$QISHI.site_dir#}" style="color:#999999;">首页</a>>葫芦谷
+	</div>
 <div class="container">
 	<div id="filterSearch">
-		<div class="top-search clearfix bgfff">
+		<div class="top-search clearfix bgfff" style="display:none;">
 			<div class="t-search-box f-left">
 				<div class="type-input-box f-left" id="hidden_input_box">
 					<div class="key">{#$smarty.get.key|default:"请输入关键字"#}</div>
@@ -101,6 +157,7 @@
 					<input name="experience" id="experience" type="hidden" value="{#$smarty.get.experience#}"/>
 					<input name="resumetag" id="resumetag" type="hidden" value="{#$smarty.get.resumetag#}"/>
 					<input name="education" id="education" type="hidden" value="{#$smarty.get.education#}"/>
+                    <input name="age" id="age" type="hidden" value="{#$smarty.get.age#}"/>
 					<input name="sex" id="sex" type="hidden" value="{#$smarty.get.sex#}"/>
 					<input name="photo" id="photo" type="hidden" value="{#$smarty.get.photo#}"/>
 					<input name="settr" id="settr" type="hidden" value="{#$smarty.get.settr#}"/>
@@ -108,14 +165,15 @@
 			</div>
 			<div class="t-search-btn f-left"><input type="button" detype="QS_hunter_resumelist" id="searcnbtn" value="搜&nbsp;索" /></div>
 		</div>
-		<div class="fliter-wrap">
-			<div class="filter-drop clearfix">
+		<div class="fliter-wrap" style="border:none;" >
+      <!--  <input type="hidden" detype="QS_hunter_resumelist" id="searcnbtn" value="搜&nbsp;索" />-->
+			<!--<div class="filter-drop clearfix">
 				<div class="filter-item f-left">
 					<div class="choose-item">
 						<div class="choose-control">
 							<span class="cc-default" id="job_result_show">选择意向职位</span><i class="choose-icon"></i>
 							<!-- 职位类别弹出框 -->
-							<div class="aui_outer" id="aui_outer_job">
+							<!--<div class="aui_outer" id="aui_outer_job">
 								<table class="aui_border">
 									<tbody>
 										<tr>
@@ -130,9 +188,9 @@
 																			<div class="selector-header"><span class="selector-title">职位选择</span><div></div><span id="jb-selector-save" class="selector-save">确定</span><span class="selector-close">X</span><div class="clear"></div></div>
 
 																			<div class="data-row-head"><div class="data-row"><div class="data-row-side">最多选 <strong class="text-warning">3</strong> 项&nbsp;&nbsp;已选 <strong id="ars" class="text-warning">0</strong> 项</div><div id="result-list-job" class="result-list data-row-side-ra"></div></div><div class="cla"></div></div>
-																			<div class="data-row-list data-row-main" id="job_list">
+																			<div class="data-row-list data-row-main" id="job_list">-->
 																				<!-- 列表内容 -->
-																			</div>
+																	<!--		</div>
 																		</div>
 																	</div>
 																</td>
@@ -144,17 +202,17 @@
 										</tr>
 									</tbody>
 								</table>
-							</div>
+							</div>-->
 							<!-- 职位类别弹出框 End-->
-						</div>
+				<!--		</div>
 					</div>
 				</div>
 				<div class="filter-item f-left">
 					<div class="choose-item">
 						<div class="choose-control">
-							<span class="cc-default" id="trade_result_show">选择意向行业</span><i class="choose-icon"></i>
+							<span class="cc-default" id="trade_result_show">选择意向行业</span><i class="choose-icon"></i>-->
 							<!-- 所属行业弹出框 -->
-							<div class="aui_outer" id="aui_outer">
+							<!--<div class="aui_outer" id="aui_outer">
 								<table class="aui_border">
 									<tbody>
 										<tr>
@@ -171,9 +229,9 @@
 																			<div class="data-row-head"><div class="data-row"><div class="data-row-side">最多选 <strong class="text-warning">3</strong> 项&nbsp;&nbsp;已选 <strong id="arstrade" class="text-warning">0</strong> 项</div><div id="result-list-trade" class="result-list data-row-side-ra"></div></div><div class="cla"></div></div>
 																			<div class="item-table">
 																				<table class="options-table options-table-7">
-																					<tbody class="item-list"><tr><td class="bno"><table><tbody id="trad_list">
+																					<tbody class="item-list"><tr><td class="bno"><table><tbody id="trad_list">-->
 																						<!-- 列表内容 -->
-																					</tbody></table></td></tr>
+																			<!--		</tbody></table></td></tr>
 																					</tbody>
 																				</table>
 																			</div>
@@ -188,17 +246,17 @@
 										</tr>
 									</tbody>
 								</table>
-							</div>
+							</div>-->
 							<!-- 所属行业弹出框 End-->
-						</div>
+					<!--	</div>
 					</div>
-				</div>
-				<div class="filter-item f-left">
+				</div>-->
+			<!--	<div class="filter-item f-left">
 					<div class="choose-item">
 						<div class="choose-control">
-							<span class="cc-default" id="major_result_show">选择专业类别</span><i class="choose-icon"></i>
+							<span class="cc-default" id="major_result_show">选择专业类别</span><i class="choose-icon"></i>-->
 							<!-- 专业类别弹出框 -->
-							<div class="aui_outer" style="left:-445px;" id="aui_outer_major">
+							<!--<div class="aui_outer" style="left:-445px;" id="aui_outer_major">
 								<table class="aui_border">
 									<tbody>
 										<tr>
@@ -232,39 +290,77 @@
 										</tr>
 									</tbody>
 								</table>
-							</div>
+							</div>-->
 							<!-- 专业类别弹出框 End-->
-						</div>
+				<!--		</div>
 					</div>
 				</div>
+			</div>-->
+			
+            <div class="filter-list-wrap clearfix">
+				<div class="fl-type f-left">性别：</div>
+				<div class="fl-content f-left">
+                	<div class="fl-content-li {#if '' == $smarty.get.sex#} select{#/if#}" type="sex" style="margin-right: 20px;">全部</div>
+					<div class="fl-content-li {#if 1 == $smarty.get.sex#} select{#/if#}" type="sex" code="1">男</div>
+                    <div class="fl-content-li {#if 2 == $smarty.get.sex#} select{#/if#}" type="sex" code="2">女</div>
+				</div>
 			</div>
-			<div id="subsiteBox" data-txt="意向地区,{#if $QISHI.districtid#}意向地区{#else#}地区子类{#/if#}"></div>
+             <div class="filter-list-wrap clearfix">
+				<div class="fl-type f-left">学历：</div>
+				<div class="fl-content f-left">
+                	<div class="fl-content-li {#if '' == $smarty.get.education#} select{#/if#}"  type="education" style="margin-right: 20px;">全部</div>
+                    {#qishi_get_classify set="列表名:c_education,类型:QS_education"#}
+					{#foreach from=$c_education item=list#}	
+					<div class="fl-content-li {#if $list.id == $smarty.get.education#} select{#/if#}"  type="education" code="{#$list.id#}">{#$list.categoryname#}</div>
+                    {#/foreach#}
+				</div>
+			</div>
+             <div class="filter-list-wrap clearfix">
+				<div class="fl-type f-left">年龄：</div>
+				<div class="fl-content f-left forShowMore">
+                 <div class="fl-content-li {#if '' == $smarty.get.age#} select{#/if#}"  type="age" style="margin-right: 20px;">全部</div>
+                 {#qishi_get_classify set="列表名:c_age,类型:age_type"#}
+				 {#foreach from=$c_age item=list#}	 
+				 <div class="fl-content-li {#if $list.id == $smarty.get.age#} select{#/if#}"  type="age"  code="{#$list.id#}">{#$list.categoryname#}</div>
+                 {#/foreach#}
+                 <!--<div class="fl-content-input" >
+                    <input type="text" class="fcl-text"/> - <input type="text" class="fcl-text"/> 岁
+                 
+                 </div>  -->
+				</div>
+			</div>
 			<div class="filter-list-wrap clearfix">
 				<div class="fl-type f-left">工作经验：</div>
 				<div class="fl-content r-choice f-left">
+                	<div class="fl-content-li{#if '' == $smarty.get.experience#} select{#/if#}" type="experience"  style="margin-right: 20px;">全部</div>
 					{#qishi_get_classify set="列表名:experience,类型:QS_experience,显示数目:100"#}
 					{#foreach from=$experience item=list#}
 					<div class="fl-content-li{#if $list.id == $smarty.get.experience#} select{#/if#}" type="experience" code="{#$list.id#}">{#$list.categoryname#}</div>
 					{#/foreach#}
 				</div>
 			</div>
+            
 			<div class="filter-list-wrap clearfix">
-				<div class="fl-type f-left">特长标签：</div>
+				<div class="fl-type f-left">求职意向：</div>
 				<div class="fl-content f-left forShowMore" id="fliterMore">
-					{#qishi_get_classify set="列表名:resumetag,类型:QS_resumetag,显示数目:100"#}
-					{#foreach from=$resumetag item=list#}
-					<div class="fl-content-li" type="resumetag" code="{#$list.id#}">{#$list.categoryname#}</div>
+                	<div class="fl-content-li{#if ''== $smarty.get.trade#} select{#/if#}" type="trade"  style="margin-right: 20px;">全部</div>
+					{#qishi_get_classify set="列表名:trade,类型:QS_trade,显示数目:100"#}
+					{#foreach from=$trade item=list#}
+					<div class="fl-content-li{#if $list.id == $smarty.get.trade#} select{#/if#}" type="trade" code="{#$list.id#}">{#$list.categoryname#}</div>
 					{#/foreach#}
 					<a href="javascript:;" class="show-more">展开</a>
 				</div>
 			</div>
-			<div class="filter-list-wrap clearfix">
+             <div id="subsiteBox" data-txt="意向地区,{#if $QISHI.districtid#}意向地区{#else#}地区子类{#/if#}" style="display:none;"></div>
+           
+			 <!--<div class="filter-list-wrap clearfix">
 				<div class="fl-type f-left">更多筛选：</div>
 				<div class="fl-content f-left">
 					<div class="saixuan{#if $smarty.get.education#} selected{#/if#}">
 						{#qishi_get_classify set="列表名:c_education,类型:QS_education"#}
 						<div class="saixuans">
 							<div class="line"></div>
+                          
 							{#foreach from=$c_education item=list#}
 							<a defvalue="{#$list.id#}"{#if $list.id == $smarty.get.education#} class="select"{#/if#} type="education" href="javascript:;">{#$list.categoryname#}</a>
 							{#/foreach#}
@@ -298,8 +394,9 @@
 						更新时间
 					</div>
 				</div>
-			</div>
+			</div>-->
 		</div>
+  
 		<div class="fliter-result clearfix" id="has_result">
 			<div class="fr-type f-left">已选条件：</div>
 			<div class="fr-content f-left rl">
@@ -310,10 +407,23 @@
 				<div class="has-select-item f-left" type="jobcategory">意向职位<i class="fliter-clear-icon"></i></div>
 			{#/if#}
 			{#if $smarty.get.trade#}
-				<div class="has-select-item f-left" type="trade">意向行业<i class="fliter-clear-icon"></i></div>
+				{#qishi_get_classify set="列表名:trade,类型:QS_trade,显示数目:100"#}
+                {#foreach from=$trade item=list#}
+                {#if $list.id == $smarty.get.trade#}
+                <div class="has-select-item f-left" type="trade">{#$list.categoryname#}<i class="fliter-clear-icon"></i></div>
+                {#/if#}
+                {#/foreach#}
 			{#/if#}
 			{#if $smarty.get.citycategory#}
 				<div class="has-select-item f-left" type="citycategory">意向地区<i class="fliter-clear-icon"></i></div>
+			{#/if#}
+            {#if $smarty.get.age#}
+            	{#qishi_get_classify set="列表名:c_age,类型:age_type"#}
+				{#foreach from=$c_age item=list#}	 
+				{#if $list.id == $smarty.get.age#}
+                <div class="has-select-item f-left" type="citycategory">{#$list.categoryname#}<i class="fliter-clear-icon"></i></div>
+                {#/if#}
+                {#/foreach#}
 			{#/if#}
 			{#if $smarty.get.major#}
 				<div class="has-select-item f-left" type="major">专业类别<i class="fliter-clear-icon"></i></div>
@@ -352,44 +462,55 @@
 	</div>
 </div>
 <!-- 高级人才 -->
-{#qishi_resume_list set="列表名:resume,分页显示:1,显示数目:GET[inforow],特长描述长度:130,填补字符:...,关键字:GET[key],职位分类:GET[jobcategory],行业:GET[trade],地区分类:GET[citycategory],专业:GET[major],工作经验:GET[experience],标签:GET[resumetag],学历:GET[education],性别:GET[sex],照片:GET[photo],等级:2,日期范围:GET[settr],排序:rtime>desc"#}
+{#qishi_hunter_resume_list set="列表名:resume,分页显示:1,显示数目:20,特长描述长度:130,填补字符:...,关键字:GET[key],职位分类:GET[jobcategory],行业:GET[trade],地区分类:GET[citycategory],专业:GET[major],工作经验:GET[experience],标签:GET[resumetag],学历:GET[education],性别:GET[sex],年龄:GET[age],照片:GET[photo],等级:2,日期范围:GET[settr],排序:rtime>desc,列表页:QS_hunter_resumelist"#}
 <div class="jobinfolists">
 	<div class="tit">
 		<div class="sort">
-			<a href="javascript:;" class="slect">更新时间</a>
+			葫芦谷<span style="font-weight:normal;">葫芦谷人才已通过找葫芦人工审核实名认证</span>
 		</div>
-		<div class="pagerow">
+		<!--<div class="pagerow">
 			<div class="pageminnav">{#$pagemin#}</div>
-		</div>
+		</div>-->
 		<div class="clear"></div>
 	</div>
 	<div class="infolists" id="infolists">
-		<div class="infolists-head clearfix">
+		<!--<div class="infolists-head clearfix">
 			<label class="f-left"><input type="checkbox" name="selectall" id="selectall" class="checkbox" />全选</label>
 			<div class="all-ctrl f-left"><input type="button" value="收藏简历" class="all-down-btn allfavorites" /></div>
 			<div class="list-tab f-right">
 				<a href="javascript:;" class="tab-item tab-list select">列表</a>
 				<a href="javascript:;" class="tab-item tab-detail">详细</a>
 			</div>
-		</div>
+		</div>-->
+        <div  class="infolists-head">
+          <div class="head-item item1 f-left">姓名</div>
+          <div class="head-item item2 f-left">性别</div>
+          <div class="head-item item3 f-left">年龄</div>
+          <div class="head-item item4 f-left">学历</div>
+          <div class="head-item item5 f-left">经验</div>
+          <div class="head-item item6 f-left">求职意向</div>
+          <div class="head-item item7 f-left">更新时间</div>
+        </div>
+        
 		{#if $resume#}
 		<div class="info-list-wrap">
 			{#foreach from=$resume item=list#}
 			<div class="infolist-row">
 				<div class="info-list-block resume clearfix">
-					<div class="list-item item1 f-left">
-						<span><input type="checkbox" name="jid" value="{#$list.id#}" class="checkbox" /><a href="{#$list.resume_url#}" class="underline">{#if $list.checked#}<font color='#800080'>{#$list.fullname#}</font>{#else#}{#$list.fullname#}{#/if#}</a></span>
+                       <div class="list-item item1 f-left">
+                        <a href="{#$list.resume_url#}" class="underline">{#if $list.checked#}<font color='#666'>{#$list.fullname#}</font>{#else#}{#$list.fullname#}{#/if#}</a>
 						{#if $list.photo=="1"#}<i class="resume-auth pic" title="照片认证"></i>{#/if#}
-						{#if $list.is_audit_mobile=="1"#}<i class="resume-auth phone" title="手机认证"></i>{#/if#}
-					</div>
-					<div class="list-item item2 f-left">{#$list.sex_cn#}</div>
+						{#if $list.is_audit_mobile=="1"#}<i class="resume-auth phone" title="手机认证"></i>{#/if#>
+                     </div>
+                    <div class="list-item item3 f-left">{#$list.age#}</div>
+                    <div class="list-item item2 f-left">女</div>
 					<div class="list-item item3 f-left">{#$list.age#}岁</div>
-					<div class="list-item item4 f-left">{#$list.education_cn#}</div>
+                    <div class="list-item item4 f-left">{#$list.education_cn#}</div>
 					<div class="list-item item5 f-left">{#$list.experience_cn#}</div>
-					<div class="list-item item6 f-left">{#$list.district_cn#}</div>
-					<div class="list-item item7 f-left" style="font-family:微软雅黑;">{#$list.wage_cn#}</div>
-					<div class="list-item item8 f-left">{#$list.refreshtime_cn#}</div>
-					<a href="javascript:;" class="list-item-ctrl f-left"></a>
+					<div class="list-item item6 f-left">{#$list.intention_jobs_#}</div>
+				<!--	<div class="list-item item7 f-left" style="font-family:微软雅黑;">{#$list.wage_cn#}</div>-->
+					<div class="list-item item7 f-left">{#$list.refreshtime_cn#}</div>
+					<!--<a href="javascript:;" class="list-item-ctrl f-left"></a>-->
 				</div>
 				<div class="info-list-detail clearfix">
 					<div class="info-text f-left">
@@ -404,23 +525,154 @@
 			</div>
 			{#/foreach#}
 		</div>
-		<div class="infolists-head clearfix" style="border-top:1px solid #cccccc;border-bottom:none;">
+<!--		<div class="infolists-head clearfix" style="border-top:1px solid #cccccc;border-bottom:none;">
 			<label class="f-left"><input type="checkbox" name="selectall" id="selectall" class="checkbox" />全选</label>
 			<div class="all-ctrl f-left"><input type="button" value="收藏简历" class="all-down-btn allfavorites" /></div>
-		</div>
-		{#if $page#}
-		<table border="0" align="center" cellpadding="0" cellspacing="0" class="link_bk">
-			<tr>
-				<td height="50" align="center"> <div class="page link_bk">{#$page#}</div></td>
-			</tr>
-		</table>
-		{#/if#}
-		{#else#}
-		<div class="emptytip">抱歉，没有符合此条件的信息！</div>
-		{#/if#}
+		
+-->	
+			
 	</div>
 </div>
+{#if $page#}
+<table border="0" align="center" cellpadding="0" cellspacing="0" class="link_bk">
+    <tr>
+        <td height="50" align="center"> <div class="page link_bk">{#$page#}</div></td>
+    </tr>
+</table>
+{#/if#}
+{#else#}
+<div class="emptytip">抱歉，没有符合此条件的信息！</div>
+{#/if#}
 <!-- 高级人才 End-->
+<!--筛选认证人才流程 开始-->
+ <div class="jobinfolists">
+	<div class="tit">
+		<div class="sort rz">
+			筛选认证人才流程<span style="font-weight:normal;">葫芦谷人才已通过找葫芦人工审核实名认证</span>
+		</div>
+	</div>
+    <div class="cer-process">
+       <div class="cer-process-center">
+           <div class="cer-process-img">
+              <div class="cer-process-img1 f-left">
+                <img src="{#$QISHI.site_template#}images/hlg-img1.png"/>
+              </div>
+              <div class="cer-process-img2 f-left">
+                <span class="cer-process-img2-img f-left"></span>
+                <span class="cer-process-img2-img f-left"></span>
+                <span class="cer-process-img2-img f-left"></span>
+                <span class="cer-process-img2-img f-left"></span>
+                <span class="cer-process-img2-img f-left"></span>
+                <span class="cer-process-img2-img f-left"></span>
+                <div class="clearfix"></div>
+              </div>
+              <div class="cer-process-img1 f-left">
+                <img src="{#$QISHI.site_template#}images/hlg-img2.png"/>
+              </div>
+              <div class="cer-process-img2 f-left">
+                <span class="cer-process-img2-img f-left"></span>
+                <span class="cer-process-img2-img f-left"></span>
+                <span class="cer-process-img2-img f-left"></span>
+                <span class="cer-process-img2-img f-left"></span>
+                <span class="cer-process-img2-img f-left"></span>
+                <span class="cer-process-img2-img f-left"></span>
+                <div class="clearfix"></div>
+              </div>
+               <div class="cer-process-img1 f-left">
+                <img src="{#$QISHI.site_template#}images/hlg-img3.png"/>
+              </div>
+              <div class="cer-process-img2 f-left">
+                <span class="cer-process-img2-img f-left"></span>
+                <span class="cer-process-img2-img f-left"></span>
+                <span class="cer-process-img2-img f-left"></span>
+                <span class="cer-process-img2-img f-left"></span>
+                <span class="cer-process-img2-img f-left"></span>
+                <span class="cer-process-img2-img f-left"></span>
+                <div class="clearfix"></div>
+              </div>
+               <div class="cer-process-img1 f-left">
+                <img src="{#$QISHI.site_template#}images/hlg-img4.png"/>
+              </div>
+              <div class="clearfix"></div>
+           </div>
+           <div class="cer-process-text">
+             <div class="cer-process-text-p f-left">1筛选认证精品简历</div>
+             <div class="cer-process-text-p f-left">2.递交通知面试申请</div>
+             <div class="cer-process-text-p f-left">3.找葫芦人工安排时间</div>
+             <div class="cer-process-text-p f-left">4.成功面试,扣除面试佣金<p>成功入职,扣除入职佣金</p></div>
+             <div class="clearfix"></div>
+           </div>
+       </div>
+    </div>
+	
+</div>
+<!--筛选认证人才流程 结束-->
+<!--常见问题 开始-->
+ <div class="jobinfolists">
+	<div class="tit">
+		<div class="sort rz">
+			常见问题<span style="font-weight:normal;">葫芦谷人才已通过找葫芦人工审核实名认证</span>
+		</div>
+	</div>
+    <div class="common-problems">
+       <div class="common-problems-left f-left">
+          <div class="common-problems-one f-left">
+             <div  class="common-problems-main">
+             <h1 class="common-problems-h1">我是招聘企业HR<a href="" class="all-more f-right">更多>></a></h1>
+             <p class="problem">什么是八戒悬赏？</p>
+             <p class="answer">什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏</p>
+             <p class="problem">什么是八戒悬赏套餐服务？</p>
+             <p class="answer">什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏</p>
+             <p class="problem">为什么选择套餐服务？</p>
+             <p class="answer">什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏</p>
+             <p class="problem">什么是八戒悬赏？</p>
+             <p class="answer">什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏</p>
+             </div>
+          </div>
+          <div class="common-problems-one f-left" style="border-left: 1px solid #ccc;">
+             <div  class="common-problems-main">
+              <h1 class="common-problems-h1">我是已认证人才<a href="" class="all-more f-right">更多>></a></h1>
+            <p class="problem">什么是八戒悬赏？</p>
+             <p class="answer">什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏</p>
+             <p class="problem">什么是八戒悬赏套餐服务？</p>
+             <p class="answer">什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏</p>
+             <p class="problem">为什么选择套餐服务？</p>
+             <p class="answer">什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏</p>
+             <p class="problem">什么是八戒悬赏？</p>
+             <p class="answer">什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏什么是八戒悬赏</p>
+              </div>
+          </div>
+          <div class="clearfix"></div>
+       </div>
+       <div class="common-problems-right f-right">
+           <div class="problems-right-title"><h1 class="problems-right-h1">故事回顾</h1></div>
+           {#qishi_video set="列表名:video,显示数目:3,排序:addtime>desc"#}
+           {#foreach from=$video item=list#}
+           <div class="problems-right-items" style="height:118px;">
+              <div class="problems-right-items-img f-left video_click" id="video" video_id="{#$list.id#}">
+                  <div class="items-img-div"><img style="height:95px;width:100px;border-radius:50%;" original="{#$QISHI.site_dir#}data/companyimg/original/{#$list.video_img#}" src="{#$QISHI.site_dir#}data/companyimg/original/{#$list.video_img#}"/></div>
+                  <p class="problems-right-items-p">{#$list.u_name#}</p>
+              </div>
+              <div class="problems-right-items-text f-right">
+                  <p class="problems-right-items-p2">{#$list.video_name#}</p>
+                  <p class="problems-right-items-p3" style="height:95px;overflow:hidden;">{#$list.video_describe#}</p>
+              </div>
+              <div class="clearfix"></div>
+           </div>
+           {#/foreach#}
+       </div>
+       <div class="clearfix"></div>
+    </div>   
+	
+</div>
+<!--常见问题 结束-->
+<!--发布开始-->
+  <div  class="release-requirements">
+      <h1>发布您的简历，等待优秀诚信企业来约你吧！</h1>
+      <a href="{#$QISHI.site_dir#}user/personal/personal_resume.php?act=make1" target="_blank"><span class="release-requirements-a" id="addsssss">立即发布需求</span></a>
+  </div>
+  </div>	
+<!--发布结束-->
 {#include file="footer.htm"#}
 </body>
 </html>

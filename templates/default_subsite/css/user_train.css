@@ -21,7 +21,7 @@
 .cominfo .lbox .certification a.w{ padding-right:20px; background:url(../images/07.jpg) no-repeat 5px -320px; padding-bottom:5px; padding-top:2px;}
 .cominfo .lbox .certification a.w.no{background:url(../images/07.jpg) no-repeat 5px -261px;}
 .cominfo .rbox{width:295px; padding-top:8px; float: left; padding-top:40px; padding-left:80px;}
-/*企业会员中 首页 积分模式*/
+/*企业会员中 首页 葫芦币模式*/
 .cominfo .rbox .mode1{}
 .cominfo .rbox .mode1 .titcount{font-size:16px; font-weight:bold}
 .cominfo .rbox .mode1 .titcount span{ color:#FF3300; font-size:22px; font-weight: normal}
@@ -30,7 +30,7 @@
 .cominfo .rbox .mode1 .msg{ padding-top:18px; font-size:14px;}
 .cominfo .rbox .mode1 .msg a { color:#666666}
 .cominfo .rbox .mode1 .msg a span{ color:#FF0000}
-/*企业会员中 首页 积分模式结束*/
+/*企业会员中 首页 葫芦币模式结束*/
 /*企业会员中 首页 套餐模式*/
 .cominfo .rbox .mode2{}
 .cominfo .rbox .mode2 .cmname{font-size:16px; font-weight:bold}

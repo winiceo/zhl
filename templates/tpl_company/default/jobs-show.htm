@@ -5,11 +5,13 @@
 <title>{#$show.jobs_name#} - {#$show.companyname#} - {#$QISHI.site_name#}</title>
 <meta name="description" content="{#$show.companyname#}公司招聘岗位,{#$show.jobs_name#}">
 <meta name="keywords" content="{#$show.companyname#},{#$show.jobs_name#},{#$show.nature_cn#},{#$show.category_cn#},{#$show.trade_cn#},{#$show.district_cn#}">
-<meta name="author" content="找葫芦网" />
+<meta name="author" content="找葫芦" />
 <meta name="copyright" content="zhaohulu.com" />
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
 <link href="{#$QISHI.site_template#}css/common.css" rel="stylesheet" type="text/css" />
+<link href="{#$QISHI.site_template#}css/header.css" rel="stylesheet" type="text/css" />
 <link href="{#$user_tpl#}css/css.css" rel="stylesheet" type="text/css" />
+<link href="{#$QISHI.site_template#}css/header.css" rel="stylesheet" type="text/css" />
 <link href="{#$user_tpl#}css/ui-dialog.css" rel="stylesheet" type="text/css" />	
 <script src="{#$user_tpl#}js/jquery.js"></script>
 <script src="{#$user_tpl#}js/dialog-min.js"></script>
@@ -59,7 +61,6 @@ $(document).ready(function(){
 	favoritesJob_dialog('.add_favorites','{#$QISHI.site_dir#}user/user_favorites_job.php?id={#$show.id#}&act=add');
 	//申请职位
 	applyJob_dialog(".app_jobs","{#$QISHI.site_dir#}user/user_apply_jobs.php","1");
-    clueJob_dialog(".clue_jobs","{#$QISHI.site_dir#}user/user_clue_jobs.php");
 	//举报信息
 	reportJob_dialog(".report_button","{#$QISHI.site_dir#}user/user_report.php");
 	// 用户登录
@@ -78,19 +79,49 @@ $(document).ready(function(){
 });
 </SCRIPT>
 </head>
+<style type="text/css">
+   body{
+	   margin-left: 0px;
+       margin-top: 0px;
+       margin-right: 0px;
+       margin-bottom: 0px;
+       font-size: 12px;
+       color: #333333;
+       font-family: Arial, Helvetica, sans-serif;
+       background: url("/templates/default/images/com-head.png") repeat-x center 35px;
+       font-family: "microsoft yahei",_margin:0;
+       _height: 100%;
+	   }
+</style>
 <body>
-{#include file="header.htm"#}
+{#include file="../tpl_company/default/header.htm"#}
 	<!-- 当前位置 -->
-	<div class="page_location link_bk">
+	<!--<div class="page_location link_bk">
 		当前位置：<a href="{#$QISHI.site_dir#}">首页</a>><a href="{#"QS_jobs"|qishi_url#}">招聘信息</a>>{#$company.companyname#}
-	</div>
+	</div>-->
 	<!-- 主体内容 -->
-	<div class="container">
+	<div class="container" style="padding-top:115px;">
 		<div class="company-wrap clearfix">
 			<!-- 左边 -->
 			<div class="com-left">
+                <div class="blue-line" style="top: -2px;left: 0px;"></div>
+                <div class="company-detail-title">
+                     <div class="c-name f-left">
+							<h2>{#$company.companyname#}</h2>
+					 </div>
+                     <div class="company-control f-right">
+						<a href="{#"QS_companyshow,id:"|cat:$company.id|cat:"-style:"|cat:$smarty.get.style|qishi_url#}" class="c-control-item f-left">企业主页</a>
+						<a href="{#"QS_companyinfo,id:"|cat:$company.id|cat:"-style:"|cat:$smarty.get.style|qishi_url#}" class="c-control-item f-left">公司介绍</a>
+						<a href="{#"QS_companyjobs,id:"|cat:$company.id|cat:"-style:"|cat:$smarty.get.style|qishi_url#}" class="c-control-item f-left active">招聘职位</a>
+						<a href="{#"QS_companynews,id:"|cat:$company.id|cat:"-style:"|cat:$smarty.get.style|qishi_url#}" class="c-control-item f-left">新闻动态</a>
+						{#if $QISHI.open_commentaudit=="1"#}
+						<a href="{#"QS_companycomment,id:"|cat:$company.id|cat:"-style:"|cat:$smarty.get.style|qishi_url#}" class="c-control-item f-left">评论</a>
+						{#/if#}
+					</div>
+                    <div class="clearfix"></div>
+                </div>
 				<div class="compnay-main">
-					<div class="c-top-wrap clearfix">
+					<!--<div class="c-top-wrap clearfix">
 						<div class="c-logo f-left"><img src="{#$company.logo#}" alt="公司logo" width="198" height="68" /></div>
 						<div class="c-name f-left">
 							<h2>{#$company.companyname#}
@@ -105,16 +136,18 @@ $(document).ready(function(){
 							</h2>
 							<p>{#$company.address#}</p>
 						</div>
-					</div>
-					<div class="company-control clearfix">
+					</div>-->
+					<!--<div class="company-control clearfix">
 						<a href="{#"QS_companyshow,id:"|cat:$company.id|cat:"-style:"|cat:$smarty.get.style|qishi_url#}" class="c-control-item f-left">企业主页</a>
 						<a href="{#"QS_companyinfo,id:"|cat:$company.id|cat:"-style:"|cat:$smarty.get.style|qishi_url#}" class="c-control-item f-left">公司介绍</a>
 						<a href="{#"QS_companyjobs,id:"|cat:$company.id|cat:"-style:"|cat:$smarty.get.style|qishi_url#}" class="c-control-item f-left active">招聘职位</a>
 						<a href="{#"QS_companynews,id:"|cat:$company.id|cat:"-style:"|cat:$smarty.get.style|qishi_url#}" class="c-control-item f-left ">新闻动态</a>
 						<a href="{#"QS_companycomment,id:"|cat:$company.id|cat:"-style:"|cat:$smarty.get.style|qishi_url#}" class="c-control-item f-left">评论</a>
-					</div>
+					</div>-->
 					<!-- 职位详情 -->
 					<div class="job-main">
+                      <h3 class="c-left-title">招聘职位</h3>
+                        <div class="blue-line" style="top: -2px;left: 0px;"></div>
 						<div class="job-top">
 							<h3 class="job-name">{#$show.jobs_name#}</h3>
 							<div class="job-company clearfix"><a href="{#$show.company_url#}" class="f-left">{#$show.companyname#}</a></div>
@@ -137,16 +170,14 @@ $(document).ready(function(){
 								{#elseif $show.jobs_gq==2#}
 								<img src="{#$QISHI.site_template#}images/job_sx.gif" />
 								{#else#}
-                                {#if $is_reward#}
-                                <div class="apply-btn f-left"><a href="javascript:;" class="app-button clue_jobs" style="display: block;line-height:34px;text-align: center;margin-right: 20px;" jobs_id="{#$show.id#}">提供人才线索</a></div>
-                                {#/if#}
 								<div class="apply-btn f-left"><a href="javascript:;" class="app-button app_jobs" style="display: block;line-height:34px;text-align: center;" jobs_id="{#$show.id#}">申请职位</a></div>
 								<a href="javascript:;" class="collect {#if $show.check_fav=='1'#}done{#/if#} f-left add_favorites">收藏</a>
 								{#/if#}
 							</div>
 						</div>
 						<div class="job-block">
-							<h3 class="c-left-title">职位信息</h3>
+							<h3 class="c-left-title" style="border-left:3px solid #ff9900;border-bottom:none;color:#333;">职位信息</h3>
+  
 							<div class="job-info-detail clearfix">
 								<div class="job-id-item f-left">工资待遇：<span>{#$show.wage_cn#} {#if $show.negotiable == 1#}(可面议){#else#}{#/if#}</span></div>
 								<div class="job-id-item f-left">职位性质：{#$show.nature_cn#}</div>
@@ -160,13 +191,15 @@ $(document).ready(function(){
 							</div>
 						</div>
 						<div class="job-block">
-							<h3 class="c-left-title">职位描述</h3>
+							<h3 class="c-left-title" style="border-left:3px solid #ff9900;border-bottom:none;color:#333;">职位描述</h3>
+                           
 							<div class="job-info-content clearfix">
 								{#$show.contents#}
 							</div>
 						</div>
 						<div class="job-block">
-							<h3 class="c-left-title">联系方式</h3>
+							<h3 class="c-left-title" style="border-left:3px solid #ff9900;border-bottom:none;color:#333;">联系方式</h3>
+                            
 							<div class="com-contact">
 								<div id="jobs_contact"></div>
 								{#if $company.map_open=="1" && $company.map_x && $company.map_y#}
@@ -296,7 +329,7 @@ $(document).ready(function(){
 						<div class="com-left-block">
 						<div class="salary">
 							<div class="salary_box">
-								<h3 class="c-left-title">薪酬概况</h3>
+								<h3 class="c-left-title" style="border-left:3px solid #ff9900;border-bottom:none;color:#333;">薪酬概况</h3>
 								<div class="s_content">
 									<div class="salary_left">
 										<div>{#$show.jobs_name#}</div>
@@ -321,7 +354,7 @@ $(document).ready(function(){
 						</div>
 						<!-- 薪酬统计 结束 -->
 						<div class="com-left-block">
-						<h3 class="c-left-title">其他职位</h3>
+						<h3 class="c-left-title" style="border-left:3px solid #ff9900;border-bottom:none;color:#333;">其他职位</h3>
 						<div class="company-jobs-list clearfix">
 							{#qishi_jobs_list set="列表名:jobs,填补字符:...,职位名长度:14,显示数目:8,风格模板:$smarty.get.style,会员UID:"|cat:$show.uid#}
 			  				{#foreach from=$jobs item=list#}
@@ -340,6 +373,43 @@ $(document).ready(function(){
 			</div>
 			<!-- 右边 -->
 			<div class="com-right">
+             <div class="blue-line" style="top: -2px;left: 0px;"></div>
+                <div class="right-logo">
+                    <a href="{#$QISHI.site_dir#}" target="_blank"><img src="{#$QISHI.site_template#}images/header/logo.png" style="height:97px;"/></a>
+                </div>
+                <div class="right-zilao">
+                  <div class="c-logo"><img src="{#$company.logo#}" alt="公司logo" width="198" height="68" /></div>
+                   <div class="c-name">
+							<h2>{#$company.companyname#}</h2>
+					</div>
+                    <div class="c-xinyong">
+                       <h3 class="c-xinyong-title">信用认证</h3>
+                       <div class="c-xinyong-img">
+                                {#if $company.audit=="1"#}
+									<img title="企业已认证" src="{#$QISHI.site_template#}images/yesyan.jpg" border="0" />
+								{#else#}
+									<img title="企业未认证" src="{#$QISHI.site_template#}images/noyan.jpg" border="0" />
+								{#/if#}
+								{#if $company.pay_user>1#}
+									<img title="" src="{#$QISHI.site_dir#}data/setmealimg/{#$company.pay_user#}.gif" border="0" width='14px' height="17px"/>
+								{#/if#}
+                       </div>
+                    </div>
+                    <div class="c-xinyong">
+                       <h3 class="c-xinyong-title">企业名片</h3>
+                       <ul class="company-info-list">
+						<li><span>性质：</span>{#$company.nature_cn#}</li>
+						<li><span>行业：</span>{#$company.trade_cn#}</li>
+						<li><span>规模：</span>{#$company.scale_cn#}</li>
+						<li><span>地区：</span>{#$company.district_cn#}</li>
+						{#if $company.website#}
+						<li><span>网址：</span><a target="_blank" href="{#$company.website#}" rel="nofollow">{#$company.website#}</a></li>
+						{#/if#}
+                        
+					    </ul>
+				  </div>
+
+                </div>
 				<div class="ring-group clearfix">
 					<div class="ring-item f-left">
 						<h4 class="resumes">{#$company.resume_processing#}%</h4>
@@ -354,7 +424,7 @@ $(document).ready(function(){
 						<p>感兴趣简历</p>
 					</div>
 				</div>
-				<div class="c-right-block">
+				<!--<div class="c-right-block">
 					<h3 class="c-right-title">公司名片</h3>
 					<ul class="company-info-list">
 						<li>性质：{#$company.nature_cn#}</li>
@@ -365,8 +435,8 @@ $(document).ready(function(){
 						<li>网址：<a target="_blank" href="{#$company.website#}" rel="nofollow">{#$company.website#}</a></li>
 						{#/if#}
 					</ul>
-				</div>
-				{#if $company.company_img_num>0#}
+				</div>-->
+				<!--{#if $company.company_img_num>0#}
 				<div class="c-right-block">
 					<h3 class="c-right-title">公司风采</h3>
 					<div class="company-img">
@@ -374,9 +444,9 @@ $(document).ready(function(){
 						<p>共{#$company.company_img_num#}张<a href="javascript:void(0)" class="img_big_show">[点击查看大图]</a></p>
 					</div>
 				</div>
-				{#/if#}
+				{#/if#}-->
 				<div class="c-right-block">
-					<h3 class="c-right-title">手机浏览</h3>
+				<!--	<h3 class="c-right-title">手机浏览</h3>-->
 					<div class="com-code">
 						<!-- 个人版 
 						<img src="{#$QISHI.site_domain#}{#$QISHI.site_dir#}plus/url_qrcode.php?url={#$company.company_url#}" alt="扫描二维码" width="100" height="100" /> -->

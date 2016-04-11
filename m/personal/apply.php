@@ -11,6 +11,7 @@ require_once(QISHI_ROOT_PATH.'include/mysql.class.php');
 require_once(QISHI_ROOT_PATH.'include/fun_personal.php');
 $smarty->cache = false;
 $db = new mysql($dbhost,$dbuser,$dbpass,$dbname);
+wap_weixin_openid($_GET['code']);
 $act = !empty($_REQUEST['act']) ? trim($_REQUEST['act']) : 'apply';
 if ($_SESSION['uid']=='' || $_SESSION['username']==''||intval($_SESSION['utype'])==1)
 {
@@ -126,7 +127,7 @@ elseif ($act == 'apply_add')
 						$message=$personal_fullname."申请了您发布的职位：<a href=\"{$jobs_url}\" target=\"_blank\">{$jobs['jobs_name']}</a>,<a href=\"{$resume_url}\" target=\"_blank\">点击查看</a>";
 						write_pmsnotice($jobs['uid'],$user['username'],$message);
 					}
-					// 查看操作记录表 统计创建简历积分所奖励积分  判断是否超过上限   若没超过上限 则继续添加积分
+					// 查看操作记录表 统计创建简历葫芦币所奖励葫芦币  判断是否超过上限   若没超过上限 则继续添加葫芦币
 					$today=mktime(0, 0, 0,date('m'), date('d'), date('Y'));
 					$info=$db->getone("SELECT sum(points) as num FROM ".table('members_handsel')." WHERE uid ='{$_SESSION['uid']}' AND htype='resumeapplyjobs' AND addtime>{$today} ");
 					if(intval($info['num']) >= intval($_CFG['apply_jobs_points_max']))

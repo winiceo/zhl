@@ -24,8 +24,9 @@
 				<a href="javascript:;" class="header-back"><i class="w-icon w-icon-back"></i></a>
 			</div>
 			<div class="header-center"><span class="title-only">注册</span></div>
-			<div class="header-right-link"><a href="login.php">登录</a></div>
+			{#include file="navi.html"#}
 		</header>
+
 		<div class="content-wrap">
 			<div id="err"></div>
 			{#if $SMSconfig.open==1#}
@@ -54,7 +55,7 @@
 						</div>
 					</div>
 					<div class="user-submit"><button class="user-submit-btn phone mobile_reg" type="submit" disabled>注册</button></div>
-					<label class="protocol"><input type="checkbox" name="agreement_mobile" id="agreement_mobile" value="1" checked><span>同意<a href="javascript:;">注册协议</a></span></label>
+					<label class="protocol" style='width:100%'><input type="checkbox" name="agreement_mobile" id="agreement_mobile" value="1" checked><span>同意<a href="agreement.php">注册协议</a></span><span style='float:right;'><a href="login.php">已有账号？立即登录</a></span></label>
 				</div>
 				<!-- 邮箱注册 -->
 				<div class="form-tab-item" {#if $SMSconfig.open==0#}style="display:block;margin-top:20px;"{#/if#}>
@@ -79,7 +80,7 @@
 						</div>
 					</div>
 					<div class="user-submit"><button class="user-submit-btn email" type="submit">注册</button></div>
-					<label class="protocol"><input type="checkbox" name="agreement" id="agreement" value="1" checked><span>同意<a href="javascript:;">注册协议</a></span></label>
+					<label class="protocol" style='width:100%'><input type="checkbox" name="agreement" id="agreement" value="1" checked><span>同意<a href="agreement.php">注册协议</a></span><span style='float:right;'><a href="login.php">已有账号？立即登录</a></span></label>
 					<input type="hidden" name="utype" id="utype" value="{#$utype#}">
 				</div>
 			</section>
@@ -108,26 +109,31 @@
 				}
 			});
 			// 发送验证码
+			var isFirstcodeBtn = true;
 			$('#codeBtn').on('click', function() {
-				$.post('?act=reg_send_code', {'act':'reg_send_code','mobile':$('#mobile').val()}, function(data) {
-					if($.trim(data)!='success')
-					{
-						if(data=='请60秒后重新验证！')
+				if (isFirstcodeBtn) {
+					isFirstcodeBtn =false;
+					$.post('?act=reg_send_code', {'act':'reg_send_code','mobile':$('#mobile').val()}, function(data) {
+						isFirstcodeBtn = true;
+						if($.trim(data)!='success')
+						{
+							if(data=='请60秒后重新验证！')
+							{
+								showTime(60);
+							}
+							var html = '<div class="user-form-error" style="display: block;"><i class="error-icon"></i>'+data+'</div>';
+							$("#err").html(html);
+							setTimeout(function () {
+			                    $("#err .user-form-error").hide();
+			                }, 1000);
+						}
+						else
 						{
 							showTime(60);
+							$('.mobile_reg').removeAttr("disabled"); 
 						}
-						var html = '<div class="user-form-error" style="display: block;"><i class="error-icon"></i>'+data+'</div>';
-						$("#err").html(html);
-						setTimeout(function () {
-		                    $("#err .user-form-error").hide();
-		                }, 1000);
-					}
-					else
-					{
-						showTime(60);
-						$('.mobile_reg').removeAttr("disabled"); 
-					}
-				});
+					});
+				}
 			});
 			//手机注册
 			$('.mobile_reg').on('click', function() {

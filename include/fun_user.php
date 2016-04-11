@@ -138,8 +138,8 @@ function user_register($reg_type,$password,$member_type=0,$email="",$mobile="",$
 					{
 						report_deal($insert_id,$points['reg_points']['type'],$points['reg_points']['value']);
 						$operator=$points['reg_points']['type']=="1"?"+":"-";
-						write_memberslog($insert_id,1,9001,$username,"新注册会员,({$operator}{$points['reg_points']['value']}),(剩余:{$points['reg_points']['value']})",1,1010,"注册会员系统自动赠送积分","{$operator}{$points['reg_points']['value']}","{$points['reg_points']['value']}");
-						//积分变更记录
+						write_memberslog($insert_id,1,9001,$username,"新注册会员,({$operator}{$points['reg_points']['value']}),(剩余:{$points['reg_points']['value']})",1,1010,"注册会员系统自动赠送葫芦币","{$operator}{$points['reg_points']['value']}","{$points['reg_points']['value']}");
+						//葫芦币变更记录
 						write_setmeallog($insert_id,$username,"注册会员系统自动赠送：({$operator}{$points['reg_points']['value']}),(剩余:{$points['reg_points']['value']})",1,'0.00','1',1,1);
 					
 					}
@@ -159,7 +159,7 @@ function user_register($reg_type,$password,$member_type=0,$email="",$mobile="",$
 				{
 					report_deal($insert_id,$points['reg_per_points']['type'],$points['reg_per_points']['value']);
 					$operator=$points['reg_per_points']['type']=="1"?"+":"-";
-					write_memberslog($insert_id,2,9001,$username,"新注册会员,({$operator}{$points['reg_per_points']['value']}),(剩余:{$points['reg_per_points']['value']})",2,1010,"注册会员系统自动赠送积分","{$operator}{$points['reg_per_points']['value']}","{$points['reg_per_points']['value']}");
+					write_memberslog($insert_id,2,9001,$username,"新注册会员,({$operator}{$points['reg_per_points']['value']}),(剩余:{$points['reg_per_points']['value']})",2,1010,"注册会员系统自动赠送葫芦币","{$operator}{$points['reg_per_points']['value']}","{$points['reg_per_points']['value']}");
 				}
 			}elseif($member_type=='4'){
 				$setarr['uid']=$insert_id;

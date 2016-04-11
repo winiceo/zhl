@@ -81,7 +81,7 @@ function get_personal($uid)
 	$result = $db->getone($sql);
 	return $result;
 }
-// 获取用户的积分 
+// 获取用户的葫芦币
 function get_user_points($uid)
 {
 	global $db;
@@ -89,7 +89,7 @@ function get_user_points($uid)
 	$points=$db->getone("select points from ".table('members_points')." where uid ='{$uid}' LIMIT 1");
 	return $points['points'];
 }
-// 操作用户的积分
+// 操作用户的葫芦币
 function report_deal($uid,$i_type=1,$points=0)
 {
 	global $db,$timestamp;

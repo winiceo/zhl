@@ -83,7 +83,7 @@ if ($act=='account')
 	$order['v_url']=$_CFG['site_domain'].$_CFG['site_dir']."include/payment/respond_".$paymenttpye['typename'].".php";
 	$order['v_amount']=$amount+$fee; 
 	$points=$amount*$_CFG['train_payment_rate'];
-	$order_id=add_order($_SESSION['uid'],$order['oid'],$amount,$payment_name,"充值积分:".$points,$timestamp,$points,'',4,4);
+	$order_id=add_order($_SESSION['uid'],$order['oid'],$amount,$payment_name,"充值葫芦币:".$points,$timestamp,$points,'',4,4);
 		if ($order_id)
 			{
 			header("location:?act=payment&order_id=".$order_id);
@@ -287,7 +287,7 @@ elseif ($act=='order_del')
 	$total_val=$db->get_total($total_sql);
 	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
 	$offset=($page->nowindex-1)*$perpage;
-	$smarty->assign('title','积分消费明细 - 培训会员中心 - '.$_CFG['site_name']);
+	$smarty->assign('title','葫芦币消费明细 - 培训会员中心 - '.$_CFG['site_name']);
 	$smarty->assign('act',$act);
 	$smarty->assign('points',get_user_points($_SESSION['uid']));
 	$smarty->assign('report',get_user_report($offset, $perpage,$wheresql));

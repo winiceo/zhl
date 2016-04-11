@@ -28,7 +28,7 @@ function tpl_function_qishi_get_salary_data_salary_pie($params, &$smarty)
 	$filename = urlencode($aset['district'].'_'.$aset['category']).'_salary_pie.cache';
 	$result = check_cache($filename,'salary',7);
 	if(!$result){
-		$result = dfopen("http://www.74cms.com/salary/get_salary_data_salary_pie.php?district=".$aset['district']."&category=".$aset['category']."&certification=".$_SERVER['SERVER_NAME']);
+		$result = dfopen("http://www.zhaohulu.com/salary/get_salary_data_salary_pie.php?district=".$aset['district']."&category=".$aset['category']."&certification=".$_SERVER['SERVER_NAME']);
 		write_cache($filename,$result,'salary');
 	}
 	$smarty->assign($aset['listname'],$result);

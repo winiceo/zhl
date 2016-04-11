@@ -6,6 +6,8 @@ define('IN_QISHI', true);
 $alias="QS_my_evaluation";
 error_reporting(E_ERROR);
 require_once(dirname(__FILE__).'/../include/common.inc.php');
+require_once(dirname(__FILE__).'/../user/personal/personal_common.php');
+
 if($mypage['caching']>0){
 	$smarty->cache =true;
 	$smarty->cache_lifetime=$mypage['caching'];

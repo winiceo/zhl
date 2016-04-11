@@ -1,0 +1,258 @@
+<script src="{#$QISHI.site_template#}js/dialog-min.js" type="text/javascript" language="javascript"></script>
+<script src="{#$QISHI.site_template#}js/dialog-min-common.js" type="text/javascript" language="javascript"></script>
+<link href="{#$QISHI.site_template#}css/ui-dialog.css" rel="stylesheet" type="text/css" />
+<link href="{#$QISHI.site_template#}css/header.css" rel="stylesheet" type="text/css" />
+<!-- 头部 -->
+<div id="header">
+	<div class="top-nav-wrap">
+		<div class="top-nav clearfix">
+			<div class="topleft" style="text-align:left;padding-left:20px;">
+				<p>
+                <img original="{#$list.img_path#}" src="{#$QISHI.site_template#}images/header/weixin01.png" alt="{#$list.img_explain#}" width="14" height="14" border="0" />手机找葫芦
+                </p>
+			</div>
+            <div class="hiden-app">
+              <img src="{#$QISHI.site_template#}images/12.jpg"/>
+            </div>
+			<div class="topright">
+				<div class="station-choose">
+					<div class="station-control">
+						<div class="station-item">[ <span style="text-decoration: underline;">切换站点</span> ]&nbsp;&nbsp;<span style="text-decoration: none;">{#if $QISHI.subsite_districtname#}{#$QISHI.subsite_districtname#}{#else#}总站{#/if#}</span></div>
+						<div class="station-drop-wrapper">
+							<div class="drop-title clearfix">
+								<h4 class="f-left">地区分站 · <a href="{#$QISHI.main_domain#}" class="underline">[总站]</a></h4>
+								<span class="f-right">一站注册，多站发布</span>
+							</div>
+							<ul class="station-list clearfix">
+								{#qishi_allsite set="列表名:city"#}
+								{#foreach from=$city item=li#}
+								<li class="f-left"><a href="{#$li.s_domain#}" class="underline">{#$li.s_districtname#}</a></li>
+								{#/foreach#}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+            <div class="nav-right f-right">
+				<span class="nav-items">
+                <span class="underline" id="more" style="cursor:pointer">网站导航<i class="station-arrow f-right"></i></span>
+                </span>
+			</div>
+            <div style="display:none;min-height:150px;height:auto;width:180px;border:1px solid #e7e7e7;float:right;position:absolute;top: 35px;right:0px;background-color:#fff;padding:20px 15px;z-index:100;" id="nav_more">
+            	{#qishi_nav set="调用名称:QS_top,列表名:list,分割:20"#}
+				{#foreach from=$list item=list#}	
+            	<div style="height:20px;width:50px;line-height:20px;float:left;text-align:center;margin:3px;">
+                <a href="{#$list.url#}" target="{#$list.target#}" class="nav-li {#if $list.tag==$page_select && $list.tag!=""#}active{#/if#}">{#$list.title#}</a>
+                </div>
+                 {#/foreach#}
+            </div>
+			<div class="nav-right f-right">
+				<span id="top_loginform"></span>
+				<span class="nav-items"><a href="{#$QISHI.site_dir#}salary" class="underline">薪酬统计</a></span>
+				<span class="nav-items"><a href="{#"QS_helplist"|qishi_url#}" class="underline">帮助中心</a></span>
+				<span class="nav-items"><a href="{#$QISHI.site_dir#}plus/shortcut.php" class="underline">保存到桌面</a></span>
+			</div>
+		</div>
+	</div>
+	<div class="container-index header-main clearfix" style="height:58px;" id="ad_box">
+    	<!-- 1198*58 广告  -->
+        {#qishi_ad set="显示数目:1,调用名称:qishi_indextopbanner,列表名:ad,文字长度:12"#}
+        {#if $ad#}
+        <div class="ad-area">
+        {#foreach from=$ad item=list#}
+            <div class="ad-row clearfix lazyload">
+                <div class="ad-item ad-full f-left" style="border:none;">
+                <a href="{#$list.img_url#}" target="_blank">
+                <img original="{#$list.img_path#}" src="{#$QISHI.site_template#}images/index/84.gif" alt="{#$list.img_explain#}" title="{#$list.img_explain#}" width="1198" height="58" border="0" />
+                </a>
+                <a href="javascript:;" id="ad_close" style="position:absolute;top:5px;right:5px;display:block;width:15px;height:15px;background:#CCC;color:#000000;text-align:center;line-height:15px;">X</a>
+                </div>
+            </div>
+        {#/foreach#}
+        </div>
+		{#/if#}
+        <script>
+        $(function(){
+			$("#ad_close").click(function(){
+				$("#ad_box").slideUp('fast');
+			});
+		})
+        </script>
+     </div>
+     <div class="find">
+		<div class="logo-box f-left">
+        <a href="{#$QISHI.site_dir#}"><img src="{#$QISHI.site_template#}images/header/logo.png" alt="{#$QISHI.site_name#}" title="{#$QISHI.site_name#}" border="0" align="absmiddle" width="257" height="108"/></a>
+        </div>
+        <div class="big f-left">
+        	<!-- 搜索 -->
+			<div class="search-wrap clearfix">
+				<div class="search-box f-left">
+					<div class="search-type f-left">
+						<div title="找工作" code="QS_jobslist" data="请输入职位名称或企业名称" class="search-type-show"><span>找工作</span><i class="search-icon"></i></div>
+						<div title="找人才" code="QS_resumelist" data="请输入简历关键字" class="search-type-drop"><a href="javascript:;">找人才</a></div>
+					</div>
+					<div class="search-text f-left" style="width:415px;">
+						<input type="text" name="keyForIndexSearch" id="keyForIndexSearch" placeholder="请输入职位名称或企业名称" />
+					</div>
+				</div>
+				<div class="search-submit f-left"><input type="button" name="btnForIndexSearch" id="btnForIndexSearch" code="QS_jobslist" value="搜索" class="search-submit" /></div>
+				<input type="hidden" name="citycategory" id="citycategory" value="">
+				<!-- 工作地区弹出框 -->
+				<div class="aui_outer" id="aui_outer_city">
+					<table class="aui_border">
+						<tbody>
+							<tr>
+								<td class="aui_c">
+									<div class="aui_inner">
+										<table class="aui_dialog">
+											<tbody>
+												<tr>
+													<td class="aui_main">
+														<div class="aui_content" style="padding: 0px;">
+															<div class="LocalDataMultiC" style="width:623px;">
+																<div class="selector-header"><span class="selector-title">选择地区</span><div></div><span id="ct-selector-save" class="selector-save">确定</span><span class="selector-close">X</span><div class="clear"></div></div>
+
+																<div class="data-row-head"><div class="data-row"><div class="data-row-side data-row-side-c">最多选 <strong class="text-warning">3</strong> 项&nbsp;&nbsp;已选 <strong id="arscity" class="text-warning">0</strong> 项</div><div id="result-list-city" class="result-list data-row-side-ra"></div></div><div class="cla"></div></div>
+																<div class="data-row-list data-row-main" id="city_list">
+																	<!-- 列表内容 -->
+																</div>
+															</div>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!-- 工作地区弹出框 End-->
+			</div>
+			<!-- 搜索结束 -->
+            <div class="search-remen">
+           		 <p class="search-p">热门搜索：
+                {#qishi_hotword set="列表名:jobfair,标题长度:16,分页显示:1,显示数目:3,填补字符:..."#}
+                {#foreach from=$jobfair item=list#} 
+                  <a href="{#"QS_jobslist"|qishi_url#}?w_word={#$list.w_word#}" style="font-size:12px;color: #585858;">{#$list.w_word#}&nbsp;&nbsp;</a>
+                {#/foreach#}
+               </p>
+
+            </div>
+        </div>
+        <div class="mobile-block f-right" style="margin-top:32px;width: 220px;margin-right:10px;" id="xinyong1">
+			<a class="b-nav-item f-left" href="javascript:;">
+                职业信用评价查询
+				<!--<img original="{#$list.img_path#}" src="{#$QISHI.site_template#}images/header/addjob.jpg" alt="{#$list.img_explain#}" border="0" style="height:45px;margin: 0px 13px;" />-->
+            </a>			
+		</div>
+	</div>
+</div>
+<div class="clear"></div>
+<!-- 头部结束 -->
+<script src="{#$QISHI.site_template#}js/jquery.header.js" type="text/javascript" language="javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		header();
+		//顶部部登录
+		$.get("{#$QISHI.site_dir#}plus/ajax_user.php", {"act":"top_loginform"},
+		function (data,textStatus)
+		{			
+		$("#top_loginform").html(data);
+		}
+		);
+		$('.station-control').on('click', function(e) {
+			if("{#$QISHI.sel_subsite_method#}"==0){
+				$(this).find('.station-drop-wrapper').toggle();
+				$('.station-item').toggleClass('open');
+				e.stopPropagation();
+				$(document).one('click', function(e) {
+					$('.station-drop-wrapper').hide();
+					$('.station-item').removeClass('open');
+				});
+			}else{
+				location.href='{#$QISHI.site_dir#}substation';
+			}
+		});
+		$('.station-drop-wrapper').on('click', function(e) {
+			e.stopPropagation();
+		});
+		/*$("#more").toggle(function(){
+			$("#nav_more").show();
+			
+		},function(){
+			$("#nav_more").hide();
+			
+		});
+		*/
+			$("#more").live("click",function(){
+		if($("#nav_more").attr('data') == "hide") {
+			$(this).blur();
+			$(this).parent().parent().before("<div class=\"menu_bg_layer\"></div>");
+			$(".menu_bg_layer").height($(document).height());
+			$(".menu_bg_layer").css({ width: $(document).width(), position: "absolute",left:"0", top:"0","z-index":"77","background-color":"#000000"});
+			$(".menu_bg_layer").css("opacity",0);
+			$("#nav_more").show();
+			$("#nav_more").attr('data',"show");
+			$(".menu_bg_layer, .station_close").click(function() {
+				$("#nav_more").hide();
+				$("#nav_more").attr('data',"hide");
+				$(".menu_bg_layer").remove();
+			});
+		} else {
+			$("#nav_more").hide();
+			$("#nav_more").attr('data',"hide");
+		}
+	});
+
+		
+		$('.topleft').hover(function(){
+		  $(".hiden-app").show();
+	    }, function(){
+		$(".hiden-app").hide();
+	    });
+		//------发布需求
+		$("#xinyong1").click(function(){
+			var url="{#$QISHI.site_dir#}user/user_ajax_xinyong.php";
+			var myDialog = dialog();
+			myDialog.title('职业信用评价查询');
+			myDialog.width('500');
+			myDialog.content("加载中...");
+			myDialog.showModal();
+			$.get(url, function(data){
+				myDialog.content(data);
+			});
+		});	
+	});
+</script>
+<div class="container-index">
+	<div  class="complex-main clearfix" style="margin:0;height:45px;">
+        <div class="complex-left f-left" style="height:45px;">
+            <div class="job-sort-wrap">
+                <div class="job-sort-control">
+                	<div style="float:left;width:40px;height:50px;"><i class="sotr-icon"></i></div>
+                    <div style="float:left;">
+                        <span style="text-align:right;">全部职位分类</span>
+                    </div>
+                </div>
+                <div class="job-sort-list"></div>
+                <div class="leftmenu_box"></div>
+            </div>
+        </div>
+        <div class="header-navul" style="float:left;height:43px;width:876px;padding-left:30px;border-bottom:2px solid #ff7800;">
+        	<ul class="f-left">
+            	{#qishi_nav set="调用名称:QS_top,列表名:list,分割:10"#}
+				{#foreach from=$list item=list#}
+				<li class="header-nav" style="float: left;line-height: 45px;height:45px;width:80px;text-align:center;">
+                <a href="{#$list.url#}" target="{#$list.target#}" class="nav-li {#if $list.tag==$page_select && $list.tag!=""#}active{#/if#} hover">{#$list.title#}</a>
+                {#if $list.title=='葫芦谷'#}<span class="hot-icon1">认证精品简历</span>{#/if#}
+                {#if $list.title=='悬赏贴'#}<span class="hot-icon1">推荐人才赚钱</span>{#/if#}
+                </li>
+			    {#/foreach#}
+            </ul>
+        
+        </div>
+    </div>
+</div>

@@ -82,7 +82,7 @@ elseif ($act == 'do_login')
 			if (wap_user_login($username,$password))
 			{	
 				//猎头和培训会员登录
-				if($_SESSION['utype']!=1 && $_SESSION['utype']!=2)
+				if($_SESSION['utype']==3 || $_SESSION['utype']==4)
 				{
 					//销毁session和cookie
 					unset($_SESSION['uid']);
@@ -120,9 +120,9 @@ elseif ($act == 'login_send_code')
 	}
 	$sql = "select * from ".table('members')." where mobile = '{$mobile}' LIMIT 1";
 	$userinfo=$db->getone($sql);
-	if (!$userinfo)
+	if ($userinfo)
 	{
-		exit("手机号不存在！请填写其他手机号码");
+		exit("手机号已存在！请填写其他手机号码");
 	}
 	if ($_SESSION['send_time'] && (time()-$_SESSION['send_time'])<60)
 	{
@@ -257,7 +257,7 @@ function weixin_login($openid,$uid,$event_key){
 	{
 		if(file_exists(QISHI_ROOT_PATH."data/weixin/".($event_key%10).'/'.$event_key.".txt")){
 			ini_set('session.save_handler', 'files');
-			session_save_path('/data/tmp/session/');
+			session_save_path(QISHI_ROOT_PATH.'data/sessions/');
 			session_start();
 			$fp = @fopen(QISHI_ROOT_PATH . 'data/weixin/'.($event_key%10).'/'.$event_key.'.txt', 'wb+');
 			@fwrite($fp, $uid);

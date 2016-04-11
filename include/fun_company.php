@@ -176,8 +176,10 @@ function distribution_jobs($id,$uid)
 	foreach($id as $v)
 	{
 		$v=intval($v);
-		$t1=$db->getone("select * from ".table('jobs')." where id='{$v}' {$uidsql} LIMIT 1");
-		$t2=$db->getone("select * from ".table('jobs_tmp')." where id='{$v}' {$uidsql} LIMIT 1");
+		$t1_query= $db->query("select * from ".table('jobs')." where id='{$v}' {$uidsql} LIMIT 1");
+		$t1 = $db->fetch_array($t1_query);
+		$t2_query=$db->query("select * from ".table('jobs_tmp')." where id='{$v}' {$uidsql} LIMIT 1");
+		$t2 = $db->fetch_array($t2_query);
 		if ((empty($t1) && empty($t2)) || (!empty($t1) && !empty($t2)))
 		{
 		continue;
@@ -341,7 +343,7 @@ function get_payment_info($typename,$name=false)
 	global $db;
 	if($typename == 'points')
 	{
-		return '积分兑换';
+		return '葫芦币兑换';
 	}
 	$sql = "select * from ".table('payment')." where typename ='".$typename."' AND p_install='2' LIMIT 1";
 	$val=$db->getone($sql);
@@ -516,10 +518,10 @@ function order_paid($v_oid )
 		$sql = "UPDATE ".table('order')." SET is_paid= '2',payment_time='{$timestamp}' WHERE oid='{$v_oid}' LIMIT 1 ";
 		if (!$db->query($sql)) return false;
 	
-		//套餐、积分支付
+		//套餐、葫芦币支付
 		if($order['pay_type'] == '1' || $order['pay_type'] == '4')			
 		{		 
-			$order_name = "套餐积分订单";
+			$order_name = "套餐葫芦币订单";
 			$user=get_user_info($order['uid']);
 			if($order['amount']=='0.00'){
 				$ismoney=1;
@@ -598,7 +600,7 @@ function adv_order_paid($v_oid)
 	{ 
 		$sql = "UPDATE ".table('order')." SET is_paid= '2',payment_time='{$timestamp}' WHERE oid='{$v_oid}' LIMIT 1 ";
 		if (!$db->query($sql)) return false;
-		if($order['points'] > "0"){	//积分支付
+		if($order['points'] > "0"){	//葫芦币支付
 			report_deal($order['uid'],2,intval($order['points']));
 			$user_points = get_user_points($order['uid']);
 			write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"申请广告位：<strong>{$order['description']}</strong>，(- {$order['amount']})，(剩余:{$user_points})",1,1020,"申请广告位","-{$order['amount']}","{$user_points}");
@@ -2374,12 +2376,12 @@ function sms_order_paid($v_oid)
 		$user=get_user_info($order['uid']);
 		$sql = "UPDATE ".table('order')." SET is_paid= '2',payment_time='{$timestamp}' WHERE oid='{$v_oid}' LIMIT 1 ";
 		if (!$db->query($sql)) return false;
-		if($order['is_paid']=="1" && $order['payment_name']=="points"){		//积分充值
+		if($order['is_paid']=="1" && $order['payment_name']=="points"){		//葫芦币充值
 			report_deal($order['uid'],2,intval($order['points']));
 			$user_points = get_user_points($order['uid']);
 			$user_sms_meal = get_sms_setmeal_one($order['setmeal']); 	//获取套餐中的短信数量
 			$db->query("UPDATE ".table('members')." SET `sms_num` = sms_num+".$user_sms_meal['num']." WHERE `uid` = ".$order['uid']." LIMIT 1 ;"); 
-			write_memberslog($_SESSION['uid'],1,9003,$_SESSION['username'],"积分短信充值：<strong>{$order['description']}</strong>，(- {$order['amount']})，(剩余:{$user_points})",1,1023,"短信充值","- {$order['amount']}","{$user_points}"); 
+			write_memberslog($_SESSION['uid'],1,9003,$_SESSION['username'],"葫芦币短信充值：<strong>{$order['description']}</strong>，(- {$order['amount']})，(剩余:{$user_points})",1,1023,"短信充值","- {$order['amount']}","{$user_points}");
 		}
 		else
 		{
@@ -2387,7 +2389,7 @@ function sms_order_paid($v_oid)
 			
 			$db->query("UPDATE ".table('members')." SET `sms_num` = sms_num+".$user_sms_meal['num']." WHERE `uid` = ".$order['uid']." LIMIT 1 ;"); 
 			$user_points = get_user_points($order['uid']);
-			write_memberslog($_SESSION['uid'],1,9003,$_SESSION['username'],"积分短信充值：<strong>{$order['description']}</strong>，(- {$order['amount']})，(剩余:{$user_points})",1,1023,"短信充值","- {$order['amount']}","{$user_points}"); 
+			write_memberslog($_SESSION['uid'],1,9003,$_SESSION['username'],"葫芦币短信充值：<strong>{$order['description']}</strong>，(- {$order['amount']})，(剩余:{$user_points})",1,1023,"短信充值","- {$order['amount']}","{$user_points}");
 		} 
 		//sendemail
 		$mailconfig=get_cache('mailconfig');

@@ -53,7 +53,7 @@ $(document).ready(function(){
 				dayCount ? dayCount = dayCount : dayCount = 0;
 				$("#aloneIntegral").html(dayCount*thepointEvery);
 				$("#theConsumptionPoint").html(dayCount*thepointEvery);
-				if (thepointAll < dayCount*thepointEvery) { // 本次消耗积分大于总积分不能预约
+				if (thepointAll < dayCount*thepointEvery) { // 本次消耗葫芦币大于总葫芦币不能预约
 					$('input[name=toMakeAppointment]').removeClass('toMakeAppointment');
 					$("#theNoEnouPoint").show();
 				} else {
@@ -86,7 +86,7 @@ $(document).ready(function(){
 					yitObj.remove();
 					rightListHtm += '<div class="hasyue-item clearfix" reid="'+jobId+'"><div class="hasyue-job f-left">'+jobName+'</div><a href="javascript:;" class="notyue-btn f-left cancelAppoint" data="'+jobName+'">取消</a><div class="yue-time f-right"><input class="batchAppDays" type="text" /> 天</div></div>';
 					$(".yue-right-block").append(rightListHtm);
-					// 批量预约时计算消耗积分
+					// 批量预约时计算消耗葫芦币
 					$(".batchAppDays").die().live('keyup', function(event) {
 						var pvdysa= parseInt($("#bacMoreTime").html()), evallPointVal = 0;
 						$(".yue-right-block .batchAppDays").each(function(index, el) {
@@ -227,10 +227,6 @@ $(document).ready(function(){
 	});
 	// 职位推广
 	set_promotion_dialog(".set_promotion");
-    set_reward_dialog(".set_reward");
-    set_date_dialog(".set_date");
-
-
 	// 推广下拉
 	$(".spread").toggle(function() {
 		$(this).find(".spread_but_group").slideDown("fast");
@@ -339,7 +335,7 @@ $(document).ready(function(){
 					<div class="c-item f-left content1">
 						<div class="job-ma-block">
 							<div><a href="{#$li.jobs_url#}" target="_blank" class="name-link underline" title="{#$li.jobs_name_#}">{#$li.jobs_name#}</a></div>
-							<p>应聘简历：{#$li.countresume#} | 更新时间：{#$li.refreshtime|date_format:"%Y-%m-%d %H:%M"#} <a  href="{#if $QISHI.operation_mode=="1"#}?act=jobs_perform&refresh=1&y_id={#$li.id#}{#else#}javascript:;{#/if#}" jobsid="{#$li.id#}" class="data-ctrl underline refresh">[刷新]</a></p>
+							<p>应聘简历：<a href="company_recruitment.php?act=apply_jobs&jobsid={#$li.id#}&jobname={#$li.jobs_name_#}" class="data-ctrl underline">{#$li.countresume#}</a> | 更新时间：{#$li.refreshtime|date_format:"%Y-%m-%d %H:%M"#} <a  href="javascript:;" jobsid="{#$li.id#}" class="data-ctrl underline refresh">[刷新]</a></p>
 							<div class="job-ma-ctrl">
 								<a href="?act=editjobs&id={#$li.id#}" class="data-ctrl underline">修改</a>&nbsp;<a href="{#"QS_resumelist,jobcategory:"|cat:$li.jobcategory|qishi_url#}" class="data-ctrl underline" target="_blank">匹配</a>&nbsp;<a url="?act=jobs_perform&display2=1&y_id={#$li.id#}" href="javascript:;" class="data-ctrl underline ctrl-close">关闭</a>&nbsp;<a href="javascript:;" class="data-ctrl underline ctrl-del" url="?act=jobs_perform&delete=1&y_id={#$li.id#}">删除</a>
 								<a href="javascript:;" class="pengyouquan" id="jobs_{#$li.id#}">分享到朋友圈</a>
@@ -371,12 +367,6 @@ $(document).ready(function(){
 						<a href="javascript:void(0);" class="data-ctrl set_promotion" catid="1" jobid="{#$li.id#}">推荐</a>
 						{#else#}
 						<a  href="javascript:void(0);" class="data-ctrl underline" style="color:#999" title="该职位已紧急推荐">推荐</a>
- 						{#/if#}<br>
-                        {#if $li.reward=="0"#}
-                        <a href="javascript:void(0);" class="data-ctrl set_reward" catid="5" jobid="{#$li.id#}">悬赏</a>
-                        {#else#}
-                        <a  href="javascript:void(0);" class="data-ctrl underline set_date" catid="5" jobid="{#$li.id#}" style="color:#999" title="该职位已悬赏">悬赏</a>
-                    
 						{#/if#}
 					</div>
 				</div>
@@ -415,7 +405,7 @@ $(document).ready(function(){
 						dayCount ? dayCount = dayCount : dayCount = 0;
 						$("#aloneIntegral").html(dayCount*thepointEvery);
 						$("#theConsumptionPoint").html(dayCount*thepointEvery);
-						if (thepointAll < dayCount*thepointEvery) { // 本次消耗积分大于总积分不能预约
+						if (thepointAll < dayCount*thepointEvery) { // 本次消耗葫芦币大于总葫芦币不能预约
 							$('input[name=toMakeAppointment]').removeClass('toMakeAppointment');
 							$("#theNoEnouPoint").show();
 						} else {
@@ -448,7 +438,7 @@ $(document).ready(function(){
 							yitObj.remove();
 							rightListHtm += '<div class="hasyue-item clearfix" reid="'+jobId+'"><div class="hasyue-job f-left">'+jobName+'</div><a href="javascript:;" class="notyue-btn f-left cancelAppoint" data="'+jobName+'">取消</a><div class="yue-time f-right"><input class="batchAppDays" type="text" /> 天</div></div>';
 							$(".yue-right-block").append(rightListHtm);
-							// 批量预约时计算消耗积分
+							// 批量预约时计算消耗葫芦币
 							$(".batchAppDays").die().live('keyup', function(event) {
 								var pvdysa= parseInt($("#bacMoreTime").html()), evallPointVal = 0;
 								$(".yue-right-block .batchAppDays").each(function(index, el) {
@@ -518,7 +508,7 @@ $(document).ready(function(){
 						<span class="yo-type">预约天数：</span><input id="aloneIntegralDays" type="text" /> 天
 					</div>
 					<div class="yue-one-item">
-						<span class="yo-type">消耗积分：</span><em id="aloneIntegral">0</em> 分<span class="use-fen">（每天消耗<em id="everyDayConsumptionPoint">{#$points_rule.job_auto_refresh.value#}</em>积分）</span>
+						<span class="yo-type">消耗葫芦币：</span><em id="aloneIntegral">0</em> 分<span class="use-fen">（每天消耗<em id="everyDayConsumptionPoint">{#$points_rule.job_auto_refresh.value#}</em>葫芦币）</span>
 					</div>
 				</div>
 				<div class="center-btn-wrap">
@@ -532,7 +522,7 @@ $(document).ready(function(){
 			<!-- 批量预约弹出 -->
 			<div class="yuyue-all-dialog" style="display:none">
 				{#if $add_mode==1#}
-				<div class="short-text-tip" style="margin-left:0">您的账户剩余 <span id="bAlPiontLast">{#$user_points#}</span> 分，本次预约需消耗 <span id="bAlPiont">0</span> 分！<span style="display:none" id="noEnouPoint">积分不足，</span><a href="company_service.php?act=order_add" class="underline">立即充值</a></div>
+				<div class="short-text-tip" style="margin-left:0">您的账户剩余 <span id="bAlPiontLast">{#$user_points#}</span> 分，本次预约需消耗 <span id="bAlPiont">0</span> 分！<span style="display:none" id="noEnouPoint">葫芦币不足，</span><a href="company_service.php?act=order_add" class="underline">立即充值</a></div>
 				<div class="yuyue-d clearfix">
 					<div class="yuyue-left f-left">
 						<div class="yue-left-block">
@@ -551,7 +541,7 @@ $(document).ready(function(){
 						</div>
 					</div>
 				</div>
-				<div class="yuyue-d-tip">每个职位每天刷新 <span>1</span> 次，消耗 <span id="bacMoreTime">{#$points_rule.job_auto_refresh.value#}</span> 积分。</div>
+				<div class="yuyue-d-tip">每个职位每天刷新 <span>1</span> 次，消耗 <span id="bacMoreTime">{#$points_rule.job_auto_refresh.value#}</span> 葫芦币。</div>
 				<div class="center-btn-wrap">
 					<input type="button" name="aKeyAppoint" value="一键预约" class="btn-75-30blue btn-big-font aKeyAppoint" /><input type="button" value="取消" class="btn-65-30grey btn-big-font DialogClose" />
 				</div>
@@ -576,7 +566,6 @@ $(document).ready(function(){
 					</div>
 				</div>
 			</div>
-            <div style="color:red;font-size:15px; padding-left: 10px;"><span>在推广期的简历，不可以修改及关闭，删除操作</span></div>
 			{#else#}
 			<div class="c-data-row emptytip">没有找到对应的职位信息</div>
 			{#/if#}
@@ -703,7 +692,7 @@ $(document).ready(function(){
 					<div class="c-item f-left content1" style="width:535px;">
 						<div class="job-ma-block">
 							<div><a href="{#$li.jobs_url#}" target="_blank" class="name-link underline" title="{#$li.jobs_name_#}">{#$li.jobs_name#}</a></div>
-							<p>应聘简历：{#$li.countresume#} | 更新时间：{#$li.refreshtime|date_format:"%Y-%m-%d %H:%M"#}{#if $li.status==1#}  <a  href="{#if $QISHI.operation_mode=="1"#}?act=jobs_perform&refresh=1&y_id={#$li.id#}{#else#}javascript:;{#/if#}" jobsid="{#$li.id#}" class="data-ctrl underline refresh">[刷新]</a>{#/if#}</p>
+							<p>应聘简历：{#$li.countresume#} | 更新时间：{#$li.refreshtime|date_format:"%Y-%m-%d %H:%M"#}{#if $li.status==1#}  <a  href="javascript:;" jobsid="{#$li.id#}" class="data-ctrl underline refresh">[刷新]</a>{#/if#}</p>
 						</div>
 					</div>
 					<div class="c-item f-left content2" style="width:218px;"><span style="{#if $li.status==2 || $li.status==4#}color:red;{#elseif $li.status==3#}color:#FFB443;{#else#}{#/if#}">{#$li.status_cn#}</span></div>

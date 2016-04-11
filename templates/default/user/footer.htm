@@ -1,105 +1,119 @@
-
 <div class="foot">
 	<div class="footer_box">
 		<div class="box link_bk">
 				<div class="list">
-					<h4>关于我们</h4>
+					<h4><img original="{#$list.img_path#}" src="{#$QISHI.site_template#}images/footer/01.png" style="padding-right:10px;position: relative;top: 4px;" alt="{#$list.img_explain#}" width="22" height="22" border="0" />新手指南</h4>
 					<div class="foot_list">
 						<ul>
-						{#qishi_explain_list set="列表名:explain,显示数目:3,标题长度:6,分类ID:1"#}
+						{#qishi_explain_list set="列表名:explain,显示数目:2,标题长度:6,分类ID:2"#}
 						{#foreach from=$explain item=list#}
 							<li><a target="_blank" href="{#$list.url#}">{#$list.title#}</a></li>
 						{#/foreach#}
-							<li><a target="_blank" href="{#$QISHI.site_dir#}suggest">意见反馈</a></li>
 						</ul>
 						<ul>
-							{#qishi_explain_list set="列表名:explain,显示数目:3,开始位置:3,标题长度:6,分类ID:1"#}
-							{#foreach from=$explain item=list#}
-								<li><a target="_blank" href="{#$list.url#}">{#$list.title#}</a></li>
-							{#/foreach#}
+						{#qishi_explain_list set="列表名:explain,显示数目:2,开始位置:2,标题长度:6,分类ID:2"#}
+						{#foreach from=$explain item=list#}
+							<li><a target="_blank" href="{#$list.url#}">{#$list.title#}</a></li>
+						{#/foreach#}
 						</ul>
 					</div>
 				</div>
 				<div class="list">
-					<h4>帮助中心</h4>
+					<h4><img original="{#$list.img_path#}" src="{#$QISHI.site_template#}images/footer/02.png" style="padding-right:10px;position: relative;top: 4px;"  alt="{#$list.img_explain#}" width="27" height="22" border="0" />我是雇主</h4>
 					<div class="foot_list">
 						<ul>
-							<li><a target="_blank" href="{#"QS_helplist,id:4"|qishi_url#}">注册与登录</a></li>
-							<li><a target="_blank" href="{#"QS_helplist,id:5"|qishi_url#}">密码找回</a></li>
-							<li><a target="_blank" href="{#"QS_helplist,id:8"|qishi_url#}">认证管理</a></li>
-							<li><a target="_blank" href="{#"QS_helplist,id:10"|qishi_url#}">招聘管理 </a></li>
+						{#qishi_explain_list set="列表名:explain,显示数目:3,标题长度:6,分类ID:3"#}
+						{#foreach from=$explain item=list#}
+							<li><a target="_blank" href="{#$list.url#}">{#$list.title#}</a></li>
+						{#/foreach#}
 						</ul>
 						<ul>
-							<li><a target="_blank" href="{#"QS_helplist,id:17"|qishi_url#}">求职管理</a></li>
-							<li><a target="_blank" href="{#"QS_helplist,id:13"|qishi_url#}">充值消费 </a></li>
-						</ul>
+                        {#qishi_explain_list set="列表名:explain,显示数目:3,开始位置:3,标题长度:6,分类ID:3"#}
+						{#foreach from=$explain item=list#}
+							<li><a target="_blank" href="{#$list.url#}">{#$list.title#}</a></li>
+						{#/foreach#}
+                        </ul>
 					</div>
 				</div>
 				<div class="list">
-					<h4>个人求职</h4>
+					<h4><img original="{#$list.img_path#}" src="{#$QISHI.site_template#}images/footer/03.png"  style="padding-right:10px;position: relative;top: 4px;" alt="{#$list.img_explain#}" width="28" height="22" border="0" />我是服务商</h4>
 					<div class="foot_list">
 						<ul>
-							<li><a target="_blank" href="{#"QS_jobslist"|qishi_url#}">职位搜索</a></li>
-							<li><a target="_blank" href="{#$QISHI.site_dir#}salary">薪酬统计</a></li>
-							<li><a target="_blank" href="{#$QISHI.site_dir#}subscribe">职位订阅</a></li>
-							<li><a target="_blank" href="{#$QISHI.site_dir#}explain/explain-show.php?id=6">职场指南</a></li>
+						{#qishi_explain_list set="列表名:explain,显示数目:3,标题长度:6,分类ID:4"#}
+						{#foreach from=$explain item=list#}
+							<li><a target="_blank" href="{#$list.url#}">{#$list.title#}</a></li>
+						{#/foreach#}
 						</ul>
 						<ul>
-							<li><a target="_blank" href="{#"QS_hunter_jobslist"|qishi_url#}">猎头职位</a></li>
-							<li><a target="_blank" href="{#"QS_jobslist,nature:63"|qishi_url#}">兼职招聘</a></li>
-							<li><a target="_blank" href="{#"QS_train_curriculum"|qishi_url#}">培训课程</a></li>
-						</ul>
+						{#qishi_explain_list set="列表名:explain,显示数目:3,开始位置:3,标题长度:6,分类ID:4"#}
+						{#foreach from=$explain item=list#}
+							<li><a target="_blank" href="{#$list.url#}">{#$list.title#}</a></li>
+						{#/foreach#}
+                        </ul>
 					</div>
 				</div>
 				<div class="list">
-					<h4>企业服务</h4>
+					<h4><img original="{#$list.img_path#}" src="{#$QISHI.site_template#}images/footer/04.png" style="padding-right:10px;position: relative;top: 4px;" alt="{#$list.img_explain#}" width="21" height="22" border="0" />交易保障</h4>
 					<div class="foot_list">
 						<ul>
-							<li><a target="_blank" href="{#$QISHI.site_dir#}user/company/company_jobs.php?act=addjobs">发布职位</a></li>
-							<li><a target="_blank" href="{#"QS_resumelist"|qishi_url#}">简历搜索</a></li>
-							<li><a target="_blank" href="{#"QS_simplelist"|qishi_url#}">招聘普工</a></li>
-							<li><a target="_blank" href="{#"QS_hrtoolslist"|qishi_url#}">HR工具箱</a></li>
+						{#qishi_explain_list set="列表名:explain,显示数目:3,标题长度:6,分类ID:5"#}
+						{#foreach from=$explain item=list#}
+							<li><a target="_blank" href="{#$list.url#}">{#$list.title#}</a></li>
+						{#/foreach#}
 						</ul>
 						<ul>
-							<li><a target="_blank" href="{#"QS_login"|qishi_url#}">企业注册</a></li>
-							<li><a target="_blank" href="{#"QS_jobfairlist"|qishi_url#}">现场招聘会</a></li>
+						{#qishi_explain_list set="列表名:explain,显示数目:3,开始位置:3,标题长度:6,分类ID:5"#}
+						{#foreach from=$explain item=list#}
+							<li><a target="_blank" href="{#$list.url#}">{#$list.title#}</a></li>
+						{#/foreach#}
 						</ul>
+					</div>
+				</div>
+				<div class="list" style="float:left;height:120px;width:210px;margin:0;border-left: 1px solid rgb(78, 79, 82);border-right: 1px solid rgb(78, 79, 82);">
+					<div class="foot_list" style="float:left;height:120px;width:180px;margin: 30px 0px;padding:0 15px;text-align: center;">
+						<img original="{#$list.img_path#}" src="{#$QISHI.site_template#}images/footer/footer-bottom.png" alt="{#$list.img_explain#}" width="128" height="42" border="0" />
+                        <p>猪八戒网致力于成为<br />最诚信的服务众包平台</p>
 					</div>
 				</div>
 				<div class="clear"></div>
 				
-				
 		        <div class="weixin">
-		        	<div class="weixin_con">
-		        		<div class="weixin_img">
-		        			<span>官方微信</span><br />
-		        			<img src="{#$QISHI.upfiles_dir#}{#$QISHI.weixin_img#}" width="80" height="80">
-		        		</div>
-		        		<div class="weixin_img">
-		        			<span>手机APP</span><br />
-		        			<img src="{#$QISHI.site_dir#}plus/url_qrcode.php?url={#$QISHI.site_dir#}{#$QISHI.android_download#}" width="80" height="80">
-		        		</div>
-		        		<div class="clear"></div>
+		        	<div class="weixin_con">     		
+		        			<img src="{#$QISHI.site_dir#}plus/url_qrcode.php?url={#$QISHI.site_domain#}{#$QISHI.site_dir#}m/download.php?downtype=android" width="100" height="100">
 		        	</div>
-		        	<div class="weixin_cons" style="display:none;">
-		        		<div class="w_txt">官方微信</div>
-		        		<img src="{#$QISHI.upfiles_dir#}{#$QISHI.weixin_img#}" alt="" width="80" height="80">
-		        		<div class="clear"></div>
+					<div class="comment">
+                        <p class="comment-p">微信公共账号</p>
 		        	</div>
-		        	<div class="comment">
-		        		<p>服务热线</p>
-		        		<p class="phone_number">{#$QISHI.bootom_tel#}</p>
-		        	</div>
-			</div>
+				</div>
 		</div>
 	</div>
 		
   
-  <div class="copyright">
-联系地址：{#$QISHI.address#} 联系电话：{#$QISHI.bootom_tel#} 网站备案：{#$QISHI.icp#}{#$QISHI.statistics#}<br />
-{#$QISHI.bottom_other#}<br />
-Powered by <a href="http://www.zhaohulu.com/" target="_blank" style="color:#009900"><em> 74cms v{#$QISHI.version#} 找葫芦网 版权所有</em></a><br />
-</div>
+	  <div class="copyright">
+          <div class="container-index">
+	    {#qishi_explain_list set="列表名:explain,显示数目:11,标题长度:6,分类ID:1"#}
+		{#foreach from=$explain item=list#}
+			<a target="_blank" href="{#$list.url#}" style="color:#e5e5e5;">|&nbsp;&nbsp;<span style="color:#666;">{#$list.title#}</span>&nbsp;&nbsp;</a>
+		{#/foreach#}
+		<br />
+		<div  class="footer-link"  style="width: 1155px;text-align:center;margin:0 auto">友情链接：
+		 {#qishi_link set="列表名:explain,显示数目:30,标题长度:6,分类ID:1"#}
+		{#foreach from=$explain item=list#}
+			<a target="_blank" href="{#$list.url#}" style="color:#999999;line-height: 35px;">{#$list.title#}&nbsp;&nbsp;</a>
+		{#/foreach#}
+			<a target="_blank" href="{#$list.url#}" style="color:#999999;">更多>></a>
+			<br />
+			{#$QISHI.bottom_other#}&nbsp;版权所有&nbsp;&nbsp;{#$QISHI.address#}{#$QISHI.bootom_tel#}
+		</div>
+		<div style="height:80px;width:1200px;padding-top:20px;text-align:center;margin:0 auto">
+			<img original="{#$list.img_path#}" src="{#$QISHI.site_template#}images/footer/footer_ad_01.jpg" alt="{#$list.img_explain#}" width="55" height="55" border="0" style="padding-right:20px;"/>
+			<img original="{#$list.img_path#}" src="{#$QISHI.site_template#}images/footer/footer_ad_02.png" alt="{#$list.img_explain#}" width="60" height="55" border="0"  style="padding-right:20px;"/>
+			<img original="{#$list.img_path#}" src="{#$QISHI.site_template#}images/footer/footer_ad_03.png" alt="{#$list.img_explain#}" width="145" height="55" border="0"  style="padding-right:20px;"/>
+			<img original="{#$list.img_path#}" src="{#$QISHI.site_template#}images/footer/footer_ad_04.png" alt="{#$list.img_explain#}" width="150" height="55" border="0"  style="padding-right:20px;"/>
+			<img original="{#$list.img_path#}" src="{#$QISHI.site_template#}images/footer/footer_ad_05.png" alt="{#$list.img_explain#}" width="200" height="55" border="0"  style="padding-right:20px;"/>
+		</div>
+		</div>
+	</div>
 </div>
 <!-- 回到顶部组件 -->
 <div class="back_to_top" id="back_to_top">
@@ -107,10 +121,10 @@ Powered by <a href="http://www.zhaohulu.com/" target="_blank" style="color:#0099
 		<div>回到顶部</div>
 	</div>
 	<div class="steer">
-		<div onclick="javascript:location.href='{#"QS_suggest"|qishi_url#}'">我要建议</div>
+		<div onclick="javascript:location.href='{#$QISHI.site_dir#}suggest'">我要建议</div>
 	</div>
 	<div class="sub">
-		<div onclick="javascript:location.href='{#"QS_subscribe"|qishi_url#}'">我要订阅</div>
+		<div onclick="javascript:location.href='{#$QISHI.site_dir#}subscribe'">我要订阅</div>
 	</div>
 </div>
 <script>

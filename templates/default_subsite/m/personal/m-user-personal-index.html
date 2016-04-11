@@ -4,8 +4,8 @@
 		<meta charset="gb2312">
 		<title>个人会员中心</title>
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta name="author" content="找葫芦网" />
-<meta name="copyright" content="zhaohulu.com" />
+		<meta name="author" content="找葫芦" />
+		<meta name="copyright" content="zhaohulu.com" />
 		<link rel="stylesheet" href="../css/user-common.css" />
 		<link rel="stylesheet" href="../css/personal.css" />
 		<script type="text/javascript" src="../js/jquery-1.11.3.js" ></script>
@@ -37,9 +37,9 @@
 			<article class="infohead flex-box">
 				<div class="flexinfoheadlogo">
 					{#if $user.avatars==""#}
-					<img src="{#$QISHI.site_domain#}{#$QISHI.site_template#}images/06.jpg" width="59" height="64" border="0" />
+					<img src="{#$QISHI.main_domain#}templates/{#$QISHI.template_dir#}images/06.jpg" width="59" height="64" border="0" />
 					{#else#}
-					<img src="{#$QISHI.site_domain#}{#$QISHI.site_dir#}data/avatar/100/{#$user.avatars#}" width="59" height="64" border="0" />
+					<img src="{#$QISHI.main_domain#}data/avatar/100/{#$user.avatars#}" width="59" height="64" border="0" />
 					{#/if#}
 				</div>
 				<div class='flex2'>

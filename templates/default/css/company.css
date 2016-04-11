@@ -1,5 +1,5 @@
 /*公司黄页*/
-.left_area{width:738px;float:left;border:1px solid #ccc;margin-bottom:10px;_width:710px;_margin-right:12px;margin-top:10px;}
+.left_area{width:738px;float:left;margin-bottom:10px;_width:710px;_margin-right:12px;margin-top:10px;}
 .left_area .com_title{padding-left:20px;padding-top:35px;padding-bottom:35px;border-bottom:1px solid #ccc;background-color:#F5F5F5;}
 .left_area .com_title .logo_img{float:left;margin-right:22px;}
 .left_area .com_title .title_txt{float:left;}
@@ -48,14 +48,14 @@
 /*.left_area .y_job_list ul{margin-bottom:29px;}*/
 .left_area .y_job_list li{padding-bottom:16px;padding-top:15px;padding-left:9px;background:url(../images/11.jpg) repeat-x bottom;}
 .left_area .y_job_list li .j_name{margin-bottom: 4px;font-family: "microsoft yahei";}
-.left_area .y_job_list li .j_name a{font-size:16px;color:#017FCF;position:relative;}
+.left_area .y_job_list li .j_name a{font-size:16px;color:#333;position:relative;}
 .left_area .y_job_list li .j_name .j_time{position: absolute;right:30px;top:5px;color:#666;}
 .left_area .y_job_list li .j_name .ji{position:absolute;top:4px;right:-20px;display:block;width:15px;height:14px;background:url(../images/iconji.gif) top left no-repeat;}
-.left_area .y_job_list li em{font-style:normal;font-size:14px;color:#FF9900;font-weight:normal;}
+.left_area .y_job_list li em{font-style:normal;font-size:14px;color:#333;font-weight:normal;}
 .left_area .y_job_list li p{font-size:12px;line-height:14px;}
 .left_area .y_job_list li p span{line-height: 25px;}
 .left_area .y_job_list .more{font-size: 14px; text-align: right;margin-top: 10px;margin-bottom:11px;padding-right: 10px;}
-.left_area .y_job_list .more a{color:#017FCF;}
+.left_area .y_job_list .more a{color:#333;}
 
 .left_area .comments{border:1px solid #ccc;background-color: #fff;padding-left: 6px;padding-right: 6px;*width:855px;*margin-top:-5px;}
 .left_area .comments li{padding-top:13px;padding-bottom:13px;padding-left:4px;background:url(../images/11.jpg) repeat-x bottom;}
@@ -71,18 +71,22 @@
 /*
 ***以下样式为3.6版本企业黄页新增样式
 */
-.left_area{width:888px;float:left;border:1px solid #ccc;margin-bottom:10px;_width:710px;_margin-right:12px;margin-top:10px;}
+.left_area{width:100%;float:left;margin-bottom:-10px;_width:710px;_margin-right:12px;margin-top:10px;}
+.left_area .company-left{width: 888px;}
+.left_area .company-right{width: 300px;}
+.left_area .company-right .company-right-items{width: 300px;border: 1px solid #ccc;height: 133px;margin-bottom: 10px;}
 .left_area .com_box{padding:20px 10px 6px 10px;border-bottom:1px solid #ccc;font-family: "microsoft yahei";}
 .left_area .com_box .logo_box{float:left;margin-right:16px;}
 .left_area .com_box .com_info{margin:0;padding:0;float:left;width:410px;}
 .left_area .com_box .com_info h6{float:left;padding-left:10px;padding-bottom:14px;margin:0;font-size:14px;}
+.left_area .com_box .com_info h6 .com-info-a{color:#666666;}
 .left_area .com_box .com_info .yan{float:left;display:block;margin-top:3px;margin-left:6px;width:15px;height:16px;background:url(../images/yan.gif) left top no-repeat;}
 .left_area .com_box .com_info p{float:left;}
 .left_area .com_box .com_info p.w150{width:140px;padding-left:10px;height:20px;overflow:hidden;}
 .left_area .com_box .com_info p.com_i_last{margin-left:10px;}
 .left_area .com_box .com_info li{float:left;}
 .left_area .com_box .com_info ul{margin-top: 5px;margin-bottom:-1px;}
-.left_area .com_box .com_info li a{position: relative; display:block;padding:8px;padding-left:10px;margin-bottom:-1px;color:#017FCF;border-radius:3px 3px 0 0;+z-index: 9999;_z-index:9999;+height:21px;_height:21px;_width:54px;}
+.left_area .com_box .com_info li a{position: relative; display:block;padding:8px;padding-left:10px;margin-bottom:-1px;color:#ff7800;border-radius:3px 3px 0 0;+z-index: 9999;_z-index:9999;+height:21px;_height:21px;_width:54px;}
 .left_area .com_box .com_info li a:focus{outline: none;}
 .left_area .com_box .com_info li a.select{position: relative; border:1px solid #ccc;border-bottom:0;background-color:#fff;+z-index: 9999;_z-index:9999;}
 .right_area .com-logo-list{}

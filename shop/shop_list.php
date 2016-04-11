@@ -1,6 +1,6 @@
 <?php
  /*
- * 74cms 积分商城首页
+ * 74cms 葫芦币商城首页
 */
 define('IN_QISHI', true);
 $alias="QS_shop_list";

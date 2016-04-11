@@ -1022,7 +1022,7 @@ function generateBackground() {
 	resizenow();
 }
 /* 多城市版地区筛选 */
-$(function(){
+/*$(function(){
 	var subsiteId = $("#citycategory").data('code'),
 		districtIdArr = $("#citycategory").val().split('.'),
 		subsiteHtm = '',
@@ -1079,4 +1079,4 @@ $(function(){
 			};
 		};
 	}
-});
+});*/

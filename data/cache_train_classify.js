@@ -1,4 +1,4 @@
-//JavaScript Train Document 生成时间：2016-03-16  22:33:26
+//JavaScript Train Document 生成时间：2016-04-11  09:51:03
 
 var QS_city_parent=new Array("1,天津","2,北京","3,上海","4,深圳","5,广州","99,石家庄");
 var QS_city=new Array();

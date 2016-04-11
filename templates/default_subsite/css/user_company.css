@@ -23,7 +23,7 @@
 .qshowa {float:left;color:#666666;text-decoration:none;height:20px;line-height:20px;display:block;margin-left:15px;}
 .qshowaBoxD {width:200px;height:20px;line-height:20px;float:left;}
 .cominfo .rbox{width:295px; padding-top:8px; float: left; padding-top:40px; padding-left:25px;}
-/*企业会员中 首页 积分模式*/
+/*企业会员中 首页 葫芦币模式*/
 .cominfo .rbox .mode1{}
 .cominfo .rbox .mode1 .titcount{font-size:16px; font-weight:bold}
 .cominfo .rbox .mode1 .titcount span{ color:#FF3300; font-size:22px; font-weight: normal}
@@ -32,7 +32,7 @@
 .cominfo .rbox .mode1 .msg{ padding-top:18px; font-size:14px;}
 .cominfo .rbox .mode1 .msg a { color:#666666}
 .cominfo .rbox .mode1 .msg a span{ color:#FF0000}
-/*企业会员中 首页 积分模式结束*/
+/*企业会员中 首页 葫芦币模式结束*/
 /*企业会员中 首页 套餐模式*/
 .cominfo .rbox .mode2{}
 .cominfo .rbox .mode2 .cmname{font-size:16px; font-weight:bold}
@@ -769,7 +769,7 @@ input[type="checkbox"]{position: relative;top:1px;left:2px;}
 .c-data-content.account-pack-d .content3{width: 204px;}
 .c-data-top.account-pack-d .top-item4,
 .c-data-content.account-pack-d .content4{width: 108px;text-align: center;}
-/*积分消费明细的宽度设置*/
+/*葫芦币消费明细的宽度设置*/
 .c-data-top.account-d .top-item1,
 .c-data-content.account-d .content1{width:266px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
 .c-data-top.account-d .top-item2,
@@ -918,7 +918,7 @@ input[type="checkbox"]{position: relative;top:1px;left:2px;}
 .yuyue-one-dialog .yue-one-item .use-fen{color:#666;}
 .yuyue-one-dialog .yue-one-item input{border:1px solid #ccc;font-size: 14px;color:#333;line-height: 18px;height:18px;padding:5px 6px;width: 23px;font-family: "SimSun";outline: none;}
 
-/*我的积分*/
+/*我的葫芦币*/
 .account-wrap{padding-top:15px;font-family: "SimSun";}
 .account-wrap .account-top-block{height: 50px;overflow: hidden;background-color: #e5f2fa;line-height: 50px;margin:0 15px 20px 15px;}
 .account-wrap .account-top-block .account-state{width: 100px;background-color: #2191d7;color:#fff;font-size: 14px;text-align: center;box-shadow: 0px 0px 3px rgba(0,0,0,.5)}

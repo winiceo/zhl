@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>{#$title#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="找葫芦网" />
+<meta name="author" content="找葫芦" />
 <meta name="copyright" content="zhaohulu.com" />
 <link href="{#$QISHI.site_template#}css/user_common.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/user_personal.css" rel="stylesheet" type="text/css" />
@@ -487,9 +487,9 @@ imgcaptcha("#postcaptcha","#imgdiv");
 <script type="text/javascript">
 $(document).ready(function()
 {
-				//积分默认
+				//葫芦币默认
 				total();				
-				//计算总计积分
+				//计算总计葫芦币
 				function total()
 				{
 							var points = {#$points_total#};
@@ -504,7 +504,7 @@ $(document).ready(function()
 				{
 					if ($("#totals").val()<0)
 					{
- 						alert("您的积分不足，请充值后再发布！");
+ 						alert("您的葫芦币不足，请充值后再发布！");
  					}
 					else
 					{
@@ -525,7 +525,7 @@ $(document).ready(function()
 	            <div id="release_info"></div>
 				<div id="release_daysa"></div>
 				<div id="total"></div>
-				   <a href="train_service.php?act=account" target="_blank">[积分消费明细]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="train_service.php?act=account" target="_blank">[积分消费规则]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="train_service.php?act=order_add">[充值积分]</a>
+				   <a href="train_service.php?act=account" target="_blank">[葫芦币消费明细]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="train_service.php?act=account" target="_blank">[葫芦币消费规则]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="train_service.php?act=order_add">[充值葫芦币]</a>
 			</td>
 		  </tr>
 	    </table>

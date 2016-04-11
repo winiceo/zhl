@@ -16,7 +16,7 @@ $smarty->cache = false;
 $filename = urlencode($_GET['district'].'_'.$_GET['category']).'_all_salary.cache';
 $result = check_cache($filename,'salary',7);
 if(!$result){
-	$result = dfopen("http://www.74cms.com/salary/get_salary_data_all_salary.php?district=".$_GET['district']."&category=".$_GET['category']."&certification=".$_SERVER['SERVER_NAME']);
+	$result = dfopen("http://www.zhaohulu.com/salary/get_salary_data_all_salary.php?district=".$_GET['district']."&category=".$_GET['category']."&certification=".$_SERVER['SERVER_NAME']);
 	write_cache($filename,$result,'salary');
 }
 if($result!="-1"){
@@ -34,7 +34,7 @@ $smarty->assign('all_salary',$result);
 $filename = urlencode($_GET['district'].'_'.$_GET['category']).'_salary_barchart.cache';
 $result = check_cache($filename,'salary',7);
 if(!$result){
-	$result = dfopen("http://www.74cms.com/salary/get_salary_data_salary_barchart.php?district=".$_GET['district']."&category=".$_GET['category']."&certification=".$_SERVER['SERVER_NAME']);
+	$result = dfopen("http://www.zhaohulu.com/salary/get_salary_data_salary_barchart.php?district=".$_GET['district']."&category=".$_GET['category']."&certification=".$_SERVER['SERVER_NAME']);
 	write_cache($filename,$result,'salary');
 }
 $smarty->assign('salary_barchart_experience',$result);

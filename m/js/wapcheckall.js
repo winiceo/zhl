@@ -2,13 +2,11 @@ function wapcheckall(saveurl) {
     // 绑定管理事件
 	$("#operateaction").click(function(event) {
 		if ($(this).hasClass("c")) {
-			$(this).text('管理');
 			$(".classifylist .title .name, .classifylist .txt .left, .classifylist .txt .right").removeClass('perc');
 			$(".classifylist .chk input[type=checkbox]:checked").each(function(index, el) {
 				$(this).trigger("click");
 			});
 		} else {
-			$(this).text('取消');
 			$(".classifylist .title .name, .classifylist .txt .left, .classifylist .txt .right").addClass('perc');
 		};
 		$(this).toggleClass('c');

@@ -437,7 +437,7 @@ $('.dropdown-list a').on('click',function() {
 		$ptype=$resume['talent']=='2'?$points_rule['interview_invite_advanced']['type']:$points_rule['interview_invite']['type'];
 		if  ($mypoints<$points)
 		{
-			exit("您的积分不足,不能经行邀请面试！");
+			exit("您的葫芦币不足,不能经行邀请面试！");
 		}
 		$db->inserttable(table('hunter_interview'),$addarr);
 		if ($points>0)

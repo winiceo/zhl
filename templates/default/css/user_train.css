@@ -8,7 +8,7 @@
 .cominfo .lbox .logobox .rtxt{ width:190px; float:left;}
 .cominfo .lbox .logobox .rtxt .cname{ font-size:16px;}
 .cominfo .lbox .logobox .rtxt .txt{ font-size:12px; padding-top:10px; padding-bottom:10px; color:#999999}
-.cominfo .lbox .logobox .rtxt a.edit{ color:#0066CC;text-decoration:none;padding-left:20px;background:url(../images/07.jpg) no-repeat left -103px; font-size:14px;}
+.cominfo .lbox .logobox .rtxt a.edit{ color:#333;text-decoration:none;padding-left:20px;background:url(../images/07.jpg) no-repeat left -103px; font-size:14px;}
 .cominfo .lbox .logobox .rtxt a:hover.edit{ color:#009900; text-decoration:underline}
 .cominfo .lbox .certification{ padding-top:15px; padding-bottom:13px;}
 .cominfo .lbox .certification a{color: #666666;text-decoration:none;padding-left:25px; padding-right:18px;font-size:14px;}
@@ -21,7 +21,7 @@
 .cominfo .lbox .certification a.w{ padding-right:20px; background:url(../images/07.jpg) no-repeat 5px -320px; padding-bottom:5px; padding-top:2px;}
 .cominfo .lbox .certification a.w.no{background:url(../images/07.jpg) no-repeat 5px -261px;}
 .cominfo .rbox{width:295px; padding-top:8px; float: left; padding-top:40px; padding-left:80px;}
-/*企业会员中 首页 积分模式*/
+/*企业会员中 首页 葫芦币模式*/
 .cominfo .rbox .mode1{}
 .cominfo .rbox .mode1 .titcount{font-size:16px; font-weight:bold}
 .cominfo .rbox .mode1 .titcount span{ color:#FF3300; font-size:22px; font-weight: normal}
@@ -30,7 +30,7 @@
 .cominfo .rbox .mode1 .msg{ padding-top:18px; font-size:14px;}
 .cominfo .rbox .mode1 .msg a { color:#666666}
 .cominfo .rbox .mode1 .msg a span{ color:#FF0000}
-/*企业会员中 首页 积分模式结束*/
+/*企业会员中 首页 葫芦币模式结束*/
 /*企业会员中 首页 套餐模式*/
 .cominfo .rbox .mode2{}
 .cominfo .rbox .mode2 .cmname{font-size:16px; font-weight:bold}
@@ -98,7 +98,7 @@ center;margin-left:5px;}
 .addjob .input_checkbox span{background:url(../images/13.gif) no-repeat right -272px;color:#666666;cursor:pointer;padding-right:18px;}
 .addjob .input_checkbox.h{ background-color:#EFEFEF}
 .addjob .input_checkbox_add{float:left; padding-left:12px; padding-right:7px; height:32px; line-height:32px; font-size:14px;background-color:#E3E3E3; margin-right:15px;}
-.addjob .input_checkbox_add span{background:url(../images/13.gif) no-repeat right -308px;color:#0180CF;cursor:pointer;padding-right:14px;}
+.addjob .input_checkbox_add span{background:url(../images/13.gif) no-repeat right -308px;color:#ff7800;cursor:pointer;padding-right:14px;}
 .addjob .input_checkbox_add.h{ background-color:#EFEFE7F}
 .addjob .emailsend{ width:100px; height:35px; line-height:35px; text-align:center; background-color:#80C0E6; color:#FFFFFF; cursor:pointer}
 /*企业会员中心 管理职位*/
@@ -138,7 +138,7 @@ center;margin-left:5px;}
 .my_account .title_h1{font-size:20px;font-family:"microsoft yahei";color:#323232;}
 .my_account .balance{margin-left: 30px;margin-right: 30px; position:relative;margin-top:20px;margin-bottom:21px;padding-top:15px;padding-bottom:15px;padding-left:30px;background-color:#F5F5F5;}
 .my_account .balance .bal_text{font-size:14px;}
-.my_account .balance .bal_text a{color:#0180cf;}
+.my_account .balance .bal_text a{color:#ff7800;}
 .my_account .balance .bal_text.bal_text_s{margin-top:10px;}
 .my_account .balance .bal_text span{font-size:20px;color:#EC8319;}
 .my_account .balance .bal_text .small{font-size:12px;font-family:"microsoft yahei";color:#656565;}
@@ -193,7 +193,7 @@ center;margin-left:5px;}
 
 /*企业会员中心 充值订单*/
 .intrgration{}
-.intrgration .bar{margin:0 auto 40px auto;height:29px;width:721px;background:url(../images/26.jpg) top left no-repeat;}
+.intrgration .bar{margin:0 auto 40px auto;height:29px;width:730px;background:url(../images/26.jpg) top left no-repeat;}
 .intrgration .bar div{display:inline-block;height:29px;*float:left;}
 .intrgration .bar div p{padding-top:40px;text-align:center;color:#EC8319;}
 .intrgration .bar .bar_step1{background:url(../images/27.jpg) top left no-repeat;width:240px;}
@@ -276,7 +276,7 @@ center;margin-left:5px;}
 .pic .pic_txt{font-size:12px;padding-top:10px;line-height:2;padding-left: 18px;background-image: url(../images/13.gif);background-repeat: no-repeat;background-position: left -89px;}
 .pic .upload{margin-top:30px;}
 .but_samll{width:59px;height:36px;line-height:35px;font-size:14px;color:#656565;background-color:#fff;border-top:1px solid #ccc;border-right:1px solid #ccc;border-bottom:1px solid #ccc;font-family:"microsoft yahei","microsoft yahei";text-align:center;vertical-align:middle;margin-top:-2px;margin-left:-2px;cursor:pointer;}
-.but_upload{width:70px;height:36px;line-height:35px;font-size:14px;color:#FFF;background-color:#0180CF;border:1px solid #0180CF;font-family:"microsoft yahei","microsoft yahei";text-align:center;vertical-align:middle;cursor:pointer;}
+.but_upload{width:70px;height:36px;line-height:35px;font-size:14px;color:#FFF;background-color:#ff7800;border:1px solid #ff7800;font-family:"microsoft yahei","microsoft yahei";text-align:center;vertical-align:middle;cursor:pointer;}
 .but_upload.s{margin-left:50px;}
 .pic .logo_img{padding-top:30px;position:relative;}
 .pic .logo_img .img{width:245px;height:80px;background-color:#F5F5F5;border:1px solid #ccc;}
@@ -398,11 +398,11 @@ center;margin-left:5px;}
 .all_class .class_manage .manage_first{padding-left: 10px;}
 .all_class .class_manage td{height:64px;color:#333;font-size: 14px;border-bottom:1px dotted #ccc;}
 .all_class .class_manage .class_shenhe{font-size: 12px;color:#666;padding-left: 15px;}
-.all_class .class_manage td .but_a{font-size: 14px;color:#0180CF;}
+.all_class .class_manage td .but_a{font-size: 14px;color:#ff7800;}
 .class_detail{font-size: 12px;color:#999;padding-top: 5px;padding-left: 17px;}
 .class_detail a{color:#999;}
-.class_detail .f5{color:#0180CF;}
-.class_detail .f5:hover{color:#0180CF;}
+.class_detail .f5{color:#ff7800;}
+.class_detail .f5:hover{color:#ff7800;}
 
 /*新订单页*/
 .new_order{margin:0 30px;padding:20px 0;}
@@ -412,7 +412,7 @@ center;margin-left:5px;}
 .n_order_span{font-size: 12px;color:#999;padding-top: 5px;}
 .n_order_span .pay{color:#333;}
 .n_order_span .nopay{color:#FF0000;}
-.new_order td .but_a{color:#0180CF;}
+.new_order td .but_a{color:#ff7800;}
 
 /*新的新闻页*/
 .new_news{margin:0 30px;padding:20px 0;}
@@ -420,8 +420,8 @@ center;margin-left:5px;}
 .n_news_first{padding-left: 10px;}
 .new_news td{font-size: 14px;color:#333;height:64px;border-bottom: 1px dotted #ccc;}
 .n_news_span{font-size: 12px;color:#999;padding-top: 5px;padding-left: 15px;}
-.new_news td .but_a{color:#0180CF;}
-.new_news td .but_a:hover{color:#0180CF;}
+.new_news td .but_a{color:#ff7800;}
+.new_news td .but_a:hover{color:#ff7800;}
 
 /*新的绑定页面*/
 .new_bindding{margin:0 30px;padding:20px 0;}
@@ -436,7 +436,7 @@ center;margin-left:5px;}
 .qq_no_bind{background-position: left -26px;}
 .taobao_no_bind{background-position: left -79px;}
 .sina_no_bind{background-position: left -133px;}
-.new_bindding .new_bindding_table td a{color:#0180CF;}
+.new_bindding .new_bindding_table td a{color:#ff7800;}
 
 
 /*新的讲师列表*/
@@ -446,7 +446,7 @@ center;margin-left:5px;}
 .new_teacher_list td{font-size: 14px;color:#333;height:64px;border-bottom: 1px dotted #ccc}
 .teacher_school{font-size: 12px;color:#666;margin-left: 15px;}
 .n_teacher_detail{font-size: 12px;color:#999;padding-top:5px;padding-left: 15px;}
-.new_teacher_list td .but_a{color:#0180CF;}
+.new_teacher_list td .but_a{color:#ff7800;}
 
 /*新的收到的课程申请*/
 .new_apply_course{margin:0 30px;padding:20px 0;}
@@ -474,7 +474,7 @@ center;margin-left:5px;}
 .my_accountnew .row dd.field_value b{font-size:14px;font-weight:bold;color:#666666;}
 .my_accountnew .row dd.field_value .verified{padding-left:20px;position:relative;_zoom:1;color:#7CB615;_display:inline;}
 .my_accountnew .row dd.field_value .verified.mpdl{padding-left:0px;}
-.my_accountnew .row dd.field_value .verified.mpdl a{color:#0180cf;}
+.my_accountnew .row dd.field_value .verified.mpdl a{color:#ff7800;}
 .my_accountnew .row dd.field_value .verified i{height:16px;width:16px;display:block;background:url(../images/ico_warn.png) no-repeat 0 0;position:absolute;top:4px;left:0;}
 .my_accountnew .row dd.field_value .unverified{padding-left:20px;position:relative;*zoom:1;color:#D49922;*display:inline;}
 .my_accountnew .row dd.field_value .unverified i{height:16px;width:16px;display:block;background:url(../images/ico_warn.png) no-repeat 0 -100px;position:absolute;top:4px;left:0;}

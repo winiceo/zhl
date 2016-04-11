@@ -46,20 +46,20 @@ if($act == 'list')
 	$smarty->assign('list',$list);
 	$smarty->assign('total',$total);
 	$smarty->assign('page',$page->show(3));
-	$smarty->assign('pageheader',"积分商城");
+	$smarty->assign('pageheader',"葫芦币商城");
 	$smarty->display('shop/admin_shop_list.htm');
 }
 elseif($act == 'shop_add')
 {
 	get_token();
-	$smarty->assign('pageheader',"积分商城 ");
+	$smarty->assign('pageheader',"葫芦币商城 ");
 	$smarty->display('shop/admin_shop_add.htm');
 }
 elseif($act == 'shop_edit')
 {
 	get_token();
 	$id=intval($_GET['id']);
-	$smarty->assign('pageheader',"积分商城 ");
+	$smarty->assign('pageheader',"葫芦币商城 ");
 	$smarty->assign('show',get_shop_one($id));
 	$smarty->display('shop/admin_shop_add.htm');
 }
@@ -77,7 +77,7 @@ elseif($act == 'shop_save')
 
 	$setarr["shop_stock"]=$_POST["shop_stock"]?intval($_POST["shop_stock"]):adminmsg("请输入商品库存");
 	$setarr["shop_customer"]=intval($_POST["shop_customer"]);
-	$setarr["shop_points"]=$_POST["shop_points"]?intval($_POST["shop_points"]):adminmsg("请输入商品兑换所需积分");
+	$setarr["shop_points"]=$_POST["shop_points"]?intval($_POST["shop_points"]):adminmsg("请输入商品兑换所需葫芦币");
 	$setarr["content"]=$_POST["content"]?trim($_POST["content"]):adminmsg("请输入商品描述");
 	$setarr["recommend"]=intval($_POST["recommend"]);
 	if($_FILES['shop_img']['name'])
@@ -125,7 +125,7 @@ elseif($act=="shop_del")
 elseif($act == 'category')
 {
 	get_token();
-	$smarty->assign('pageheader',"积分商城-商品分类");
+	$smarty->assign('pageheader',"葫芦币商城-商品分类");
 	$smarty->assign('category',get_shop_category());
 	$smarty->display('shop/admin_shop_category.htm');
 }
@@ -186,7 +186,7 @@ elseif($act == 'del_category')
 elseif($act == 'edit_category')
 {
 	get_token();
-	$smarty->assign('pageheader',"积分商城-商品分类");
+	$smarty->assign('pageheader',"葫芦币商城-商品分类");
 	$smarty->assign('category',get_shop_category_one($_GET['id']));
 	$smarty->display('shop/admin_shop_category_edit.htm');
 }
@@ -208,7 +208,7 @@ elseif($act == 'edit_category_save')
 elseif($act == 'add_category')
 {
 	get_token();
-	$smarty->assign('pageheader',"积分商城-商品分类");
+	$smarty->assign('pageheader',"葫芦币商城-商品分类");
 	$smarty->display('shop/admin_shop_category_add.htm');
 }
 elseif($act == 'add_category_save')
@@ -278,7 +278,7 @@ elseif($act == 'order')
 	$smarty->assign('list',$list);
 	$smarty->assign('total',$total);
 	$smarty->assign('page',$page->show(3));
-	$smarty->assign('pageheader',"积分商城");
+	$smarty->assign('pageheader',"葫芦币商城");
 	$smarty->display('shop/admin_shop_order.htm');
 }
 elseif($act =='order_show')
@@ -286,7 +286,7 @@ elseif($act =='order_show')
 	$id=intval($_GET['id']);
 	$show=get_order_one($id);
 	$smarty->assign('show',$show);
-	$smarty->assign('pageheader',"积分商城");
+	$smarty->assign('pageheader',"葫芦币商城");
 	$smarty->display('shop/admin_shop_order_show.htm');
 }
 elseif($act == "order_del")
@@ -334,14 +334,14 @@ elseif($act == "hotword")
 	$smarty->assign('hotword',$hotword);
 	$smarty->assign('navlabel',"list");	
 	$smarty->assign('page',$page->show(3));	
-	$smarty->assign('pageheader',"积分商城");
+	$smarty->assign('pageheader',"葫芦币商城");
 	$smarty->display('shop/admin_hotword_list.htm');
 }
 elseif($act == 'add')
 {
 	get_token();
 	$smarty->assign('navlabel',"add");	
-	$smarty->assign('pageheader',"积分商城");
+	$smarty->assign('pageheader',"葫芦币商城");
 	$smarty->display('shop/admin_hotword_add.htm');
 }
 elseif($act == 'addsave')
@@ -364,7 +364,7 @@ elseif($act == 'edit')
 {
 	get_token();
 	$smarty->assign('hotword',get_hotword_one($_GET['id']));
-	$smarty->assign('pageheader',"积分商城");
+	$smarty->assign('pageheader',"葫芦币商城");
 	$smarty->display('shop/admin_hotword_edit.htm');
 }
 elseif($act == 'editsave')

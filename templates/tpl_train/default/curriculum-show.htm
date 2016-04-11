@@ -7,7 +7,7 @@
 <title>{#$show.course_name#} - {#$show.trainname#} - {#$QISHI.site_name#}</title>
 <meta name="description" content="{#$show.trainname#} 课程{#$show.course_name#}">
 <meta name="keywords" content="{#$show.course_name#}，{#$show.trainname#}">
-<meta name="author" content="找葫芦网" />
+<meta name="author" content="找葫芦" />
 <meta name="copyright" content="zhaohulu.com" />
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
 <link href="{#$QISHI.site_template#}css/common.css" rel="stylesheet" type="text/css" />
@@ -65,8 +65,9 @@ $(function(){
 <body class="bgf5">
 {#include file="../tpl_train/default/header-train.htm"#}
 <div class="talents_information">
-	<div class="between">
-		<div class="hunterbox_container position_summary">
+	<div class="between" style="border-top: 2px solid #ff9900;border-left: 1px solid #e0e0e0;border-right: 1px solid #e0e0e0;border-bottom: 1px solid #e0e0e0;">
+		 <div class="blue-line" style="top: -2px;left: 0px;"></div>
+        <div class="hunterbox_container position_summary" style="border: none;">
 			<div class="box_content">
 				<div class="cell">
 					<h3>{#$show.course_name#}</h3>
@@ -84,14 +85,14 @@ $(function(){
 			</div>
 		</div>
 		<!-- 课程信息 -->
-		<div class="hunterbox_container job_detailed_box">
+		<div class="hunterbox_container job_detailed_box" style="border: none;">
 			<div class="h">
 				<div class="t">课程信息</div>
 				<div class="clear"></div>
 			</div>
 			<div class="box_content">
 				<div class="cell">
-					<div class="c">培训费用：<font style="color:#ff9900">{#$show.favour_expenses#}元</font></div>
+					<div class="c">培训费用：<font>{#$show.favour_expenses#}元</font></div>
 					<div class="c">课程学时：{#$show.classhour#} 课时</div>
 					<div class="cright">授课讲师：{#$show.teacher_cn#}</div>
 					<div class="c">课程类别：{#$show.category_cn#}</div>
@@ -105,7 +106,7 @@ $(function(){
 		</div>
 		<!-- 课程信息 End-->
 		<!-- 课程描述 -->
-		<div class="hunterbox_container job_describe_box">
+		<div class="hunterbox_container job_describe_box" style="border: none;">
 			<div class="h">
 				<div class="t">课程描述</div>
 				<div class="clear"></div>
@@ -118,7 +119,7 @@ $(function(){
 		</div>
 		<!-- 课程描述 End-->
 		<!-- 举报 -->
-		<div class="hunterbox_container to_report">
+		<div class="hunterbox_container to_report" style="border: none;">
 			<div class="box_content">
 				<div class="cell">
 					<div class="apply_job_colorpiece" aid="{#$show.id#}">申请课程</div>
@@ -144,7 +145,7 @@ $(function(){
 		</div>
 		<!-- 举报 End-->
 		<!-- 其他课程 -->
-		<div class="hunterbox_container job_other_box">
+		<div class="hunterbox_container job_other_box" style="border: none;">
 			<div class="h">
 				<div class="t">其他课程</div>
 				<div class="clear"></div>
@@ -168,6 +169,7 @@ $(function(){
 	<div class="between">
 		<!-- 机构名片 -->
 		<div class="hunterbox_container mine_hunter_box ">
+        <div class="blue-line"></div>
 			<div class="h">
 				<div class="t">机构名片</div>
 				<div class="clear"></div>
@@ -190,6 +192,7 @@ $(function(){
 		<!-- 机构名片 End-->
 		<!-- 联系方式 -->
 		<div class="hunterbox_container hunter_contact_box">
+        <div class="blue-line"></div>
 			<div class="h">
 				<div class="t">联系方式</div>
 				<div class="clear"></div>
@@ -199,6 +202,7 @@ $(function(){
 		<!-- 联系方式 End-->
 		<!-- 推荐课程 -->
 		<div class="hunterbox_container service_enterprise">
+        <div class="blue-line"></div>
 			<div class="h">
 				<div class="t">推荐课程</div>
 				<div class="clear"></div>
@@ -206,7 +210,7 @@ $(function(){
 			<div class="box_content">
 				{#qishi_curriculum_list set="列表名:course,填补字符:...,课程名长度:18,分页显示:0,显示数目:7,列表页:QS_train_agency_curriculum,推荐:1,机构名长度:10"#}
 				{#foreach from=$course item=list#}
-				<div class="c"><div class="jname"><a href="{#$list.course_url#}" target="_blank">{#$list.course_name#}</a></div><font style="color:#ff9900">{#$list.train_expenses#}元</font></div>
+				<div class="c"><div class="jname"><a href="{#$list.course_url#}" target="_blank">{#$list.course_name#}</a></div><font>{#$list.train_expenses#}元</font></div>
 					
 				{#/foreach#}
 			</div>

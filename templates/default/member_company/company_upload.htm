@@ -145,10 +145,11 @@
                 <div class="titleH1">
                     <div class="h1-title">简历置换</div>
                 </div>
+
                 {#include file="member_company/upload_nav.htm"#}
 
             </div>
-            <div class="account-wrap">
+            <div class="account-wrap"  >
                 <div class="account-top-block clearfix">
 
                     <div class="a-state-content f-left">
@@ -182,49 +183,7 @@
                     </div>
                 </div>
             </div>
-            <div style="width:98%;padding-left: 10px;">
-                <table class="upload" width="100%">
-                    <tr>
-                        {#if $colsinfo#}
-                        {#foreach value=item from=$colsinfo#}
 
-                        <td height="50" align="center">
-                            <div class="page link_bk">{#$item.name#}</div>
-                        </td>
-
-                        {#/foreach#}
-                        {#/if#}
-
-                    </tr>
-                    {#if $uploads#}
-
-                    {# foreach value=list from=$uploads #}
-                    <tr bgcolor="{#$list.color#}">
-                        {# foreach key=key value=item from=$list #}
-                        {# if $key neq "color" #}
-                        <td height="50" align="center">
-                            <div class="page link_bk">{#$item#}</div>
-                        </td>
-                        {#/if#}
-                        {#/foreach#}
-                    </tr>
-                    {#/foreach#}
-
-                    {#else#}
-                        {# if $file #}没有导入任何数据{#/if#}
-                    {#/if#}
-                </table>
-                {#if $uploads#}
-                {# if $file #}红色数据说明已存在简历{#/if#}
-                <br><br>
-
-                <form id="form1" name="form1" method="post" action="?act=upload_finish">
-                    <input type="hidden" name="file" value="{#$file#}"/>
-                    <input type="submit" name="Submit" value="确定"
-                           class="but_upload"/>
-                </form>
-                {#/if#}
-            </div>
         </div>
     </div>
     <div class="clear"></div>

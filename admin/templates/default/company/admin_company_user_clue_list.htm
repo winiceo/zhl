@@ -30,8 +30,9 @@
         <div class="left">审核状态</div>
         <div class="right">
             <a href="{#" status:"|qishi_parse_url#}" {#if $smarty.get.status==""#}class="select"{#/if#}>不限</a>
-            <a href="{#" status:0"|qishi_parse_url#}" {#if $smarty.get.status=="0"#}class="select"{#/if#}>待审核</a>
-            <a href="{#" status:1"|qishi_parse_url#}" {#if $smarty.get.status=="1"#}class="select"{#/if#}>审核通过</a>
+            <a href="{#" status:0"|qishi_parse_url#}" {#if $smarty.get.status=="0"#}class="select"{#/if#}>撮合中</a>
+            <a href="{#" status:2"|qishi_parse_url#}" {#if $smarty.get.status=="2"#}class="select"{#/if#}>撮合失败</a>
+            <a href="{#" status:1"|qishi_parse_url#}" {#if $smarty.get.status=="1"#}class="select"{#/if#}>撮合成功</a>
             <div class="clear"></div>
         </div>
         <div class="clear"></div>
@@ -61,7 +62,7 @@
                 </td>
 
                 <td class="admin_list">
-                   sdfs {#$list.link_name#}
+                    {#$list.link_name#}
                 </td>
                 <td class="admin_list">
                     {#$list.link_telephone#}

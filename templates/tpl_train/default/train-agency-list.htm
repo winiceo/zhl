@@ -5,7 +5,7 @@
 <title>{#if $smarty.get.key#}{#$smarty.get.key#} - {#/if#}{#if $smarty.get.citycategory#}{#"QS_district,"|cat:$smarty.get.citycategory|qishi_categoryname#} - {#/if#}{#if $smarty.get.nature#}{#"QS_train_type,"|cat:$smarty.get.nature|qishi_categoryname#} - {#/if#}培训机构列表  - {#$QISHI.site_name#}</title>
 <meta name="description" content="{#if $smarty.get.citycategory#}{#"QS_district,"|cat:$smarty.get.citycategory|qishi_categoryname#}，{#/if#}{#if $smarty.get.nature#}{#"QS_train_type,"|cat:$smarty.get.nature|qishi_categoryname#}，{#/if#}{#$QISHI.site_name#} - 教育培训">
 <meta name="keywords" content="{#$QISHI.site_name#},机构列表，教育培训">
-<meta name="author" content="找葫芦网" />
+<meta name="author" content="找葫芦" />
 <meta name="copyright" content="zhaohulu.com" />
 <meta name="renderer" content="webkit"> 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -48,8 +48,8 @@
 {#include file="../tpl_train/default/header-train.htm"#}
 <!-- 搜索块 -->
 <div class="container" style="margin-bottom:10px;">
-	<div id="filterSearch" style="border:none;">
-		<div class="top-search clearfix" style="background:#ffffff">
+	<div id="filterSearch" style="border:1px solid #ccc;;">
+		<div class="top-search clearfix">
 			<div class="filter-item f-left">
 					<div class="choose-item">
 						<div class="choose-control choose-control-s">
@@ -105,7 +105,8 @@
 			<div class="filter-list-wrap clearfix">
 				<div class="fl-type f-left fl-type-s">机构性质：</div>
 				<div class="fl-content r-choice f-left">
-					{#qishi_get_classify set="列表名:c_nature,类型:QS_train_type,显示数目:100"#}
+					<div class="fl-content-li{#if '' == $smarty.get.nature#} select{#/if#} fl-content-li-s" type="nature" style="margin-right:20px;">全部</div>
+                    {#qishi_get_classify set="列表名:c_nature,类型:QS_train_type,显示数目:100"#}
 					{#foreach from=$c_nature item=list#}
 					<div class="fl-content-li{#if $list.id == $smarty.get.nature#} select{#/if#} fl-content-li-s" type="nature" code="{#$list.id#}">{#$list.categoryname#}</div>
 					{#/foreach#}
@@ -136,13 +137,13 @@
 </div>
 <!-- 搜索块 End-->
 <!-- 机构列表 -->
-{#qishi_train_list  set="分页显示:1,列表名:train,显示数目:GET[inforow],填补字符:...,机构名长度:12,关键字:GET[key],描述长度:70,机构性质:GET[nature],地区分类:GET[citycategory],排序:GET[sort]"#}
+{#qishi_train_list  set="分页显示:1,列表名:train,显示数目:20,填补字符:...,机构名长度:12,关键字:GET[key],描述长度:70,机构性质:GET[nature],地区分类:GET[citycategory],排序:GET[sort]"#}
 <div class="recommend_institu_list">
 	<div class="h h-nb">
 		<div class="t t-nl">排序</div>
 		<div class="s">
-			<a href="{#"QS_train_agency,nature:"|cat:$smarty.get.nature|cat:"-citycategory:"|cat:$smarty.get.citycategory|cat:"-sort:rtime"|qishi_url#}"  {#if $smarty.get.sort=="rtime" || $smarty.get.sort==""#}class="select"{#/if#}>更新时间</a>
-		    <a href="{#"QS_train_agency,inforow:10-page:1-nature:"|cat:$smarty.get.nature|cat:"-citycategory:"|cat:$smarty.get.citycategory|cat:"-sort:hot"|qishi_url#}"  {#if $smarty.get.sort=="hot"#}class="select"{#/if#}>关注度</a>
+			<a href="{#"QS_train_agency,nature:"|cat:$smarty.get.nature|cat:"-citycategory:"|cat:$smarty.get.citycategory|cat:"-sort:rtime"|qishi_url#}">更新时间</a>
+		    <a href="{#"QS_train_agency,inforow:10-page:1-nature:"|cat:$smarty.get.nature|cat:"-citycategory:"|cat:$smarty.get.citycategory|cat:"-sort:hot"|qishi_url#}" >关注度</a>
 		</div>
 		<div class="s siri"><div class="pageminnav">{#$pagemin#}</div></div>
 	</div>
@@ -162,17 +163,18 @@
 		</div>
 	</div>
 	{#/foreach#}
-		{#if $page#}
-		<table border="0" align="center" cellpadding="0" cellspacing="0" class="link_bk">
-		        	<tr>
-		          		<td height="50" align="center"> <div class="page link_bk">{#$page#}</div></td>
-		          	</tr>
-		</table>
-		{#/if#}
-	{#else#}
-		<div class="emptytip">抱歉，没有符合此条件的信息！</div>
-	{#/if#}
 </div>
+{#if $page#}
+<table border="0" align="center" cellpadding="0" cellspacing="0" class="link_bk">
+            <tr>
+                <td height="50" align="center"> <div class="page link_bk">{#$page#}</div></td>
+            </tr>
+</table>
+{#/if#}
+{#else#}
+    <div class="emptytip">抱歉，没有符合此条件的信息！</div>
+{#/if#}
+
 <!-- 机构列表 End-->
 {#include file="footer.htm"#}
 </body>

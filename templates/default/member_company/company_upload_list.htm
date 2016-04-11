@@ -4,8 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html;charset=gb2312">
     <title>{#$title#}</title>
     <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico"/>
-<meta name="author" content="找葫芦" />
-<meta name="copyright" content="zhaohulu.com" />
+    <meta name="author" content="找葫芦"/>
+    <meta name="copyright" content="zhaohulu.com"/>
     <link href="{#$QISHI.site_template#}css/user_common.css" rel="stylesheet" type="text/css"/>
     <link href="{#$QISHI.site_template#}css/user_company.css" rel="stylesheet" type="text/css"/>
     <link href="{#$QISHI.site_template#}css/ui-dialog.css" rel="stylesheet" type="text/css"/>
@@ -135,6 +135,10 @@
                 </div>
                 {#include file="member_company/upload_nav.htm"#}
             </div>
+            <br>  <br>
+            <div style="text-align: center ;font-size:15px;"><b> 您已审核通过的简历{#$userinfo.resume_passed#}条,未通过简历{#$userinfo.resume_delete#}条,待审核简历{#$total#}条.
+                <b></div><br><br>
+
 
             <form id="form1" name="form1" method="post" action="?act=set_apply_jobs">
                 <div class="company-data-list">
@@ -142,8 +146,13 @@
                         <div class="item f-left check-item"><input type="checkbox" name="chkAll" id="chk"
                                                                    title="全选/反选"/></div>
 
-                        <div class="item f-left top-item2">文件名称</div>
-                        <div class="item f-left top-item3">上传时间</div>
+                        <div class="item f-left top-item2">姓名</div>
+                        <div class="item f-left top-item3">邮箱</div>
+                        <div class="item f-left top-item2">电话</div>
+                        <div class="item f-left top-item4">上传时间</div>
+                        <div class="item f-left top-item1">状态</div>
+
+                        <div class="item f-left  ">上传文件</div>
 
                     </div>
                     {#if $uploads#}
@@ -151,22 +160,31 @@
 
                     <div class="c-data-row">
                         <div class='c-data-content apply_jobs clearfix {#if $list.personal_look=="1" && $smarty.get.look==""#}data-no-read{#/if#}'>
-                        <div class="c-item f-left check-item"><input name="y_id[]" type="checkbox" id="y_id"
-                                                                     value="{#$list.did#}"/></div>
+                            <div class="c-item f-left check-item"><input name="y_id[]" type="checkbox" id="y_id"
+                                                                         value="{#$list.did#}"/></div>
 
-                        <div class="c-item f-left content2"> {#$list.name#}
+                            <div class="c-item f-left content2">&nbsp; {#$list.fullname#}</div>
+
+                            <div class="c-item f-left content3">&nbsp;{#$list.email#}</div>
+
+                            <div class="c-item f-left content2">&nbsp;{#$list.telephone#}</div>
+                            <div class="c-item f-left content3">&nbsp;{#$list.upload_time#}</div>
+                            <div class="c-item f-left content2">待审核</div>
+
+                            <div class="c-item f-left  content" title="{#$list.file_name#}" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;width:150px;">{#$list.file_name#}</div>
+
+
                         </div>
-                        <div class="c-item f-left content3">{#$list.addtime#}</div>
-                            </div>
+
+                        </div>
+
+
+                        {#/foreach#}
+
+                        {#else#}
+                        <div class="emptytip">没有找到对应的信息！</div>
+                        {#/if#}
                     </div>
-
-
-                    {#/foreach#}
-
-                    {#else#}
-                    <div class="emptytip">没有找到对应的信息！</div>
-                    {#/if#}
-                </div>
             </form>
             {#if $page#}
             <table border="0" align="center" cellpadding="0" cellspacing="0">

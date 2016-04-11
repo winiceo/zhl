@@ -558,7 +558,7 @@ elseif ($act=="test_loginform")
 		}
 		$my_eval = url_rewrite('QS_my_evaluation');
 		$contents=str_replace('{#$count#}',$my_eval,$contents);
-		//该会员积分
+		//该会员葫芦币
 		require_once(QISHI_ROOT_PATH.'include/fun_personal.php');
 		$user_points = get_user_points($_SESSION['uid']);
 		$contents=str_replace('{#$user_points#}',$user_points,$contents);
@@ -573,54 +573,60 @@ elseif ($act=="test_loginform")
 // 注册发送短信/找回密码 短信
 elseif($act == "reg_send_sms")
 {
-	require_once(QISHI_ROOT_PATH.'include/fun_user.php');
-	$uid=intval($_POST['uid']);
-	if($uid > 0)
+	$sms_type=$_POST['sms_type']?$_POST['sms_type']:exit('非法操作！');
+	if(!empty($sms_type) && sms_check_token())
 	{
-		$usinfo=get_user_inid($uid);
-		if(!$usinfo)
+		require_once(QISHI_ROOT_PATH.'include/fun_user.php');
+		$uid=intval($_POST['uid']);
+		if($uid > 0)
 		{
-			exit("参数错误");
+			$usinfo=get_user_inid($uid);
+			if(!$usinfo)
+			{
+				exit("参数错误");  
+			}
+			$mobile=$usinfo['mobile'];
 		}
-		$mobile=$usinfo['mobile'];
+		else
+		{
+			$mobile=trim($_POST['mobile']);
+		}
+		if (empty($mobile) || !preg_match("/^(13|15|14|17|18)\d{9}$/",$mobile))
+		{
+			exit("手机号错误");
+		}
+		$rand=mt_rand(100000, 999999);	
+		switch ($sms_type) {
+			case 'reg':
+				$sms_str="您正在注册{$_CFG['site_name']}的会员,手机验证码为:{$rand},此验证码有效期为10分钟";
+				break;
+			case 'getpass':
+				$sms_str="您正在找回{$_CFG['site_name']}的会员密码,手机验证码为:{$rand},此验证码有效期为10分钟";
+				break;
+		}
+		if($_SESSION['verify_mobile']==$mobile && time()<$_SESSION['send_time']+180)
+		{
+			exit("180秒内仅能获取一次短信验证码,请稍后重试");
+		}
+		else
+		{
+			$r=send_sms($mobile,$sms_str);
+		}
+		if ($r=="success")
+		{
+			$_SESSION['mobile_rand']=substr(md5($rand), 8,16);
+			$_SESSION['send_time']=time();
+			$_SESSION['verify_mobile']=$mobile;
+			exit("success");
+		}
+		else
+		{
+			exit("SMS配置出错，请联系网站管理员");
+		}
 	}
 	else
 	{
-		$mobile=trim($_POST['mobile']);
-	}
-	$sms_type=$_POST['sms_type']?$_POST['sms_type']:"reg";
-	if (empty($mobile) || !preg_match("/^(13|15|14|17|18)\d{9}$/",$mobile))
-	{
-		exit("手机号错误");
-	}
-	$rand=mt_rand(100000, 999999);	
-	switch ($sms_type) {
-		case 'reg':
-			$sms_str="您正在注册{$_CFG['site_name']}的会员,手机验证码为:{$rand},此验证码有效期为10分钟";
-			break;
-		case 'getpass':
-			$sms_str="您正在找回{$_CFG['site_name']}的会员密码,手机验证码为:{$rand},此验证码有效期为10分钟";
-			break;
-	}
-
-	if($_SESSION['verify_mobile']==$mobile && time()<$_SESSION['send_time']+180)
-	{
-		exit("180秒内仅能获取一次短信验证码,请稍后重试");
-	}
-	else
-	{
-		$r=send_sms($mobile,$sms_str);
-	}
-	if ($r=="success")
-	{
-	$_SESSION['mobile_rand']=substr(md5($rand), 8,16);
-	$_SESSION['send_time']=time();
-	$_SESSION['verify_mobile']=$mobile;
-	exit("success");
-	}
-	else
-	{
-	exit("SMS配置出错，请联系网站管理员");
+		exit("非法操作！");
 	}
 }
 // 验证注册短信

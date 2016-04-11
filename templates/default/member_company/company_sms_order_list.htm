@@ -50,11 +50,11 @@
   		 			{#section name=payment loop=$payment#}
   		 			<tr>
   		 				<td class="new_order_first" width="510" align="left">
-  		 					{#$payment[payment].oid#}<br /><div class="new_order_span">创建时间:{#$payment[payment].addtime|date_format:"%Y-%m-%d %H:%M"#} | 支付方式:{# if $payment[payment].payment_name == 'points'#}积分支付{#else#}{#$payment[payment].payment_name#}{#/if#} | 支付状态:<i class="{#if $payment[payment].is_paid==1#}nopay{#/if#}{#if $payment[payment].is_paid==2#}pay{#/if#}">{#if $payment[payment].is_paid==1#}待付款{#/if#}{#if $payment[payment].is_paid==2#}已支付{#/if#}</i></div>
+  		 					{#$payment[payment].oid#}<br /><div class="new_order_span">创建时间:{#$payment[payment].addtime|date_format:"%Y-%m-%d %H:%M"#} | 支付方式:{# if $payment[payment].payment_name == 'points'#}葫芦币支付{#else#}{#$payment[payment].payment_name#}{#/if#} | 支付状态:<i class="{#if $payment[payment].is_paid==1#}nopay{#/if#}{#if $payment[payment].is_paid==2#}pay{#/if#}">{#if $payment[payment].is_paid==1#}待付款{#/if#}{#if $payment[payment].is_paid==2#}已支付{#/if#}</i></div>
   		 				</td>
   		 				<td width="150" align="center">
   		 					
-							{# if $payment[payment].payment_name == 'points'#}积分:{#$payment[payment].points#}{#else#}￥{#$payment[payment].amount#}{#/if#}
+							{# if $payment[payment].payment_name == 'points'#}葫芦币:{#$payment[payment].points#}{#else#}￥{#$payment[payment].amount#}{#/if#}
   		 				</td>
   		 				<td width="80" align="center">
   		 					<a href="javascript:void(0);" class="reason vtip" title="{#$payment[payment].notes#}" id="{#$li.id#}" style="margin-top:0;"></a>

@@ -70,7 +70,7 @@ elseif($act == 'binding_save')
 			$success == true;
 			$db->query("update ".table('members')." set `weixin_openid`='".$fromUsername."',`weixin_nick`='".$w_userinfo['nickname']."',bindingtime=".time()." where uid=".$usinfo['uid']);
 			require_once(QISHI_ROOT_PATH.'include/fun_wap.php');
-			// 绑定微信 获得积分
+			// 绑定微信 获得葫芦币
 			$rule=get_cache('points_rule');
 			if ($rule['company_wx_points']['value']>0 && $usinfo['utype']==1)
 			{

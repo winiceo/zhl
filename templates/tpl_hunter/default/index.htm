@@ -6,13 +6,14 @@
 <title>{#$page.title#}</title>
 <meta name="description" content="{#$page.description#}">
 <meta name="keywords" content="{#$page.keywords#}">
-<meta name="author" content="找葫芦网" />
+<meta name="author" content="找葫芦" />
 <meta name="copyright" content="zhaohulu.com" />
 <meta name="renderer" content="webkit"> 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
 <link href="{#$QISHI.site_template#}css/common.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_hunter_template#}css/hunter.css" rel="stylesheet" type="text/css" />
+<link href="{#$QISHI.site_template#}css/header.css" rel="stylesheet" type="text/css" />
 <script src="{#$QISHI.site_template#}js/jquery.js" type='text/javascript' ></script>
 <script src="{#$QISHI.site_dir#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
 <script src="{#$QISHI.site_hunter_template#}js/jquery.hunter-jobs-search.js" type='text/javascript' ></script>
@@ -27,12 +28,16 @@
 </head>
 <body class="bgf5">
 {#include file="../tpl_hunter/default/header-hunter.htm"#}
-<!-- 横幅广告 -->
-<div class="hunter_top_banner" style="background:url({#$QISHI.site_hunter_template#}images/hunter_top_banner.gif) no-repeat top center #03a301"></div>
+<!-- 横幅广告 
+<div class="hunter_top_banner" style="background:url({#$QISHI.site_hunter_template#}images/hunter_top_banner.gif) no-repeat top center #03a301"></div>-->
 <!-- 横幅广告 End-->
+<div style="height:12px;line-height:12px;width:1200px;margin:0 auto;padding-top:15px;padding-bottom:10px;color:#999999;">
+		当前位置：<a href="{#$QISHI.site_dir#}" style="color:#999999;">首页</a>>猎聘专区
+</div>
 <!-- 搜索条 -->
-<div class="container" style="padding-top:0px;">
-	<div id="filterSearch" style="border:none;">
+
+<div class="container">
+	<div id="filterSearch" style="border:1px solid #ccc;;">
 		<div class="fliter-wrap">
 			<div class="filter-drop clearfix" style="margin-bottom:0px;">
 				<div class="filter-item f-left">
@@ -103,7 +108,8 @@
 <!-- 搜索条 End-->
 <!-- 高薪职位 -->
 <div class="hunterbox_container high_salary_job">
-	<div class="h">
+	<div class="blue-line"></div>
+    <div class="h">
 		<div class="t">高薪职位</div>
 		<div class="m"><a href="{#"QS_hunter_jobslist"|qishi_url#}">更多>></a></div>
 		<div class="clear"></div>
@@ -125,7 +131,8 @@
 <!-- 高薪职位 End-->
 <!-- 推荐猎头 -->
 <div class="hunterbox_container recommend_headhunter">
-	<div class="h">
+	<div class="blue-line"></div>
+    <div class="h">
 		<div class="t">推荐猎头</div>
 		<div class="m"><a href="{#"QS_hunter_list"|qishi_url#}">更多>></a></div>
 		<div class="clear"></div>
@@ -159,9 +166,10 @@
 <div class="talents_information">
 	<!-- 高级人才 -->
 	<div class="hunterbox_container senior_talents">
-		<div class="h">
+		<div class="blue-line"></div>
+        <div class="h">
 			<div class="t">高级人才</div>
-			<div class="m"><a href="{#"QS_resumelist"|qishi_url#}?talent=2">更多>></a></div>
+			<div class="m"><a href="{#"QS_hunter_resumelist"|qishi_url#}">更多>></a></div>
 			<div class="clear"></div>
 		</div>
 		<div class="box_content">
@@ -184,7 +192,8 @@
 	<!-- 高级人才 End-->
 	<!-- 猎头资讯 -->
 	<div class="hunterbox_container search_information ">
-		<div class="h">
+		<div class="blue-line"></div>
+        <div class="h">
 			<div class="t">猎头资讯</div>
 			<div class="m"><a href="{#"QS_hunter_newslist"|qishi_url#}">更多>></a></div>
 			<div class="clear"></div>
@@ -198,7 +207,7 @@
 	</div>
 	<!-- 猎头资讯 End-->
 	<!-- 猎头侧栏广告 -->
-	<div class="school-ad-block" style="float:left;margin:5px 0 0 10px;">
+	<div class="school-ad-block" style="float:left;margin:5px 0 0 10px;border:1px solid #ccc;">
 	{#qishi_ad set="显示数目:1,调用名称:QS_hunterindexright,列表名:ad_r,文字长度:12"#}
 	{#if $ad_r#}
 	<div class="banner">

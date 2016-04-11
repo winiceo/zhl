@@ -214,7 +214,7 @@ elseif($act == 'gifts_act')
 				$xlstop.='可用状态'.chr(9);
 				$xlstop.='帐号'.chr(9);
 				$xlstop.='密码'.chr(9);
-				$xlstop.='积分'.chr(9);
+				$xlstop.='葫芦币'.chr(9);
 				$xlstop.='有效期'.chr(9);
 				$xlstop.='使用状态'.chr(9);
 				$xlstop.='叠加次数'.chr(9);
@@ -266,7 +266,7 @@ elseif($act == 'add_category_save')
 	}
 	$setsqlarr['t_repeat']=intval($_POST['t_repeat']);
 	$setsqlarr['t_effective']=intval($_POST['t_effective']);
-	$setsqlarr['t_amount']=intval($_POST['t_amount'])>0?intval($_POST['t_amount']):adminmsg('请正确填写积分！',1);
+	$setsqlarr['t_amount']=intval($_POST['t_amount'])>0?intval($_POST['t_amount']):adminmsg('请正确填写葫芦币！',1);
 	$setsqlarr['t_pre']=!empty($_POST['t_pre'])?trim($_POST['t_pre']):adminmsg('请填写分类前缀！',1);
 	$info=$db->getone("select * from ".table('gifts_type')." where t_pre='{$setsqlarr['t_pre']}' LIMIT 1");
 	if (!empty($info))
@@ -328,7 +328,7 @@ elseif($act == 'edit_category_save')
 	}
 	$setsqlarr['t_repeat']=intval($_POST['t_repeat']);
 	$setsqlarr['t_effective']=intval($_POST['t_effective']);
-	$setsqlarr['t_amount']=intval($_POST['t_amount'])>0?intval($_POST['t_amount']):adminmsg('请正确填写积分！',1);
+	$setsqlarr['t_amount']=intval($_POST['t_amount'])>0?intval($_POST['t_amount']):adminmsg('请正确填写葫芦币！',1);
 	$setsqlarr['t_pre']=!empty($_POST['t_pre'])?trim($_POST['t_pre']):adminmsg('请填写分类前缀！',1);
 	$info=$db->getone("select * from ".table('gifts_type')." where t_pre='{$setsqlarr['t_pre']}' LIMIT 1");
 	if (!empty($info) && $info['t_id']<>$id)

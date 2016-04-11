@@ -12,14 +12,14 @@
 	<meta name="keywords" content="{#$page.keywords#}">
 	<link rel="stylesheet" href="./css/common.css">
 	<link rel="stylesheet" href="./css/search.css">
-	<script src="{#$QISHI.site_domain#}{#$QISHI.site_template#}js/jquery.js" type='text/javascript' ></script>
+	<script src="{#$QISHI.main_domain#}templates/{#$QISHI.template_dir#}js/jquery.js" type='text/javascript' ></script>
 	<script type='text/javascript' src="./js/jquery.common.js" ></script>
 	<script type="text/javascript" src="./js/iscroll.js" ></script>
 	<script type="text/javascript" src="./js/filter.js" ></script>
 	<script type='text/javascript' src="./js/jquery.pinterest.js" ></script>
 	<script type="text/javascript" src="./js/layer/layer.js" ></script>
 	<script type="text/javascript" src="./js/searchBar.js" ></script>
-	<script src="{#$QISHI.site_domain#}{#$QISHI.site_dir#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
+	<script src="{#$QISHI.main_domain#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
 	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=np21m1qLWsuF4gGwzSwYMpC4"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
@@ -107,19 +107,7 @@
 				</div>
 			</div>
 			<div class="mapcontainer" id="mapcontainer"></div>
-			{#if $smarty.session.utype!=1 && $smarty.session.utype!=2#}
-			<div class="header-user"><a href="login.php"><i class="w-icon w-icon-user"></i></a></div>
-			{#else#}
-			<div class="header-user">
-				<a href="{#$QISHI.wap_domain#}/{#if $smarty.session.utype==1#}company/user.php{#else if $smarty.session.utype==2#}personal/user.php{#/if#}">
-					{#if $smarty.session.avatars!=''#}
-					<img src="{#$smarty.session.avatars#}" alt="" width="24" height="24">
-					{#else#}
-					<i class="w-icon w-icon-user"></i>
-					{#/if#}
-				</a>
-			</div>
-			{#/if#}
+			{#include file="navi.html"#}
 		</header>
 		<div class="content-wrap">
 			<div class="top-search">
@@ -222,7 +210,6 @@
 				</div>
 			</div>
 		</div>
-		{#include file="m/footer.htm"#}
 	</div>
 	<div class="back-to-top"><i class="w-icon w-icon-up"></i></div>
 

@@ -7,8 +7,8 @@
 		<meta name="description" content="{#$page.description#},{#$show.fullname#}的个人简历" id="description">
 		<meta name="keywords" content="{#$page.keywords#},{#$show.title#},{#$show.fullname#},{#$show.education_cn#},{#$show.nature_cn#},{#$show.nature_cn#},{#$show.trade_cn#},{#$show.experience_cn#},{#$show.district_cn#},{#$show.wage_cn#}">
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta name="author" content="找葫芦网" />
-<meta name="copyright" content="zhaohulu.com" />
+		<meta name="author" content="找葫芦" />
+		<meta name="copyright" content="zhaohulu.com" />
 		<link rel="stylesheet" href="./css/user-common.css" />
 		<link rel="stylesheet" href="./css/personal.css" />
 		<link href="./css/common.css" rel="stylesheet" type="text/css" />
@@ -154,7 +154,7 @@
 				{#/if#}
 			</header>
 			<article class="infohead infoheadpv flex-box">
-				<div class="flexinfoheadlogo"{#if !$show.tag#} style="padding-top:5%;"{#/if#}><img src="{#if $show.photo_img#}{#$QISHI.site_domain#}{#$QISHI.site_dir#}data/photo/{#$show.photo_img#}{#else#}{#$QISHI.site_domain#}{#$QISHI.site_template#}images/06.jpg{#/if#}" width="86" height="95" border="0" /></div>
+				<div class="flexinfoheadlogo"{#if !$show.tag#} style="padding-top:5%;"{#/if#}><img src="{#if $show.photo_img#}{#$QISHI.main_domain#}data/photo/{#$show.photo_img#}{#else#}{#$QISHI.main_domain#}templates/{#$QISHI.template_dir#}images/06.jpg{#/if#}" width="86" height="95" border="0" /></div>
 				<div class='flex2'{#if !$show.tag#} style="padding-top:5%;"{#/if#}>
 					<div class="infolistpv"><span class="{#if $show.mobile_audit==1#}name{#/if#}">{#$show.fullname#}</span></div>
 					<div class="infolistpv">{#$show.sex_cn#} | {#$show.age#}岁 | {#$show.education_cn#} | {#$show.experience_cn#}</div>
@@ -243,7 +243,7 @@
 					<li><label for="r_{#$list.id#}"  style="width:100%;float:left;"><input type="radio" name="jobs_list" id="r_{#$list.id#}" data-text="{#$list.jobs_name#}" value="{#$list.id#}"/>{#$list.jobs_name#}</label></li>
 					{#/foreach#}
 				</ul>
-				<!-- <div class="resume_jifen">邀请面试将扣除您20积分</div> -->
+				<!-- <div class="resume_jifen">邀请面试将扣除您20葫芦币</div> -->
 				<div class="choose_but">
 					<div class="but_left" id="but_left">
 						<a>邀请</a>

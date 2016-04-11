@@ -67,7 +67,7 @@ if ($act=='booth')
 					$setsqlarr['company_addtime']=$company_profile['addtime'];
 					$setsqlarr['jobfair_title']=$jobfair['title'];
 					$setsqlarr['jobfair_addtime']=$jobfair['addtime'];
-					$setsqlarr['note']="{$_SESSION['username']} 预定了招聘会 《{$jobfair['title']}》 的展位，已成功扣除积分 {$jobfair['predetermined_point']}";	
+					$setsqlarr['note']="{$_SESSION['username']} 预定了招聘会 《{$jobfair['title']}》 的展位，已成功扣除葫芦币 {$jobfair['predetermined_point']}";
 					if ($db->inserttable(table('jobfair_exhibitors'),$setsqlarr))
 					{
 					if ($jobfair['predetermined_point']>0 && $_CFG['operation_mode']=='1')

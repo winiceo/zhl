@@ -37,7 +37,7 @@
 		 		else
 		 		{
 		 			layer.msg(data);
-		 			// window.location.reload();
+		 			$('.layui-layer').css("left",($(window).width() - $('.layui-layer').outerWidth())/2);
 		 		}
 		 	});
 		 });
@@ -51,6 +51,7 @@
 				<a href="javascript:;" class="header-back"><i class="w-icon w-icon-back"></i></a>
 			</div>
 			<div class="header-center"><span class="title-only">∞Û∂®’À∫≈</span></div>
+			{#include file="navi.html"#}
 		</header>
 		<div class="content-wrap">
 			<div id="err"></div>

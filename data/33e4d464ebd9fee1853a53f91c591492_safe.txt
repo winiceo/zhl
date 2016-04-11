@@ -1,0 +1,105 @@
+121.42.0.31||2016-04-04 04:56:43
+%2Fshop%2Fshop_list.php%3Fpage%3D1%26points_interval%3D12000-15000.%2522%255B%255B%2527%255B%255D%2528%2529%255D%26scategory%3D8
+SELECT  COUNT(*) AS num  FROM qs_shop_goods WHERE  shop_points>12000 AND shop_points<15000.\"[[\'[]()]  AND scategory=8 
+unusual character
+===========
+121.42.0.31||2016-04-04 05:27:40
+%2Fshop%2Fshop_list.php%3Fpage%3D1%26points_interval%3D%2524%257B%2540print%2528md5%2528this_is_a_test_string%2529%2529%257D%26scategory%3D8
+SELECT  COUNT(*) AS num  FROM qs_shop_goods WHERE  shop_points>${@print(md5(this_is_a_test_string))} AND shop_points<  AND scategory=8 
+unusual character
+===========
+121.42.0.31||2016-04-04 05:28:36
+%2Fshop%2Fshop_list.php%3Fpage%3D1%26points_interval%3D%2524%257B%2540print%2528md5%2528this_is_a_test_string%2529%2529%257D%255C%26scategory%3D8
+SELECT  COUNT(*) AS num  FROM qs_shop_goods WHERE  shop_points>${@print(md5(this_is_a_test_string))}\\ AND shop_points<  AND scategory=8 
+unusual character
+===========
+121.42.0.31||2016-04-04 05:28:46
+%2Fshop%2Fshop_list.php%3Fpage%3D1%26points_interval%3Dprint%2528md5%2528this_is_a_test_string%2529%2529%253Bdie%2528%2529%253B%252F%2A%26scategory%3D8
+SELECT  COUNT(*) AS num  FROM qs_shop_goods WHERE  shop_points>print(md5(this_is_a_test_string));die();/* AND shop_points<  AND scategory=8 
+comment detect
+===========
+121.42.0.57||2016-04-04 05:28:57
+%2Fshop%2Fshop_list.php%3Fpage%3D1%26points_interval%3D12000-15000%27%2522%253E%253Ciframe%2520onload%3Dalert%28%29%253E%26scategory%3D8
+SELECT  COUNT(*) AS num  FROM qs_shop_goods WHERE  shop_points>12000 AND shop_points<15000\'\"><**** ****=****()>  AND scategory=8 
+unusual character
+===========
+121.42.0.73||2016-04-04 05:29:12
+%2Fshop%2Fshop_list.php%3Fpage%3D1%26points_interval%3D12000-15000%27%2522%253E%253Cimg%2520src%3Dx%2520onerror%3Dprompt%28%29%253E%26scategory%3D8
+SELECT  COUNT(*) AS num  FROM qs_shop_goods WHERE  shop_points>12000 AND shop_points<15000\'\"><img ****=x ****=****()>  AND scategory=8 
+unusual character
+===========
+121.42.0.58||2016-04-04 05:31:30
+%2Fshop%2Fshop_list.php%3Fpage%3D1%26points_interval%3D12000-15000%27%2522%253E%253Csvg%2520onload%3Dprompt%28%29%253E%26scategory%3D8
+SELECT  COUNT(*) AS num  FROM qs_shop_goods WHERE  shop_points>12000 AND shop_points<15000\'\"><svg ****=****()>  AND scategory=8 
+unusual character
+===========
+182.118.44.47||2016-04-08 23:03:23
+%2Fshop%2Fshop_list.php%3Fkey%26page%3D1%26points_interval%3D7000-9000_xpath%3D%7B%2522type%2522%3A%2522convert%2522%2C%2522value%2522%3A%7B%2522priority%2522%3A6%2C%2522xpath%2522%3A%7B%7D%2C%2522flag%2522%3A0%2C%2522jscss%2522%3A1%2C%2522extract_mode%2522%3A15%2C%2522request_discard_conf%2522%3A1%7D%2C%2522params%2522%3A%7B%2522t%2522%3A%2522%2522%2C%2522_fpt%2522%3A%2522%2522%2C%2522_ipd%2522%3A0%2C%2522waponly%2522%3A0%2C%2522q%2522%3A%2522%2522%2C%2522ver%2522%3A%25221%2522%2C%2522_rt%2522%3A%2522json%2522%2C%2522page_subtype%2522%3A%2522%2522%7D%2C%2522searchkeys%2522%3A%2522%2522%2C%2522snapshot_interface%2522%3A%2522http%3A%2F%2F10.138.245.90%3A18501%2Fmod_webprovider%2Fsearch%3F_ipd%3D0%26s%3D%2522%2C%2522snapshot_type%2522%3A%2522js%7Ccss%2522%2C%2522post_data%2522%3A%2522%2522%2C%2522response_type%2522%3A%2522html%2522%2C%2522imginfo_interface%2522%3A%252210.138.230.135%3A9090
+SELECT  COUNT(*) AS num  FROM qs_shop_goods WHERE  shop_points>7000 AND shop_points<9000_xpath={\"type\":\"convert\",\"value\":{\"priority\":6,\"xpath\":{},\"flag\":0,\"jscss\":1,\"extract_mode\":15,\"request_discard_conf\":1},\"params\":{\"t\":\"\",\"_fpt\":\"\",\"_ipd\":0,\"waponly\":0,\"q\":\"\",\"ver\":\"1\",\"_rt\":\"json\",\"page_subtype\":\"\"},\"searchkeys\":\"\",\"snapshot_interface\":\"http://10.138.245.90:18501/mod_webprovider/search?_ipd=0 
+unusual character
+===========
+121.42.0.16||2016-04-10 09:00:42
+%2Fshop%2Fshop_list.php%3Fkey%3D%26shop_nav%3D%26user_points%3D%26points_interval%3D%2524%257B%2540print%2528md5%2528this_is_a_test_string%2529%2529%257D%26page%3D1%26scategory%3D9
+SELECT  COUNT(*) AS num  FROM qs_shop_goods WHERE  shop_points>${@print(md5(this_is_a_test_string))} AND shop_points<  AND scategory=9 
+unusual character
+===========
+121.42.0.16||2016-04-10 09:01:09
+%2Fshop%2Fshop_list.php%3Fkey%3D%26shop_nav%3D%26user_points%3D%26points_interval%3D%2524%257B%2540print%2528md5%2528this_is_a_test_string%2529%2529%257D%255C%26page%3D1%26scategory%3D9
+SELECT  COUNT(*) AS num  FROM qs_shop_goods WHERE  shop_points>${@print(md5(this_is_a_test_string))}\\ AND shop_points<  AND scategory=9 
+unusual character
+===========
+121.42.0.16||2016-04-10 09:01:30
+%2Fshop%2Fshop_list.php%3Fkey%3D%26shop_nav%3D%26user_points%3D%26points_interval%3Dprint%2528md5%2528this_is_a_test_string%2529%2529%253Bdie%2528%2529%253B%252F%2A%26page%3D1%26scategory%3D9
+SELECT  COUNT(*) AS num  FROM qs_shop_goods WHERE  shop_points>print(md5(this_is_a_test_string));die();/* AND shop_points<  AND scategory=9 
+comment detect
+===========
+121.42.0.73||2016-04-10 09:02:00
+%2Fshop%2Fshop_list.php%3Fkey%3D%26shop_nav%3D%26user_points%3D%26points_interval%3D3000-5000%27%2522%253E%253Ciframe%2520onload%3Dalert%28%29%253E%26page%3D1%26scategory%3D9
+SELECT  COUNT(*) AS num  FROM qs_shop_goods WHERE  shop_points>3000 AND shop_points<5000\'\"><**** ****=****()>  AND scategory=9 
+unusual character
+===========
+121.42.0.60||2016-04-10 09:02:30
+%2Fshop%2Fshop_list.php%3Fkey%3D%26shop_nav%3D%26user_points%3D%26points_interval%3D3000-5000%27%2522%253E%253Cimg%2520src%3Dx%2520onerror%3Dprompt%28%29%253E%26page%3D1%26scategory%3D9
+SELECT  COUNT(*) AS num  FROM qs_shop_goods WHERE  shop_points>3000 AND shop_points<5000\'\"><img ****=x ****=****()>  AND scategory=9 
+unusual character
+===========
+121.42.0.71||2016-04-10 09:04:19
+%2Fshop%2Fshop_list.php%3Fkey%3D%26shop_nav%3D%26user_points%3D%26points_interval%3D3000-5000%27%2522%253E%253Csvg%2520onload%3Dprompt%28%29%253E%26page%3D1%26scategory%3D9
+SELECT  COUNT(*) AS num  FROM qs_shop_goods WHERE  shop_points>3000 AND shop_points<5000\'\"><svg ****=****()>  AND scategory=9 
+unusual character
+===========
+121.42.0.16||2016-04-10 10:34:44
+%2Fshop%2Fshop_list.php%3Fkey%3D%26shop_nav%3D%26user_points%3D%26points_interval%3D%2524%257B%2540print%2528md5%2528this_is_a_test_string%2529%2529%257D%26page%3D1%26displayorder%3Dshop_points
+SELECT  COUNT(*) AS num  FROM qs_shop_goods WHERE  shop_points>${@print(md5(this_is_a_test_string))} AND shop_points< 
+unusual character
+===========
+121.42.0.16||2016-04-10 10:34:47
+%2Fshop%2Fshop_list.php%3Fdisplayorder%3Dshop_points%26key%3D%26page%3D1%26scategory%3D9%26points_interval%3D%2524%257B%2540print%2528md5%2528this_is_a_test_string%2529%2529%257D
+SELECT  COUNT(*) AS num  FROM qs_shop_goods WHERE  shop_points>${@print(md5(this_is_a_test_string))} AND shop_points<  AND scategory=9 
+unusual character
+===========
+121.42.0.16||2016-04-10 10:35:02
+%2Fshop%2Fshop_list.php%3Fdisplayorder%3Dshop_points%26key%3D%26page%3D1%26scategory%3D9%26points_interval%3D%2524%257B%2540print%2528md5%2528this_is_a_test_string%2529%2529%257D%255C
+SELECT  COUNT(*) AS num  FROM qs_shop_goods WHERE  shop_points>${@print(md5(this_is_a_test_string))}\\ AND shop_points<  AND scategory=9 
+unusual character
+===========
+121.42.0.16||2016-04-10 10:35:16
+%2Fshop%2Fshop_list.php%3Fkey%3D%26shop_nav%3D%26user_points%3D%26points_interval%3D%2524%257B%2540print%2528md5%2528this_is_a_test_string%2529%2529%257D%255C%26page%3D1%26displayorder%3Dshop_points
+SELECT  COUNT(*) AS num  FROM qs_shop_goods WHERE  shop_points>${@print(md5(this_is_a_test_string))}\\ AND shop_points< 
+unusual character
+===========
+121.42.0.16||2016-04-10 10:35:17
+%2Fshop%2Fshop_list.php%3Fdisplayorder%3Dshop_points%26key%3D%26page%3D1%26scategory%3D9%26points_interval%3Dprint%2528md5%2528this_is_a_test_string%2529%2529%253Bdie%2528%2529%253B%252F%2A
+SELECT  COUNT(*) AS num  FROM qs_shop_goods WHERE  shop_points>print(md5(this_is_a_test_string));die();/* AND shop_points<  AND scategory=9 
+comment detect
+===========
+121.42.0.16||2016-04-10 10:36:48
+%2Fshop%2Fshop_list.php%3Fkey%3D%26shop_nav%3D%26user_points%3D%26points_interval%3Dprint%2528md5%2528this_is_a_test_string%2529%2529%253Bdie%2528%2529%253B%252F%2A%26page%3D1%26displayorder%3Dshop_points
+SELECT  COUNT(*) AS num  FROM qs_shop_goods WHERE  shop_points>print(md5(this_is_a_test_string));die();/* AND shop_points< 
+comment detect
+===========
+121.42.0.63||2016-04-10 10:38:58
+%2Fshop%2Fshop_list.php%3Fdisplayorder%3Dshop_points%26key%3D%26page%3D1%26scategory%3D9%26points_interval%3D1000-3000%27%2522%253E%253Ciframe%2520onload%3Dalert%28%29%253E
+SELECT  COUNT(*) AS num  FROM qs_shop_goods WHERE  shop_points>1000 AND shop_points<3000\'\"><**** ****=****()>  AND scategory=9 
+unusual character
+===========

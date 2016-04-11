@@ -13,7 +13,7 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
-  //计算获得积分数量
+  //计算获得葫芦币数量
   $("#week").keyup(function(){  
     if((/^(\+|-)?\d+$/.test($(this).val())) && $(this).val()>={#$QISHI.payment_min#})
     { 
@@ -111,7 +111,7 @@ $(document).ready(function()
   					</tr>
             <tr id="count">
               <td height="30" width="100">应付金额：</td>
-              <td><span id="show_val">0</span> 元 <span style="display:none" id="points_expense">(<span id="show_points_val">0</span> 积分)</span></td>
+              <td><span id="show_val">0</span> 元 <span style="display:none" id="points_expense">(<span id="show_points_val">0</span> 葫芦币)</span></td>
               <input type="hidden" name="expense_input" id="expense_input">
               <input type="hidden" name="points_expense_input" id="points_expense_input">
             </tr>
@@ -122,8 +122,8 @@ $(document).ready(function()
             {#if $QISHI.operation_mode=="1" || $QISHI.operation_mode=="3"#}
   					<tr>
   						<td height="30" width="100">支付方式：</td>
-  						<td width="150"><input type="radio" name="payment_name" value="points" checked/>&nbsp;&nbsp;账户积分</td>
-  						<td><p>(您的账户剩余<span>{#$points#}</span>点积分)</p></td>
+  						<td width="150"><input type="radio" name="payment_name" value="points" checked/>&nbsp;&nbsp;账户葫芦币</td>
+  						<td><p>(您的账户剩余<span>{#$points#}</span>点葫芦币)</p></td>
   					</tr>
             {#section name=payment loop=$payment#}
   					<tr>

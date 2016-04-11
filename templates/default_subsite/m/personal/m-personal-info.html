@@ -4,19 +4,19 @@
 		<meta charset="gb2312">
 		<title>个人会员中心-基本信息</title>
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta name="author" content="找葫芦网" />
-<meta name="copyright" content="zhaohulu.com" />
+		<meta name="author" content="找葫芦" />
+		<meta name="copyright" content="zhaohulu.com" />
 		<link rel="stylesheet" href="../css/user-common.css" />
 		<link rel="stylesheet" href="../css/personal.css" />
 		<script type="text/javascript" src="../js/jquery-1.11.3.js" ></script>
-		<script src="{#$QISHI.site_domain#}{#$QISHI.site_template#}js/jquery.js"></script>
+		<script src="{#$QISHI.main_domain#}templates/{#$QISHI.template_dir#}js/jquery.js"></script>
 		<script type='text/javascript' src="../js/jquery.common.js" ></script>
 		<script type="text/javascript" src="../js/layer/layer.js" ></script>
 		<script type="text/javascript" src="../js/jquery.editCV.js" ></script>
 		<script type="text/javascript" src="../js/iscroll.js" ></script>
 		<script type="text/javascript" src="../js/mb.js" ></script>
-		<script src="{#$QISHI.site_domain#}{#$QISHI.site_dir#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
-		<script src="{#$QISHI.site_domain#}{#$QISHI.site_template#}js/ajaxfileupload.js" type='text/javascript' language="javascript"></script>
+		<script src="{#$QISHI.main_domain#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
+		<script src="{#$QISHI.main_domain#}templates/{#$QISHI.template_dir#}js/ajaxfileupload.js" type='text/javascript' language="javascript"></script>
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$(".radio-btn").on('click', function () {
@@ -120,7 +120,7 @@
 			<article class="optionlist optionlisteditworkexp personalinfo formDiv">
 				<section class="flex-box list resumephoto" url="">
 					<div class="right flex2 resumephoto">简历照片
-						<div class="photobox"><img src="{#if $resume_basic.photo_img#}{#$QISHI.site_domain#}{#$QISHI.site_dir#}data/photo/{#$resume_basic.photo_img#}{#else#}{#$QISHI.site_domain#}{#$QISHI.site_template#}images/06.jpg{#/if#}"   id="logo"/></div>
+						<div class="photobox"><img src="{#if $resume_basic.photo_img#}{#$QISHI.main_domain#}data/photo/{#$resume_basic.photo_img#}{#else#}{#$QISHI.main_domain#}templates/{#$QISHI.template_dir#}images/06.jpg{#/if#}"   id="logo"/></div>
 						<input type="file" name="logo_img" id="logo_img" style="display: none;">
 					</div>
 				</section>

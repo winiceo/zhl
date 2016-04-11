@@ -5,7 +5,7 @@
 <title>{#if $smarty.get.key#}{#$smarty.get.key#} - {#/if#}{#if $smarty.get.citycategory#}{#"QS_district,"|cat:$smarty.get.citycategory|qishi_categoryname#} - {#/if#}{#if $smarty.get.category#}{#"QS_train_category,"|cat:$smarty.get.category|qishi_categoryname#} - {#/if#}{#if $smarty.get.classtype#}{#"QS_train_classtype,"|cat:$smarty.get.classtype|qishi_categoryname#} - {#/if#}{#if $smarty.get.start#}{#if $smarty.get.start ==360#}常年开课{#else#}{#$smarty.get.start#}天内{#/if#} - {#/if#}{#if $smarty.get.refre#}{#$smarty.get.refre#}天内 - {#/if#}教育培训  - {#$QISHI.site_name#}</title>
 <meta name="description" content="{#if $smarty.get.citycategory#}{#"QS_district,"|cat:$smarty.get.citycategory|qishi_categoryname#}，{#/if#}{#if $smarty.get.category#}{#"QS_train_category,"|cat:$smarty.get.category|qishi_categoryname#}，{#/if#}{#if $smarty.get.classtype#}{#"QS_train_classtype,"|cat:$smarty.get.classtype|qishi_categoryname#}，{#/if#}{#if $smarty.get.start#}{#if $smarty.get.start ==360#}常年开课{#else#}{#$smarty.get.start#}天内{#/if#}，{#/if#}{#if $smarty.get.refre#}{#$smarty.get.refre#}天内，{#/if#}{#$QISHI.site_name#} - 教育培训">
 <meta name="keywords" content="{#$QISHI.site_name#},教育培训">
-<meta name="author" content="找葫芦网" />
+<meta name="author" content="找葫芦" />
 <meta name="copyright" content="zhaohulu.com" />
 <meta name="renderer" content="webkit"> 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -97,8 +97,8 @@ $(document).ready(function()
 {#include file="../tpl_train/default/header-train.htm"#}
 <!-- 搜索块 -->
 <div class="container" style="margin-bottom:10px;">
-	<div id="filterSearch" style="border:none;">
-		<div class="top-search clearfix" style="background:#ffffff">
+	<div id="filterSearch" style="border:1px solid #ccc;;">
+		<div class="top-search clearfix">
 			<div class="t-search-box f-left t-search-box-s">
 				<div class="type-input-box f-left" id="hidden_input_box">
 					<div class="key">{#$smarty.get.key|default:"请输入课程名称"#}</div>
@@ -118,7 +118,8 @@ $(document).ready(function()
 			<div class="filter-list-wrap clearfix">
 				<div class="fl-type f-left fl-type-s">课程类别：</div>
 				<div class="fl-content r-choice f-left">
-					{#qishi_get_classify set="列表名:c_nature,类型:QS_train_category,显示数目:100"#}
+				<div class="fl-content-li{#if '' == $smarty.get.category#} select{#/if#} fl-content-li-s" type="category"  style="margin-right:20px;">全部</div>	
+                    {#qishi_get_classify set="列表名:c_nature,类型:QS_train_category,显示数目:100"#}
 					{#foreach from=$c_nature item=list#}
 					<div class="fl-content-li{#if $list.id == $smarty.get.category#} select{#/if#} fl-content-li-s" type="category" code="{#$list.id#}">{#$list.categoryname#}</div>
 					{#/foreach#}
@@ -128,7 +129,8 @@ $(document).ready(function()
 			<div class="filter-list-wrap clearfix">
 				<div class="fl-type f-left">上课班制：</div>
 				<div class="fl-content f-left">
-					{#qishi_get_classify set="列表名:c_nature,类型:QS_train_classtype,显示数目:100"#}
+					<div class="fl-content-li{#if '' == $smarty.get.classtype#} select{#/if#}" type="classtype" style="margin-right:20px;">全部</div>
+                    {#qishi_get_classify set="列表名:c_nature,类型:QS_train_classtype,显示数目:100"#}
 					{#foreach from=$c_nature item=list#}
 					<div class="fl-content-li{#if $list.id == $smarty.get.classtype#} select{#/if#}" type="classtype" code="{#$list.id#}">{#$list.categoryname#}</div>
 					{#/foreach#}
@@ -137,7 +139,8 @@ $(document).ready(function()
 			<div class="filter-list-wrap clearfix">
 				<div class="fl-type f-left">开课时间：</div>
 				<div class="fl-content f-left">
-					<div class="fl-content-li{#if $smarty.get.start == 3#} select{#/if#}" type="start" code="3">3天内</div>
+					<div class="fl-content-li{#if $smarty.get.start == ''#} select{#/if#}" type="start"  style="margin-right:20px;">全部</div>
+                    <div class="fl-content-li{#if $smarty.get.start == 3#} select{#/if#}" type="start" code="3">3天内</div>
 					<div class="fl-content-li{#if $smarty.get.start == 7#} select{#/if#}" type="start" code="7">7天内</div>
 					<div class="fl-content-li{#if $smarty.get.start == 30#} select{#/if#}" type="start" code="30">30天内</div>
 					<div class="fl-content-li{#if $smarty.get.start == 360#} select{#/if#}" type="start" code="360">常年开课</div>
@@ -146,7 +149,8 @@ $(document).ready(function()
 			<div class="filter-list-wrap clearfix">
 				<div class="fl-type f-left">更新时间：</div>
 				<div class="fl-content f-left">
-					<div class="fl-content-li{#if $smarty.get.refre == 3#} select{#/if#}" type="refre" code="3">3天内</div>
+					<div class="fl-content-li{#if $smarty.get.refre == ''#} select{#/if#}" type="refre" style="margin-right:20px;">全部</div>
+                    <div class="fl-content-li{#if $smarty.get.refre == 3#} select{#/if#}" type="refre" code="3">3天内</div>
 					<div class="fl-content-li{#if $smarty.get.refre == 7#} select{#/if#}" type="refre" code="7">7天内</div>
 					<div class="fl-content-li{#if $smarty.get.refre == 30#} select{#/if#}" type="refre" code="30">30天内</div>
 				</div>
@@ -190,13 +194,13 @@ $(document).ready(function()
 </div>
 <!-- 搜索块 End-->
 <!-- 课程列表 -->
-{#qishi_curriculum_list  set="分页显示:1,列表名:course,显示数目:GET[inforow],填补字符:...,显示数目:GET[inforow],描述长度:70,开课时间:GET[start],日期范围:GET[refre],课程类别:GET[category],地区分类:GET[citycategory],上课班制:GET[classtype],关键字:GET[key],排序:GET[sort],列表页:QS_train_curriculum"#}
+{#qishi_curriculum_list  set="分页显示:1,列表名:course,显示数目:20,填补字符:...,描述长度:70,开课时间:GET[start],日期范围:GET[refre],课程类别:GET[category],地区分类:GET[citycategory],上课班制:GET[classtype],关键字:GET[key],排序:GET[sort],列表页:QS_train_curriculum"#}
 <div class="recommend_curriculum_list">
 	<div class="h">
 		<div class="t">排序</div>
 		<div class="s">
-			<a href="{#"QS_train_curriculum,citycategory:"|cat:$smarty.get.citycategory|cat:"-category:"|cat:$smarty.get.category|cat:"-classtype:"|cat:$smarty.get.classtype|cat:"-start:"|cat:$smarty.get.start|cat:"-refre:"|cat:$smarty.get.refre|cat:"-sort:rtime"|cat:"-key:"|cat:$smarty.get.key|qishi_url#}" {#if $smarty.get.sort=="rtime" || $smarty.get.sort==""#}class="select"{#/if#}>更新时间</a>
-		    <a href="{#"QS_train_curriculum,citycategory:"|cat:$smarty.get.citycategory|cat:"-category:"|cat:$smarty.get.category|cat:"-classtype:"|cat:$smarty.get.classtype|cat:"-start:"|cat:$smarty.get.start|cat:"-refre:"|cat:$smarty.get.refre|cat:"-sort:hot"|cat:"-key:"|cat:$smarty.get.key|qishi_url#}" {#if $smarty.get.sort=="hot"#}class="select"{#/if#}>热度</a>
+			<a href="{#"QS_train_curriculum,citycategory:"|cat:$smarty.get.citycategory|cat:"-category:"|cat:$smarty.get.category|cat:"-classtype:"|cat:$smarty.get.classtype|cat:"-start:"|cat:$smarty.get.start|cat:"-refre:"|cat:$smarty.get.refre|cat:"-sort:rtime"|cat:"-key:"|cat:$smarty.get.key|qishi_url#}" >更新时间</a>
+		    <a href="{#"QS_train_curriculum,citycategory:"|cat:$smarty.get.citycategory|cat:"-category:"|cat:$smarty.get.category|cat:"-classtype:"|cat:$smarty.get.classtype|cat:"-start:"|cat:$smarty.get.start|cat:"-refre:"|cat:$smarty.get.refre|cat:"-sort:hot"|cat:"-key:"|cat:$smarty.get.key|qishi_url#}" >热度</a>
 		</div>
 	</div>
 	<div class="h">
@@ -214,26 +218,27 @@ $(document).ready(function()
 			<div class="c"><div class="lc">所在地区：{#$list.district_cn#}</div><div class="lc">开课时间：{#$list.starttime|date_format:"%Y-%m-%d"#}</div><div class="lc">课程学时：{#$list.classhour#}学时</div><div class="lc">刷新时间：{#$list.refreshtime|date_format:"%Y-%m-%d"#}</div></div>
 			<div class="c">课程描述：{#$list.briefly#}</div>
 		</div>
-		<div class="apply_for_jobs" aid="{#$list.id#}"></div>
+		<div class="apply_for_jobs" aid="{#$list.id#}">申请课程</div>
 	</div>
 	{#/foreach#}
-	{#if $page#}
-	<script type="text/javascript">
-		$(document).ready(function() {
-		// 如果有分页给最后一条添加下边框
-		$(".recommend_curriculum_list .l").last().css("border-bottom","1px dotted #e2e2e2");
-		});
-	</script>
-	<table border="0" align="center" cellpadding="0" cellspacing="0" class="link_bk">
-	        	<tr>
-	          		<td height="50" align="center"> <div class="page link_bk">{#$page#}</div></td>
-	          	</tr>
-	</table>
-	{#/if#}
-	{#else#}
-		<div class="emptytip">抱歉，没有符合此条件的信息！</div>
-	{#/if#}
 </div>
+{#if $page#}
+<script type="text/javascript">
+    $(document).ready(function() {
+    // 如果有分页给最后一条添加下边框
+    $(".recommend_curriculum_list .l").last().css("border-bottom","1px dotted #e2e2e2");
+    });
+</script>
+<table border="0" align="center" cellpadding="0" cellspacing="0" class="link_bk">
+            <tr>
+                <td height="50" align="center"> <div class="page link_bk">{#$page#}</div></td>
+            </tr>
+</table>
+{#/if#}
+{#else#}
+    <div class="emptytip">抱歉，没有符合此条件的信息！</div>
+{#/if#}
+
 <!-- 课程列表 End-->
 {#include file="footer.htm"#}
 </body>

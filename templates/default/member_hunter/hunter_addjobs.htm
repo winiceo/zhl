@@ -243,6 +243,10 @@ $("#Form1").validate({
     maxlength:30
    },
    category: "required",
+   xs_money: "required",
+   amount: "required",
+   interview_money: "required",
+   entry_money: "required",
    department: "required",
    reporter: "required",
    subsite_id: "required",
@@ -325,6 +329,18 @@ $("#Form1").validate({
    },
     department: {
     required: jQuery.format("请填写所属部门")
+   },
+   xs_money: {
+    required: jQuery.format("请填写悬赏葫芦币")
+   },
+   amount: {
+    required: jQuery.format("请填写招聘人数")
+   },
+   interview_money: {
+    required: jQuery.format("请填写成功面试奖励")
+   },
+   entry_money: {
+    required: jQuery.format("请填写成功入职奖励")
    },
     reporter: {
     required: jQuery.format("请填写汇报对象")
@@ -538,6 +554,26 @@ imgcaptcha("#postcaptcha","#imgdiv");
 		  <tr>
 			<td width="125" align="right"><span class="nec">职位名称</span>：</td>
 			<td width="250"><input name="jobs_name" type="text" class="input_text_200" id="jobs_name" maxlength="30" value=""/></td>
+			<td></td>
+		  </tr>
+           <tr>
+			<td align="right"><span class="nec">悬赏葫芦币</span>：</td>
+			<td><input name="xs_money" type="text" class="input_text_200" id="xs_money" maxlength="4" value=""/><span>葫芦币</span></td>
+			<td></td>
+		  </tr>
+          <tr>
+			<td align="right"><span class="nec">招聘人数</span>：</td>
+			<td><input name="amount" type="text" class="input_text_200" id="amount" maxlength="4" value="5"/></td>
+			<td></td>
+		  </tr>
+          <tr>
+			<td align="right"><span class="nec">成功面试奖励</span>：</td>
+			<td><input name="interview_money" type="text" class="input_text_200" id="interview_money" maxlength="4" value=""/><span>元</span></td>
+			<td></td>
+		  </tr>
+           <tr>
+			<td align="right"><span class="nec">成功入职奖励</span>：</td>
+			<td><input name="entry_money" type="text" class="input_text_200" id="entry_money" maxlength="4" value=""/><span>元</span></td>
 			<td></td>
 		  </tr>
 		  <tr class="jobmain">
@@ -964,15 +1000,19 @@ imgcaptcha("#postcaptcha","#imgdiv");
 <script type="text/javascript">
 $(document).ready(function()
 {
-				//积分默认
+				//葫芦币默认
 				check_day();
 				total();				
 				$("#days").keyup(function(){
 				check_day();
 				total()
 				});
+				$("#xs_money").keyup(function(){
+				check_xs();
+				total()
+				});
 	
-				//计算发布天数对应的积分
+				//计算发布天数对应的葫芦币
 				function check_day()
 				{
 					var jobs_daily = {#$points.hunter_hunterjobs_daily.value#};
@@ -987,11 +1027,31 @@ $(document).ready(function()
 						else
 						{
 						$("#days_info").html("设置有效时间&nbsp;"+$("#days").val()+"&nbsp;天，发布后将扣除&nbsp;<strong><span style=\"color:#FF3300\">"+count_days_pon+"</span></strong>&nbsp;{#$QISHI.hunter_points_quantifier#}{#$QISHI.hunter_points_byname#}");
-							$("#release_daysa").html(" ☉ 您设置的有效时间&nbsp;&nbsp;"+$("#days").val()+"&nbsp;&nbsp;天，发布后将扣除&nbsp;&nbsp;<strong>"+count_days_pon+"</strong>&nbsp;&nbsp;{#$QISHI.hunter_points_quantifier#}{#$QISHI.hunter_points_byname#}<br />");
+							$("#release_daysa").html(" ? 您设置的有效时间&nbsp;&nbsp;"+$("#days").val()+"&nbsp;&nbsp;天，发布后将扣除&nbsp;&nbsp;<strong>"+count_days_pon+"</strong>&nbsp;&nbsp;{#$QISHI.hunter_points_quantifier#}{#$QISHI.hunter_points_byname#}<br />");
 						}	
 					}
 				}
-				//计算总计积分
+				//计算悬赏对应的葫芦币
+				function check_xs()
+				{
+					var xs_money = $("#xs_money").val();
+					if (xs_money>0)
+					{
+						var total_money= $("#amount").val()*xs_money;
+						if ($("#total_money").val()< {#$QISHI.hunter_add_days_min#})
+						{
+							$("#release_xs_info").html("");
+							$("#release_xs").html(" ");
+						}
+						else
+						{
+						$("#release_xs_info").html("设置悬赏金额&nbsp;"+$("#xs_money").val()+"&nbsp;葫芦币，招聘人数&nbsp;"+$("#amount").val()+"&nbsp;人，发布后将扣除&nbsp;<strong><span style=\"color:#FF3300\">"+total_money+"</span></strong>&nbsp;{#$QISHI.hunter_points_quantifier#}{#$QISHI.hunter_points_byname#}");
+							$("#release_xs").html(" ? 设置悬赏金额&nbsp;"+$("#xs_money").val()+"&nbsp;葫芦币，招聘人数&nbsp;"+$("#amount").val()+"&nbsp;人，发布后将扣除&nbsp;&nbsp;<strong>"+total_money+"</strong>&nbsp;&nbsp;{#$QISHI.hunter_points_quantifier#}{#$QISHI.hunter_points_byname#}<br />");
+						}
+							
+					}
+				}
+				//计算总计葫芦币
 				function total()
 				{
 							var points = {#$points_total#};
@@ -999,10 +1059,11 @@ $(document).ready(function()
 							var jobs_daily = {#$points.hunter_hunterjobs_daily.value#};
 							var input_days=$("#days").val();
 							var day_pointst=input_days*jobs_daily;
-							var totals=day_pointst+jobs_add;
+							var total_money=($("#xs_money").val())*($("#amount").val());
+							var totals=day_pointst+jobs_add+total_money;
 						if (jobs_add>0)
 						{
-						$("#release_jobs_add").html(" ☉ 发布本条信息将扣除&nbsp;&nbsp;<strong>"+jobs_add+"</strong>&nbsp;&nbsp;{#$QISHI.hunter_points_quantifier#}{#$QISHI.hunter_points_byname#}<br/>");
+						$("#release_jobs_add").html(" ? 发布本条信息将扣除&nbsp;&nbsp;<strong>"+jobs_add+"</strong>&nbsp;&nbsp;{#$QISHI.hunter_points_quantifier#}{#$QISHI.hunter_points_byname#}<br/>");
 						}				
 						$("#total").html("发布本条信息总计扣除&nbsp;<span style=\"font-size:20px; color: #FF0000\" >"+totals+"</span>&nbsp;{#$QISHI.hunter_points_quantifier#}{#$QISHI.hunter_points_byname#}，你目前共有<strong style=\"color:#0033FF\"> {#$points_total#}  </strong>{#$QISHI.hunter_points_quantifier#}{#$QISHI.hunter_points_byname#}；<br />");
 						$("#totals").val({#$points_total#}-totals);	
@@ -1011,7 +1072,7 @@ $(document).ready(function()
 				{
 					if ($("#totals").val()<0)
 					{
- 						alert("您的积分不足，请充值后再发布！");
+ 						alert("您的葫芦币不足，请充值后再发布！");
  					}
 					else
 					{
@@ -1033,8 +1094,9 @@ $(document).ready(function()
 				<div id="release_jobs_add"></div>
 	            <div id="release_info"></div>
 				<div id="release_daysa"></div>
+                <div id="release_xs"></div>
 				<div id="total"></div>
-				   <a href="company_service.php?act=account" target="_blank">[积分消费明细]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="company_service.php?act=account" target="_blank">[积分消费规则]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="company_service.php?act=order_add">[充值积分]</a>
+				   <a href="company_service.php?act=account" target="_blank">[葫芦币消费明细]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="company_service.php?act=account" target="_blank">[葫芦币消费规则]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="company_service.php?act=order_add">[充值葫芦币]</a>
 			</td>
 		  </tr>
 	    </table>

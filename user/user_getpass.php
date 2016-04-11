@@ -55,6 +55,7 @@ elseif ($act=='get_pass_step2')
 	$smarty->assign('token',$token);
 	$smarty->assign('usinfo',$usinfo);
 	$smarty->assign('title','找回密码 - 验证身份-'.$_CFG['site_name']);
+	sms_get_token();
 	$smarty->display('user/get-pass-step2.htm');
 }
 // 找回密码 第三步

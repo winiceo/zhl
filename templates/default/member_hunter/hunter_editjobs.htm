@@ -477,6 +477,26 @@ $("#Form1").validate({
 			<td width="250"><input name="jobs_name" type="text" class="input_text_200" id="jobs_name" maxlength="30" value="{#$jobs.jobs_name#}"/></td>
 			<td></td>
 		  </tr>
+          <tr>
+			<td align="right"><span class="nec">悬赏葫芦币</span>：</td>
+			<td><input name="xs_money" type="text" class="input_text_200" id="xs_money" maxlength="4" value="{#$jobs.xs_money#}"/><span>葫芦币</span></td>
+			<td></td>
+		  </tr>
+          <tr>
+			<td align="right"><span class="nec">招聘人数</span>：</td>
+			<td><input name="amount" type="text" class="input_text_200" id="amount" maxlength="4" value="{#$jobs.amount#}"/></td>
+			<td></td>
+		  </tr>
+          <tr>
+			<td align="right"><span class="nec">成功面试奖励</span>：</td>
+			<td><input name="interview_money" type="text" class="input_text_200" id="interview_money" maxlength="4" value="{#$jobs.interview_money#}"/><span>元</span></td>
+			<td></td>
+		  </tr>
+           <tr>
+			<td align="right"><span class="nec">成功入职奖励</span>：</td>
+			<td><input name="entry_money" type="text" class="input_text_200" id="entry_money" maxlength="4" value="{#$jobs.entry_money#}"/><span>元</span></td>
+			<td></td>
+		  </tr>
 		  <tr class="jobmain">
 			<td align="right"><span class="nec">职位类别</span>：</td>
 			<td id="jobsCityAD" style="position:relative;float:left;">
@@ -920,7 +940,7 @@ $("#Form1").validate({
 <script type="text/javascript">
 $(document).ready(function()
 {
-				//积分默认
+				//葫芦币默认
 				check_day();
 				total();
 				
@@ -929,7 +949,7 @@ $(document).ready(function()
 				total()
 				});
 	
-				//计算发布天数对应的积分
+				//计算发布天数对应的葫芦币
 				function check_day()
 				{
 					var jobs_daily = {#$points.hunter_hunterjobs_daily.value#};
@@ -944,11 +964,11 @@ $(document).ready(function()
 						else
 						{
 						$("#days_info").html("延长有效时间&nbsp;"+$("#days").val()+"&nbsp;天，修改后将扣除&nbsp;<strong><span style=\"color:#FF3300\">"+count_days_pon+"</span></strong>&nbsp;{#$QISHI.hunter_points_quantifier#}{#$QISHI.hunter_points_byname#}");
-							$("#release_daysa").html(" ☉ 延长有效时间&nbsp;&nbsp;"+$("#days").val()+"&nbsp;&nbsp;天，修改后将扣除&nbsp;&nbsp;<strong>"+count_days_pon+"</strong>&nbsp;&nbsp;{#$QISHI.hunter_points_quantifier#}{#$QISHI.hunter_points_byname#}<br />");
+							$("#release_daysa").html(" ? 延长有效时间&nbsp;&nbsp;"+$("#days").val()+"&nbsp;&nbsp;天，修改后将扣除&nbsp;&nbsp;<strong>"+count_days_pon+"</strong>&nbsp;&nbsp;{#$QISHI.hunter_points_quantifier#}{#$QISHI.hunter_points_byname#}<br />");
 						}	
 					}
 				}
-				//计算总计积分
+				//计算总计葫芦币
 				function total()
 				{
 							var points = {#$points_total#};
@@ -959,7 +979,7 @@ $(document).ready(function()
 							var totals=day_pointst+jobs_edit;
 						if (jobs_edit>0)
 						{
-						$("#release_jobs_edit").html(" ☉ 修改本条信息将扣除&nbsp;&nbsp;<strong>"+jobs_edit+"</strong>&nbsp;&nbsp;{#$QISHI.hunter_points_quantifier#}{#$QISHI.hunter_points_byname#}<br/>");
+						$("#release_jobs_edit").html(" ? 修改本条信息将扣除&nbsp;&nbsp;<strong>"+jobs_edit+"</strong>&nbsp;&nbsp;{#$QISHI.hunter_points_quantifier#}{#$QISHI.hunter_points_byname#}<br/>");
 						}				
 						$("#total").html("修改本条信息总计扣除&nbsp;<span style=\"font-size:20px; color: #FF0000\" >"+totals+"</span>&nbsp;{#$QISHI.hunter_points_quantifier#}{#$QISHI.hunter_points_byname#}，你目前共有<strong style=\"color:#0033FF\"> {#$points_total#}  </strong>{#$QISHI.hunter_points_quantifier#}{#$QISHI.hunter_points_byname#}；<br />");
 						$("#totals").val({#$points_total#}-totals);	
@@ -968,7 +988,7 @@ $(document).ready(function()
 				{
 					if ($("#totals").val()<0)
 					{
- 						alert("您的积分不足，请充值后再发布！");
+ 						alert("您的葫芦币不足，请充值后再发布！");
  					}
 					else
 					{
@@ -992,7 +1012,7 @@ $(document).ready(function()
 				<div id="release_daysa"></div>
 				<div id="total"></div>
 				<input name="totals" id="totals" type="hidden" value="0" />
-								   <a href="hunter_service.php?act=account" target="_blank">[积分消费明细]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="company_service.php?act=account" target="_blank">[积分消费规则]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="company_service.php?act=order_add">[充值积分]</a>
+								   <a href="hunter_service.php?act=account" target="_blank">[葫芦币消费明细]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="company_service.php?act=account" target="_blank">[葫芦币消费规则]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="company_service.php?act=order_add">[充值葫芦币]</a>
 			</td>
 		  </tr>
 	    </table>

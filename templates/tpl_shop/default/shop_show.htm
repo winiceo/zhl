@@ -5,8 +5,9 @@
 <meta name="renderer" content="webkit"> 
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/> 
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<title>积分商城-商品详细-{#$show.shop_title#}</title>
+<title>葫芦币商城-商品详细-{#$show.shop_title#}</title>
 <link rel="stylesheet" href="{#$QISHI.site_shop_template#}css/shop.css" />
+<link rel="stylesheet" href="{#$QISHI.site_template#}css/header.css" />
 <script src="{#$QISHI.site_shop_template#}js/jquery.js"></script>
 <script>
 	$(document).ready(function() {
@@ -128,8 +129,8 @@
 							<span>{#$show.click#}</span>
 						</div>
 						<div class="comm-b-item clearfix">
-							<div class="cb-type f-left">所需积分：</div>
-							<div class="cb-content f-left"><span>{#$show.shop_points#}</span>积分</div>
+							<div class="cb-type f-left">所需葫芦币：</div>
+							<div class="cb-content f-left"><span>{#$show.shop_points#}</span>葫芦币</div>
 						</div>
 						<div class="comm-b-item clearfix">
 							<div class="cb-type f-left">剩余库存：</div>
@@ -196,11 +197,11 @@
 		<div class="fourthree-right">
 			<div class="count-box">
 				{#if empty($smarty.session.username)#}
-				<a href="javascript:;" class="account-login" style="display: block;">我的积分</a>
+				<a href="javascript:;" class="account-login" style="display: block;">我的葫芦币</a>
 				{#else#}
 				<div class="count-info">
 					<h4>{#$com_info.companyname#}</h4>
-					<p>账户积分：<span>{#$com_point#}</span> 分</p>
+					<p>账户葫芦币：<span>{#$com_point#}</span> 分</p>
 				</div>
 				{#/if#}
 			</div>
@@ -213,7 +214,7 @@
 						<div class="like-pic f-left"><a href="{#$li.shop_url#}"><img src="{#if $li.shop_img#}{#$QISHI.site_dir#}data/shop/thumb/{#$li.shop_img#}{#else#}{#$QISHI.site_dir#}data/shop/no_img.png{#/if#}" alt="商品图片" width="53" height="53" /></a></div>
 						<div class="like-detail f-left">
 							<p><a href="{#$li.shop_url#}" title="{#$li.shop_title#}">{#$li.shop_title_#}</a></p>
-							<div class="price">积分：<span>{#$li.shop_points#}</span></div>
+							<div class="price">葫芦币：<span>{#$li.shop_points#}</span></div>
 						</div>
 					</div>
 					{#/foreach#}

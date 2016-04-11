@@ -1012,6 +1012,12 @@ function allaround(dir) {
 		var type = $(this).attr('type'),
 			code = $(this).attr('code');
 		if (type == 'resumetag') {
+			
+			if($(this).attr('code')==''){
+				
+					$("#"+type).val('');
+					
+			}
 			if ($(this).hasClass('select')) {
 				if ($("#"+type).val()) {
 					var resumetagArray = $("#"+type).val().split(",");
@@ -1156,6 +1162,7 @@ function generateBackground() {
 $(function(){
 	var subsiteId = $("#citycategory").data('code'),
 		districtIdArr = $("#citycategory").val().split('.'),
+		
 		subsiteHtm = '',
 		ishowMoreOne = true,
 		ishowMoreTwo = true;
@@ -1175,9 +1182,20 @@ $(function(){
 		$('.districtTwo .fl-content-li:gt(12)').hide();
 	};
 
-	function getDistrict(arr, parentid, position, cla) {
+	function getDistrict(arr, parentid, position, cla,citycategory_id) {
 		var showMore = true;
 		subsiteHtm += '<div class="filter-list-wrap clearfix ' + cla + '"><div class="fl-type f-left">' + $("#subsiteBox").data('txt').split(',')[position] + '：</div><div class="fl-content r-choice f-left">';
+		var strstr='';
+		cla=='districtOne'?strstr='':strstr=districtIdArr[0]+'.0';
+		if((districtIdArr[0]==0 && cla=='districtOne') || (districtIdArr[1]==0 && cla=='districtTwo')){
+			
+			subsiteHtm += '<div class="fl-content-li select" type="citycategory"  style="margin-right: 20px;" code="'+strstr+'">全部</div>';
+		}else
+		{
+			subsiteHtm += '<div class="fl-content-li " type="citycategory"  style="margin-right: 20px;" code="'+strstr+'">全部</div>';
+		}
+		
+		
 		if (arr) {
 			$.each(arr, function(index, val) {
 				subsiteHtm += '<div class="fl-content-li';

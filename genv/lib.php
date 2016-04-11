@@ -26,8 +26,8 @@ ORM::configure('driver_options', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAME
 
 class Ggven{
     public static function trim($str){
-        $pattern = "/[,£¬]/i";
-        $str= preg_replace($pattern, ',', trim($str));
+//        $pattern = "/[,£¬]/i";
+       $str= str_replace(",", ',', trim($str));
 
         return trim($str);
     }
@@ -37,7 +37,7 @@ class Ggven{
     }
     public static function log($log_string){
         $logpath="/data/logs/74cms/";
-        error_log($log_string . "\n", 3, $logpath . '74cms.log');
+        error_log($log_string . "\n", 3, $logpath . 'msg.log');
     }
     public static function  birthdate($value){
         $value=str_replace("/","-",$value);

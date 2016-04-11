@@ -10,8 +10,8 @@
 	<title>{#$QISHI.site_name#}-注册</title>
 	<meta name="description" content="{#$page.description#}" id="description">
 	<meta name="keywords" content="{#$page.keywords#}">
-<meta name="author" content="找葫芦网" />
-<meta name="copyright" content="zhaohulu.com" />
+	<meta name="author" content="找葫芦" />
+	<meta name="copyright" content="zhaohulu.com" />
 	<link rel="stylesheet" href="./css/common.css">
 	<link rel="stylesheet" href="./css/login-reg.css">
 	<script type="text/javascript" src="./js/jquery-1.11.3.js" ></script>
@@ -108,26 +108,31 @@
 				}
 			});
 			// 发送验证码
+			var isFirstcodeBtn = true;
 			$('#codeBtn').on('click', function() {
-				$.post('?act=reg_send_code', {'act':'reg_send_code','mobile':$('#mobile').val()}, function(data) {
-					if($.trim(data)!='success')
-					{
-						if(data=='请60秒后重新验证！')
+				if (isFirstcodeBtn) {
+					isFirstcodeBtn =false;
+					$.post('?act=reg_send_code', {'act':'reg_send_code','mobile':$('#mobile').val()}, function(data) {
+						isFirstcodeBtn = true;
+						if($.trim(data)!='success')
+						{
+							if(data=='请60秒后重新验证！')
+							{
+								showTime(60);
+							}
+							var html = '<div class="user-form-error" style="display: block;"><i class="error-icon"></i>'+data+'</div>';
+							$("#err").html(html);
+							setTimeout(function () {
+			                    $("#err .user-form-error").hide();
+			                }, 1000);
+						}
+						else
 						{
 							showTime(60);
+							$('.mobile_reg').removeAttr("disabled"); 
 						}
-						var html = '<div class="user-form-error" style="display: block;"><i class="error-icon"></i>'+data+'</div>';
-						$("#err").html(html);
-						setTimeout(function () {
-		                    $("#err .user-form-error").hide();
-		                }, 1000);
-					}
-					else
-					{
-						showTime(60);
-						$('.mobile_reg').removeAttr("disabled"); 
-					}
-				});
+					});
+				}
 			});
 			//手机注册
 			$('.mobile_reg').on('click', function() {

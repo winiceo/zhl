@@ -551,7 +551,7 @@ $app->post('/genv/payhulu', function ($request, $response) {
         $sql=vsprintf("UPDATE %s SET `balance` = balance-%d WHERE `uid` = %d and `balance`>=%d ", array(table("members_points"),$amount,$uid,$amount));
 
         ORM::raw_execute($sql);
-        //增加积分；
+        //增加葫芦币；
         $sql=vsprintf("UPDATE %s SET `points` = points+%d WHERE `uid` = %d   ", array(table("members_points"),$amount,$uid));
 
         ORM::raw_execute($sql);

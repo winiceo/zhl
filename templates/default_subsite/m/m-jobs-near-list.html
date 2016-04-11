@@ -12,20 +12,20 @@
 	<meta name="keywords" content="{#$page.keywords#}">
 	<link rel="stylesheet" href="./css/common.css">
 	<link rel="stylesheet" href="./css/search.css">
-	<script src="{#$QISHI.site_domain#}{#$QISHI.site_template#}js/jquery.js" type='text/javascript' ></script>
+	<script src="{#$QISHI.main_domain#}templates/{#$QISHI.template_dir#}js/jquery.js" type='text/javascript' ></script>
 	<script type='text/javascript' src="./js/jquery.common.js" ></script>
 	<script type="text/javascript" src="./js/iscroll.js" ></script>
 	<script type="text/javascript" src="./js/filter.js" ></script>
 	<script type='text/javascript' src="./js/jquery.pinterest.js" ></script>
 	<script type="text/javascript" src="./js/layer/layer.js" ></script>
 	<script type="text/javascript" src="./js/searchBar.js" ></script>
-	<script src="{#$QISHI.site_domain#}{#$QISHI.site_dir#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
+	<script src="{#$QISHI.main_domain#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
 	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=np21m1qLWsuF4gGwzSwYMpC4"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			var mode = "{#$smarty.get.lng#}";console.log(mode.length);
+			var mode = "{#$smarty.get.lng#}";
 			if (!(mode.length > 0)) {
-				$(".remindnoinfo,.loadinglist").show();
+				$(".loadinglist").show();
 				// 根据浏览器定位
 				var map = new BMap.Map("mapcontainer");
 				var point = new BMap.Point({#$QISHI.map_center_x#},{#$QISHI.map_center_y#});
@@ -39,7 +39,6 @@
 						map.panTo(r.point);
 						$("#hlng").val(r.point.lng);
 						$("#hlat").val(r.point.lat);
-						console.log(mode);
 						var	key = $("#key").val(),
 							district = $("#hdistrict").val(),
 							sdistrict = $("#hsdistrict").val(),
@@ -65,15 +64,17 @@
 						{   
 							if(data == '-1')
 							{
-								$(".remindnoinfo").show().find(".flex2").text("没有更多职位了！");
+								$(".remindnoinfo").show();
 								$(".loadinglist").hide();
+								$(".positoninfo").hide();
 							} else {
 								$("#container").html(data);
 								$(".remindnoinfo,.loadinglist").hide();
+								$(".positoninfo").hide();
 								$('.thisurl').on('click', function(event) {
 									window.location.href =  $(this).attr('url');
 								});
-								pinterest("{#$QISHI.wap_domain#}/jobs-near-list.php?act=ajaxjobsnearlist&key=" + encodeURIComponent(key) + "&district=" + district + "&sdistrict=" + sdistrict + "&experience=" + experience + "&education=" + education + "&topclass=" + topclass + "&category=" + category + "&subclass=" + subclass + "&settr=" + settr + "&wage=" + wage + "&nature=" + nature + "&scale=" + scale + "&district_cn=" + district_cn + "&category_cn=" + category_cn + "&experience_cn=" + experience_cn + "&settr_cn=" + settr_cn + "&education_cn=" + education_cn + "&wage_cn=" + wage_cn + "&nature_cn=" + nature_cn + "&scale_cn=" + scale_cn + "");
+								pinterest("{#$QISHI.wap_domain#}/jobs-near-list.php?act=ajaxjobsnearlist&key=" + encodeURIComponent(key) + "&district=" + district + "&sdistrict=" + sdistrict + "&experience=" + experience + "&education=" + education + "&topclass=" + topclass + "&category=" + category + "&subclass=" + subclass + "&settr=" + settr + "&wage=" + wage + "&nature=" + nature + "&scale=" + scale + "&district_cn=" + district_cn + "&category_cn=" + category_cn + "&experience_cn=" + experience_cn + "&settr_cn=" + settr_cn + "&education_cn=" + education_cn + "&wage_cn=" + wage_cn + "&nature_cn=" + nature_cn + "&scale_cn=" + scale_cn + "&lng=" + r.point.lng + "&lat=" + r.point.lat + "");
 							}
 						});
 					}
@@ -210,16 +211,14 @@
 						</div>
 					</article>
 					<!-- 没有更多职位了 -->
-					<article class="optionlist optionlisteditworkexp personalinfo remindnoinfo">
+					<article class="optionlist optionlisteditworkexp personalinfo positoninfo">
 						<section class="flex-box list" url="">
 							<div class="right cof90 flex2 nobm">正在获取当前位置，请稍等...</div>
 						</section>
 					</article>
 				</div>
-				<div class="global-list-more layout-box box-center-v">
-					{#if !$jobs#}
+				<div class="global-list-more layout-box box-center-v remindnoinfo">
 					<a href="javascript:;" class="box-col ">没有更多职位了</a>
-					{#/if#}
 				</div>
 			</div>
 		</div>

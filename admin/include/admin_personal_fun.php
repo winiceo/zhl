@@ -817,7 +817,7 @@ function resume_search_str($arr,$str,$arrinname)
 		}
 	}	
 }
-//获取积分规则
+//获取葫芦币规则
 function get_points_rule()
 {
 	global $db;
@@ -849,4 +849,134 @@ function report_deal($uid,$i_type=1,$points=0)
 	$sql = "UPDATE ".table('members_points')." SET points= '{$points_val}' WHERE uid='{$uid}'  LIMIT 1 ";
 	return $db->query($sql);
 }
+//获取充值支付方式名称
+function get_payment_info($typename,$name=false)
+{
+	global $db;
+	$sql = "select * from ".table('payment')." where typename ='".$typename."'";
+	$val=$db->getone($sql);
+	if ($name)
+	{
+	return $val['byname'];
+	}
+	else
+	{
+	return $val;
+	}
+}
+function get_order_list($offset,$perpage,$get_sql= '')
+{
+	global $db;
+	$row_arr = array();
+	$limit=" LIMIT ".$offset.','.$perpage;
+	$result = $db->query("SELECT o.*,m.username,m.email,c.realname FROM ".table('order')." as o ".$get_sql.$limit);
+	while($row = $db->fetch_array($result))
+	{
+		if($row['payment_name'] == 'points'){
+			$row['payment_name']='葫芦币';
+		}else{
+			$row['payment_name']=get_payment_info($row['payment_name'],true);
+		} 
+		$row_arr[] = $row;
+	}
+	return $row_arr;
+}
+//获取订单
+function get_order_one($id=0)
+{
+	global $db;
+	$sql = "select * from ".table('order')." where id=".intval($id)." LIMIT 1";
+	$val=$db->getone($sql);
+	$val['payment_name']=get_payment_info($val['payment_name'],true);
+	$val['payment_username']=get_user($val['uid']);
+	return $val;
+}
+//付款后开通
+function order_paid($v_oid)
+{
+	global $db,$timestamp,$_CFG;
+	$order=$db->getone("select * from ".table('order')." WHERE oid ='{$v_oid}' AND is_paid= '1' LIMIT 1 ");
+	if($order['pay_type'] == '1'  || $order['pay_type'] == '4')			//套餐葫芦币支付
+	{
+		$order_name = "套餐葫芦币订单";
+		$user=get_user($order['uid']);
+		$sql = "UPDATE ".table('order')." SET is_paid= '2',payment_time='{$timestamp}' WHERE oid='{$v_oid}' LIMIT 1 ";
+		if (!$db->query($sql)) return false;
+		if($order['amount']=='0.00'){
+			$ismoney=1;
+		}else{
+			$ismoney=2;
+		}
+		if ($order['points']>0)
+		{
+				report_deal($order['uid'],1,$order['points']);				
+				$user_points=get_user_points($order['uid']);
+				$notes="操作人：{$_SESSION['admin_name']},说明：确认收款。收款金额：{$order['amount']} 。".date('Y-m-d H:i',time())."通过：".get_payment_info($order['payment_name'],true)." 成功充值 ".$order['amount']."元，(+{$order['points']})，(剩余:{$user_points}),订单:{$v_oid}";					
+				write_memberslog($order['uid'],1,9001,$user['username'],$notes);
+				//会员套餐变更记录。管理员后台设置会员订单购买成功。4表示：管理员后台开通
+				write_setmeallog($order['uid'],$user['username'],$notes,4,$order['amount'],$ismoney,1,1);
+		}
+		if ($order['setmeal']>0)
+		{
+				set_members_setmeal($order['uid'],$order['setmeal']);
+				$setmeal=get_setmeal_one($order['setmeal']);
+				$notes="操作人：{$_SESSION['admin_name']},说明：确认收款，收款金额：{$order['amount']} 。".date('Y-m-d H:i',time())."通过：".get_payment_info($order['payment_name'],true)." 成功充值 ".$order['amount']."元并开通{$setmeal['setmeal_name']}";
+				write_memberslog($order['uid'],1,9002,$user['username'],$notes);
+				//会员套餐变更记录。管理员后台设置会员订单购买成功。4表示：管理员后台开通
+				write_setmeallog($order['uid'],$user['username'],$notes,4,$order['amount'],$ismoney,2,1);
+		
+		}
+	}
+	elseif($order['pay_type'] == '2')		//广告位支付
+	{	
+		$order_name = "广告位订单"; 
+		$sql = "UPDATE ".table('order')." SET is_paid= '2',payment_time='{$timestamp}' WHERE oid='{$v_oid}' LIMIT 1 ";	//is_paid =2 为确定支付
+		if (!$db->query($sql)) return false; 
+		write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"申请广告位：<strong>{$order['description']}</strong>，(花费： {$order['amount']})。",1,1020,"申请广告位","-{$order['amount']}","{$user_points}"); 
+	}
+	elseif($order['pay_type'] == '3')		//短信支付
+	{	
+		$order_name = "短信订单"; 
+		$user=get_user($order['uid']);
+		$sql = "UPDATE ".table('order')." SET is_paid= '2',payment_time='{$timestamp}' WHERE oid='{$v_oid}' LIMIT 1 ";
+		if (!$db->query($sql)) return false;
+		if($order['setmeal'] > 0){	//查看短信套餐
+			set_members_sms($order['uid'],intval($order['setmeal']));	//支付成功，向用户增加短信条数
+			$user_points = get_user_setmeal($order['uid']);
+			write_memberslog($_SESSION['uid'],1,9003,$_SESSION['username'],"短信充值套餐：<strong>{$order['description']}</strong>，(- {$order['amount']})，(剩余:{$user_points['set_sms']})",1,1020,"申请广告位","- {$order['amount']}","{$user_points['set_sms']}");
+		}
+	} 
+		//发送邮件
+	$mailconfig=get_cache('mailconfig');
+	if ($mailconfig['set_payment']=="1" && $user['email_audit']=="1")
+	{
+	dfopen($_CFG['site_domain'].$_CFG['site_dir']."plus/asyn_mail.php?uid=".$order['uid']."&key=".asyn_userkey($order['uid'])."&act=set_payment");
+	}
+	//发送邮件完毕
+	//sms
+	$sms=get_cache('sms_config');
+	if ($sms['open']=="1" && $sms['set_payment']=="1"  && $user['mobile_audit']=="1")
+	{
+	dfopen($_CFG['site_domain'].$_CFG['site_dir']."plus/asyn_sms.php?uid=".$order['uid']."&key=".asyn_userkey($order['uid'])."&act=set_payment");
+	}
+	//微信通知
+	set_payment($order['uid'],$order_name,$order['oid'],$order['amount']);
+	write_log("将订单号为".$v_oid."的订单设置为确认收款", $_SESSION['admin_name'],3);
+	return true;
+}
+//取消订单
+function del_order($id)
+{
+	global $db;
+	if (!is_array($id))$id=array($id);
+	$sqlin=implode(",",$id);
+	if (preg_match("/^(\d{1,10},)*(\d{1,10})$/",$sqlin))
+	{
+		if (!$db->query("Delete from ".table('order')." WHERE id IN (".$sqlin.")  AND is_paid=1 ")) return false;
+		write_log("取消订单id为".$sqlin."的订单", $_SESSION['admin_name'],3);	
+		return true;
+	}
+	return false;
+}
+
 ?>

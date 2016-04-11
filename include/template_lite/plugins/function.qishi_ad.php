@@ -86,6 +86,8 @@ else
 if (intval($_CFG['subsite_id'])>0)
 {
 	$wheresql.=" AND (subsite_id=0 or subsite_id=".intval($_CFG['subsite_id']).") ";
+}else{
+	$wheresql.=" AND subsite_id=0  ";
 }
 $result = $db->query("SELECT * FROM ".table('ad')." ".$wheresql.$orderbysql.$limit);
 $arr=array();

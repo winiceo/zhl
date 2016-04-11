@@ -90,7 +90,7 @@ $wheresql=" WHERE is_display=1 ";
 $aset['type_id']?$wheresql.=" AND type_id=".intval($aset['type_id'])." ":'';
 if (intval($_CFG['subsite_id'])>0)
 {
-	$wheresql.=" AND subsite_id=".intval($_CFG['subsite_id'])." ";
+	$wheresql.=" AND (subsite_id=".intval($_CFG['subsite_id'])." or subsite_id = 0)";
 }
 if (isset($aset['paged']))
 {

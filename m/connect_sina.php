@@ -101,7 +101,7 @@ elseif ($act=='reg_save')
 		exit("用户名或邮箱已经存在！");
 	}
 	require_once(QISHI_ROOT_PATH.'include/fun_user.php');
-	$userid=user_register($val['username'],$val['password'],$val['member_type'],$val['email']);
+	$userid=user_register(2,$val['password'],$val['member_type'],$val['email']);
 	if ($userid)
 	{
 		$db->query("UPDATE ".table('members')." SET sina_access_token = '{$_SESSION['sina_access_token']}'  WHERE uid='{$userid}' AND sina_access_token='' LIMIT 1");
@@ -3182,7 +3182,7 @@ class SaeTClientV2
 	 *  - filter_pic	int		过滤器。是否包含图片，0：全部、1：包含、2：不包含，默认为0。
 	 *  - fuid			int		搜索的微博作者的用户UID。
 	 *  - province		int		搜索的省份范围，省份ID。
-	 *  - city			int		搜索的城市范围，城市ID。
+	 *  - city			int		搜索?某鞘蟹段В鞘蠭D。
 	 *  - starttime		int		开始时间，Unix时间戳。
 	 *  - endtime		int		结束时间，Unix时间戳。
 	 *  - count			int		单页返回的记录条数，默认为10。

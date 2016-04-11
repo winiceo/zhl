@@ -85,7 +85,7 @@ function trade_filldata(fillID, data_resources, showID, resultlist, resultshowID
 					$(this).attr('disabled',false);
 					$(this).attr('checked',false);
 				});
-				copyitem();
+				copyitem();city_filldata
 			})
 		} else {
 			$(".cla").hide();
@@ -167,7 +167,7 @@ function city_filldata(fillID, data_resourcesP, data_resources, resultlist, show
 	$(fillID).html(cityhtm);
 	// 全部恢复
 	if ($(resulthidId).val().length > 0) {
-		var recoverid_array = $(resulthidId).val().split(","),
+		var recoverid_array = $(resulthidId).val().split("_"),
 			recovercn_array = new Array();
 		$.each(recoverid_array, function(index, val) {
 			var vspArray = val.split("."),
@@ -341,6 +341,7 @@ function city_filldata(fillID, data_resourcesP, data_resources, resultlist, show
 		} else{
 			var l = $(this).closest("li");
 			var g = l.find(".cat-touch input");
+
 			// 判断是否有选中
 			var rco_resultlist = $(resultlist + " span");
 			if (rco_resultlist.length > 0) {
@@ -468,11 +469,13 @@ function city_filldata(fillID, data_resourcesP, data_resources, resultlist, show
 		};
 		selectedcn_array.length > 0 ? selectedhtm = selectedcn_array.join("+") : selectedhtm = "选择地区类别";
 		$(resultshowID).html(selectedhtm);
-		$(resulthidId).val(selectedid_array.join(","));
+		$(resulthidId).val(selectedid_array.join("_"));
 	}
 	// 点击确定跳转
 	$("#ct-selector-save").click(function() {
 		copy_selected();
+		$('.aui_outer').hide();
+		$(".cc-default").removeClass('aui_is_show');
 		search_location(dir);
 	});
 }
@@ -563,14 +566,14 @@ function allaround(dir) {
 		});
 	});
 	// 热门关键字提示
-	var hotKey = $('#key').autocomplete({
+/*<!--	var hotKey = $('#key').autocomplete({
 		serviceUrl:dir+"plus/ajax_common.php?act=hotword",
 		minChars:1, 
 		maxHeight:400,
 		width:400,
 		zIndex: 1,
 		deferRequestBy: 0 
-	});
+	});-->*/
 	// 回车搜索
 	$('#key').keydown(function(e) {
 		if (e.keyCode==13) {

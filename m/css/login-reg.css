@@ -3,13 +3,13 @@
 **/
 header.global-header .header-right-link{position: absolute;top:10px;right:15px;}
 header.global-header .header-right-link a{color:#fff;font-size: 16px;line-height: 30px;}
-.top-tab{text-align: center;background-color: #fff;width: 100%;height: 46px;border-bottom:1px solid #e2e2e2;margin-bottom: 20px;overflow: hidden;}
+.top-tab{text-align: center;background-color: #fff;width: 100%;height: 46px;border-bottom:1px solid #e2e2e2;overflow: hidden;}
 .top-tab .tab-item{border-bottom: 2px solid transparent;line-height: 46px;box-sizing:border-box;position: relative;padding:0 1px;color:#333;}
 .top-tab .tab-item.active{border-bottom:2px solid #0180cf;color:#0180cf;}
 .top-tab .tab-item::after{content:'';position: absolute;top:8px;right:-1px;width: 1px;height: 24px;background-color: transparent;border-left:1px solid #e2e2e2;}
 .top-tab .tab-item:last-child::after{border:0;}
 
-.user-form-wrap{padding:0 15px;}
+.user-form-wrap{padding:0 15px;margin-top: 20px;}
 .user-form-wrap .form-tab-item{display: none;}
 .user-form-wrap .user-form{background-color: #fff;}
 .user-form-wrap .user-form .form-row{border:1px solid #e2e2e2;border-bottom:0;position: relative;}

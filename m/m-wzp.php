@@ -1,6 +1,6 @@
 <?php
  /*
- * 74cms WAP
+ * WAP
 */
 define('IN_QISHI', true);
 define('REQUEST_MOBILE',true);
@@ -15,6 +15,26 @@ $company_id=$_GET['company_id']?intval($_GET['company_id']):"";
 $vip_menu=$_GET['vip_menu']?intval($_GET['vip_menu']):"";
 if($act == "index")
 {
+
+if((empty($_SESSION['uid']) || empty($_SESSION['username']) || empty($_SESSION['utype'])) &&  $_COOKIE['QS']['username'] && $_COOKIE['QS']['password'] && $_COOKIE['QS']['uid'])
+{
+	require_once(QISHI_ROOT_PATH.'include/fun_user.php');
+	if(check_cookie($_COOKIE['QS']['uid'],$_COOKIE['QS']['username'],$_COOKIE['QS']['password']))
+	{
+	update_user_info($_COOKIE['QS']['uid'],false,false);
+	header("Location:".get_member_url($_SESSION['utype']));
+	}
+	else
+	{
+	unset($_SESSION['uid'],$_SESSION['username'],$_SESSION['utype'],$_SESSION['uqqid'],$_SESSION['activate_username'],$_SESSION['activate_email'],$_SESSION["openid"]);
+	setcookie("QS[uid]","",time() - 3600,$QS_cookiepath, $QS_cookiedomain);
+	setcookie('QS[username]',"", time() - 3600,$QS_cookiepath, $QS_cookiedomain);
+	setcookie('QS[password]',"", time() - 3600,$QS_cookiepath, $QS_cookiedomain);
+	setcookie("QS[utype]","",time() - 3600,$QS_cookiepath, $QS_cookiedomain);
+	}	
+}
+
+	
 	// 企业信息
 	if($company_id>0)
 	{	
@@ -27,6 +47,64 @@ if($act == "index")
 		$db->inserttable(table('company_praise'),$insetarr);
 		
 		$company_info=$db->getone("SELECT * from ".table("company_profile")." where id=$company_id limit 1");
+		// 0 游客     1 已登录会员     2 已登录且发布了有效简历
+		
+		
+		if($company_info['telephone_show'] ==1 ){
+			$phone=get_cache('config');
+			if($phone['showjobcontact'] == 0){
+				$phone_error='';
+				$phone_error_tet='';
+				$phone_url= $phone['site_domain'].'/m/login.php';
+				$phone_code = 1;
+			}elseif ($phone['showjobcontact'] == 1) {
+				
+				if ($_SESSION['uid']=='' || $_SESSION['username']=='' || intval($_SESSION['uid'])===0)
+				{
+					$phone_error='对不起，请登录后继续查看企业联系方式';
+					$phone_error_tet='登录';
+					$phone_url= $phone['site_domain'].'/m/login.php';
+					$phone_code = 0;
+				}else{
+					$phone_code = 1;
+				}
+				
+			}elseif ($phone['showjobcontact'] == 2) {
+				if ($_SESSION['uid']=='' || $_SESSION['username']=='' || intval($_SESSION['uid'])===0)
+				{
+					$phone_error='对不起，请登录后继续查看企业联系方式';
+					$phone_error_tet='登录';
+					$phone_url= $phone['site_domain'].'/m/login.php';
+					$phone_code = 0;
+				}else{
+						if($_SESSION['uid']){
+						$resume=$db->getone("SELECT uid from ".table("resume")." where uid={$_SESSION['uid']} limit 1");
+						}
+						if(!$resume){
+							$phone_error='对不起，您还没有有效简历，请先创建一份求职简历';
+							$phone_error_tet='创建';
+							$phone_url= $phone['site_domain'].'/m/personal/user.php?act=make_resume';
+							$phone_code = 0;
+						}
+						else
+						{
+							$phone_code = 1;
+						}
+				}
+			}
+		}else{
+				$phone_error='该企业不接受电话咨询，请直接投递简历';
+				$phone_error_tet='投递';
+				$phone_url= $phone['site_domain'].'/m/company-show.php?id='.$company_info['id'];
+				$phone_code = 0;
+		}
+		
+		$smarty->assign('phone_code',$phone_code);
+		$smarty->assign('phone_url',$phone_url);
+		$smarty->assign('phone_error',$phone_error);
+		$smarty->assign('phone_error_tet',$phone_error_tet);
+
+
 		$company_info['contents'] = htmlspecialchars_decode($company_info['contents'],ENT_QUOTES);
 		//统计点赞数
 		$praise = $db->get_total("SELECT COUNT(*) AS num FROM ".table('company_praise')." WHERE company_id={$company_id} AND click_type=2 ");

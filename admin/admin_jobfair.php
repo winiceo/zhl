@@ -259,7 +259,7 @@ elseif($act == 'exhibitors')
 	$smarty->assign('list',get_jobfair_exhibitors($offset, $perpage,$wheresql.$oederbysql));
 	$smarty->assign('page',$page->show(3));
 	$smarty->assign('time',time());
-	$smarty->assign('pageheader',"参会企业");
+	$smarty->assign('pageheader',"招聘会");
 	get_token();
 	$smarty->display('jobfair/admin_jobfair_exhibitors.htm');
 }

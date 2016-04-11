@@ -144,6 +144,8 @@ $(document).ready(function(){
 						conHtm = '用户不存在';
 					} else if (data == "-3") {
 						conHtm = '用户名修改失败';
+					} else if (data == "-4") {
+						conHtm = '用户名不合法，要求为3-18位数字、字母和下划线组成！';
 					} else {
 						conHtm = '修改成功';
 						upDialog.title('系统提示');

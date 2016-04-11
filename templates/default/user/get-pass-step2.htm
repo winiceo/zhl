@@ -95,7 +95,7 @@ $(document).ready(function()
 	});
 	// 点击发送到手机验证码
 	$("#sms_send").click(function() {
-		$.post('{#$QISHI.site_dir#}plus/ajax_user.php', {'act':'reg_send_sms','uid':"{#$usinfo.uid#}",'sms_type':'getpass'}, function(data) {
+		$.post('{#$QISHI.site_dir#}plus/ajax_user.php', {'act':'reg_send_sms','uid':"{#$usinfo.uid#}",'sms_type':'getpass','hiddentoken':$('#hiddentoken').val()}, function(data) {
 			if($.trim(data)=='success')
 			{
 				$("#sms_send").hide();
@@ -216,6 +216,7 @@ $(document).ready(function()
 				<div id="getpass_mobile" {#if $usinfo.mobile=='' || $usinfo.mobile_audit!=1#}style="display: none;"{#/if#}>
 					<div class="reg-form-item clearfix">
 						<div class="reg-form-type long f-left">已认证手机</div>
+						{#$inputtoken#}
 						<div class="reg-form-content f-left"><span class="password-text">{#$usinfo.mobile_#}</span></div>
 					</div>
 					<div class="reg-form-item clearfix">

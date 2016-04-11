@@ -1,0 +1,420 @@
+ <style>
+	 #keyword_list1 ul{list-style:none;}
+	 #keyword_list1 li{float:left; margin-left: 10px;margin-bottom: 10px;}
+	 .input_text_85_bg {width:85px;  border:1px solid  #CCCCCC ; font-size:14px;line-height:16px;padding:9px;background:url(/templates/default/images/icon36.png) no-repeat 67px -98px; cursor:pointer;color:#666666;}
+
+
+	 .LocalDataMultiD {/*background-color: #f9f9f9;*/width:672px}
+	 .LocalDataMultiD label {display: inline-block;vertical-align: middle;cursor:pointer;}
+	 .LocalDataMultiD label.gselect{color:#f90}
+	 .LocalDataMultiD label, input, button, select, textarea{font-weight: normal;vertical-align: middle;}
+	 .LocalDataMultiD .data-row-head {background-color: #ffffff;border-bottom: 1px solid #e2e2e2;padding: 4px 0px;position:relative;}
+	 .LocalDataMultiD .data-row-head-bg{background-color: #f2f2f2;}
+	 .LocalDataMultiD .selector-header{
+		 filter:progid:DXImageTransform.Microsoft.gradient(startcolorstr='#FFFFFF',endcolorstr='#FBFBFB',gradientType=0);
+		 background:#FFF;
+		 background:-webkit-gradient(linear, 0 0, 0 bottom, from(#FFFFFF), to(#FBFBFB));
+		 background:-moz-linear-gradient(top, #FFFFFF, #FBFBFB);
+		 border-bottom:1px solid #E1E1E1;height:43px;position:relative;_zoom:1;
+	 }
+	 .LocalDataMultiD .selector-header{padding-left:10px;width:auto;}
+	 .LocalDataMultiD .selector-header .selector-title{float:left;font-size:14px;font-weight:bold;line-height:25px;height:25px;padding-right:15px;color:#6E6E6E;padding-top:10px;}
+	 .LocalDataMultiD .selector-search{float:left;position:relative;_zoom:1;margin-top:10px;border: 1px solid #EEE;padding:3px 18px 3px 3px;height:17px;background:#FFF;}
+	 .LocalDataMultiD .selector-search-input{height:17px;line-height:17px;font-size:12px;margin:0;background:#FFF;outline:none;padding:0;border:0;width:140px;}
+	 .LocalDataMultiD .selector-search-ico{width:15px;height:15px;display:block;position:absolute;top:50%;left:5px;background:url("/templates/default/images/selector.png") no-repeat -50px -150px;margin-top:-7px;}
+	 .LocalDataMultiD .selector-search-del{width:10px;height:10px;display:block;position:absolute;top:50%;right:6px;background:url("/templates/default/images/selector.png") no-repeat 0 -250px;margin-top:-5px;}
+	 .LocalDataMultiD .selector-save{display:block;width:56px;height:28px;line-height:28px;background:url("/templates/default/images/selector.png") no-repeat;position:absolute;top:50%;margin-top:-14px;right:45px;font-size:12px;color:#FFF;text-align:center;border-radius:2px;cursor:pointer;}
+	 .LocalDataMultiD .selector-save:hover{background-position:-66px 0px;}
+	 .LocalDataMultiD .selector-close{display:block;width:28px;height:28px;background:url("/templates/default/images/selector.png") no-repeat 0 -50px;position:absolute;top:50%;margin-top:-14px;right:10px;border-radius:2px;cursor:pointer;text-indent:-100px;overflow:hidden;}
+	 .LocalDataMultiD .selector-close:hover{background-position:-66px -50px;}
+
+	 .LocalDataMultiD .data-row-head .data-row{/*width:672px;*/height:30px;line-height:30px;}
+	 .LocalDataMultiD .data-icon {background-image: url(/templates/default/images/icon_multi_c.png);background-repeat: no-repeat;display: inline-block;height: 16px;line-height: 16px;margin-right: 0.3em;overflow: hidden;vertical-align: text-top;width: 16px;}
+	 .LocalDataMultiD .data-icon-info {background-position: 0 0;}
+	 .LocalDataMultiD .data-icon-expend {background-position: 0 -16px;margin-left: -1px;}
+	 .LocalDataMultiD .data-icon-dispend {background-position: 0 -80px;margin-left: -1px;}
+	 .LocalDataMultiD .data-icon-close {margin-left: -1px;background:url(/templates/default/images/icon_multi_c.gif);}
+	 .LocalDataMultiD .data-row, .LocalDataMultiD .data-row-list .data-row ul {}
+	 .LocalDataMultiD .data-row:after, .LocalDataMultiD .data-row-list .data-row ul:after {clear: both;content: " ";display: block;font-size: 0;height: 0;visibility: hidden;}
+	 .LocalDataMultiD .data-row .data-row-side {float: left;word-break: break-all;width:160px;text-align:right;padding-right:12px;}
+	 .LocalDataMultiD .data-row .data-row-side-tl{text-align:center;padding-left:10px;width:80px;}
+	 .LocalDataMultiD .data-row .data-row-side-c{text-align:center;}
+	 .LocalDataMultiD .data-row .data-row-side-ra{float:left;/*width:487px;*/padding-left:13px;}
+
+	 .LocalDataMultiD .cla{width:13px;height:15px;position:absolute;top:11px;right:17px;background:url(/templates/default/images/selector-close.png) no-repeat;display:none;}
+	 .LocalDataMultiD .data-row-head .text-warning {color: #f60;}
+	 .LocalDataMultiD .data-row-head .result-list .result-name {color: #666;display: inline-block;margin-right: 10px;vertical-align: middle;}
+	 .LocalDataMultiD .data-row-head .result-list span {color: #454545;margin-right: 8px;vertical-align: middle;text-overflow:ellipsis;white-space: nowrap;border:1px solid #e2e2e2;padding:0 5px;max-width:115px;height:24px;line-height:24px;margin-top:2px;overflow:hidden;display:block;float:left;position:relative;padding-right:20px;}
+	 .LocalDataMultiD .data-row-head .result-list span:hover {border-color:#1080cf;color:#1080cf}
+	 .LocalDataMultiD .data-row-head .result-list span:hover i.data-icon-close{background-position:0 -16px;}
+	 .LocalDataMultiD .data-row-head .result-list span i.data-icon-close {cursor: pointer;right:-2px;top:5px;position:absolute;}
+	 .LocalDataMultiD .data-row-main {}
+	 .LocalDataMultiD .data-row-list {/*margin: 0 10px;*/}
+	 .LocalDataMultiD .data-row-list .data-row-side {color: #454545;text-align:right;width:159px;float:left;}
+	 .LocalDataMultiD .data-row-list .data-row-side-r{background:#ffffff;float:left;width:492px;padding-left:8px;border-left:1px solid #e2e2e2;}
+	 .LocalDataMultiD .data-row-list .data-row-side-r615{background:#ffffff;float:left;width:615px;padding-left:8px;}
+	 .LocalDataMultiD .data-row-list .data-row {border-bottom:1px solid #e2e2e2;}
+	 .LocalDataMultiD .data-row-list .data-row-nob{border-bottom:none;}
+	 .LocalDataMultiD .data-row-list .data-row ul li {color: #115798;float: left;height: 22px;overflow: hidden;position: relative;text-overflow: ellipsis;white-space: nowrap;margin-bottom:3px;}
+	 .LocalDataMultiD .data-row-list .data-row ul li.cat-active {z-index: 2;}
+	 .LocalDataMultiD .data-row-list .data-row ul li a {display: inline-block;height: 17px;line-height: 17px;overflow: hidden;padding: 2px 10px 0 5px;text-decoration: none;vertical-align: middle;color:#00528c;}
+	 .LocalDataMultiD .data-row-list .data-row ul li a input {margin-right: 4px;margin-bottom:3px;vertical-align:middle;top:0px;}
+	 .LocalDataMultiD .data-row-list .data-row ul li a.cat:hover, .LocalDataMultiD .data-row-list .data-row ul li a.cat-checked, .LocalDataMultiD .data-row-list .data-row ul li.cat-active a {color: #f90;}
+	 .LocalDataMultiD .data-row-list .data-row ul li.cat-active a {background-color: #fff;border-color: #f2c98c;border-style: solid;border-width: 1px;padding-top: 0;}
+	 .LocalDataMultiD .data-row-list .data-row ul li.cat-active a.sub {border-bottom-width: 0;border-radius: 2px 2px 0 0;}
+	 .LocalDataMultiD .data-row-list .data-row ul li.cat-active a.sup {border-radius: 0 0 2px 2px;border-top-width: 0;}
+	 .LocalDataMultiD .data-row-list .data-row ul li a:hover .data-icon-expend {background-position: 0 -32px;}
+	 .LocalDataMultiD .data-row-list .data-row ul li a.cat-checked .data-icon-expend, .LocalDataMultiD .data-row-list .data-row ul li.cat-active a .data-icon-expend {background-position: 0 -32px;}
+	 .LocalDataMultiD .data-row-list .data-row ul li a.cat-disabled, .LocalDataMultiD .data-row-list .data-row ul li a.cat-disabled:hover {color: #666;}
+	 .LocalDataMultiD .data-row-list .data-row ul li a.cat-disabled .data-icon-expend {background-position: 0 -48px;}
+	 .LocalDataMultiD .data-row-list .data-row ul li a.cat-touch {display: none;}
+	 .LocalDataMultiD .data-row-list .data-row ul li.cat-active a.cat {display: none;}
+	 .LocalDataMultiD .data-row-list .data-row ul li.cat-active a.cat-touch {display: inline-block;}
+	 .LocalDataMultiD .data-row-main {position: relative;}
+	 .LocalDataMultiD .data-row-main .data-sub {background-color: #fff;border: 1px solid #f2c98c;border-radius: 0 2px 0 0;box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);padding: 5px 0;position: absolute;z-index: 1;}
+	 .LocalDataMultiD .data-row-main .data-sub table tr td {color: #454545;height: 25px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+	 .LocalDataMultiD .data-row-main .data-sub table tr td a {color: #454545;display: inline-block;line-height: 17px;padding: 2px 10px 2px 5px;text-decoration: none;vertical-align: middle;}
+	 .LocalDataMultiD .data-row-main .data-sub table tr td a input {margin-top: -2px;margin-right:5px;}
+	 .LocalDataMultiD .data-row-msg {color: #666;margin-top: 5px;padding: 5px 10px;}
+ </style>
+ <script type="text/javascript">
+	 var Zy_parent=$.parseJSON('{{$zhouyi.p}}');
+	 var Zy_son=$.parseJSON('{{$zhouyi.s}}');
+	 var P_parent=$.parseJSON('{{$paper.p}}');
+	 var P_son=$.parseJSON('{{$paper.s}}');
+
+	 var zyid="{#$zhouyiid#}";
+	 var zyvalue="{#$zhouyivalue#}";
+	 var paperid="{#$paperid#}";
+	 var papervalue="{#$papervalue#}";
+
+ </script>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall" id="app">
+    <tr>
+		<td width="120" align="right">简历名称：</td>
+		<td>{#$title#}</td>
+    </tr>
+
+	<tr class="addresume2">
+		<td align="right">周易评测：</td>
+		<td  id="jobsSort" style="position:relative;z-index:11">
+			<div class="input_text_200_bg ucc-default" id="zhouyiText">请选择</div>
+			<!-- 期望职位弹出框 -->
+			<div class="aui_outer" id="aui_outer_zhouyi">
+				<table class="aui_border">
+					<tbody>
+					<tr>
+						<td class="aui_c">
+							<div class="aui_inner">
+								<table class="aui_dialog">
+									<tbody>
+									<tr>
+										<td class="aui_main">
+											<div class="aui_content" style="padding: 0px;">
+												<div class="LocalDataMultiD">
+													<div class="selector-header"><span class="selector-title">选择</span><div></div><span id="zy-selector-save" class="selector-save">确定</span><span class="selector-close">X</span><div class="clear"></div></div>
+
+ 													<div class="data-row-list data-row-main" id="zhouyi_list">
+														<!-- 列表内容 -->
+													</div>
+												</div>
+											</div>
+										</td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- 期望职位弹出框 End-->
+			<input name="zhouyi_value" id="zhouyi_value" type="hidden" value="" />
+			<input name="zhouyi_id" id="zhouyi_id"  type="hidden" value="" />
+		</td>
+	</tr>
+
+	<tr class="addresume2">
+		<td align="right">人才评测：</td>
+		<td  id="paperSort" style="position:relative;">
+			<div class="input_text_200_bg ucc-default" id="paperText">请选择</div>
+			<!-- 期望职位弹出框 -->
+			<div class="aui_outer" id="aui_outer_paper">
+				<table class="aui_border">
+					<tbody>
+					<tr>
+						<td class="aui_c">
+							<div class="aui_inner">
+								<table class="aui_dialog">
+									<tbody>
+									<tr>
+										<td class="aui_main">
+											<div class="aui_content" style="padding: 0px;">
+												<div class="LocalDataMultiD">
+													<div class="selector-header"><span class="selector-title">选择</span><div></div><span id="p-selector-save" class="selector-save">确定</span><span class="selector-close">X</span><div class="clear"></div></div>
+
+													<div class="data-row-list data-row-main" id="paper_list">
+														<!-- 列表内容 -->
+													</div>
+												</div>
+											</div>
+										</td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- 期望职位弹出框 End-->
+			<input name="paper_value" id="paper_value" type="hidden" value="" />
+			<input name="paper_id" id="paper_id"  type="hidden" value="" />
+		</td>
+	</tr>
+	<tr class="addresume2">
+		<td align="left" colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="hidden" name="pid" id="pid" value="{#$resumeid#}">
+			<input id="add" type="button" value="保存" class="but95cheng" style="height:39px;margin-left:10px;" /></td>
+	</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall" id="app_ok" style="display:none">
+
+<tr>
+	<td width="140" align="right"><img height="100"
+									   src="/templates/default/images/big-yes.png"/></td>
+	<td>
+		<strong style="font-size:14px ; color:#0066CC;margin-left:20px">绑定成功!</strong>
+
+		<div
+				style="border-top:1px #CCCCCC solid; line-height:180%; margin-top:10px; padding-top:10px; height:50px;margin-left:20px"
+				class="dialog_closed">
+			<a href="javascript:void(0)" class="DialogClose underline"
+			   style="color:#0180cf;text-decoration:none;">完成</a>
+		</div>
+	</td>
+</tr>
+</table>
+
+<script type="text/javascript">
+
+
+
+
+
+	$(document).ready(function(){
+
+		$("#zhouyi_id").val(zyid);
+		$("#zhouyi_value").val(zyvalue);
+		if(zyid){
+			$("#zhouyiText").html(zyvalue);
+
+		}
+
+		$("#paper_id").val(paperid);
+		$("#paper_value").val(papervalue);
+
+		if(paperid){
+			$("#paperText").html(papervalue);
+
+		}
+
+ 		zhouyi_filldata("#zhouyi_list", Zy_parent, Zy_son, "#result-list-zhouyi", "#aui_outer_zhouyi", "#job_result_show", "#zhouyi_id", "{#$QISHI.site_dir#}");
+
+		paper_filldata("#paper_list", P_parent, P_son, "#result-list-paper", "#aui_outer_paper", "#job_result_show", "#paper_id", "{#$QISHI.site_dir#}");
+
+
+
+
+	var pid = $("#pid").val();
+
+	$("#add").die().live("click",function(){
+		var comkeyword = $("#comkeyword").val();
+		var arrzy =[];
+		for(var i=1;i<=7;i++){
+			var id=parseInt($("#zy_"+i).val());
+			if(id>0){
+				console.log(id);
+				arrzy.push(id);
+			}
+		}
+		var bb={};
+		bb.pid=pid;
+		bb.zhouyi_id=$("#zhouyi_id").val();
+		bb.zhouyi_value=$("#zhouyi_value").val();
+		bb.paper_id=$("#paper_id").val();
+		bb.paper_value=$("#paper_value").val();
+		$.post("personal_ajax.php?act=save_relation_test",bb,function(result){
+			if(result=="1"){
+
+				$("#app").hide();
+
+				$("#app_ok").show();
+			}else if(result=="-1"){
+				dialog({
+				  title: '系统提示',
+				  content: "参数错误！",
+				  width:'300px'
+				}).showModal();
+			}
+				
+		});
+	});
+
+});
+
+
+	/*周易算命选择弹出层填充数据*/
+	function zhouyi_filldata(fillID, data_resourcesP, data_resources, resultlist, showID, resultshowID, resulthidId, dir) {
+		var jobhtm = '', result_datapool = new Array();
+		$("#paperSort").attr("z-index",-10);
+		$.each(data_resourcesP, function(indexp, valp) {
+			var pjob_array = valp.split(",");
+			jobhtm += '<div class="data-row data-row-odd item-list clearfix">';
+			jobhtm += '<div class="data-row-side">'+pjob_array[1]+'</div>';
+			jobhtm += '<div class="data-row-side-r"><ul>';
+			if(data_resources[pjob_array[0]]) {
+				var job_array = data_resources[pjob_array[0]].split("|");
+				$.each(job_array, function (index, val) {
+					var joblist_array = val.split(",");
+
+					//jobhtm += '<li><a title="'+joblist_array[1]+'" href="javascript:;" data="'+pjob_array[0]+'.'+joblist_array[0]+'.0,'+joblist_array[1]+'" rel="'+pjob_array[0]+'.'+joblist_array[0]+'" class="cat"><i class="data-icon data-icon-expend"></i>'+joblist_array[1]+'</a><a href="javascript:;" class="cat-touch"><label title="'+joblist_array[1]+'"><input type="checkbox" data="'+pjob_array[0]+'.'+joblist_array[0]+'.0,'+joblist_array[1]+'" rel="'+pjob_array[0]+'.'+joblist_array[0]+'" class="checkbox" name="LocalDataMultiD">'+joblist_array[1]+'</label></a></li>';
+					jobhtm += '<li  > <a href="javascript:;"  ><label  ><input type="radio" data="' + joblist_array[0] + ',' + joblist_array[1] + '" id="zzyy_' + joblist_array[0] + '" class="checkbox" name="zy' + pjob_array[0] + '">' + joblist_array[1] + '</label></a></li>';
+				});
+			}
+			jobhtm += '</ul></div>';
+			jobhtm += '</div>';
+		});
+		$(fillID).html(jobhtm);
+		// 全部恢复
+
+		var tmp=zyid.split(",");
+		$(tmp).each(function(k,n){
+			$("#zzyy_"+n).prop('checked', true);
+		})
+		$(fillID+' checkbox') .each(function(){
+			var dt = $(this).attr("ref");
+			selectedid_array.push(data_array[0]);
+			selectedcn_array.push(data_array[1]);
+		});
+
+
+		// 复制选中 赋值
+		function copy_selected() {
+			var selectedhtm = "";
+			var selectedid_array = new Array();
+			var selectedcn_array = new Array();
+			$(fillID+' input:checked') .each(function(){
+				var data_array = $(this).attr("data").split(",");
+				selectedid_array.push(data_array[0]);
+				selectedcn_array.push(data_array[1]);
+			});
+
+
+			$("#zhouyiText").html(selectedcn_array.join(","));
+			$(resulthidId).val(selectedid_array.join(","));
+			$("#zhouyi_value").val(selectedcn_array.join(","));
+			$("#zhouyiText").parent().find('.input_text_200_bg').removeClass('error');
+			$("#zhouyiText").parent().next().find('.error').hide();
+		}
+		// 点击确定
+		$("#zy-selector-save").click(function() {
+			copy_selected();
+			$('.aui_outer').hide();
+			//$("#paperSort").attr("z-index",10);
+
+			$(".ucc-default").removeClass('aui_is_show');
+		});
+	}
+
+
+	/*人才评测选择弹出层填充数据*/
+	function paper_filldata(fillID, data_resourcesP, data_resources, resultlist, showID, resultshowID, resulthidId, dir) {
+		var jobhtm = '', result_datapool = new Array();
+
+		$.each(data_resourcesP, function(indexp, valp) {
+			var pjob_array = valp.split(",");
+			jobhtm += '<div class="data-row data-row-odd item-list clearfix">';
+			jobhtm += '<div class="data-row-side">'+pjob_array[1]+'</div>';
+			jobhtm += '<div class="data-row-side-r"><ul >';
+			if(data_resources[pjob_array[0]]){
+
+
+				var job_array = data_resources[pjob_array[0]].split("|");
+				$.each(job_array, function(index, val) {
+					var joblist_array = val.split(",");
+
+					//jobhtm += '<li><a title="'+joblist_array[1]+'" href="javascript:;" data="'+pjob_array[0]+'.'+joblist_array[0]+'.0,'+joblist_array[1]+'" rel="'+pjob_array[0]+'.'+joblist_array[0]+'" class="cat"><i class="data-icon data-icon-expend"></i>'+joblist_array[1]+'</a><a href="javascript:;" class="cat-touch"><label title="'+joblist_array[1]+'"><input type="checkbox" data="'+pjob_array[0]+'.'+joblist_array[0]+'.0,'+joblist_array[1]+'" rel="'+pjob_array[0]+'.'+joblist_array[0]+'" class="checkbox" name="LocalDataMultiD">'+joblist_array[1]+'</label></a></li>';
+					jobhtm += '<li  > <a href="javascript:;"  ><label  ><input type="checkbox" data="'+joblist_array[0]+','+joblist_array[1]+'" id="ppyy_'+joblist_array[0]+'" class="checkbox" name="ppyy_'+pjob_array[0]+'">'+joblist_array[1]+'</label></a></li>';
+				});
+			}
+			jobhtm += '</ul></div>';
+			jobhtm += '</div>';
+		});
+		$(fillID).html(jobhtm);
+		// 全部恢复
+		var tmp=paperid.split(",");
+		$(tmp).each(function(k,n){
+			$("#ppyy_"+n).prop('checked', true);
+		})
+
+		// 复制选中 赋值
+		function copy_selected() {
+			var selectedhtm = "";
+			var selectedid_array = new Array();
+			var selectedcn_array = new Array();
+			$(fillID+' input:checked') .each(function(){
+				var data_array = $(this).attr("data").split(",");
+				selectedid_array.push(data_array[0]);
+				selectedcn_array.push(data_array[1]);
+			});
+
+
+			$("#paperText").html(selectedcn_array.join(","));
+			$(resulthidId).val(selectedid_array.join(","));
+			$("#paper_value").val(selectedcn_array.join(","));
+			$("#paperText").parent().find('.input_text_200_bg').removeClass('error');
+			$("#paperText").parent().next().find('.error').hide();
+		}
+		// 点击确定
+		$("#p-selector-save").click(function() {
+			copy_selected();
+			$('.aui_outer').hide();
+
+
+			$(".ucc-default").removeClass('aui_is_show');
+		});
+	}
+
+
+	allaround("/")
+	// 一些js的集合
+	function allaround(dir) {
+		// 显示下拉
+		$(".ucc-default").click(function() {
+			if (!$(this).hasClass('aui_is_show')) {
+				$('.aui_outer').hide();
+				$(".ucc-default").removeClass('aui_is_show');
+				$(this).addClass('aui_is_show');
+				$(this).parent().find('.aui_outer').show();
+			} else {
+				$(this).removeClass('aui_is_show');
+				$(this).parent().find('.aui_outer').hide();
+			}
+		});
+		$(document).delegate("body", "click", function(e){
+			var _con = $(".ucc-default"), _caui = $(".aui_outer");
+			if(!_con.is(e.target) && _caui.has(e.target).length === 0){
+				$('.aui_outer').hide();
+				$(".ucc-default").removeClass('aui_is_show');
+			}
+		});
+		// 关闭下拉
+		$(".selector-close").die().live('click', function(event) {
+			$('.aui_outer').hide();
+			$(".ucc-default").removeClass('aui_is_show');
+		});
+	}
+ </script>

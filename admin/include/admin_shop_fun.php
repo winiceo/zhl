@@ -79,7 +79,7 @@ function get_order_one($id)
 	return $db->getone("SELECT * FROM ".table('shop_order')." where id=$id limit 1");
 }
 
-// 操作积分
+// 操作葫芦币
 function report_deal($uid,$i_type=1,$points=0)
 {
 	global $db,$timestamp;
@@ -154,7 +154,7 @@ function set_order($id,$state)
 			continue;
 		}
 		$shop_one=get_shop_one($order_show['shop_id']);
-		// 审核不通过 退回企业积分
+		// 审核不通过 退回企业葫芦币
 		if($state==2)
 		{
 			$exchange_arr['state']=2;
@@ -162,7 +162,7 @@ function set_order($id,$state)
 			report_deal($order_show['uid'],1,$order_show['order_points']);
 			//写入日志
 			$user_points=get_user_points($order_show['uid']);
-			write_memberslog($order_show['uid'],1,9001,$order_show['company_name'],$order_show['company_name']."积分兑换商品：<strong>{$setarr['shop_title']}</strong>未通过审核，并且返回积分：({$order_show['order_points']})。",1,2008,"返回积分","+{$order_show['order_points']}","{$user_points}");
+			write_memberslog($order_show['uid'],1,9001,$order_show['company_name'],$order_show['company_name']."葫芦币兑换商品：<strong>{$setarr['shop_title']}</strong>未通过审核，并且返回葫芦币：({$order_show['order_points']})。",1,2008,"返回葫芦币","+{$order_show['order_points']}","{$user_points}");
 		}
 		// 审核通过 更新库存,兑换次数 写入兑换记录
 		else

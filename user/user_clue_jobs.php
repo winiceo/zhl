@@ -3,31 +3,47 @@
 * 74cms 申请职位
 */
 define('IN_QISHI', true);
+
+
 require_once(dirname(__FILE__) . '/../include/common.inc.php');
 $act = isset($_REQUEST['act']) ? trim($_REQUEST['act']) : 'app';
 require_once(QISHI_ROOT_PATH . 'include/mysql.class.php');
 require_once(QISHI_ROOT_PATH . 'genv/func_company.php');
 $db = new mysql($dbhost, $dbuser, $dbpass, $dbname);
+Ggven::log(time()."\r\n\r");
+Ggven::log(1);
+
+
 if ((empty($_SESSION['uid']) || empty($_SESSION['username']) || empty($_SESSION['utype'])) && $_COOKIE['QS']['username'] && $_COOKIE['QS']['password'] && $_COOKIE['QS']['uid']) {
     require_once(QISHI_ROOT_PATH . 'include/fun_user.php');
+    Ggven::log(2);
+
+
+
     if (check_cookie($_COOKIE['QS']['uid'], $_COOKIE['QS']['username'], $_COOKIE['QS']['password'])) {
         update_user_info($_COOKIE['QS']['uid'], false, false);
-        header("Location:" . get_member_url($_SESSION['utype']));
+        Ggven::log(get_member_url($_SESSION['utype']));
+       /// header("Location:" . get_member_url($_SESSION['utype']));
     } else {
         unset($_SESSION['uid'], $_SESSION['username'], $_SESSION['utype'], $_SESSION['uqqid'], $_SESSION['activate_username'], $_SESSION['activate_email'], $_SESSION["openid"]);
         setcookie("QS[uid]", "", time() - 3600, $QS_cookiepath, $QS_cookiedomain);
         setcookie('QS[username]', "", time() - 3600, $QS_cookiepath, $QS_cookiedomain);
         setcookie('QS[password]', "", time() - 3600, $QS_cookiepath, $QS_cookiedomain);
         setcookie("QS[utype]", "", time() - 3600, $QS_cookiepath, $QS_cookiedomain);
+        setcookie("QS[subsite_id]", "", time() - 3600, $QS_cookiepath, $QS_cookiedomain);
     }
 }
+
 if ($_SESSION['uid'] == '' || $_SESSION['username'] == '') {
+
 
     $captcha = get_cache('captcha');
     $smarty->assign('verify_userlogin', $captcha['verify_userlogin']);
     $smarty->display('plus/ajax_login.htm');
     exit();
 }
+
+
 //if ($_SESSION['utype']!='2')
 //{
 //	exit('<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
@@ -41,6 +57,7 @@ if ($_SESSION['uid'] == '' || $_SESSION['username'] == '') {
 //}
 require_once(QISHI_ROOT_PATH . 'include/fun_personal.php');
 $user = get_user_info($_SESSION['uid']);
+
 if ($user['status'] == "2") {
     exit('<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
 		    <tr>
@@ -56,6 +73,8 @@ if ($act == "app") {
     $jobs = app_get_jobs($id);
     $promotion=get_promotion_info($id,5);
 
+   // var_dump($promotion);
+
     $json=json_array($promotion["cp_json"]);
     if (empty($jobs)||empty($promotion)) {
         exit('<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
@@ -67,10 +86,11 @@ if ($act == "app") {
 			    </tr>
 			</table>');
     }
-    $detail[]="面试人数：".$json["num"]."<br>";
-    $detail[]="面试成功金额：".$json["amount"]."<br>";
-    $detail[]="招聘人数：".$json["success_num"]."<br>";
-    $detail[]="招聘成功金额：".$json["success_amount"]."<br>";
+   // $detail[]="面试人数：".$json["num"]."<br>";
+
+    $detail[]="面试成功金额：".intval($json["amount"]*$json["amount_per"]/100)."元<br>";
+    //$detail[]="招聘人数：".$json["success_num"]."<br>";
+    $detail[]="招聘成功金额：".intval($json["success_amount"]*$json["amount_success_per"]/100)."元<br>";
     $detail=join(" ",$detail);
 
     ?>
@@ -124,6 +144,13 @@ if ($act == "app") {
                         $("#notice").hide();
                         $("#waiting").hide();
                         $("#app_ok").show();
+                    }else if(data =="exist"){
+                        $("#app").hide();
+                        $("#notice").hide();
+                        $("#waiting").hide();
+                        $("#app_ok").hide();
+                        $("#error_msg").html("已有人提交此人才线索,不能重复提交");
+                        $("#error").show();
                     }
 
                     else {
@@ -264,6 +291,11 @@ if ($act == "app") {
         $addarr['company_uid'] = $jobs['uid'];
         $addarr['link_name'] = $link_name;
         $addarr['link_telephone'] = $link_telephone;
+        $tel=get_telephone($link_telephone);
+        if($tel&&$tel>0){
+            $addarr["member_id"]=$tel;
+        }
+
         $addarr['remark'] = $remark;
         if (strcasecmp(QISHI_DBCHARSET, "utf8") != 0) {
             $addarr['remark'] = utf8_to_gbk($addarr['remark']);
@@ -277,6 +309,10 @@ if ($act == "app") {
             write_memberslog($_SESSION['uid'], 2, 1301, $_SESSION['username'], "提交了人才线索，职位:{$jobs['jobs_name']}");
 
         }
+
+        if($tel){
+            exit("exist");
+        }
         $i = $i + 1;
     }
     if ($i == 0) {
@@ -284,6 +320,29 @@ if ($act == "app") {
     } else {
         exit("ok");
     }
+
+}
+
+
+function get_telephone($tel){
+    global $db;
+    //echo "select * from  " . table('members') . "   WHERE `mobile` = '" . $tel . "' LIMIT 1 ";
+    $rs=$db->getone("select * from  " . table('members') . "   WHERE `mobile` = '" . $tel . "'");
+    if($rs){
+        return $rs["uid"];
+    }
+    $rs=$db->getone("select * from  " . table('resume') . "   WHERE `telephone` = '" . $tel . "'");
+    if($rs){
+        return $rs["uid"];
+    }
+
+    $rs=$db->getone("select * from  " . table('jobs_reward_clue') . "   WHERE `link_telephone` = '" . $tel . "'");
+
+    if($rs){
+        return -1;
+    }
+
+    return false;
 
 }
 function reduce_user_sms($uid)

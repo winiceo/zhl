@@ -71,14 +71,27 @@ $(document).ready(function()
  <div class="pagetit">
 	<div class="ptit"> {#$pageheader#}</div>
   <div class="clear"></div>
+     <div class="toptip">
+         <h2>提示：</h2>
+         <p>
+             上传导入的简历列表<br />
+         </p>
+     </div>
+     <div class="seltpye_x">
+         <div class="left">状态</div>
+         <div class="right">
+             <a href="?act=list_temp&amp;cate=1&amp;key=&amp;page=1" {#if $cate==1#}class="select"{#/if#}>待审核{#if $cate==1#}({#$total_val#}){#/if#}</a>
+             <a href="?act=list_temp&amp;cate=2&amp;key=&amp;page=1"  {#if $cate==2#}class="select"{#/if#}>拒绝{#if $cate==2#}({#$total_val#}){#/if#}</a>
+
+             <a href="?act=list_temp&amp;cate=3&amp;key=&amp;page=1"  {#if $cate==3#}class="select"{#/if#}>已通过{#if $cate==3#}({#$total_val#}){#/if#}</a>
+
+             <div class="clear"></div>
+         </div>
+         <div class="clear"></div>
+     </div>
 </div>
 
-<div class="toptip">
-	<h2>提示：</h2>
-	<p>
-上传导入的简历列表<br />
-</p>
-</div>
+
 
 
 
@@ -90,7 +103,7 @@ $(document).ready(function()
       <td    class="admin_list_tit admin_list_first" >
      <label id="chkAll"><input type="checkbox" name=" " title="全选/反选" id="chk"/>姓名</label>	 </td>
         <td  align="center"    class="admin_list_tit">性别</td>
-        <td  align="center"   class="admin_list_tit">工作性质</td>
+        <td  align="center"   class="admin_list_tit">审核进度</td>
         <td  align="center"   class="admin_list_tit">同生日期</td>
         <td  align="center"   class="admin_list_tit">专业</td>
         <td  align="center"   class="admin_list_tit">邮箱</td>
@@ -108,16 +121,28 @@ $(document).ready(function()
 		 {#$list.fullname#}  </td>
 
 	 <td align="center"  class="admin_list">{#$list.sex_cn#}</td>
-	 <td align="center"  class="admin_list">{#$list.nature_cn#}</td>
+	 <td align="center"  class="admin_list">
+         <div style="width:100%; border:1px #CCCCCC solid; padding:1px; text-align:left; position:relative; font-size:0px">
+             <div style=" background-color: #99CC00; height:10px; color:#990000;width:{#$list.check_percent#}%;font-size:0px"></div>
+             <div style="position:absolute; top:0px; left:40%; font-size:10px;">{#$list.check_percent#}%</div>
+         </div>
+
+     </td>
 	 <td align="center"  class="admin_list">{#$list.birthdate#}</td>
 	 <td align="center"  class="admin_list">{#$list.major_cn#}</td>
 	 <td align="center"  class="admin_list">{#$list.email#}</td>
 	 <td align="center"  class="admin_list">{#$list.telephone#}</td>
         <td align="center" class="admin_list">
+            {#if $cate==3 #}
+             &nbsp;
+            <a href="?act=resume_show&id={#$list.id#}&uid={#$list.uid#}">查看</a>
+            &nbsp;
+            {#else if#}
+            &nbsp;
+            <a href="?act=resume_temp_show&id={#$list.id#}">查看</a>
+            &nbsp;
+            {#/if#}
 
-            &nbsp;
-            <a href="?act=resume_temp_show&id={#$list.id#}">审核</a>
-            &nbsp;
 
         </td>
 
@@ -140,8 +165,7 @@ $(document).ready(function()
       <tr>
         <td>
 
-        <input type="button" class="admin_submit" id="ButDel" value="删除"/>
- 		</td>
+  		</td>
         <td width="305" align="right">
 
 		  <script type="text/javascript">$(document).ready(function(){showmenu("#key_type_cn","#sehmenu","#key_type");});	</script>

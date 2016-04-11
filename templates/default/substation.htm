@@ -39,10 +39,10 @@ $(document).ready(function(){
 		<div class="s-page-wrapper">
 			<div class="s-page-filter clearfix">
 				<div class="puick-enter f-left">
-					<span class="f-left">直接选择：</span>
+					<!--<span class="f-left">直接选择：</span>
 					<div class="puick-enter-text f-left" style="position:relative;">
 						<input type="text" placeholder="请选择城市......" id="select_subsite"/>
-					</div>
+					</div>-->
 					<div class="puick-hot f-left">
 						热门地区：
 						{#qishi_allsite set="列表名:hot_city,数量:8"#}
@@ -82,7 +82,32 @@ $(document).ready(function(){
 		</div>
 	</div>
 	<div class="sub-page-footer">
-		Copyright @ 2016 zhaohulu.com All Right Reserved<br />Powered by 找葫芦网 版权所有
+    	 <div class="copyright">
+          <div class="container-index">
+            {#qishi_explain_list set="列表名:explain,显示数目:11,标题长度:6,分类ID:1"#}
+            {#foreach from=$explain item=list#}
+                <a target="_blank" href="{#$list.url#}" style="color:#e5e5e5;">|&nbsp;&nbsp;<span style="color:#666;">{#$list.title#}</span>&nbsp;&nbsp;</a>
+            {#/foreach#}
+            <br />
+            <div  class="footer-link"  style="width: 1155px;text-align:center;margin:0 auto">友情链接：
+             {#qishi_link set="列表名:explain,显示数目:30,标题长度:6,分类ID:1"#}
+            {#foreach from=$explain item=list#}
+                <a target="_blank" href="{#$list.url#}" style="color:#999999;line-height: 35px;">{#$list.title#}&nbsp;&nbsp;</a>
+            {#/foreach#}
+                <a target="_blank" href="{#$list.url#}" style="color:#999999;">更多>></a>
+                <br />
+                {#$QISHI.bottom_other#}&nbsp;版权所有&nbsp;&nbsp;{#$QISHI.address#}{#$QISHI.bootom_tel#}
+            </div>
+            <div style="height:80px;width:1200px;padding-top:20px;text-align:center;margin:0 auto">
+                <img original="{#$list.img_path#}" src="{#$QISHI.site_template#}images/footer/footer_ad_01.jpg" alt="{#$list.img_explain#}" width="55" height="55" border="0" style="padding-right:20px;"/>
+                <img original="{#$list.img_path#}" src="{#$QISHI.site_template#}images/footer/footer_ad_02.png" alt="{#$list.img_explain#}" width="60" height="55" border="0"  style="padding-right:20px;"/>
+                <img original="{#$list.img_path#}" src="{#$QISHI.site_template#}images/footer/footer_ad_03.png" alt="{#$list.img_explain#}" width="145" height="55" border="0"  style="padding-right:20px;"/>
+                <img original="{#$list.img_path#}" src="{#$QISHI.site_template#}images/footer/footer_ad_04.png" alt="{#$list.img_explain#}" width="150" height="55" border="0"  style="padding-right:20px;"/>
+                <img original="{#$list.img_path#}" src="{#$QISHI.site_template#}images/footer/footer_ad_05.png" alt="{#$list.img_explain#}" width="200" height="55" border="0"  style="padding-right:20px;"/>
+            </div>
+		</div>
+	</div>
+		Copyright @ 2015 zhaohulu.com All Right Reserved<br />Powered by 74cms v3.7 迅易科技版权所有
 	</div>
 
 

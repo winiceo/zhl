@@ -737,7 +737,7 @@ $(document).ready(function() {
         content += '<div class="formChild option"><div class="lt">推广职位</div><div class="tx">' + jobName + '</div></div>';
         content += '<div class="formChild option"><div class="lt">推广方式</div><select class="popuOptions"><option value ="1">推荐</option><option value ="2">紧急</option><option value="3">置顶</option><option value="4">套色</option></select></div>';
         content += '<div class="formChild option timeLimit"><div class="lt">推广期限</div><input class="timeInput" value=""><div class="txnum cof90 timeDiv"></div><div class="tx cof90">天</div></div>';
-        content += '<div class="formChild option integral"><div class="lt">消耗积分</div><div class="txnum cof90 numDiv"></div><div class="tx cof90">点</div></div>';
+        content += '<div class="formChild option integral"><div class="lt">消耗葫芦币</div><div class="txnum cof90 numDiv"></div><div class="tx cof90">点</div></div>';
         content += '</div>';
         $.get('?act=set_promotion', {"jobid":jobsid}, function(data) {
             var isArr = true;

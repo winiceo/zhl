@@ -4,6 +4,7 @@
 $(document).ready(function()
 {
   showmenulayer("#s_districtname","#menu1","#s_district","","",QS_city);
+  showmenu("#tpl_category","#menu4","#s_tpl","","");
   $("#form1").validate({
      rules:{
      s_sitename: "required",
@@ -93,8 +94,18 @@ $(document).ready(function()
     </tr>
     <tr>
       <td height="30" align="right"  >风格模版：</td>
-      <td ><input name="s_tpl" type="text" class="input_text_200"  value="{#$subsite.s_tpl#}"/>
-	  <span class="admin_note">如不填写则为默认模版</span>
+      <td >
+            <div>
+                  <input type="text" value="{#$subsite.s_tpl|default:"请选择"#}"  readonly="readonly" name="tpl_category" id="tpl_category" class="input_text_200 input_text_selsect"/>
+                  <input name="s_tpl" id="s_tpl" type="hidden" value="{#if $subsite.s_tpl#}{#$subsite.s_tpl#}{#/if#}" />
+                  <div id="menu4" class="menu">
+                    <ul>
+                    {#foreach from=$dirs item=li#}  
+                    <li id="{#$li#}" title="{#$li#}">{#$li#}</li>
+                    {#/foreach#}
+                    </ul>
+                  </div>
+            </div>
 	  </td>
     </tr>
 	

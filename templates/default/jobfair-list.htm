@@ -15,6 +15,7 @@
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
 <link href="{#$QISHI.site_template#}css/common.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/jobfair.css" rel="stylesheet" type="text/css" />
+<link href="{#$QISHI.site_template#}css/header.css" rel="stylesheet" type="text/css" />
 <script src="{#$QISHI.site_template#}js/jquery.js" type='text/javascript' ></script>
 <script src="http://api.map.baidu.com/api?v=1.2" type="text/javascript"></script>
 <script src="{#$QISHI.site_template#}js/dialog-min.js" type="text/javascript" language="javascript"></script>
@@ -110,6 +111,9 @@ $(function(){
 		{#/foreach#}
 		{#/if#}
 	</div>
+    <div class="data-titles">
+    	<h3>招聘会</h3>
+    </div>
 	<!-- 招聘会列表 -->
 	{#if $jobfair#}
 	<div class="container link_bk jobfairlist">
@@ -125,9 +129,17 @@ $(function(){
 				<!-- 预定中 -->
 				{#foreach from=$jobfair.ingTwo item=list#} 
 				<tr>
-					<td class="list" style="width:250px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style="color:#0180CF" target="_blank" href="{#$list.url#}" title="{#$list.title_#}">{#$list.title#}</a></td>
-					<td align="center" class="list">{#$list.holddate_start|date_format:"%Y-%m-%d"#}&nbsp;至&nbsp;{#$list.holddate_end|date_format:"%Y-%m-%d"#}</td>
-					<td align="center" class="list" style="width:450px;">{#$list.address#}<a class="check_full_map" map_x="{#$list.map_x#}" map_y="{#$list.map_y#}" map_zoom="{#$list.map_zoom#}" title_="{#$list.title_#}" address="{#$list.address#}" href="javascript:;"><img src="{#$QISHI.site_template#}images/jobfairmapbg.png"></a></td>
+					<td class="list" style="width:250px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a style="color:#0180CF" target="_blank" href="{#$list.url#}" title="{#$list.title_#}">{#$list.title#}</a>
+                    </td>
+					<td align="center" class="list">
+                    {#$list.holddate_start|date_format:"%Y-%m-%d"#}&nbsp;至&nbsp;{#$list.holddate_end|date_format:"%Y-%m-%d"#}
+                    </td>
+					<td align="center" class="list" style="width:450px;">
+                    {#$list.address#}<a class="check_full_map" map_x="{#$list.map_x#}" map_y="{#$list.map_y#}" map_zoom="{#$list.map_zoom#}" title_="{#$list.title_#}" address="{#$list.address#}" href="javascript:;">
+                    <img src="{#$QISHI.site_template#}images/jobfairmapbg.png">
+                    </a>
+                    </td>
 					<td align="center" class="list"><a class="booth" jobfair_id="{#$list.id#}" style="color:#0180CF" href="javascript:;" title="立即预定">立即预定&nbsp;&nbsp;&nbsp;&nbsp;</a></td>
 				</tr>
 				{#/foreach#}

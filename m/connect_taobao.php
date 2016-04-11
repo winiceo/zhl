@@ -105,7 +105,7 @@ elseif ($act=='reg_save')
 	if(!empty($row)){
 		exit("用户名或邮箱已经存在！");
 	}
-	$userid=user_register($val['username'],$val['password'],$val['member_type'],$val['email']);
+	$userid=user_register(2,$val['password'],$val['member_type'],$val['email']);
 	if ($userid)
 	{
 		$db->query("UPDATE ".table('members')." SET taobao_access_token = '{$_SESSION['taobao_access_token']}'  WHERE uid='{$userid}' AND taobao_access_token='' LIMIT 1");

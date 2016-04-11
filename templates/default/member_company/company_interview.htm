@@ -37,6 +37,8 @@
 			//点击下拉时收起其他下拉
 			$(".data-filter").not($(this)).find('.filter-down').hide();
 		})
+		// 发放赏金弹出
+		issued_dialog('.issued','#form1');
 		// 删除弹出
 		delete_dialog('.ctrl-del','#form1');
 		// 发送到邮箱弹出
@@ -96,7 +98,7 @@
 								</ul>
 							</div>
 						</div>
-						<div class="item f-left top-item5">
+						<div class="item f-left top-item5" style="width:110px;">
 							<div class="data-filter span4">
 								<span class="filter-span">{#if $smarty.get.look=='1'#}对方未查看{#elseif $smarty.get.look=='2'#}对方已查看{#else#}查看状态{#/if#}<i class="filter-icon"></i></span>
 								<ul class="filter-down">
@@ -106,8 +108,9 @@
 								</ul>
 							</div>
 						</div> 
-						<div class="item f-left top-item6">邀请时间</div>
-						<div class="item f-left top-item7">操作</div>
+						<div class="item f-left top-item6" style="width:80px;">邀请时间</div>
+                        <div class="item f-left top-item6" style="width:120px;">赏金发放状态</div>
+						<div class="item f-left top-item7" style="width:88px;">操作</div>
 					</div>
 					{#if $resume#}
 					{#foreach from=$resume item=list#}
@@ -117,19 +120,23 @@
 							<div class="c-item f-left check-item"><input type="checkbox" name="y_id[]" id="y_id" value="{#$list.did#}" class="checkbox" /></div>
 							<div class="c-item f-left content1"><a href="javascript:;" class="name-link underline">{#$list.resume_name#}</a></div>
 							<div class="c-item f-left content2">{#if $list.age#}{#$list.age#}岁/{#/if#}{#$list.education_cn#}/{#$list.experience_cn#}</div>
-							<div class="c-item f-left content3"><a href="{#$list.jobs_url#}" class="jobs-name-link underline" target="_blank">{#$list.jobs_name_#}</a></div>
-							<div class="c-item f-left content5">
+							<div class="c-item f-left content3"><a href="{#$list.jobs_url#}" class="jobs-name-link underline" target="_blank">{#$list.jobs_name_#}</a>
+                            {#if $list.jobs_type==2#}<span style="color:#FF6633;">[悬赏]</span>{#/if#}
+                            </div>
+							<div class="c-item f-left content5" style="width:110px;">
 								{#if $list.personal_look=="1"#}
 					   			对方未查看
 					   			{#elseif $list.personal_look=="2"#}
 					   			对方已查看
 					   			{#/if#}
 							</div>
-							<div class="c-item f-left content6"><span class="data-time">{#$list.interview_addtime|date:"Y-m-d"#}</span></div>
-							<div class="c-item f-left content7">
+							<div class="c-item f-left content6" style="width:80px;"><span class="data-time">{#$list.interview_addtime|date:"Y-m-d"#}</span></div>
+                            <div class="c-item f-left content6" style="width:120px;"><span class="data-time">{#if $list.issued==0#}普通职位{#/if#}{#if $list.issued==1#}已发放{#/if#}{#if $list.issued==2#}未发放 <a href="javascript:;" class="data-ctrl underline issued" url="?act=interview_issued&y_id={#$list.did#}">发放赏金</a>{#/if#}</span></div>
+							<div class="c-item f-left content7" style="width:88px;">
 								<a href="javascript:;" did="{#$list.did#}" class="data-ctrl underline check-detail">详情</a>
-								&nbsp;
+
 								<a href="javascript:;" class="data-ctrl underline ctrl-del" url="?act=interview_del&y_id={#$list.did#}">删除</a>
+                               
 							</div>
 						</div>
 						<div class="data-detail">

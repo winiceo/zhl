@@ -4,8 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html;charset=gb2312">
     <title>{#$title#}</title>
     <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico"/>
-<meta name="author" content="找葫芦" />
-<meta name="copyright" content="zhaohulu.com" />
+    <meta name="author" content="找葫芦"/>
+    <meta name="copyright" content="zhaohulu.com"/>
     <link href="{#$QISHI.site_template#}css/user_common.css" rel="stylesheet" type="text/css"/>
     <link href="{#$QISHI.site_template#}css/user_company.css" rel="stylesheet" type="text/css"/>
     <link href="{#$QISHI.site_template#}css/ui-dialog.css" rel="stylesheet" type="text/css"/>
@@ -55,7 +55,7 @@
                     url: '{#$QISHI.site_dir#}user/company/company_ajax.php',
                     data: {
                         "act": "get_telephone",
-                                "id": id
+                        "id": id
 
                     },
                     success: function (data) {
@@ -65,12 +65,12 @@
                             $("#telephone").html((data.data))
                             $('.div_check').show();
                         }
-                        else if(data.err==1) {
+                        else if (data.err == 1) {
                             alert("简历不存在");
                             $('.div_check').hide();
-                        }else if(data.err==2) {
+                        } else if (data.err == 2) {
                             alert("你有未审核的简历");
-                            window.location.href="{#$QISHI.site_dir#}user/company/company_upload.php?act=check_resume_detail&id="+data.data
+                            window.location.href = "{#$QISHI.site_dir#}user/company/company_upload.php?act=check_resume_detail&id=" + data.data
                             $('.div_check').hide();
                         }
                     },
@@ -105,7 +105,6 @@
                 });
                 e.stopPropagation();
             });
-
 
 
         })
@@ -215,6 +214,7 @@
             line-height: 30px;
             margin-bottom: 8px;
         }
+
         .contact-btn {
             width: 130px;
             height: 32px;
@@ -549,72 +549,107 @@
                         </td>
                         <td bgcolor="#FFFFFF" id="telephone" style=" border-bottom:1px #CCCCCC dashed">
 
-                            <input type="SUBMIT" value="我要审核" class="contact-btn get_telephone" data-id="{#$resume.id#}" />
+                            <input type="SUBMIT" value="我要审核" class="contact-btn get_telephone"
+                                   data-id="{#$resume.id#}"/>
                             点击，获取电话
                         </td>
                     </tr>
                 </table>
 
                 <div class="div_check" style="display: none">
-                {#if $resumeaudit#}
-                <form id="Form2" name="Form2" method="post" action="?act=del_auditreason">
-                    <div class="toptit">简历审核日志</div>
-                    <table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF">
-                        {#foreach from=$resumeaudit item=list#}
-                        <tr>
-                            <td height="30" width="180" align="right" bgcolor="#FFFFFF"
-                                style=" border-bottom:1px #CCCCCC dashed">
-                                <label>
-                                    <input type="checkbox" name="a_id[]" value="{#$list.id#}">
-                                    <span style="font-weight:bold">{#$list.addtime|date_format:"%Y-%m-%d %H:%M:%S"#}</span>
+                    {#if $resumeaudit#}
+                    <form id="Form2" name="Form2" method="post" action="?act=del_auditreason">
+                        <div class="toptit">简历审核日志</div>
+                        <table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF">
+                            {#foreach from=$resumeaudit item=list#}
+                            <tr>
+                                <td height="30" width="180" align="right" bgcolor="#FFFFFF"
+                                    style=" border-bottom:1px #CCCCCC dashed">
                                     <label>
-                            </td>
-                            <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">
-                                {#$list.reason#}
-                            </td>
-                        </tr>
-                        {#/foreach#}
-                        <tr>
-                            <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">
-                                &nbsp;</td>
-                            <td height="50" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span
-                                    style="font-size:14px;">
+                                        <input type="checkbox" name="a_id[]" value="{#$list.id#}">
+                                        <span style="font-weight:bold">{#$list.addtime|date_format:"%Y-%m-%d %H:%M:%S"#}</span>
+                                        <label>
+                                </td>
+                                <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">
+                                    {#$list.reason#}
+                                </td>
+                            </tr>
+                            {#/foreach#}
+                            <tr>
+                                <td height="30" align="right" bgcolor="#FFFFFF"
+                                    style=" border-bottom:1px #CCCCCC dashed">
+                                    &nbsp;</td>
+                                <td height="50" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span
+                                        style="font-size:14px;">
               <input name="submit3" type="submit" class="admin_submit" value="删除所选"/>
               <input name="submit22" type="button" class="admin_submit" value="返 回"
                      onclick="window.location.href='{#$url#}'"/>
             </span></td>
-                        </tr>
-                    </table>
-                </form>
-                {#else#}
-                <div class="account-wrap">
-                    <div class="account-top-block clearfix">
-                        <div class="account-state f-left">审核结果</div>
-                        <div class="a-state-content f-left">
-                            <form action="?act=check_result" method="post">
-                                {#if $check_result#}
-                                {#foreach from=$check_result item=list#}
-                                <input type="radio" name="result" value="{#$list.c_name#}">{#$list.c_name#}
-                                {#/foreach#}
-                                {#/if#}
-                                <input type="radio" name="result" value="1">审核通过
-                                <input type="hidden" name="id" value="{#$resume.id#}" />
-                                <input type="SUBMIT" value="提交审核结果" class="contact-btn download" />
-                            </form>
+                            </tr>
+                        </table>
+                    </form>
+                    {#else#}
+                    <div class="my_account">
+                        <form action="?act=check_result" method="post">
+                        <div class="row rowpdno">
+                            <dl><div class="account-wrap" >
+                                <div class="account-top-block clearfix">
+                                    <div class="account-state f-left">拒绝</div>
+                                    <div class="a-state-content f-left">
+
+                                            {#if $check_result#}
+                                            {#foreach from=$check_result item=list#}
+                                            <input type="radio" name="result" value="{#$list.c_name#}">{#$list.c_name#}
+                                            {#/foreach#}
+                                            {#/if#}
+
+
+
+
+                                         </div>
+                                </div>
+
+                            </div>
+
+                                <div class="account-wrap" style="padding-top:0px">
+                                    <div class="account-top-block clearfix">
+                                        <div class="account-state f-left">通过</div>
+                                        <div class="a-state-content f-left">
+
+                                            {#if $check_result_pass#}
+                                                {#foreach from=$check_result_pass item=list#}
+                                                <input type="radio" name="result" value="{#$list.c_name#}">{#$list.c_name#}
+                                                {#/foreach#}
+                                                {#/if#}
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div style="text-align: center">
+                                    <input type="hidden" name="id" value="{#$resume.id#}"/>
+
+                                    <input type="SUBMIT" value="审核" class="contact-btn download"/><br>
+                                一定要仔细填写审核结果，如果没有填写审核结果，则无法审核下一份简历
+                                    </div>
+                            </dl>
+
+
+
                         </div>
-                        一定要仔细填写审核结果，如果没有填写审核结果，则无法审核下一份简历
+                        </form>
+                    </div>
+
+                        {#/if#}
                     </div>
                 </div>
-
-
-                {#/if#}</div>
             </div>
         </div>
+        <div class="clear"></div>
     </div>
-    <div class="clear"></div>
-</div>
-{#include file="user/footer.htm"#}
-</body>
+    {#include file="user/footer.htm"#}
+    </body>
 </html>
 
 

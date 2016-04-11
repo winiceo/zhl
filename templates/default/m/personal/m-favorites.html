@@ -24,7 +24,7 @@
 			<header class="global-header flex-box">
 				<div class="header-left flex1"><div class="prev" id="pageback"></div></div>
 				<div class="header-center flex2"><span class="title-only">我的收藏</span></div>
-				<div class="header-right flex3"><div class="operatebox" id="{#if $favorites#}operateaction{#/if#}">管理</div></div>
+				{#include file="m/personal/navi.html"#}
 			</header>
 			{#if $favorites#}
 				<div id="container">

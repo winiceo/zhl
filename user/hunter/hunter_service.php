@@ -84,7 +84,7 @@ elseif ($act=='order_add_save')
 	$order['v_url']=$_CFG['site_domain'].$_CFG['site_dir']."include/payment/respond_".$paymenttpye['typename'].".php";
 	$order['v_amount']=$amount+$fee; 
 	$points=$amount*$_CFG['hunter_payment_rate'];
-	$order_id=add_order($_SESSION['uid'],$order['oid'],$amount,$payment_name,"充值积分:".$points,$timestamp,$points,'',3,4);
+	$order_id=add_order($_SESSION['uid'],$order['oid'],$amount,$payment_name,"充值葫芦币:".$points,$timestamp,$points,'',3,4);
 		if ($order_id)
 			{
 			header("location:?act=payment&order_id=".$order_id);

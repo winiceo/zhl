@@ -64,9 +64,17 @@
 				<div class="topnav get_resume">
 					<div class="titleH1"><div class="h1-title">充值/订单</div></div>
 					<div class="navs link_bk">
-                        {#include file="member_company/order_nav.htm"#}
-
-                        <div class="clear"></div>
+						{#if $QISHI.operation_mode=="1" || $QISHI.operation_mode=="3"#}
+						<a href="?act=order_add">葫芦币充值</a>
+						{#/if#}
+						{#if $QISHI.operation_mode=="2" || $QISHI.operation_mode=="3"#}
+				        <a href="?act=setmeal_list">申请VIP套餐</a>
+						{#/if#}
+						<a href="?act=order_list" class="se">我的订单</a>
+				        {#if $QISHI.operation_mode=="1" || $QISHI.operation_mode=="3"#}
+				        <a href="?act=gifts">礼品卡</a>
+				        {#/if#}
+						<div class="clear"></div>
 					</div>
 				</div>
 				<div class="company-data-list">
@@ -84,16 +92,13 @@
 						</div>
 						<div class="item f-left top-item3">
 							<div class="data-filter span4">
-								<span class="filter-span">{#if $pay_type=='1'#}套餐订单{#elseif $pay_type=='2'#}广告订单{#elseif $pay_type=='3'#}短信订单{#elseif $pay_type=='4'#}积分订单{#else#}订单类别{#/if#}<i class="filter-icon"></i></span>
+								<span class="filter-span">{#if $pay_type=='1'#}套餐订单{#elseif $pay_type=='2'#}广告订单{#elseif $pay_type=='3'#}短信订单{#elseif $pay_type=='4'#}葫芦币订单{#else#}订单类别{#/if#}<i class="filter-icon"></i></span>
 								<ul class="filter-down">
 									<li><a href="company_service.php?act=order_list&pay_type=0&is_paid={#$smarty.get.is_paid#}">全部订单</a></li>
 									<li><a href="company_service.php?act=order_list&pay_type=1&is_paid={#$smarty.get.is_paid#}">套餐订单</a></li>
 									<li><a href="company_service.php?act=order_list&pay_type=2&is_paid={#$smarty.get.is_paid#}">广告订单</a></li>
 									<li><a href="company_service.php?act=order_list&pay_type=3&is_paid={#$smarty.get.is_paid#}">短信订单</a></li>
-									<li><a href="company_service.php?act=order_list&pay_type=4&is_paid={#$smarty.get.is_paid#}">积分订单</a></li>
-                                    <li><a href="company_service.php?act=order_list&pay_type=7&is_paid={#$smarty.get.is_paid#}">余额充值</a></li>
-                                    <li><a href="company_service.php?act=order_list&pay_type=8&is_paid={#$smarty.get.is_paid#}">管理员扣款</a></li>
-                                    <li><a href="company_service.php?act=order_list&pay_type=9&is_paid={#$smarty.get.is_paid#}">余额提现</a></li>
+									<li><a href="company_service.php?act=order_list&pay_type=4&is_paid={#$smarty.get.is_paid#}">葫芦币订单</a></li>
 								</ul>
 							</div>
 						</div>
@@ -102,36 +107,23 @@
 					</div>
 					{#if $payment#}
 	  		 			{#section name=payment loop=$payment#}
-						<div class="c-data-row" style="height:90px;">
+						<div class="c-data-row">
 							<div class="c-data-content order-list clearfix">
 								<div class="c-item f-left content1">
 									<div><a href="javascript:;" order_id="{#$payment[payment].id#}" class="name-link underline">{#$payment[payment].oid#}</a></div>
-									<p>创建时间:{#$payment[payment].addtime|date_format:"%Y-%m-%d %H:%M"#} | 支付方式:{#if $payment[payment].payment_name #}{#$payment[payment].payment_name#}{#else#}余额{#/if#}
-                                        {#if $payment[payment].pay_type == 7#}余额充值
-                                        {#elseif $payment[payment].pay_type == 8#}余额{#/if#}</p>
-                                    <p>{#$payment[payment].description#}</p>
+									<p>创建时间:{#$payment[payment].addtime|date_format:"%Y-%m-%d %H:%M"#} | 支付方式:{#$payment[payment].payment_name#}</p>
 								</div>
 								<div class="c-item f-left content2">
 									<span class="order-not-done">{#if $payment[payment].is_paid==1#}未完成{#/if#}{#if $payment[payment].is_paid==2#}<span style="color:#4CA51F">已支付</span>{#/if#}</span>
 								</div>
-
-                                <div class="c-item f-left content3">
-                                    {#if $payment[payment].pay_type==1#}套餐订单
-                                    {#elseif $payment[payment].pay_type==2#}广告订单
-                                    {#elseif $payment[payment].pay_type==3#}短信订单
-                                    {#elseif $payment[payment].pay_type==4#}积分订单
-                                    {#elseif $payment[payment].pay_type==7#}余额充值
-                                    {#elseif $payment[payment].pay_type==8#}管理员扣款
-                                    {#elseif $payment[payment].pay_type==9#}余额提现
-                                    {#/if#}</div>
-                                <div class="c-item f-left content4"><span class="order-money">{#if $payment[payment].pay_type==8#}-{#/if#}￥{#$payment[payment].amount#}</span></div>
-
-                                <div class="c-item f-left content5">
+								<div class="c-item f-left content3">{#if $payment[payment].pay_type==1#}套餐订单{#elseif $payment[payment].pay_type==2#}广告订单{#elseif $payment[payment].pay_type==3#}短信订单{#elseif $payment[payment].pay_type==4#}葫芦币订单{#/if#}</div>
+								<div class="c-item f-left content4"><span class="order-money">￥{#$payment[payment].amount#}</span></div>
+								<div class="c-item f-left content5">
 									{#if $payment[payment].is_paid==1#}
-									{#if $payment[payment].pay_type!=9#}<a href="?act=payment&order_id={#$payment[payment].id#}" class="data-ctrl underline order-info">支付</a>&nbsp;{#/if#}
+									<a href="?act=payment&order_id={#$payment[payment].id#}" class="data-ctrl underline order-info">支付</a>&nbsp;
 									<a url="?act=order_del&id={#$payment[payment].id#}" href="javascript:;" class="data-ctrl underline ctrl-del">取消</a>
 									{#else#}
-									<span class="order-done">已完成</span>
+									<span class="order-done">支付</span>&nbsp;<span class="order-done">取消</span>
 									{#/if#}
 								</div>
 							</div>

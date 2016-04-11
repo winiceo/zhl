@@ -116,7 +116,7 @@ isset($aset['attribute'])?$wheresql.=" AND focos=".intval($aset['attribute'])." 
 isset($aset['img'])?$wheresql.=" AND Small_img<>'' ":'';
 if (intval($_CFG['subsite_id'])>0)
 {
-	$wheresql.=" AND subsite_id=".intval($_CFG['subsite_id'])." ";
+	$wheresql.=" AND (subsite_id=".intval($_CFG['subsite_id'])." or subsite_id = 0)";
 }
 if (isset($aset['settr']))
 {

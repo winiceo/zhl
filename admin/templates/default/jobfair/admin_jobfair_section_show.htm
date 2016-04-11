@@ -106,16 +106,7 @@ $(document).ready(function()
 			</tr>
 			
 			<tr>
-		        <td align="right" >显示在：</td>
-		        <td colspan="4" >
-		    {#foreach from=$subsite item=li#}
-		    <label ><input name="subsite_id" type="radio" value="{#$li.s_id#}"  {#if $show.subsite_id==$li.s_id#}checked="checked"{#/if#}/>{#$li.s_sitename#}</label>
-		    &nbsp;&nbsp;&nbsp;
-		    {#/foreach#}
-		    
-		   </td>
-		      </tr> 
-			<tr>
+		     
 				<td width="130" align="right"  >标题招聘会链接：</td>
 				<td align="left" ><a href="{#$show.jobfair_url#}" target="_balank">{#$show.jobfair_url#}</a></td>
 			</tr>

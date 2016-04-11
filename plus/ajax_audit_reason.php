@@ -18,7 +18,7 @@ if($act=='jobs_reason'){
 if ($id)
 {
 	$result = $db->getone("SELECT * FROM ".table('audit_reason')." WHERE `{$column}`={$id} ORDER BY id DESC LIMIT 1");
-	if(empty($result) && $column=='company_id'){exit('现在提交认证资料，认证通过后可增加信息的可信度，还可能额外赠送积分哦！');}
+	if(empty($result) && $column=='company_id'){exit('现在提交认证资料，认证通过后可增加信息的可信度，还可能额外赠送葫芦币哦！');}
 	exit($result['reason']);
 }
 ?>

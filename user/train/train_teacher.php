@@ -173,7 +173,7 @@ elseif ($act=='make1_save')
 	}
 	
 
-	//套餐或积分操作
+	//套餐或葫芦币操作
 	if(intval($_REQUEST['pid'])===0){
 		if ($_CFG['operation_train_mode']=='1')
 		{

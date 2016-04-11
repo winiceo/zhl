@@ -4,8 +4,8 @@
 		<meta charset="gb2312">
 		<title>企业会员中心-发布职位</title>
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta name="author" content="找葫芦网" />
-<meta name="copyright" content="zhaohulu.com" />
+		<meta name="author" content="找葫芦" />
+		<meta name="copyright" content="zhaohulu.com" />
 		<link rel="stylesheet" href="../css/user-common.css" />
 		<link rel="stylesheet" href="../css/user-company.css" />
 		<script type="text/javascript" src="../js/jquery-1.11.3.js" ></script>
@@ -14,7 +14,7 @@
 		<script type="text/javascript" src="../js/jquery.editCMsubsite.js" ></script>
 		<script type="text/javascript" src="../js/iscroll.js" ></script>
 		<script type="text/javascript" src="../js/popWin.js" ></script>
-		<script src="{#$QISHI.site_domain#}{#$QISHI.site_dir#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
+		<script src="{#$QISHI.main_domain#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
 		<script type="text/javascript">
 		$(document).ready(function()
 		{
@@ -40,9 +40,12 @@
 				var telephone =$("input[name=telephone]").val();
 				var tag =$("input[name=tag]").val();
 				var tag_cn =$("input[name=tag_cn]").val();
+				var landline_tel_first =$("input[name=landline_tel_first]").val();
+				var landline_tel_next =$("input[name=landline_tel_next]").val();
+				var landline_tel_last =$("input[name=landline_tel_last]").val();
 				if (isPost) {
 					isPost = false;
-					$.post("?act=jobs_add_save",{add_mode:add_mode,jobs_name:jobs_name,topclass:topclass,category:category,subclass:subclass,category_cn:category_cn,district:district,sdistrict:sdistrict,district_cn:district_cn,subsite_id:subsite_id,wage:wage,wage_cn:wage_cn,contents:contents,address:address,contact:contact,email:email,telephone:telephone,tag_cn:tag_cn,tag:tag},function(data){
+					$.post("?act=jobs_add_save",{add_mode:add_mode,jobs_name:jobs_name,topclass:topclass,category:category,subclass:subclass,category_cn:category_cn,district:district,sdistrict:sdistrict,district_cn:district_cn,subsite_id:subsite_id,wage:wage,wage_cn:wage_cn,contents:contents,address:address,contact:contact,email:email,telephone:telephone,tag_cn:tag_cn,tag:tag,landline_tel_first:landline_tel_first,landline_tel_next:landline_tel_next,landline_tel_last:landline_tel_last},function(data){
 						var   type="^[0-9]*[1-9][0-9]*$";
 			        	var   re = new RegExp(type);
 			        	$("#create_job_but").hide();
@@ -142,8 +145,12 @@
 					<div class="mt"><input id="email" name="email" value="" /></div>
 				</div>
 				<div class="formChild notRformChild">
-					<div class="lt">联系电话</div>
+					<div class="lt">联系手机</div>
 					<div class="mt"><input id="telephone" name="telephone" value="" /></div>
+				</div>
+				<div class="formChild notRformChild">
+					<div class="lt">固定电话</div>
+					<div class="mt"><input style="width:20%;" id="landline_tel_first" name="landline_tel_first" maxlength="4" value="" />-<input style="width:40%;" id="landline_tel_next" name="landline_tel_next" maxlength="11" value="" />-<input style="width:30%;" id="landline_tel_last" name="landline_tel_last" maxlength="6" value="" /></div>
 				</div>
 				<div class="formChild notRformChild">
 					<div class="lt">详细地址</div>

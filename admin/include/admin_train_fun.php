@@ -289,7 +289,7 @@ function edit_train_audit($uid,$audit,$reason,$pms_notice)
 		{
 			if($_CFG['operation_train_mode']=='1'){
 				$points_rule=get_cache('points_rule');
-				if ($points_rule['train_auth']['value']>0)//如果设置了认证赠送积分
+				if ($points_rule['train_auth']['value']>0)//如果设置了认证赠送葫芦币
 				{
 					gift_points($sqlin,'trainauth',$points_rule['train_auth']['type'],$points_rule['train_auth']['value']);
 				}

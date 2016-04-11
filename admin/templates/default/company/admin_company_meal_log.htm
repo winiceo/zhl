@@ -19,8 +19,8 @@
 <div class="toptip">
 	<h2>描述说明：</h2>
 	<p>
-		管理员修改包括：管理员修改会员的积分，修改会员的套餐内各种服务的条数！<br>
-		管理员开通包括：管理员后台确认订单收款，重新开通服务，添加会员赠送积分，赠送套餐！<br>
+		管理员修改包括：管理员修改会员的葫芦币，修改会员的套餐内各种服务的条数！<br>
+		管理员开通包括：管理员后台确认订单收款，重新开通服务，添加会员赠送葫芦币，赠送套餐！<br>
 		修改套餐说明：发布普通职位3-10,3表示修改之前的数目，10表示修改后的数目！
 	</p>
 </div>
@@ -67,11 +67,11 @@
       <label id="chkAll"><input type="checkbox" name=" " title="全选/反选" id="chk"/>公司名称</label></td>
 	   <td  class="admin_list_tit">用户名</td>
 		{#if $QISHI.operation_mode=='1'#}  
-			  <td width="10%" class="admin_list_tit">目前积分</td>
+			  <td width="10%" class="admin_list_tit">目前葫芦币</td>
 		{#elseif $QISHI.operation_mode=='2'#}  
 			  <td width="10%"  class="admin_list_tit">目前套餐</td>
 		{#elseif $QISHI.operation_mode=='3'#}  
-			<td width="10%"  class="admin_list_tit">目前积分(套餐)</td>
+			<td width="10%"  class="admin_list_tit">目前葫芦币(套餐)</td>
 		{#/if#}
       <td  class="admin_list_tit">操作类型</td>     
       <td  class="admin_list_tit">付款金额</td>     
@@ -96,11 +96,11 @@
 		</td>
 		 <td class="admin_list">
 		{#if $QISHI.operation_mode=='1'#} 
-			<strong>{#$list.points#}</strong> 积分
+			<strong>{#$list.points#}</strong> 葫芦币
 		{#elseif $QISHI.operation_mode=='2'#}  
 			{#if $list.setmeal_name#}<span style="color: #009900">{#$list.setmeal_name#}</span>{#else#}<span style="color:#FF3300">无套餐</span>{#/if#}
 		{#elseif $QISHI.operation_mode=='3'#}  
-			积分:<strong>{#$list.points#}</strong>({#if $list.setmeal_name#}<span style="color: #009900">{#$list.setmeal_name#}</span>{#else#}<span style="color:#FF3300">无套餐</span>{#/if#})
+			葫芦币:<strong>{#$list.points#}</strong>({#if $list.setmeal_name#}<span style="color: #009900">{#$list.setmeal_name#}</span>{#else#}<span style="color:#FF3300">无套餐</span>{#/if#})
 		{#/if#}
 		</td>
  		<td class="admin_list">

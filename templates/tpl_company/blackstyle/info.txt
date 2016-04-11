@@ -1,2 +1,4 @@
 name:blackstyle
 version:3.7
+author:zhaohulu.com
+authorurl:http://www.zhaohulu.com

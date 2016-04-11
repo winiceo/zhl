@@ -23,7 +23,7 @@
 .content_box .auto div span { margin-left: 5px; }
 .content_box .auto div input { background-color: #fff; border:1px solid #ADADAD; }
 .content_box .auto a { text-decoration: none; color:#017FCF; margin-left: 10px;}
-.content_box .but_login_335 { width:335px; height:45px; line-height: 45px; font-size: 18px; color:#fff; background-color: #017FCF; border:0; font-family: "microsoft yahei"; text-align: center; vertical-align: middle; cursor: pointer; border-radius: 3px; }
+.content_box .but_login_335 { width:335px; height:45px; line-height: 45px; font-size: 18px; color:#fff; background-color: #ff9900; border:0; font-family: "microsoft yahei"; text-align: center; vertical-align: middle; cursor: pointer; border-radius: 3px; }
 .content_box p { margin-top: 25px; margin-bottom: 20px; color:#ADADAD; }
 .content_box li { text-indent: -9999px; float: left; margin-right: 20px; }
 .content_box li a { display: block; width:63px; height: 24px; }

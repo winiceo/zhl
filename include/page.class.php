@@ -299,7 +299,7 @@ class page{
     return "第".$this->nowindex."/".$this->totalpage."页";
 
     break;
-  case '7':// 积分商城 小页
+  case '7':// 葫芦币商城 小页
 
     $this->next_page='>';
 

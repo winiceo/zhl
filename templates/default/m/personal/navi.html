@@ -1,0 +1,51 @@
+<div class="header-right flex3"><div class="operatebox" id="operateaction"></div><div class="home new-header-user"></div></div>
+				<div class="new-header-nav-i"></div>
+				{#if $smarty.session.utype!=1 && $smarty.session.utype!=2#}
+				<div class="new-header-nav">
+					<nav class="index-menu">
+						<div class="menu-row layout-box">
+							<a href="{#$QISHI.wap_domain#}/index.php" class="box-col index-menu-item"><div class="menu-icon color5"><i class="w-icon w-icon-newhome new-w-icon"></i></div>网站首页</a>
+							<a href="{#$QISHI.wap_domain#}/login.php" class="box-col index-menu-item"><div class="menu-icon color2"><i class="w-icon w-icon-logreg"></i></div>登录/注册</a>
+							<a href="{#$QISHI.wap_domain#}/jobs-list.php" class="box-col index-menu-item"><div class="menu-icon color8"><i class="w-icon w-icon-sjob new-w-icon"></i></div>找工作</a>
+							<a href="{#$QISHI.wap_domain#}/resume-list.php" class="box-col index-menu-item"><div class="menu-icon color7"><i class="w-icon w-icon-sresume new-w-icon"></i></div>招人才</a>
+						</div>
+						<div class="menu-row layout-box">
+							<a href="{#$QISHI.wap_domain#}/jobfair-list.php" class="box-col index-menu-item"><div class="menu-icon color9"><i class="w-icon w-icon-people"></i></div>招聘会</a>
+							<a href="{#$QISHI.wap_domain#}/news-list.php" class="box-col index-menu-item"><div class="menu-icon color4"><i class="w-icon w-icon-book"></i></div>最新资讯</a>
+							<a href="{#$QISHI.wap_domain#}/simple-list.php" class="box-col index-menu-item"><div class="menu-icon color3"><i class="w-icon w-icon-ring"></i></div>微商圈</a>
+							<a href="{#$QISHI.wap_domain#}/salary.php" class="box-col index-menu-item"><div class="menu-icon color10"><i class="w-icon w-icon-money"></i></div>查工资</a>
+						</div>
+					</nav>
+				</div>
+				{#else#}
+				<div class="new-header-nav">
+				<nav class="index-menu">
+					<div class="menu-row layout-box">
+						<a href="{#$QISHI.wap_domain#}/index.php" class="box-col index-menu-item"><div class="menu-icon color5"><i class="w-icon w-icon-newhome new-w-icon"></i></div>网站首页</a>
+						{#if $smarty.session.utype==1#}
+						<a href="{#$QISHI.wap_domain#}/company/user.php" class="box-col index-menu-item"><div class="menu-icon color2"><i class="w-icon w-icon-hr new-w-icon"></i></div>企业中心</a>
+						<a href="{#$QISHI.wap_domain#}/resume-list.php" class="box-col index-menu-item"><div class="menu-icon color7"><i class="w-icon w-icon-sresume new-w-icon"></i></div>招人才</a>
+						<a href="{#$QISHI.wap_domain#}/company/company_jobs.php" class="box-col index-menu-item"><div class="menu-icon color1"><i class="w-icon w-icon-board-two"></i></div>管理职位</a>
+						{#elseif $smarty.session.utype==2#}
+						<a href="{#$QISHI.wap_domain#}/personal/user.php" class="box-col index-menu-item"><div class="menu-icon color2"><i class="w-icon w-icon-logreg"></i></div>个人中心</a>
+						<a href="{#$QISHI.wap_domain#}/jobs-list.php" class="box-col index-menu-item"><div class="menu-icon color8"><i class="w-icon w-icon-sjob new-w-icon"></i></div>找工作</a>
+						<a href="{#if $smarty.session.utype==2#}{#$QISHI.wap_domain#}/personal/user.php?act=resume_list{#else#}{#$QISHI.wap_domain#}/login.php{#/if#}" class="box-col index-menu-item"><div class="menu-icon color1"><i class="w-icon w-icon-pic"></i></div>我的简历</a>
+						{#/if#}
+					</div>
+					<div class="menu-row layout-box">
+						<a href="{#$QISHI.wap_domain#}/jobfair-list.php" class="box-col index-menu-item"><div class="menu-icon color9"><i class="w-icon w-icon-people"></i></div>招聘会</a>
+						<a href="{#$QISHI.wap_domain#}/news-list.php" class="box-col index-menu-item"><div class="menu-icon color4"><i class="w-icon w-icon-book"></i></div>最新资讯</a>
+						<a href="{#$QISHI.wap_domain#}/simple-list.php" class="box-col index-menu-item"><div class="menu-icon color3"><i class="w-icon w-icon-ring"></i></div>微商圈</a>
+						<a href="{#$QISHI.wap_domain#}/salary.php" class="box-col index-menu-item"><div class="menu-icon color10"><i class="w-icon w-icon-money"></i></div>查工资</a>
+					</div>
+				</nav>
+			</div>
+			{#/if#}
+				<script type="text/javascript">
+					var ca = $(".global-header");
+					$(document).on("click", function(a) {
+				        ca.find(".new-header-user").each(function(c, h) {
+				            $(a.target).closest(h).length > 0 ? $(".new-header-nav,.new-header-nav-i").toggle() : $(".new-header-nav,.new-header-nav-i").hide();
+				        })
+				    })
+				</script>

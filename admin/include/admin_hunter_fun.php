@@ -318,10 +318,10 @@ function edit_hunter_audit($uid,$audit,$reason,$pms_notice)
 		}
 		if ($audit=='1') 
 		{
-		//3.4升级修改注意,只有积分模式奖励积分
+		//3.4升级修改注意,只有葫芦币模式奖励葫芦币
 			if($_CFG['operation_hunter_mode']=='1'){
 				$points_rule=get_cache('points_rule');
-				if ($points_rule['hunter_auth']['value']>0)//如果设置了认证赠送积分
+				if ($points_rule['hunter_auth']['value']>0)//如果设置了认证赠送葫芦币
 				{
 					gift_points($sqlin,'hunterauth',$points_rule['hunter_auth']['type'],$points_rule['hunter_auth']['value']);
 				}

@@ -1,5 +1,152 @@
 <?php
 $data = array (
+  'QS_top' => 
+  array (
+    0 => 
+    array (
+      'title' => 'Ê×  Ò³',
+      'urltype' => '0',
+      'url' => '/index.php',
+      'target' => '_self',
+      'tag' => 'homepage',
+      'pagealias' => 'QS_index',
+    ),
+    1 => 
+    array (
+      'title' => 'ºùÂ«¹È',
+      'urltype' => '0',
+      'url' => '/hunter/resume-list.php',
+      'target' => '_self',
+      'tag' => 'hunter_resume',
+      'pagealias' => 'QS_hunter_resumelist',
+    ),
+    2 => 
+    array (
+      'title' => 'ÕÐÆ¸Ìù',
+      'urltype' => '0',
+      'url' => '/jobs/',
+      'target' => '_blank',
+      'tag' => 'jobs',
+      'pagealias' => 'QS_jobs',
+    ),
+    3 => 
+    array (
+      'title' => 'ÐüÉÍÌù',
+      'urltype' => '0',
+      'url' => '/hunter/jobs-list.php',
+      'target' => '_self',
+      'tag' => 'hunter_jobs',
+      'pagealias' => 'QS_hunter_jobslist',
+    ),
+    4 => 
+    array (
+      'title' => 'ÃûÆó¿â',
+      'urltype' => '0',
+      'url' => '/company/index.php',
+      'target' => '_self',
+      'tag' => 'company',
+      'pagealias' => 'QS_companylist',
+    ),
+    5 => 
+    array (
+      'title' => 'ÈË²Å¿â',
+      'urltype' => '0',
+      'url' => '/resume/',
+      'target' => '_blank',
+      'tag' => 'resume',
+      'pagealias' => 'QS_resume',
+    ),
+    6 => 
+    array (
+      'title' => '²âÆÀÌÃ',
+      'urltype' => '0',
+      'url' => '/evaluation/index.php',
+      'target' => '_blank',
+      'tag' => 'evaluation',
+      'pagealias' => 'QS_evaluation_index',
+    ),
+    7 => 
+    array (
+      'title' => '³äµç±¥',
+      'urltype' => '0',
+      'url' => '/train/',
+      'target' => '_self',
+      'tag' => 'train',
+      'pagealias' => 'QS_train',
+    ),
+    8 => 
+    array (
+      'title' => '¹¤¾ßÏä',
+      'urltype' => '0',
+      'url' => '/hrtools/index.php',
+      'target' => '_self',
+      'tag' => 'hrtools',
+      'pagealias' => 'QS_hrtoolsindex',
+    ),
+    9 => 
+    array (
+      'title' => 'ÖªÊ¶ÌÃ',
+      'urltype' => '0',
+      'url' => '/news/',
+      'target' => '_self',
+      'tag' => 'news',
+      'pagealias' => 'QS_news',
+    ),
+    10 => 
+    array (
+      'title' => 'ÕÐÆ¸»á',
+      'urltype' => '0',
+      'url' => '/jobfair/jobfair-list.php',
+      'target' => '_self',
+      'tag' => 'jobfair',
+      'pagealias' => 'QS_jobfairlist',
+    ),
+    11 => 
+    array (
+      'title' => 'Î¢ÕÐÆ¸',
+      'urltype' => '0',
+      'url' => '/simple/simple-list.php',
+      'target' => '_self',
+      'tag' => 'simple',
+      'pagealias' => 'QS_simplelist',
+    ),
+    12 => 
+    array (
+      'title' => 'Ð½³êÍ³¼Æ',
+      'urltype' => '0',
+      'url' => '/salary/',
+      'target' => '_self',
+      'tag' => 'salary',
+      'pagealias' => 'QS_salary',
+    ),
+    13 => 
+    array (
+      'title' => 'Ð£Ô°ÕÐÆ¸',
+      'urltype' => '0',
+      'url' => '/campus/index.php',
+      'target' => '_blank',
+      'tag' => 'campus',
+      'pagealias' => 'QS_campus_index',
+    ),
+    14 => 
+    array (
+      'title' => 'ºùÂ«±ÒÉÌ³Ç',
+      'urltype' => '0',
+      'url' => '/shop/shop_list.php',
+      'target' => '_self',
+      'tag' => 'shoplist',
+      'pagealias' => 'QS_shop_list',
+    ),
+    15 => 
+    array (
+      'title' => 'ÁÔÆ¸×¨Çø',
+      'urltype' => '0',
+      'url' => '/hunter/',
+      'target' => '_self',
+      'tag' => 'hunter',
+      'pagealias' => 'QS_hunter',
+    ),
+  ),
   'QS_hunter_top' => 
   array (
     0 => 
@@ -46,126 +193,6 @@ $data = array (
       'target' => '_self',
       'tag' => 'hunter_news',
       'pagealias' => 'QS_hunter_newslist',
-    ),
-  ),
-  'QS_top' => 
-  array (
-    0 => 
-    array (
-      'title' => 'Ê×  Ò³',
-      'urltype' => '0',
-      'url' => '/index.php',
-      'target' => '_self',
-      'tag' => 'homepage',
-      'pagealias' => 'QS_index',
-    ),
-    1 => 
-    array (
-      'title' => 'ÕÐÆ¸Ìù',
-      'urltype' => '0',
-      'url' => '/jobs/',
-      'target' => '_blank',
-      'tag' => 'jobs',
-      'pagealias' => 'QS_jobs',
-    ),
-    2 => 
-    array (
-      'title' => 'Î¢ÕÐÆ¸',
-      'urltype' => '0',
-      'url' => '/simple/simple-list.php',
-      'target' => '_self',
-      'tag' => 'simple',
-      'pagealias' => 'QS_simplelist',
-    ),
-    3 => 
-    array (
-      'title' => 'ÈË²Å¿â',
-      'urltype' => '0',
-      'url' => '/resume/',
-      'target' => '_blank',
-      'tag' => 'resume',
-      'pagealias' => 'QS_resume',
-    ),
-    4 => 
-    array (
-      'title' => '¹¤¾ßÏä',
-      'urltype' => '0',
-      'url' => '/hrtools/index.php',
-      'target' => '_self',
-      'tag' => 'hrtools',
-      'pagealias' => 'QS_hrtoolsindex',
-    ),
-    5 => 
-    array (
-      'title' => 'ÃûÆó¿â',
-      'urltype' => '0',
-      'url' => '/company/index.php',
-      'target' => '_self',
-      'tag' => 'company',
-      'pagealias' => 'QS_companylist',
-    ),
-    6 => 
-    array (
-      'title' => 'ÕÐÆ¸»á',
-      'urltype' => '0',
-      'url' => '/jobfair/jobfair-list.php',
-      'target' => '_self',
-      'tag' => 'jobfair',
-      'pagealias' => 'QS_jobfairlist',
-    ),
-    7 => 
-    array (
-      'title' => 'ÖªÊ¶ÌÃ',
-      'urltype' => '0',
-      'url' => '/news/',
-      'target' => '_self',
-      'tag' => 'news',
-      'pagealias' => 'QS_news',
-    ),
-    8 => 
-    array (
-      'title' => '»áÔ±ÖÐÐÄ',
-      'urltype' => '0',
-      'url' => '/user/login.php',
-      'target' => '_self',
-      'tag' => 'user',
-      'pagealias' => 'QS_login',
-    ),
-    9 => 
-    array (
-      'title' => '³äµç±¥',
-      'urltype' => '0',
-      'url' => '/train/',
-      'target' => '_self',
-      'tag' => 'train',
-      'pagealias' => 'QS_train',
-    ),
-    10 => 
-    array (
-      'title' => 'ÁÔÆ¸×¨Çø',
-      'urltype' => '0',
-      'url' => '/hunter/',
-      'target' => '_self',
-      'tag' => 'hunter',
-      'pagealias' => 'QS_hunter',
-    ),
-    11 => 
-    array (
-      'title' => 'Ð£Ô°ÕÐÆ¸',
-      'urltype' => '0',
-      'url' => '/campus/index.php',
-      'target' => '_blank',
-      'tag' => 'campus',
-      'pagealias' => 'QS_campus_index',
-    ),
-    12 => 
-    array (
-      'title' => '²âÆÀÌÃ',
-      'urltype' => '0',
-      'url' => '/evaluation/index.php',
-      'target' => '_blank',
-      'tag' => 'evaluation',
-      'pagealias' => 'QS_evaluation_index',
     ),
   ),
   'QS_train_top' => 

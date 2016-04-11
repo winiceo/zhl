@@ -151,6 +151,10 @@ elseif ($act=='save_username')
 	$arr['uid']=$_SESSION['uid'];
 	$_POST['newusername'] = utf8_to_gbk($_POST['newusername']);
 	$arr['newusername']=trim($_POST['newusername'])?trim($_POST['newusername']):showmsg('新用户名！',1);
+	if(!preg_match("/^[".chr(0xa1)."-".chr(0xff)."a-zA-Z0-9_]{3,18}$/", $arr['newusername']))
+	{
+		exit("-4");
+	}
 	$row_newname = $db->getone("SELECT * FROM ".table('members')." WHERE username='{$arr['newusername']}' LIMIT 1");
 	if($row_newname)
 	{

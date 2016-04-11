@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/> 
 <title>{#$title#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="找葫芦网" />
+<meta name="author" content="找葫芦" />
 <meta name="copyright" content="zhaohulu.com" />
 <link rel="stylesheet" href="{#$QISHI.site_template#}css/user_common.css" />
 <link rel="stylesheet" href="{#$QISHI.site_template#}css/user_company.css" />
@@ -65,7 +65,7 @@
 				<div class="topnav get_resume">
 					<div class="titleH1"><div class="h1-title">充值/订单</div></div>
 					<div class="navs link_bk">
-						<a href="?act=order_add">积分充值</a>
+						<a href="?act=order_add">葫芦币充值</a>
 						<a href="?act=order_list" class="se">我的订单</a>
 						<div class="clear"></div>
 					</div>
@@ -85,10 +85,10 @@
 						</div>
 						<div class="item f-left top-item3">
 							<div class="data-filter span4">
-								<span class="filter-span">{#if $pay_type=='4'#}积分订单{#else#}订单类别{#/if#}<i class="filter-icon"></i></span>
+								<span class="filter-span">{#if $pay_type=='4'#}葫芦币订单{#else#}订单类别{#/if#}<i class="filter-icon"></i></span>
 								<ul class="filter-down">
 									<li><a href="personal_service.php?act=order_list&pay_type=0&is_paid={#$smarty.get.is_paid#}">全部订单</a></li>
-									<li><a href="personal_service.php?act=order_list&pay_type=4&is_paid={#$smarty.get.is_paid#}">积分订单</a></li>
+									<li><a href="personal_service.php?act=order_list&pay_type=4&is_paid={#$smarty.get.is_paid#}">葫芦币订单</a></li>
 								</ul>
 							</div>
 						</div>
@@ -106,7 +106,7 @@
 								<div class="c-item f-left content2">
 									<span class="order-not-done">{#if $payment[payment].is_paid==1#}未完成{#/if#}{#if $payment[payment].is_paid==2#}<span style="color:#4CA51F">已支付</span>{#/if#}</span>
 								</div>
-								<div class="c-item f-left content3">{#if $payment[payment].pay_type==1#}套餐订单{#elseif $payment[payment].pay_type==2#}广告订单{#elseif $payment[payment].pay_type==3#}短信订单{#elseif $payment[payment].pay_type==4#}积分订单{#/if#}</div>
+								<div class="c-item f-left content3">{#if $payment[payment].pay_type==1#}套餐订单{#elseif $payment[payment].pay_type==2#}广告订单{#elseif $payment[payment].pay_type==3#}短信订单{#elseif $payment[payment].pay_type==4#}葫芦币订单{#/if#}</div>
 								<div class="c-item f-left content4"><span class="order-money">￥{#$payment[payment].amount#}</span></div>
 								<div class="c-item f-left content5">
 									{#if $payment[payment].is_paid==1#}

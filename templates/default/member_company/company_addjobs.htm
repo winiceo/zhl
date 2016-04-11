@@ -80,6 +80,15 @@ $("#sex_radio .input_radio").click(function(){
 		$("#sex_radio .input_radio").removeClass("select");
 		$(this).addClass("select");
 });
+$("#1").click(function(){
+		$("#xs").hide();
+		$("#total").show();
+});
+$("#2").click(function(){
+		$("#xs").show();
+		$("#total").hide();
+		
+});
 menuDown("#education_menu","#education","#education_cn","#menu1","218px");
 menuDown("#experience_menu","#experience","#experience_cn","#menu2","218px");
 menuDown("#wage_menu","#wage","#wage_cn","#menu3","218px");
@@ -407,6 +416,7 @@ $("#save_templates").click(function(){
 	  var jobs_name = $('input[name=jobs_name]').val();
 	  var nature=$('input[name=nature]').val();
 	  var nature_cn=$('input[name=nature_cn]').val();
+	  var jobs_type_cn=$('input[name=jobs_type_cn]').val();
 	  var category=$('input[name=category]').val();
 	  var subclass=$('input[name=subclass]').val();
 	  var topclass=$('input[name=topclass]').val();
@@ -484,6 +494,10 @@ $(".choose_templates").click(function(){
 				$("#sex_radio").children("#"+result.sex).addClass("select");
 				$('input[name=sex]').val(result.sex);
 				$('input[name=sex_cn]').val(result.sex_cn);
+				$("#jobs_type_radio").children(".input_radio").removeClass("select");
+				$("#jobs_type_radio").children("#"+result.jobs_type).addClass("select");
+				$('input[name=jobs_type]').val(result.jobs_type);
+				$('input[name=jobs_type_cn]').val(result.jobs_type_cn);
 				$('input[name=education]').val(result.education);
 				$('input[name=education_cn]').val(result.education_cn);
 				$('#education_menu').html(result.education_cn);
@@ -579,13 +593,13 @@ $(".choose_templates").click(function(){
 	              			<li id="{#$ex.id#}" title="{#$ex.title#}" class="choose_templates">{#$ex.title#}</li>
 	              			{#/foreach#}
 	              			{#else#}
-							<li>您还没有创建模板 <a href="company_jobs.php?act=add_templates" style="color:#0180cf">[新建模板]</a></li>
+							<li>您还没有创建模板 <a href="company_jobs.php?act=add_templates" style="color:#333">[新建模板]</a></li>
 	              			{#/if#}
 	              		</ul>
 	              	</div>
 	            </div>				
 	        </td>
-	        <td><a style="text-decoration: none;color:#0180CF" href="?act=jobs_templates">[管理模板]</a></td>
+	        <td><a style="text-decoration: none;color:#333" href="?act=jobs_templates">[管理模板]</a></td>
 		  </tr>
 		  <tr>
 			<td align="right"><span class="nec">职位性质</span>：</td>
@@ -598,6 +612,11 @@ $(".choose_templates").click(function(){
 			   {#/foreach#}			  
 			  <div class="clear"></div>
 			  </div>		    </td>
+		  </tr>
+          <tr>
+			<td align="right"><span class="nec">招聘人数</span>：</td>
+			<td><input name="amount" type="text" class="input_text_200" id="amount" maxlength="4" value="5"/></td>
+			<td></td>
 		  </tr>
 		  <tr class="jobmain">
 			<td align="right"><span class="nec">职位类别</span>：</td>
@@ -640,11 +659,6 @@ $(".choose_templates").click(function(){
               <input name="category_cn" id="category_cn" type="hidden" value="" />
             </td>
 			<td>&nbsp;</td>
-		  </tr>
-		   <tr>
-			<td align="right"><span class="nec">招聘人数</span>：</td>
-			<td><input name="amount" type="text" class="input_text_200" id="amount" maxlength="4" value="5"/></td>
-			<td><div class="righttip" style="float:left;">0表示若干!</div></td>
 		  </tr>
 		  <tr class="jobmain">
 			<td align="right"><span class="nec">工作地区</span>：</td>
@@ -1014,9 +1028,9 @@ $(".choose_templates").click(function(){
 <script type="text/javascript">
 $(document).ready(function()
 {
-	//积分默认
+	//葫芦币默认
 	total();
-	//计算总计积分
+	//计算总计葫芦币
 	function total()
 	{
 			var points = {#$points_total#};
@@ -1035,13 +1049,13 @@ $(document).ready(function()
 			{#if $QISHI.operation_mode=="2"#}
 			dialog({
 			  title: '系统提示',
-			  content: "您的积分不足，请申请新的服务或者充值积分！",
+			  content: "您的葫芦币不足，请申请新的服务或者充值葫芦币！",
 			  width:'300px'
 			}).showModal();
 			{#else#}
 			dialog({
 			  title: '系统提示',
-			  content: "您的积分不足，请充值后再发布！",
+			  content: "您的葫芦币不足，请充值后再发布！",
 			  width:'300px'
 			}).showModal();
 			{#/if#}

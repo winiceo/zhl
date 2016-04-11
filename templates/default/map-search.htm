@@ -10,6 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="edge"><meta name="renderer" content="webkit">
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
 <link href="{#$QISHI.site_template#}css/common.css" rel="stylesheet" type="text/css" />
+<link href="{#$QISHI.site_template#}css/header.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/map-search-layer.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/jobs.css" rel="stylesheet" type="text/css" />
 <script src="{#$QISHI.site_template#}js/jquery.js" type='text/javascript' ></script>
@@ -29,7 +30,7 @@ $(document).ready(function()
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="header.htm"#}
 <div class="page_location link_bk">
-当前位置：<a href="{#$QISHI.index_url#}">首页</a>&nbsp;>>&nbsp;<a href="{#"QS_jobs"|qishi_url#}">招聘信息</a>&nbsp;>>&nbsp;<a href="{#"QS_map,id:1"|qishi_url#}">地图搜索</a>&nbsp;>>&nbsp;搜索结果
+当前位置：<a href="{#$QISHI.index_url#}">首页</a>&nbsp;>&nbsp;<a href="{#"QS_jobs"|qishi_url#}">招聘贴</a>&nbsp;>&nbsp;<a href="{#"QS_map,id:1"|qishi_url#}">地图搜索</a>&nbsp;>&nbsp;搜索结果
 </div> 
 <div class="container">
 	<div id="filterSearch">

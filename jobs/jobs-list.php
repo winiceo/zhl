@@ -1,11 +1,11 @@
 <?php
  /*
- * 74cms 职位列表
+ * 职位列表
 */
 define('IN_QISHI', true);
 $alias="QS_jobslist";
 require_once(dirname(__FILE__).'/../include/common.inc.php');
-if(browser()=="mobile" && $_GET['iswap']==""){
+if(browser()=="mobile" && $_SESSION['iswap']==""){
 	header("location:".$_CFG['wap_domain'].'/jobs-list.php');
 }
 if($mypage['caching']>0){

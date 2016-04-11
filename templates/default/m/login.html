@@ -24,34 +24,19 @@
 				<a href="javascript:;" class="header-back"><i class="w-icon w-icon-back"></i></a>
 			</div>
 			<div class="header-center"><span class="title-only">登录</span></div>
-			<div class="header-right-link"><a href="user_reg.php">注册</a></div>
+			{#include file="navi.html"#}
 		</header>
 		<div class="content-wrap">
 			<div id="err"></div>
 			{#if $SMSconfig.open==1#}
 			<nav class="top-tab layout-box">
-				<div class="tab-item box-col active"><span>手机动态码登录</span></div>
-				<div class="tab-item box-col"><span>普通登录</span></div>
+				<div class="tab-item box-col active"><span>普通登录</span></div>
+				<div class="tab-item box-col "><span>手机动态码登录</span></div>
 			</nav>
 			{#/if#}
 			<section class="user-form-wrap">
-				<!-- 验证码登录 -->
-				<div class="form-tab-item" {#if $SMSconfig.open==1#}style="display:block;"{#else#}style="display:none;"{#/if#}>
-					<div class="user-form">
-						<div class="form-row clearfix">
-							<i class="user-icon phone f-left"></i>
-							<div class="input-area"><input type="text" name="mobile" id="mobile" placeholder="请输入手机号"></div>
-							<div class="code-box"><input type="button" value="获取验证码" class="code-btn" id="codeBtn"></div>
-						</div>
-						<div class="form-row clearfix">
-							<i class="user-icon number f-left"></i>
-							<div class="input-area"><input type="text" name="verifycode" id="verifycode" placeholder="请输入验证码"></div>
-						</div>
-					</div>
-					<div class="user-submit"><button class="user-submit-btn mobile_login" type="submit" disabled>登录</button></div>
-				</div>
-				<!-- 常规登录 -->
-				<div class="form-tab-item" {#if $SMSconfig.open==0#}style="display:block;margin-top:20px;"{#/if#}>
+			<!-- 常规登录 -->
+				<div class="form-tab-item"  style="display:block;">
 					<div class="user-form">
 						<div class="form-row clearfix">
 							<i class="user-icon user f-left"></i>
@@ -64,8 +49,26 @@
 						</div>
 					</div>
 					<div class="user-submit"><button class="user-submit-btn ordinary" type="submit">登录</button></div>
-					<p class="forget-pwd"><a href="user_get_pass.php">忘记密码</a></p>
+					<p class="forget-pwd"><a href="user_reg.php" style='float:left;'>没有账号？立即注册</a><a href="user_get_pass.php">忘记密码</a></p>
+					
 				</div>
+				<!-- 验证码登录 -->
+				<div class="form-tab-item" style="display:none;">
+					<div class="user-form">
+						<div class="form-row clearfix">
+							<i class="user-icon phone f-left"></i>
+							<div class="input-area"><input type="text" name="mobile" id="mobile" placeholder="请输入手机号"></div>
+							<div class="code-box"><input type="button" value="获取验证码" class="code-btn" id="codeBtn"></div>
+						</div>
+						<div class="form-row clearfix">
+							<i class="user-icon number f-left"></i>
+							<div class="input-area"><input type="text" name="verifycode" id="verifycode" placeholder="请输入验证码"></div>
+						</div>
+					</div>
+					<div class="user-submit"><button class="user-submit-btn mobile_login" type="submit" disabled>登录</button></div>
+					<p class="forget-pwd"><a href="user_reg.php" style='float:left;'>没有账号？立即注册</a><a href="user_get_pass.php">忘记密码</a></p>
+				</div>
+				
 			</section>
 			{#if $QISHI.qq_apiopen=="1" || $QISHI.sina_apiopen=="1"  || $QISHI.taobao_apiopen=="1"#}
 			<div class="third-login">
@@ -143,26 +146,31 @@
 				})
 			});
 			//发送手机验证码
+			var isFirstcodeBtn = true;
 			$('#codeBtn').on('click', function() {
-				$.post('?act=login_send_code', {'act':'login_send_code','mobile':$('#mobile').val()}, function(data) {
-					if($.trim(data)!='success')
-					{
-						if(data=='请60秒后重新验证！')
+				if (isFirstcodeBtn) {
+					isFirstcodeBtn =false;
+					$.post('?act=login_send_code', {'act':'login_send_code','mobile':$('#mobile').val()}, function(data) {
+						isFirstcodeBtn = true;
+						if($.trim(data)!='success')
+						{
+							if(data=='请60秒后重新验证！')
+							{
+								showTime(60);
+							}
+							var html = '<div class="user-form-error" style="display: block;"><i class="error-icon"></i>'+data+'</div>';
+							$("#err").html(html);
+							setTimeout(function () {
+			                    $("#err .user-form-error").hide();
+			                }, 1000);
+						}
+						else
 						{
 							showTime(60);
+							$('.mobile_login').removeAttr("disabled"); 
 						}
-						var html = '<div class="user-form-error" style="display: block;"><i class="error-icon"></i>'+data+'</div>';
-						$("#err").html(html);
-						setTimeout(function () {
-		                    $("#err .user-form-error").hide();
-		                }, 1000);
-					}
-					else
-					{
-						showTime(60);
-						$('.mobile_login').removeAttr("disabled"); 
-					}
-				});
+					});
+				}
 			});
 			//手机登录
 			$('.mobile_login').on('click', function() {

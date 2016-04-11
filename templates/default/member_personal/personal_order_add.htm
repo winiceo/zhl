@@ -14,7 +14,7 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
-	//计算获得积分数量
+	//计算获得葫芦币数量
 	$("#amount").keyup(function(){	
 		if((/^(\+|-)?\d+$/.test($(this).val())) && $(this).val()>={#$QISHI.payment_min#})
 		{
@@ -82,13 +82,13 @@ $(document).ready(function() {
 			</div>
 
 			<div class="navs">
-        <a href="?act=order_add" class="se">积分充值</a>
+        <a href="?act=order_add" class="se">葫芦币充值</a>
         <a href="?act=order_list">我的订单</a>
 				<div class="clear"></div>
 			</div>
 		</div>
 		<div class="balance margin-common">
-  			<div class="bal_text" style="margin-bottom:0;">您的账户剩余<span> {#$points#} </span>{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" href="personal_service.php?act=j_account&detail=1">[积分明细]</a>&nbsp;&nbsp;<a target="_blank" href="personal_service.php?act=j_account">[积分消费规则]</a></div>
+  			<div class="bal_text" style="margin-bottom:0;">您的账户剩余<span> {#$points#} </span>{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" href="personal_service.php?act=j_account&detail=1">[葫芦币明细]</a>&nbsp;&nbsp;<a target="_blank" href="personal_service.php?act=j_account">[葫芦币消费规则]</a></div>
   		</div>
   		<div class="bar">
   			<div class="bar_step1">

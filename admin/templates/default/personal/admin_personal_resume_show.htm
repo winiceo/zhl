@@ -252,6 +252,39 @@
 			 </td>
         </tr>
   </table>
+	{#if $log_list#}
+	<div class="toptit">上传简历审核结果</div>
+
+	<table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF"  >
+
+		{#foreach from=$log_list item=list#}
+		<tr>
+			<td height="30" width="80" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">审核人：</td>
+			<td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">
+				{# if $list.member!=false #}
+					{#$list.member.email#} ; {#$list.member.companyname#};{#$list.member.contact#}
+
+
+				{#else#}
+				{#$list.admin.admin_name#}
+
+				{#/if#}
+			</td>
+
+			<td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">审核结果：</td>
+			<td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed" class="link_lan">
+				{#$list.result#}{#if $list.pass==1#}(通过){#else#}(拒绝){#/if#}
+			</td>
+
+			<td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">审核时间：</td>
+			<td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed" class="link_lan">
+				{#$list.addtime|date_format:'%Y-%m-%d'#}
+			</td>
+		</tr>
+		{#/foreach#}
+	</table>
+	{#/if#}
+</div>
 {#if $resumeaudit#}	
 <form id="Form2" name="Form2" method="post" action="?act=del_auditreason">
 <div class="toptit">简历审核日志</div>
@@ -272,7 +305,7 @@
 		<tr>
             <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">&nbsp;</td>
             <td height="50" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="font-size:14px;">
-              <input name="submit3" type="submit" class="admin_submit"    value="删除所选"/> 
+              <input name="submit3" type="submit" class="admin_submit"    value="删除所选"/>
               <input name="submit22" type="button" class="admin_submit"    value="返 回" onclick="window.location.href='{#$url#}'"/>
             </span></td>
           </tr>

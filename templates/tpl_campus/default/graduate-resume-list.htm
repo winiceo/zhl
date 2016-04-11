@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/> 
 <title>校园招聘-简历搜索列表</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="找葫芦网" />
+<meta name="author" content="找葫芦" />
 <meta name="copyright" content="zhaohulu.com" />
 <link rel="stylesheet" href="{#$QISHI.site_campus_template#}css/school.css" />
 <link rel="stylesheet" href="{#$QISHI.site_campus_template#}css/ui-dialog.css" />
@@ -261,11 +261,12 @@
 					</div>
 				</div>
 			</div>
-			<div id="subsiteBox" data-txt="工作地区,{#if $QISHI.districtid#}工作地区{#else#}地区子类{#/if#}"></div>
+			<div id="subsiteBox" data-txt="工作地区,{#if $QISHI.districtid==''#}全部{#/if#}{#if $QISHI.districtid#}工作地区{#else#}地区子类{#/if#}"></div>
 			<div class="filter-list-wrap clearfix">
 				<div class="fl-type f-left">工作经验：</div>
 				<div class="fl-content r-choice f-left">
-					{#qishi_get_classify set="列表名:experience,类型:QS_experience,显示数目:100"#}
+					<div class="fl-content-li{#if '' == $smarty.get.experience#} select{#/if#}" type="experience"  style="margin-right: 20px;">全部</div>
+                    {#qishi_get_classify set="列表名:experience,类型:QS_experience,显示数目:100"#}
 					{#foreach from=$experience item=list#}
 					<div class="fl-content-li{#if $list.id == $smarty.get.experience#} select{#/if#}" type="experience" code="{#$list.id#}">{#$list.categoryname#}</div>
 					{#/foreach#}
@@ -274,7 +275,8 @@
 			<div class="filter-list-wrap clearfix">
 				<div class="fl-type f-left">特长标签：</div>
 				<div class="fl-content f-left forShowMore" id="fliterMore">
-					{#qishi_get_classify set="列表名:resumetag,类型:QS_resumetag,显示数目:100"#}
+					<div class="fl-content-li{#if ''== $smarty.get.jobtag#} select{#/if#}" type="resumetag" code="" style="margin-right: 20px;">全部</div>
+                    {#qishi_get_classify set="列表名:resumetag,类型:QS_resumetag,显示数目:100"#}
 					{#foreach from=$resumetag item=list#}
 					<div class="fl-content-li" type="resumetag" code="{#$list.id#}">{#$list.categoryname#}</div>
 					{#/foreach#}
@@ -444,6 +446,6 @@
 	      	{#/if#}
 		</div>
 	</div>
-	{#include file="../tpl_campus/default/footer.htm"#}
+	{#include file="footer.htm"#}
 </body>
 </html>

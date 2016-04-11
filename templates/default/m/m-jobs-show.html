@@ -102,19 +102,7 @@
 					<a href="{#$show.company_url#}&jobsid={#$show.id#}"><div class="h-tab-item">公司信息</div></a>
 				</div>
 			</div>
-			{#if $smarty.session.utype!=1 && $smarty.session.utype!=2#}
-			<div class="header-user"><a href="login.php"><i class="w-icon w-icon-user"></i></a></div>
-			{#else#}
-			<div class="header-user">
-				<a href="{#$QISHI.wap_domain#}/{#if $smarty.session.utype==1#}company/user.php{#else if $smarty.session.utype==2#}personal/user.php{#/if#}">
-					{#if $smarty.session.avatars!=''#}
-					<img src="{#$smarty.session.avatars#}" alt="" width="24" height="24">
-					{#else#}
-					<i class="w-icon w-icon-user"></i>
-					{#/if#}
-				</a>
-			</div>
-			{#/if#}
+			{#include file="navi.html"#}
 		</header>
 		<div class="content-wrap">
 			<div class="company-show">
@@ -179,7 +167,6 @@
 				{#/if#}
 			</div>
 		</div>
-		{#include file="m/footer.htm"#}
 	</div>
 	<!-- 弹出框 -->
 	<div class="menu choose_menu" style="display:none;position:absolute;z-index:1;">

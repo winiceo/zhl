@@ -6,7 +6,7 @@ if(!defined('IN_QISHI')) exit('Access Denied!');
 define('QISHI_ROOT_PATH',dirname(dirname(__FILE__)).'/');
 error_reporting(E_ERROR);
 ini_set('session.save_handler', 'files');
-session_save_path('/data/tmp/session/');
+session_save_path(QISHI_ROOT_PATH.'data/sessions/');
 session_start();
 require_once(QISHI_ROOT_PATH.'data/config.php');
 header("Content-Type:text/html;charset=".QISHI_CHARSET);
@@ -40,6 +40,7 @@ if($_CFG['uc_open']=="1"){
 	require_once(QISHI_ROOT_PATH.'data/cache_uc_config.php');
 }
 $QS_cookiedomain = get_cookiedomain();
+
 $_CFG['main_domain']=$_CFG['site_domain'].$_CFG['site_dir'];
 $_CFG['wap_domain'] = $_CFG['wap_domain']==""?$_CFG['site_domain'].$_CFG['site_dir']."m":$_CFG['wap_domain'];
 $_CFG['m_main_domain'] = $_CFG['wap_domain'];

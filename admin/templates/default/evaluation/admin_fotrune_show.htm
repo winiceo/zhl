@@ -1,0 +1,35 @@
+{#include file="sys/admin_header.htm"#}
+<script type="text/javascript">
+$(document).ready(function()
+{	
+	//纵向列表排序
+	$(".listod .txt").each(function(i){
+	var li=$(this).children(".select");
+	var htm="<a href=\""+li.attr("href")+"\" class=\""+li.attr("class")+"\">"+li.text()+"</a>";
+	li.detach();
+	$(this).prepend(htm);
+	});
+	$("#ButDel").click(function(){
+		if (confirm('你确定要删除吗？'))
+		{
+			$("form[name=form1]").submit()
+		}
+	});	
+});
+</script>
+<div class="admin_main_nr_dbox">
+	<div class="pagetit">
+		<div class="ptit"> {#$pageheader#}</div>
+	<div class="clear"></div>
+	</div>
+	<div class="toptit">评测结果</div>
+
+ 	{#$result.result#}
+
+	<br>
+	<input name="submit222" type="button" class="admin_submit" value="返 回" onclick="Javascript:window.history.go(-1)">
+		
+</div>
+{#include file="sys/admin_footer.htm"#}
+</body>
+</html>

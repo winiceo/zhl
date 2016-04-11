@@ -35,6 +35,41 @@ function delete_dialog(className,form)
   });
 }
 /*
+  issued_dialog  发放赏金提示弹出框 
+  @ className  触发事件的 class 名 .ctrl-del 
+    单独删除 包含url 属性 删除链接
+    批量删除 包含act 属性 表单提交地址
+  @ form   批量删除提交表单的,表单id #form1
+*/
+function issued_dialog(className,form)
+{
+   $(''+className+'').on('click', function(e)
+   {
+    var url=$(this).attr('url');
+    var act=$(this).attr('act');
+    var myDialog=dialog();
+    myDialog.title('系统提示');
+    myDialog.content('<div class="del-dialog"><div class="tip-block"><span class="del-tips-text">请确认该面试人员已经上岗</span></div></div><div class="center-btn-wrap"><input type="button" value="确定" class="btn-65-30blue btn-big-font DialogSubmit" /><input type="button" value="取消" class="btn-65-30grey btn-big-font DialogClose" /></div>');
+    myDialog.width('300');
+    myDialog.showModal();
+    /* 关闭 */
+    $(".DialogClose").live('click',function() {
+      myDialog.close().remove();
+    });
+    // 确定
+    $(".DialogSubmit").click(function() 
+    {
+      if(url)
+      {
+        window.location.href=url;
+      }else{
+        $(""+form+"").attr("action",act);
+        $(""+form+"").submit();
+      }
+    });
+  });
+}
+/*
   inviteJob_dialog 面试邀请弹出框
   @className  触发事件的 class 包含 resume_id属性 为简历 id
   @url 请求ajax 的php 地址
@@ -47,7 +82,7 @@ function inviteJob_dialog(className,url)
     var tsTimeStamp= new Date().getTime();
     var url_=url+"?id="+id+"&act=invited&t="+tsTimeStamp;
     var myDialog = dialog();
-    myDialog.title('邀请面试');
+    myDialog.title('邀请面试1');
     myDialog.content("加载中...");
     myDialog.width('500');
     myDialog.showModal();
@@ -60,7 +95,7 @@ function inviteJob_dialog(className,url)
               myDialog.close().remove();
             });
             /* 邀请操作 */
-            $(".DialogSubmit").click(function() 
+            $(".DialogSubmit").live('click',function() 
             {
               var jobsid= $("#jobsid").val();
               if(jobsid=="")
@@ -210,77 +245,6 @@ function set_promotion_dialog(className)
     });
   })
 }
-
-//企业悬赏
-function set_reward_dialog(className)
-{
-    $(''+className+'').on('click', function(){
-        var catid = $(this).attr("catid");
-        var jobid = $(this).attr("jobid");
-        var url="company_ajax.php?act=set_promotion&catid="+catid+"&jobid="+jobid;
-        var myDialog = dialog();
-        myDialog.title('职位推广');
-        myDialog.content("加载中...");
-        myDialog.width('490');
-        myDialog.showModal();
-        jQuery.ajax({
-            url: url,
-            success: function (data) {
-                myDialog.content(data);
-                /* 关闭 */
-                $(".DialogClose").live('click',function() {
-                    myDialog.close().remove();
-                });
-                /* 邀请操作 */
-                $(".DialogSubmit").click(function()
-                {
-                    $(this).val("提交中..");
-                    $(this).attr("disabled","1");
-                    var jobid = $("#jobid").val();
-                    var catid = $("#catid").val();
-
-                    var pro_name = $("#pro_name").val();
-                    var interview_num=$("#interview_num").val();
-                    var interview_money=$("#interview_money").val();
-                    var interview_success_num=$("#interview_success_num").val();
-                    var interview_success_money=$("#interview_success_money").val();
-                    $.get("company_ajax.php?act=reward_add_save",{jobid:jobid,catid:catid,interview_num:interview_num,interview_money:interview_money,pro_name:pro_name,interview_success_num:interview_success_num,interview_success_money:interview_success_money},
-                        function(result)
-                        {
-                            myDialog.content(result);
-                        });
-                });
-            }
-        });
-    })
-}
-
-
-//企业悬赏
-function set_date_dialog(className)
-{
-    $(''+className+'').on('click', function(){
-        var catid = $(this).attr("catid");
-        var jobid = $(this).attr("jobid");
-        var url="company_ajax.php?act=set_date&catid="+catid+"&jobid="+jobid;
-        var myDialog = dialog();
-        myDialog.title('此职位已在推广');
-        myDialog.content("加载中...");
-        myDialog.width('490');
-        myDialog.showModal();
-        jQuery.ajax({
-            url: url,
-            success: function (data) {
-                myDialog.content(data);
-                /* 关闭 */
-                $(".DialogClose").live('click',function() {
-                    myDialog.close().remove();
-                });
-
-            }
-        });
-    })
-}
 /*
   企业下载联系方式 弹出框
 */
@@ -409,29 +373,6 @@ function applyJob_dialog(className,url,is_jobshow)
       window.setTimeout("updateP("+ i +","+time+")", i*1000);
     };
   };
-          /* 关闭 */
-          $(".DialogClose").live('click',function() {
-            myDialog.close().remove();
-          });
-      });
-    });
-}
-
-/*
-  提供线索
-*/
-function clueJob_dialog(className,url)
-{
-    $(''+className+'').on('click', function(){
-      var jobs_id = $(this).attr("jobs_id");
-      var url_=url+"?id="+jobs_id+"&act=app";
-      var myDialog = dialog();
-      myDialog.title('提供人才线索');
-      myDialog.content("加载中...");
-      myDialog.width('500');
-      myDialog.showModal();
-      $.get(url_, function(data){
-          myDialog.content(data);
           /* 关闭 */
           $(".DialogClose").live('click',function() {
             myDialog.close().remove();

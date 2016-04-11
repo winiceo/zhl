@@ -582,6 +582,20 @@ elseif ($act=='company_profile_save')
 				$db->updatetable(table('jobs_search_stickrtime'),$soarray," uid=".intval($_POST['cuid'])."");
 				$db->updatetable(table('jobs_search_hot'),$soarray," uid=".intval($_POST['cuid'])."");
 				$db->updatetable(table('jobs_search_key'),$soarray," uid=".intval($_POST['cuid'])."");
+				//同步到职位联系方式
+				if(intval($_POST['telephone_to_jobs'])==1)
+				{
+					$jobsid_arr=$db->getall("select id from ".table("jobs")." where uid=".intval($_POST['cuid']));
+					if(!empty($jobsid_arr))
+					{
+						foreach ($jobsid_arr as $key => $value) 
+						{
+							$jobsid_arr_[]=$value['id'];
+						}
+						$jobsid_str=implode(',', $jobsid_arr_);
+						$db->query("update ".table('jobs_contact')." set telephone='$setsqlarr[telephone]',email='$setsqlarr[email]',contact='$setsqlarr[contact]',landline_tel='$setsqlarr[landline_tel]' where pid in ($jobsid_str)");
+					}
+				}
 				//修改高级职位的企业信息
 				$hunterjobarr['companyname']=$setsqlarr['companyname'];
 				$hunterjobarr['companyname_note']=$setsqlarr['companyname'];
@@ -764,7 +778,7 @@ elseif($act == 'meal_log')
 	$key=isset($_GET['key'])?trim($_GET['key']):"";
 	$key_type=isset($_GET['key_type'])?intval($_GET['key_type']):"";
 	$operation_mode=trim($_CFG['operation_mode']);
-	//积分、套餐和混合三种模式变更记录，混合模式下积分和套餐变更的记录都显示
+	//葫芦币、套餐和混合三种模式变更记录，混合模式下葫芦币和套餐变更的记录都显示
 	if($operation_mode=='1')
 	{
 		$wheresql=" WHERE a.log_mode=1 AND a.log_utype=1";
@@ -994,7 +1008,7 @@ elseif($act == 'members_list')
 		$wheresql .= " AND  c.status=0";
     }
 
-    $joinsql = " LEFT JOIN " . table('members') . " as m ON m.uid=c.uid ";
+    $joinsql = " LEFT JOIN " . table('members') . " as m ON m.uid=c.uid LEFT JOIN " . table('company_profile') . " as p ON p.uid=c.uid";
     $total_sql = "SELECT COUNT(*) AS num FROM " . table('resume_check_apply') . " as c " . $joinsql . $wheresql;
     $total_val = $db->get_total($total_sql);
     $page = new page(array('total' => $total_val, 'perpage' => $perpage, 'getarray' => $_GET));
@@ -1125,8 +1139,8 @@ elseif($act == 'members_add_save')
 				if ($_POST['regpoints']=="y")
 				{
 				write_memberslog($insert_id,1,9001,$sql['username'],"<span style=color:#FF6600>注册会员系统自动赠送!(+{$regpoints_num})</span>",1,1010,"注册会员系统自动赠送","+{$regpoints_num}","{$regpoints_num}");
-						//会员积分变更记录。管理员后台修改会员的积分。3表示：管理员后台修改
-				$notes="操作人：{$_SESSION['admin_name']},说明：后台添加企业会员并赠送(+{$regpoints_num})积分，收取费用：{$amount}元";
+						//会员葫芦币变更记录。管理员后台修改会员的葫芦币。3表示：管理员后台修改
+				$notes="操作人：{$_SESSION['admin_name']},说明：后台添加企业会员并赠送(+{$regpoints_num})葫芦币，收取费用：{$amount}元";
 				write_setmeallog($insert_id,$sql['username'],$notes,4,$amount,$ismoney,1,1);
 					
 				report_deal($insert_id,1,$regpoints_num);
@@ -1137,13 +1151,13 @@ elseif($act == 'members_add_save')
 				$service=get_setmeal_one($reg_service);
 				write_memberslog($insert_id,1,9002,$sql['username'],"开通服务({$service['setmeal_name']})",2,1011,"开通服务","","");
 				set_members_setmeal($insert_id,$reg_service);
-						//会员积分变更记录。管理员后台修改会员的积分。3表示：管理员后台修改
+						//会员葫芦币变更记录。管理员后台修改会员的葫芦币。3表示：管理员后台修改
 				$notes="操作人：{$_SESSION['admin_name']},说明：后台添加企业会员并开通服务({$service['setmeal_name']})，收取费用：{$amount}元";
 				write_setmeallog($insert_id,$sql['username'],$notes,4,$amount,$ismoney,2,1);
 					
 				}
 				if(intval($_POST['is_money']) && $_POST['log_amount'] && !$notes){
-				$notes="操作人：{$_SESSION['admin_name']},说明：后台添加企业会员，未赠送积分，未开通套餐，收取费用：{$amount}元";
+				$notes="操作人：{$_SESSION['admin_name']},说明：后台添加企业会员，未赠送葫芦币，未开通套餐，收取费用：{$amount}元";
 				write_setmeallog($insert_id,$sql['username'],$notes,4,$amount,2,2,1);
 				}			
 			}
@@ -1272,8 +1286,8 @@ elseif($act == 'userpoints_edit')
 {
 	check_token();
 	check_permissions($_SESSION['admin_purview'],"com_user_edit");
-	if (intval($_POST['points'])<1) adminmsg('请输入积分！',1);
-	if (trim($_POST['points_notes'])=='') adminmsg('请填写积分操作说明！',1);
+	if (intval($_POST['points'])<1) adminmsg('请输入葫芦币！',1);
+	if (trim($_POST['points_notes'])=='') adminmsg('请填写葫芦币操作说明！',1);
 	$link[0]['text'] = "返回列表";
 	$link[0]['href'] = $_POST['url'];
 	$user=get_user($_POST['company_uid']);
@@ -1281,8 +1295,8 @@ elseif($act == 'userpoints_edit')
 	$t=$points_type==1?"+":"-";
 	report_deal($user['uid'],$points_type,intval($_POST['points']));
 	$points=get_user_points($user['uid']);
-	write_memberslog(intval($_POST['company_uid']),1,9001,$user['username']," 管理员操作积分({$t}{$_POST['points']})，(剩余:{$points})，备注：".$_POST['points_notes'],1,1012,"管理员操作积分","{$t}{$_POST['points']}","{$points}");
-		//会员积分变更记录。管理员后台修改会员的积分。3表示：管理员后台修改
+	write_memberslog(intval($_POST['company_uid']),1,9001,$user['username']," 管理员操作葫芦币({$t}{$_POST['points']})，(剩余:{$points})，备注：".$_POST['points_notes'],1,1012,"管理员操作葫芦币","{$t}{$_POST['points']}","{$points}");
+		//会员葫芦币变更记录。管理员后台修改会员的葫芦币。3表示：管理员后台修改
 		$user=get_user($_POST['company_uid']);
 		if(intval($_POST['is_money']) && $_POST['log_amount']){
 			$amount=round($_POST['log_amount'],2);
@@ -1291,9 +1305,9 @@ elseif($act == 'userpoints_edit')
 			$amount='0.00';
 			$ismoney=1;
 		}
-		$notes="操作人：{$_SESSION['admin_name']},说明：修改会员 {$user['username']} 积分 ({$t}{$_POST['points']})。收取积分金额：{$amount} 元，备注：{$_POST['points_notes']}";
+		$notes="操作人：{$_SESSION['admin_name']},说明：修改会员 {$user['username']} 葫芦币 ({$t}{$_POST['points']})。收取葫芦币金额：{$amount} 元，备注：{$_POST['points_notes']}";
 		write_setmeallog($_POST['company_uid'],$user['username'],$notes,3,$amount,$ismoney,1,1);
-	write_log("修改会员uid为".$user['uid']."积分", $_SESSION['admin_name'],3);		
+	write_log("修改会员uid为".$user['uid']."葫芦币", $_SESSION['admin_name'],3);
 	adminmsg('保存成功！',2);
 }
 elseif($act == 'set_setmeal_save')
@@ -1670,9 +1684,12 @@ elseif($act == 'company_news_save')
 
 }
  elseif($act == 'management')
-{	
-	$id=intval($_GET['id']);
+{
+
+	$QS_cookiedomain = get_cookiedomain();
+ 	$id=intval($_GET['id']);
 	$u=get_user($id);
+
 	if (!empty($u))
 	{
 		unset($_SESSION['uid']);
@@ -1683,21 +1700,29 @@ elseif($act == 'company_news_save')
 		setcookie("QS[username]","",time() - 3600,$QS_cookiepath, $QS_cookiedomain);
 		setcookie("QS[password]","",time() - 3600,$QS_cookiepath, $QS_cookiedomain);
 		setcookie("QS[utype]","",time() - 3600,$QS_cookiepath, $QS_cookiedomain);
-		
+		setcookie("QS[subsite_id]","",time() - 3600,$QS_cookiepath, $QS_cookiedomain);
+
 		unset($_SESSION['activate_username']);
 		unset($_SESSION['activate_email']);
+
+
 		
 		$_SESSION['uid']=$u['uid'];
 		$_SESSION['username']=$u['username'];
 		$_SESSION['utype']=$u['utype'];
 		$_SESSION['uqqid']="1";
 		$_SESSION['no_self']="1";
+		$_SESSION['subsite_id']=$u['subsite_id'];
 		setcookie('QS[uid]',$u['uid'],0,$QS_cookiepath,$QS_cookiedomain);
 		setcookie('QS[username]',$u['username'],0,$QS_cookiepath,$QS_cookiedomain);
 		setcookie('QS[password]',$u['password'],0,$QS_cookiepath,$QS_cookiedomain);
 		setcookie('QS[utype]',$u['utype'], 0,$QS_cookiepath,$QS_cookiedomain);
+		setcookie('QS[subsite_id]',$u['subsite_id'], 0,$QS_cookiepath,$QS_cookiedomain);
+
 		header("Location:".get_member_url($u['utype']));
-	}	
+	}else{
+		adminmsg('用户不存在',1);
+	}
 } 
 elseif($act == 'consultant')
 {
@@ -1864,19 +1889,14 @@ elseif($act == "consultant_del"){
     if ($_GET['status'] != "") {
         //未分配
         $consultant = intval($_GET['status']);
-        if ($consultant == "0") {
-            $wheresql .= " AND  m.member_id is null";
-        } //已分配
-        elseif ($consultant == "1") {
-            $wheresql .= " AND m.member_id <> null";
-        }
+        $wheresql .= " AND  m.status= ".$consultant;
     }
 
 
 	//分配权限
 	$assign=get_permissions($_SESSION['admin_purview'], "reward_check_list_assign");
 	if(!$assign){
-		$wheresql .= " AND c.admin_id = ".$_SESSION["admin_id"];
+		$wheresql .= " AND m.admin_id = ".$_SESSION["admin_id"];
 	}
 
     $total_sql = "SELECT COUNT(*) AS num FROM " . table('jobs_reward_clue') . " as m " .  $wheresql;
@@ -1896,6 +1916,9 @@ elseif($act == "consultant_del"){
     $smarty->display('company/admin_company_user_clue_list.htm');
 } elseif ($act == 'clue_detail') {
     get_token();
+
+
+
 	require_once(ADMIN_ROOT_PATH.'include/admin_user_fun.php');
 
 	$id = !empty($_REQUEST['cid']) ? $_REQUEST['cid'] : adminmsg("参数有误！", 1);
@@ -1920,15 +1943,34 @@ elseif($act == "consultant_del"){
 		//dump($resume);
 
 	}
+
+	$job_url=url_rewrite('QS_jobsshow', array('id' => $clue['job_id']));
+    $smarty->assign('job_url', $job_url);
     $smarty->assign('clue', $clue);
     $smarty->assign('company_profile', $company_profile);
     $smarty->assign('promotion', $promotion);
     $smarty->assign('member', $member);
 
+	$smarty->assign("genvhr",get_category_info("Genv_hr"));
+	$smarty->assign("genvpro",get_category_info("Genv_prodive"));
+	$smarty->assign("genvjob",get_category_info("Genv_job"));
+
     $smarty->assign('clue_log', $clue_log);
     $smarty->assign('url', $_SERVER["HTTP_REFERER"]);
     $smarty->assign('pageheader', "人才访问记录");
+
+	$clue_detail=get_clue_detail($promotion);
+
+
+
+    $smarty->assign('clue_detail', $clue_detail);
+
+	$subsite=get_all_subsite();
+    $smarty->assign('subsite', $subsite);
+
     $smarty->display('company/admin_company_clue_detail.htm');
+
+
 }elseif ($act == 'clue_log_save') {
     check_token();
     $id = intval($_POST['id']);
@@ -1940,11 +1982,28 @@ elseif($act == "consultant_del"){
     $setsqlarr['addtime'] = time();
     $setsqlarr['admin_name'] = $_SESSION["admin_name"];
     $setsqlarr['nexttime'] = $_POST["nexttime"];
+    $setsqlarr['result'] = !empty($_POST['result']) ? trim($_POST['result']) : adminmsg('访问结果类型不能为空！', 1);
+	$db->inserttable(table('jobs_reward_clue_log'), $setsqlarr );
 
 
-    $db->inserttable(table('jobs_reward_clue_log'), $setsqlarr );
-    write_log("添加人才联系日志" . $id . " ", $_SESSION['admin_name'], 3);
+	write_log("添加人才联系日志" . $id . " ", $_SESSION['admin_name'], 3);
 
+
+	if( $setsqlarr['result']=="简历已投通知查看"){
+		Ggven::log("面试成功,开始处理");
+		success_act_view($id,1);
+	}
+
+    if( $setsqlarr['result']=="已成功面试(扣除面试佣金)"){
+		Ggven::log("面试成功,开始处理");
+		success_act($id,1);
+	}
+
+	if( $setsqlarr['result']=="已成功入职(扣除入职佣金)"){
+		success_act($id,2);
+	}
+
+	update_clue_status($id);
     $link[0]['text'] = "查看修改结果";
     $link[0]['href'] = "?act=clue_detail&cid={$id}";
     adminmsg('添加成功！', 2, $link);
@@ -2008,7 +2067,7 @@ elseif($act == "consultant_del"){
     check_permissions($_SESSION['admin_purview'], "company_points");
 
     $list = get_points_plan();
-    $smarty->assign('pageheader', "积分增送方案");
+    $smarty->assign('pageheader', "葫芦币增送方案");
     $smarty->assign('list', $list);
 
 
@@ -2020,11 +2079,11 @@ elseif($act == "consultant_del"){
 
     $setsqlarr['name'] = !empty($_POST['name']) ? trim($_POST['name']):adminmsg('请填写名称！',1);
     $setsqlarr['money'] = !empty($_POST['money']) ? trim($_POST['money']):adminmsg('金额不能为空！',1);
-    $setsqlarr['free_points'] = !empty($_POST['free_points']) ? trim($_POST['free_points']):adminmsg('赠送积分不能为空！',1);
+    $setsqlarr['free_points'] = !empty($_POST['free_points']) ? trim($_POST['free_points']):adminmsg('赠送葫芦币不能为空！',1);
 
 
     $insert_id=$db->inserttable(table('company_points'),$setsqlarr,true);
-    write_log("添加积分赠送方案".$setsqlarr['name'], $_SESSION['admin_name'],3);
+    write_log("添加葫芦币赠送方案".$setsqlarr['name'], $_SESSION['admin_name'],3);
     $link[0]['text'] = "返回列表";
     $link[0]['href'] = "?act=company_points";
 
@@ -2102,6 +2161,7 @@ elseif($act == 'clue_members_add_save')
 	$sql['pwd_hash'] = randstr();
 	$sql['password'] = md5(md5($sql['password']).$sql['pwd_hash'].$QS_pwdhash);
 	$sql['reg_time']=time();
+	$sql['subsite_id']=$_POST["subsite_id"];
 	$sql['reg_ip']=$online_ip;
 	$insert_id=$db->inserttable(table('members'),$sql,true);
 
@@ -2158,4 +2218,63 @@ elseif($act == 'clue_members_add_save')
 		}
 	}
 }
+elseif ($act == 're_money') {
+	check_token();
+	$id = intval($_REQUEST['id']);
+	if (!$id) {
+		adminmsg("参数错误！", 1);
+	}
+	$log=$db->getone("select * from ".table("jobs_reward_clue_log")." where id=".$id." and is_success=0");
+	if(!$log){
+		adminmsg("操作错误！", 1);
+	}
+	$cid=$log["cid"];
+
+	$clue = get_clue_one($cid);
+	$promotion = get_promotion_info($clue["job_id"], 5);
+	if (!$promotion) {
+		adminmsg("招聘信息丢失", 1);
+	}
+	$json = json_array($promotion["cp_json"]);
+
+	$type=$log["cate"];
+	if($log["role"]==1){
+		qiye_deal($clue, $json, $promotion, $type);
+	}elseif($log["role"]==2){
+		pro_deal($clue, $json, $promotion, $type);
+
+	}elseif($log["role"]==3){
+		jober_deal($clue, $json, $promotion, $type);
+	}
+	$arr=array();
+	$arr["is_success"]=1;
+	$wheresql = " id='" . $log["id"] . "'";
+    $db->updatetable(table('jobs_reward_clue_log'), $arr, $wheresql);
+
+	adminmsg('处理成功！', 2);
+}
+elseif ($act == 'test') {
+	success_act(2,1);
+}
+
+
+
+
+
+//获取选项信息
+function get_category_info($value ){
+
+	$rs = \ORM::for_table(table('category'))->where_equal("c_alias", $value)->find_array();
+	if($rs){
+		return $rs;
+	}
+	return array();
+
+
+}
+
+
+
+
+
 ?>

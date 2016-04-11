@@ -396,12 +396,28 @@ elseif ($act == "reward_add_save") {
         $setsqlarr['cp_jobid'] = $jobid;
 
 
+		$amount_per=$json["amount_per"];
+
+		$amount_success_per=$json["amount_success_per"];
+
+		$jober_per=$json["jober_per"];
+
+		$jober_success_per=$json["jober_success_per"];
+
+
         $json=array();
         $json["num"]=$interview_num;
         $json["amount"]=$interview_money;
         $json["success_num"]=$interview_success_num;
         $json["success_amount"]=$interview_success_money;
         $json["block_balance"]=$block_balance;
+		$json["amount_per"]=$amount_per;
+
+		$json["amount_success_per"]=$amount_success_per;
+
+		$json["jober_per"]=$jober_per;
+
+		$json["jober_success_per"]=$jober_success_per;
 
         $setsqlarr['cp_json'] = json_encode($json);
         $db->inserttable(table('promotion'), $setsqlarr);
@@ -483,7 +499,7 @@ elseif($act=='order_detail')
 	}
 	else
 	{
-		$contents=str_replace('{#$order_amount#}','兑换'.$order['amount'].'积分',$contents);
+		$contents=str_replace('{#$order_amount#}','兑换'.$order['amount'].'葫芦币',$contents);
 	}
 	$contents=str_replace('{#$order_payname#}',get_payment_info($order['payment_name'],ture),$contents);
 	if($order['notes'])
@@ -610,7 +626,7 @@ elseif($act == "auto_refresh")
 
 	$htm='<div class="yuyue-one-dialog">
 				<div class="yo-block">
-					<div class="short-text-tip" style="margin-left:0">您的账户剩余 <span>'.$user_points.' 积分,</span> '.$row['auto_refresh_day'].',还可以为您自动刷新'.$row['auto_refresh_num'].'次。</div>
+					<div class="short-text-tip" style="margin-left:0">您的账户剩余 <span>'.$user_points.' 葫芦币,</span> '.$row['auto_refresh_day'].',还可以为您自动刷新'.$row['auto_refresh_num'].'次。</div>
 					<div class="yue-one-item">
 						<span class="yo-type">预约职位：</span><font>'.$row['jobs_name'].'</font>
 					</div>
@@ -621,7 +637,7 @@ elseif($act == "auto_refresh")
 						<span class="yo-type">预约天数：</span>'.$row['auto_refresh_num_all'].' 天
 					</div>
 					<div class="yue-one-item">
-						<span class="yo-type">消耗积分：</span> '.$row['points'].'分<span class="use-fen">（每天消耗'.$row['points_day'].'积分）</span>
+						<span class="yo-type">消耗葫芦币：</span> '.$row['points'].'分<span class="use-fen">（每天消耗'.$row['points_day'].'葫芦币）</span>
 					</div>
 				</div>
 			</div>';
@@ -698,15 +714,15 @@ elseif($act == "jobs_refresh_ajax")
 	elseif($_CFG['operation_mode']=='3') 
 	{
 		$setmeal=get_user_setmeal($_SESSION['uid']);
-		//该会员套餐过期 (套餐过期后就用积分来刷)
+		//该会员套餐过期 (套餐过期后就用葫芦币来刷)
 		if($setmeal['endtime']<time() && $setmeal['endtime']<>"0")
 		{
-			//后台开通  服务超限时启用积分消费
+			//后台开通  服务超限时启用葫芦币消费
 			if($_CFG['setmeal_to_points']=='1')
 			{
 				$mode = 1;
 			}
-			//后台没有开通  服务超限时启用积分消费
+			//后台没有开通  服务超限时启用葫芦币消费
 			else
 			{
 				exit('<div class="del-dialog"><div class="tip-block"><span class="del-tips-text">您的服务已经到期，请重新开通</span></div></div>');
@@ -724,7 +740,7 @@ elseif($act == "jobs_refresh_ajax")
 			//刷新职位数 大于 剩余刷新职位数 (超了)
 			if($surplus_time <= 0)
 			{
-				//后台开通  服务超限时启用积分消费
+				//后台开通  服务超限时启用葫芦币消费
 				if($_CFG['setmeal_to_points']=='1')
 				{
 					$mode = 1;
@@ -740,7 +756,7 @@ elseif($act == "jobs_refresh_ajax")
 			}
 		}
 	}
-	//积分模式
+	//葫芦币模式
 	if($mode=='1')
 	{
 		//限制刷新时间
@@ -779,7 +795,7 @@ elseif($act == "jobs_refresh_ajax")
 					{
 						//剩余次数
 						$surplus = intval($_CFG['com_pointsmode_refresh_time']) - intval($refresh_time['count(*)']);
-						exit('<div class="del-dialog"><div class="tip-block"><span class="del-tips-text" style="line-height:30px;">今天还可用积分刷新<span style="color:#ff9900;">'.$surplus.'</span>次，本次刷新需要消耗<span style="color:#ff9900;">'.$points_rule['jobs_refresh']['value'].'</span>'.$_CFG['points_byname'].'，确定要刷新吗？</span></div></div><div class="center-btn-wrap"><input type="button" value="确定" class="btn-65-30blue btn-big-font DialogSubmit" /><input type="button" value="取消" class="btn-65-30grey btn-big-font DialogClose" /></div>');
+						exit('<div class="del-dialog"><div class="tip-block"><span class="del-tips-text" style="line-height:30px;">今天还可用葫芦币刷新<span style="color:#ff9900;">'.$surplus.'</span>次，本次刷新需要消耗<span style="color:#ff9900;">'.$points_rule['jobs_refresh']['value'].'</span>'.$_CFG['points_byname'].'，确定要刷新吗？</span></div></div><div class="center-btn-wrap"><input type="button" value="确定" class="btn-65-30blue btn-big-font DialogSubmit" /><input type="button" value="取消" class="btn-65-30grey btn-big-font DialogClose" /></div>');
 					}
 				}
 			}
@@ -795,7 +811,7 @@ elseif($act == "jobs_refresh_ajax")
 				{
 					//剩余次数
 					$surplus = intval($_CFG['com_pointsmode_refresh_time']) - intval($refresh_time['count(*)']);
-					exit('<div class="del-dialog"><div class="tip-block"><span class="del-tips-text" style="line-height:30px;">今天还可用积分刷新<span style="color:#ff9900;">'.$surplus.'</span>次，确定要刷新吗？</span></div></div><div class="center-btn-wrap"><input type="button" value="确定" class="btn-65-30blue btn-big-font DialogSubmit" /><input type="button" value="取消" class="btn-65-30grey btn-big-font DialogClose" /></div>');
+					exit('<div class="del-dialog"><div class="tip-block"><span class="del-tips-text" style="line-height:30px;">今天还可用葫芦币刷新<span style="color:#ff9900;">'.$surplus.'</span>次，确定要刷新吗？</span></div></div><div class="center-btn-wrap"><input type="button" value="确定" class="btn-65-30blue btn-big-font DialogSubmit" /><input type="button" value="取消" class="btn-65-30grey btn-big-font DialogClose" /></div>');
 				}
 			}
 		}
@@ -854,7 +870,7 @@ elseif($act == "jobs_all_refresh_ajax")
 	elseif($_CFG['operation_mode']=='3') 
 	{
 		$setmeal=get_user_setmeal($_SESSION['uid']);
-		//该会员套餐过期 (套餐过期后就用积分来刷)
+		//该会员套餐过期 (套餐过期后就用葫芦币来刷)
 		if($setmeal['endtime']<time() && $setmeal['endtime']<>"0")
 		{
 			exit('<div class="del-dialog"><div class="tip-block"><span class="del-tips-text">您的服务已经到期，请重新开通</span></div></div>');
@@ -879,7 +895,7 @@ elseif($act == "jobs_all_refresh_ajax")
 			}
 		}
 	}
-	//积分模式
+	//葫芦币模式
 	if($mode=='1')
 	{
 		//限制刷新时间
@@ -891,7 +907,7 @@ elseif($act == "jobs_all_refresh_ajax")
 		$surplus_time =  $_CFG['com_pointsmode_refresh_time'] - $refresh_time['count(*)'];
 		if($_CFG['com_pointsmode_refresh_time']!=0&&($length>$surplus_time))
 		{
-			exit('<div class="del-dialog"><div class="tip-block"><span class="del-tips-text" style="line-height:30px;">抱歉！您批量刷新职位数超过了积分刷新剩余数，请单个职位刷新操作！</span></div></div>');	
+			exit('<div class="del-dialog"><div class="tip-block"><span class="del-tips-text" style="line-height:30px;">抱歉！您批量刷新职位数超过了葫芦币刷新剩余数，请单个职位刷新操作！</span></div></div>');
 		}
 		elseif($duringtime<=$space)
 		{
@@ -919,7 +935,7 @@ elseif($act == "jobs_all_refresh_ajax")
 					{
 						//剩余次数
 						$surplus = intval($_CFG['com_pointsmode_refresh_time']) - intval($refresh_time['count(*)']);
-						exit('<div class="del-dialog"><div class="tip-block"><span class="del-tips-text" style="line-height:30px;">今天还可用积分刷新<span style="color:#ff9900;">'.$surplus.'</span>次，本次刷新需要消耗<span style="color:#ff9900;">'.$length*$points_rule['jobs_refresh']['value'].'</span>'.$_CFG['points_byname'].'，确定要刷新吗？</span></div></div><div class="center-btn-wrap"><input type="button" value="确定" class="btn-65-30blue btn-big-font DialogSubmit" /><input type="button" value="取消" class="btn-65-30grey btn-big-font DialogClose" /></div>');
+						exit('<div class="del-dialog"><div class="tip-block"><span class="del-tips-text" style="line-height:30px;">今天还可用葫芦币刷新<span style="color:#ff9900;">'.$surplus.'</span>次，本次刷新需要消耗<span style="color:#ff9900;">'.$length*$points_rule['jobs_refresh']['value'].'</span>'.$_CFG['points_byname'].'，确定要刷新吗？</span></div></div><div class="center-btn-wrap"><input type="button" value="确定" class="btn-65-30blue btn-big-font DialogSubmit" /><input type="button" value="取消" class="btn-65-30grey btn-big-font DialogClose" /></div>');
 					}
 				}
 			}
@@ -935,7 +951,7 @@ elseif($act == "jobs_all_refresh_ajax")
 				{
 					//剩余次数
 					$surplus = intval($_CFG['com_pointsmode_refresh_time']) - intval($refresh_time['count(*)']);
-					exit('<div class="del-dialog"><div class="tip-block"><span class="del-tips-text" style="line-height:30px;">今天还可用积分刷新<span style="color:#ff9900;">'.$surplus.'</span>次，确定要刷新吗？</span></div></div><div class="center-btn-wrap"><input type="button" value="确定" class="btn-65-30blue btn-big-font DialogSubmit" /><input type="button" value="取消" class="btn-65-30grey btn-big-font DialogClose" /></div>');
+					exit('<div class="del-dialog"><div class="tip-block"><span class="del-tips-text" style="line-height:30px;">今天还可用葫芦币刷新<span style="color:#ff9900;">'.$surplus.'</span>次，确定要刷新吗？</span></div></div><div class="center-btn-wrap"><input type="button" value="确定" class="btn-65-30blue btn-big-font DialogSubmit" /><input type="button" value="取消" class="btn-65-30grey btn-big-font DialogClose" /></div>');
 				}
 			}
 		}

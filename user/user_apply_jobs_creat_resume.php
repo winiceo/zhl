@@ -55,6 +55,16 @@ if($act=="create_resume")
 	$insert_id=$db->inserttable(table('members'),$user_arr,true);
 	if($insert_id)
 	{
+		//插入会员葫芦币表并且操作葫芦币
+		$setarr['uid']=$insert_id;
+		$db->inserttable(table("members_points"),$setarr);
+		$points=get_cache('points_rule');
+		if ($points['reg_per_points']['value']>0)
+		{
+			report_deal($insert_id,$points['reg_per_points']['type'],$points['reg_per_points']['value']);
+			$operator=$points['reg_per_points']['type']=="1"?"+":"-";
+			write_memberslog($insert_id,2,9001,$username,"新注册会员,({$operator}{$points['reg_per_points']['value']}),(剩余:{$points['reg_per_points']['value']})",2,1010,"注册会员系统自动赠送葫芦币","{$operator}{$points['reg_per_points']['value']}","{$points['reg_per_points']['value']}");
+		}
 		// 登录
 		$login =user_login($user_arr['username'],'123456');
 		// 添加会员信息
@@ -126,7 +136,7 @@ elseif($act == "check_mobile")
 }
 elseif ($act =="send_code")
 {
-	$mobile = trim($_POST['mobile']);
+	$mobile = trim($_POST['mobile'])?trim($_POST['mobile']):exit("请填写手机号");
 	if(get_user_inmobile($mobile))
 	{
 		exit("手机号已经存在,请换一个号码！");

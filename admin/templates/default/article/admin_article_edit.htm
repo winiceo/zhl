@@ -87,6 +87,8 @@ $(document).ready(function()
     <tr>
         <td align="right" ><span style="color:#FF3300; font-weight:bold">*</span>ÏÔÊ¾ÔÚ£º</td>
         <td colspan="4" >
+          <label ><input name="subsite_id" class="choose_subsite" type="radio" value="0"  {#if $QISHI.subsite_id=="0"#}checked="checked"{#/if#} />×ÜÕ¾</label>
+          &nbsp;&nbsp;&nbsp;
     {#foreach from=$subsite item=li#}
     <label ><input name="subsite_id" type="radio" value="{#$li.s_id#}"  {#if $edit_article.subsite_id==$li.s_id#}checked="checked"{#/if#}/>{#$li.s_sitename#}</label>
     &nbsp;&nbsp;&nbsp;

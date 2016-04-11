@@ -10,6 +10,7 @@ require_once(QISHI_ROOT_PATH.'include/mysql.class.php');
 $smarty->cache = false;
 $db = new mysql($dbhost,$dbuser,$dbpass,$dbname);
 require_once(dirname(__FILE__).'/weixin_share.php');
+wap_weixin_openid($_GET['code']);
 $page = empty($_GET['page'])?1:intval($_GET['page']);
 $district = intval($_GET['district'])==0?"":intval($_GET['district']);
 $sdistrict = intval($_GET['sdistrict'])==0?"":intval($_GET['sdistrict']);

@@ -1,0 +1,54 @@
+{#include file="sys/admin_header.htm"#}
+<script type="text/javascript">
+$(document).ready(function()
+{
+	//点击批量取消	
+	$("#ButDel").click(function(){
+		if (confirm('你确定要删除吗？'))
+		{
+			$("form[name=form1]").submit()
+		}
+	});
+		
+});
+</script>
+<div class="admin_main_nr_dbox">
+<div class="pagetit">
+	<div class="ptit"> {#$pageheader#}</div>
+	{#include file="video/admin_video_nav.htm"#}
+  <div class="clear"></div>
+</div>
+  <form id="form1" name="form1" method="post" action="?act=migrate_article">
+  {#$inputtoken#}
+  <table width="100%" border="0" cellpadding="0" cellspacing="0" id="list" class="link_lan">
+    <tr>
+      <td height="26" class="admin_list_tit admin_list_first" >视频名称</td>
+      <td width="300"   align="center"  class="admin_list_tit">宣传图片</td>
+      <td width="600"   align="center" class="admin_list_tit"> 视频链接</td>
+      <td width="100"   align="center" class="admin_list_tit">发布者</td>
+      <td width="120"   align="center" class="admin_list_tit" >添加日期</td>
+      <td width="100"   align="center" class="admin_list_tit" >操作</td>
+    </tr>
+	  {#foreach from=$video item=list#}
+      <tr>
+      	<td  class="admin_list admin_list_first">
+         <a href="?type_id={#$list.type_id#}&parentid={#$list.parentid#}" style="color: #006699">[{#$list.video_name#}]</a> 
+	    </td>
+        <td align="center"  class="admin_list">{#$list.video_img#}</td>
+		<td align="center"  class="admin_list">{#$list.video_url#}</td>
+        <td align="center"  class="admin_list">{#$list.u_name#}</td>
+        <td align="center"  class="admin_list">{#$list.addtime|date_format:"%Y-%m-%d"#}</td>
+        <td align="center"  class="admin_list">
+		<a href="?act=video_edit&id={#$list.id#}">修改</a> &nbsp;&nbsp;
+		<a href="?act=video_del&id={#$list.id#}&del_Submit=ok&{#$urltoken#}" onclick="return confirm('你确定要删除吗？')">删除</a></td>
+      </tr>
+      {#/foreach#}
+    </table>
+  </form>
+	{#if !$article#}
+	<div class="admin_list_no_info">没有任何信息！</div>
+	{#/if#}	
+
+{#include file="sys/admin_footer.htm"#}
+</body>
+</html>

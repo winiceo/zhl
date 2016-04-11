@@ -9,8 +9,8 @@
 .company-show .company-top>p{font-size: 14px;color:#666;line-height: 22px;width: 100%;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
 .company-show .company-content{margin-top: 10px;background-color: #fff;padding-top: 20px;}
 .company-show .company-content h2{margin:0 15px;font-size: 14px;color:#333;padding-left:5px;border-left: 3px solid #0180cf;line-height: 16px;}
-.company-show .company-content .company-info{font-size: 14px;color:#666;line-height: 24px;padding: 15px;border-bottom:1px solid #e2e2e2;}
-.company-show .company-content .company-info.havemore{max-height:134px;overflow: hidden;}
+.company-show .company-content .company-info{font-size: 14px;color:#666;line-height: 24px;padding: 15px;border-bottom:1px solid #e2e2e2;overflow: hidden;word-break: break-all;table-layout:fixed;}
+.company-show .company-content .company-info.havemore{width:290px;max-height:134px;overflow: hidden;word-break: break-all;table-layout:fixed;}
 .company-show .company-content .info-more{display: block;height: 40px;line-height: 40px;text-align: center;color:#999;font-size: 14px;}
 .company-show .company-content .company-job-list{}
 .company-show .company-content .company-job-list .job-item{padding:15px 15px 12px;box-sizing:border-box;width: 100%;height: 100px;border-bottom: 1px solid #e2e2e2;font-size: 12px;}
@@ -20,7 +20,7 @@
 .company-show .company-content .company-job-list .job-item>p{margin-bottom: 8px;font-size: 12px;color:#666;width: 100%;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
 .company-show .company-content .company-job-list .job-item .job-pay span{font-size: 14px;color:#ff2222;line-height: 18px;}
 .company-show .company-content .company-job-list .job-item .job-pay em{font-style: normal;color:#999;font-size: 12px;line-height: 18px;}
-.company-show .company-content .company-contact{padding:15px;padding-bottom: 6px;font-size: 14px;color:#666;}
+.company-show .company-content .company-contact{padding:15px;padding-bottom: 6px;font-size: 14px;color:#666;overflow: hidden;}
 .company-show .company-content .company-contact .contact-item{margin-bottom: 6px;line-height: 20px;}
 .company-show .company-content .company-contact .contact-item i{color:#0180cf;position: relative;font-size: 16px;top:2px;}
 .company-show .company-content .company-contact .contact-item p{padding-left: 20px;box-sizing:border-box;}

@@ -16,11 +16,15 @@
 <script src="{#$QISHI.site_template#}js/jquery.validate.min.js" type='text/javascript' language="javascript"></script>
 <link href="{#$QISHI.site_template#}css/common.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/jobs.css" rel="stylesheet" type="text/css" />
+<link href="{#$QISHI.site_template#}css/header.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/style.css" rel="stylesheet" type="text/css" />
 <script src="{#$QISHI.site_dir#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
 <script src="{#$QISHI.site_template#}js/jquery.salary.selectlayer.js" type='text/javascript' language="javascript"></script>
 <script type="text/javascript" src="{#$QISHI.site_template#}js/fusioncharts.js"></script>
 <script type="text/javascript" src="{#$QISHI.site_template#}js/themes/fusioncharts.theme.zune.js"></script>
+<script src="{#$QISHI.site_template#}js/dialog-min.js" type="text/javascript" language="javascript"></script>
+<script src="{#$QISHI.site_template#}js/dialog-min-common.js" type="text/javascript" language="javascript"></script>
+<link href="{#$QISHI.site_template#}css/ui-dialog.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 $(document).ready(function(){
 	allaround('{#$QISHI.site_dir#}');
@@ -139,6 +143,7 @@ $(document).ready(function(){
         </div>
         <div class="SalaryBody">
             <div class="BodyLeft">
+                <div class="blue_line"></div>
                 {#qishi_get_salary_data_all_salary set="列表名:all_salary,调用:QS_salary,地区:$smarty.get.district,职位:$smarty.get.category"#}
                 <div class="BodyTitle">
                     <span>{#if $smarty.get.district!=""#}{#$smarty.get.district#}{#else#}全国{#/if#}{#if $smarty.get.category!=""#}{#$smarty.get.category#}{#else#}职工{#/if#}平均月薪</span>

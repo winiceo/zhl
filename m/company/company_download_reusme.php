@@ -237,7 +237,7 @@ elseif($act=="ajax_download_resume_add_save")
 				$mypoints=get_user_points($_SESSION['uid']);
 				if  ($mypoints<$points)
 				{
-					exit("您的积分不足");
+					exit("您的葫芦币不足");
 				}
 				if (add_down_resume($resume_id,$_SESSION['uid'],$resume['uid'],$resume['title']))
 				{

@@ -11,7 +11,7 @@ if ($_PLUG['simple']['p_install']==1)
 	$link[0]['href'] = $_CFG['site_dir'];
 	showmsg("管理员已关闭此模块!",1,$link);
 }
-if(browser()=="mobile" && $_GET['iswap']==""){
+if(browser()=="mobile" && $_SESSION['iswap']==""){
 	header("location:".$_CFG['wap_domain'].'/simple-resume-list.php');
 }
 if($mypage['caching']>0){

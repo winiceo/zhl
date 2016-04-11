@@ -379,7 +379,7 @@ elseif($act == 'waiting_weixin_scan'){
 		global $db;
 		$result = $db->query("update ".table('members')." set weixin_openid='".$openid."',weixin_nick='".$w_userinfo['nickname']."' where uid=".$_SESSION['uid']." and weixin_openid IS NULL");
 		if($result){
-			// 绑定微信 获得积分
+			// 绑定微信 获得葫芦币
 			$usinfo = $db->getone("select * from ".table('members')." where weixin_openid = '".$openid."' LIMIT 1");
 			$rule=get_cache('points_rule');
 			if ($rule['company_wx_points']['value']>0 && $usinfo['utype']==1)

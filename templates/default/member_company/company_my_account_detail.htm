@@ -54,7 +54,7 @@
 					<div class="titleH1"><div class="h1-title">我的账户</div></div>
 					<div class="navs link_bk">
 						{#if $QISHI.operation_mode == '1' || $QISHI.operation_mode == '3'#}
-						<a href="company_service.php?act=j_account" {#if $act=='j_account'#}class="se"{#/if#}>我的积分</a>
+						<a href="company_service.php?act=j_account" {#if $act=='j_account'#}class="se"{#/if#}>我的葫芦币</a>
 						{#/if#}
 						{#if $QISHI.operation_mode == '2' || $QISHI.operation_mode == '3'#}
 						<a href="company_service.php?act=t_account" {#if $act=='t_account'#}class="se"{#/if#}>我的套餐</a>
@@ -71,14 +71,14 @@
 							<span class="account-type">当前套餐：<span>{#$setmeal.setmeal_name#}</span><em>({#$setmeal.starttime|date_format:"%Y-%m-%d"#} 至 {#if $setmeal.endtime=='0'#}--{#else#}{#$setmeal.endtime|date_format:"%Y-%m-%d"#}{#/if#})</em><a href="company_service.php?act=setmeal_list" class="underline">升级VIP套餐</a></span>
 							{#/if#}
 							{#if $QISHI.operation_mode == '1' || $QISHI.operation_mode == '3'#}
-							<span class="account-type last">当前{#$QISHI.points_byname#}：<span>{#$points#}</span>{#$QISHI.points_quantifier#}<a href="company_service.php?act=order_add" class="underline">积分充值</a></span>
+							<span class="account-type last">当前{#$QISHI.points_byname#}：<span>{#$points#}</span>{#$QISHI.points_quantifier#}<a href="company_service.php?act=order_add" class="underline">葫芦币充值</a></span>
 							{#/if#}
 						</div>
 					</div>
 					</div>
 					<div class="account-ctrl-bar clearfix">
-						<h3 class="f-left">积分消费明细</h3>
-						<a href="company_service.php?act=j_account" class="f-right underline">积分规则</a>
+						<h3 class="f-left">葫芦币消费明细</h3>
+						<a href="company_service.php?act=j_account" class="f-right underline">葫芦币规则</a>
 					</div>
 					<div class="company-data-list">
 						<div class="c-data-top account-d clearfix">
@@ -93,7 +93,7 @@
 									</ul>
 								</div>
 							</div>
-							<div class="item f-left top-item3">积分变化</div>
+							<div class="item f-left top-item3">葫芦币变化</div>
 							<div class="item f-left top-item4">
 								<div class="data-filter span4">
 									<span class="filter-span">

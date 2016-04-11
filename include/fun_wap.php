@@ -653,7 +653,7 @@ function wap_update_user_info($uid,$record=true,$setcookie=true,$cookie_expire=N
 		$_SESSION['utype']=intval($user['utype']);
 		if(intval($user['utype'])==2 && $user['avatars']!='')
 		{
-			$_SESSION['avatars'] = $_CFG['site_domain'].$_CFG['site_dir']."data/avatar/100/".$user['avatars'];
+			$_SESSION['avatars'] = $_CFG['main_domain']."data/avatar/100/".$user['avatars'];
 		}
 	}
 	if ($setcookie)
@@ -762,6 +762,19 @@ function wap_weixin_logon($fromUsername,$expire=null)
 	unset($fromUsername);
 	}
 }
+
+function wap_weixin_openid($code)
+{
+	global $db;
+	if($code){
+	$url ="https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx2b9c3fdc87c1d825&secret=b521fbe6449a2a9db826affbba3d6b15&code={$code}&grant_type=authorization_code";
+	$date = https_request($url);
+	$date = json_decode($date,true);
+	$openid = $date['openid'];
+	wap_weixin_logon($openid);
+	}
+}
+
 function check_viewjobs_log($uid,$jobsid){
 	global $db;
 	$result = $db->getone("select id from ".table("view_jobs")." where `uid`=".$uid." and `jobsid`=".$jobsid);

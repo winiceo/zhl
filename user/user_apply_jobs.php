@@ -15,7 +15,7 @@ if((empty($_SESSION['uid']) || empty($_SESSION['username']) || empty($_SESSION['
 	if(check_cookie($_COOKIE['QS']['uid'],$_COOKIE['QS']['username'],$_COOKIE['QS']['password']))
 	{
 	update_user_info($_COOKIE['QS']['uid'],false,false);
-	header("Location:".get_member_url($_SESSION['utype']));
+	//header("Location:".get_member_url($_SESSION['utype']));
 	}
 	else
 	{
@@ -347,7 +347,7 @@ elseif ($act=="app_save")
 						$message=$resume_basic['fullname'].'申请了您发布的职位：<a href="'.$jobs_url.'" target="_blank">'.$jobs['jobs_name'].'</a>,<a href="'.$resume_url.'" target="_blank">点击查看</a>';
 						write_pmsnotice($jobs['uid'],$user['username'],$message);
 					}
-					// 查看操作记录表 统计创建简历积分所奖励积分  判断是否超过上限   若没超过上限 则继续添加积分
+					// 查看操作记录表 统计创建简历葫芦币所奖励葫芦币  判断是否超过上限   若没超过上限 则继续添加葫芦币
 					$today=mktime(0, 0, 0,date('m'), date('d'), date('Y'));
 					$info=$db->getone("SELECT sum(points) as num FROM ".table('members_handsel')." WHERE uid ='{$_SESSION['uid']}' AND htype='resumeapplyjobs' AND addtime>{$today} ");
 					if(intval($info['num']) >= intval($_CFG['apply_jobs_points_max']))

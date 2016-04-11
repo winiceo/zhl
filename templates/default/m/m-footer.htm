@@ -1,0 +1,108 @@
+<footer class="global-footer">
+  <div class="new-foot-menu">
+    <div class="title clearfix">
+      <div class="new-login-box f-left">
+        {#if $smarty.session.utype!=1 && $smarty.session.utype!=2#}
+        <a href="login.php">登录</a>&nbsp;&nbsp; | &nbsp;&nbsp;<a href="user_reg.php">注册</a>
+        {#else#}
+        {#$smarty.session.username#}&nbsp;&nbsp; | &nbsp;&nbsp;<a href="login.php?act=logout">退出</a>
+        {#/if#}
+      </div>
+      <div class="new-feedback-box f-right"><a href="{#$QISHI.wap_domain#}/feedback.php">反馈</a></div>
+    </div>
+    <div class="new-product-categories">
+      <div class="box">
+        <div class="photo clearfix">
+          <a href="download.php?downtype=android" class="list f-left">
+            <div class="list-img app"></div>
+            <div class="explain">下载APP</div>
+          </a>
+          <a href="{#$QISHI.wap_domain#}" class="list current f-left">
+            <div class="list-img wap"></div>
+            <div class="explain">触屏版</div>
+          </a>
+          <a href="{#$QISHI.site_domain#}{#$QISHI.site_dir#}?iswap=1" class="list f-left">
+            <div class="list-img computer"></div>
+            <div class="explain">电脑版</div>
+          </a>
+        </div>
+        <div class="txt">Powered by 74cms v{#$QISHI.version#}</div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script type="text/javascript" charset="utf-8" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+  wx.config({
+    // debug: true,
+    appId: '{#$signPackage.appId#}',
+    timestamp: '{#$signPackage.timestamp#}',
+    nonceStr: '{#$signPackage.nonceStr#}',
+    signature: '{#$signPackage.signature#}',
+    jsApiList: [
+      // 所有要调用的 API 都要加到这个列表中
+      "onMenuShareTimeline",
+      "onMenuShareAppMessage",
+      "onMenuShareQQ",
+      "onMenuShareWeibo"
+    ]
+  });
+  wx.ready(function () 
+  {
+      var linkUrl = "";//放链接
+      var title = "";
+      var desc =  $("#description").attr('content');
+      var imgUrl="{#$QISHI.site_domain#}{#$QISHI.site_dir#}data/images/weixin_default_pic.png";//图片链接
+      
+      wx.onMenuShareTimeline({
+          title: title, // 分享标题
+          desc: desc, // 分享描述
+          link: linkUrl, // 分享链接
+          imgUrl: imgUrl, // 分享图标
+          success: function () { 
+          // 用户确认分享后执行的回调函数
+          },
+          cancel: function () { 
+              // 用户取消分享后执行的回调函数
+          }
+      });
+      wx.onMenuShareAppMessage({
+          title: title, // 分享标题
+          desc: desc, // 分享描述
+          link: linkUrl, // 分享链接
+          imgUrl: imgUrl, // 分享图标
+          type: '', // 分享类型,music、video或link，不填默认为link
+          dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                    success: function () { 
+          // 用户确认分享后执行的回调函数
+          },
+          cancel: function () { 
+              // 用户取消分享后执行的回调函数
+          }
+      });
+      wx.onMenuShareQQ({
+          title: title, // 分享标题
+          desc: desc, // 分享描述
+          link: linkUrl, // 分享链接
+          imgUrl: imgUrl, // 分享图标
+                    success: function () { 
+          // 用户确认分享后执行的回调函数
+          },
+          cancel: function () { 
+              // 用户取消分享后执行的回调函数
+          }
+      });
+      wx.onMenuShareWeibo({
+          title: title, // 分享标题
+          desc: desc, // 分享描述
+          link: linkUrl, // 分享链接
+          imgUrl: imgUrl, // 分享图标
+                    success: function () { 
+          // 用户确认分享后执行的回调函数
+          },
+          cancel: function () { 
+              // 用户取消分享后执行的回调函数
+          }
+      });
+  });
+</script>

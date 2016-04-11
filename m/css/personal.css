@@ -106,14 +106,6 @@
 .optionlist .list .arrow:before{content:''; height:8px; width:8px; display:block; border:1px solid #a9a9a9; border-left-width:0; border-top-width:0; transform:rotate(-45deg);-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);-ms-transform:rotate(-45deg); position:absolute; top:20px; right:20px;}
 .optionlisteditworkexp .list .arrow:before{top: 16px;}
 .optionlist .list .arrow.nobm{border-bottom: 0px;}
-.arlogout{ margin-top: 20px; }
-.mt10{margin-top: 10px;}
-.arlogout .logout{display: block;height: 40px;line-height: 40px;color: #FFFFFF;width: 90%;margin: 0 auto;background-color: #0180CF;border-radius: 5px;font-size: 11pt;}
-.arlogout .logout.co63a9d4{background-color: #63A9D4;border: none}
-.arlogout .operatea{width: 72%;height: 32px;line-height: 32px;margin: 0 auto;font-size: 11pt;}
-.arlogout .operatea a{display: block;width: 92px;height: 30px;line-height: 28px;border-radius: 3px;font-size: 11pt;}
-.arlogout .operatea a.checkall{background-color: #0180CF;border: 1px solid #0180CF;color: #FFFFFF;float: left;}
-.arlogout .operatea a.delete{background-color: #FFFFFF;border: 1px solid #E2E2E2;color: #666666;float: right;}
 /*√Ê ‘—˚«Î*/
 .classifylist{padding: 20px 15px;background-color: #FFFFFF;height: auto;overflow: hidden;border-bottom: 1px solid #E2E2E2;margin-bottom: 10px;color: #666666;box-sizing:border-box;}
 .classifylistworke{position: relative;}
@@ -124,6 +116,7 @@
 .classifylist .title{height: 16px;line-height: 16px;text-align: left;}
 .classifylist .title .chk{width: 10%;height: 100%;display: block;overflow: hidden;display: none;}
 .classifylist .title .name{width: 66%; height: 100%;display: block;overflow: hidden;font-size: 12pt;color: #333333;}
+.classifylist .title .name a{color: #333333;}
 .classifylist .title .name.perc{width: 60%;}
 .makeresumecf{border-bottom: 0px;background-color: #F0F0F0}
 .makeresumecf .title{margin-bottom: 10px;}
@@ -134,6 +127,25 @@
 .classifylist .title .status{text-align: right;}
 .classifylist .title .status span{color: #FF9900;font-size: 9pt;}
 .classifylist .title .status span.money{color: #FF2222;}
+
+.arlogout{padding: 20px 15px;height: auto;overflow: hidden;margin-bottom: 10px;color: #666666;box-sizing:border-box;width: 100%;}
+.arlogoutedit{position: fixed;bottom: 0;left: 0;padding: 20px 15px;background-color: #FFFFFF;height: auto;overflow: hidden;border-top: 1px solid #E2E2E2;margin-bottom: 10px;color: #666666;box-sizing:border-box;width: 100%;display: none;}
+.arlogout.nomb{margin-bottom: 0px;}
+.arlogout .title{height: 16px;line-height: 16px;text-align: left;}
+.arlogout .title .chk{width: 10%;height: 100%;display: block;overflow: hidden;display: none;}
+.arlogout .title .name{width: 12%; height: 100%;display: block;overflow: hidden;font-size: 12pt;color: #333333;}
+.arlogout .title .name a{color: #333333;}
+.arlogout .chk{width: 22%;height: 20px;display: block;overflow: hidden;display: none;}
+.arlogout .chk .check-box {vertical-align: sub;}
+.arlogout .title .name.perc {width: 12%;}
+.arlogout .title {height: 32px;line-height: 32px;}
+.mt10{margin-top: 10px;}
+.arlogout .logout{display: block;height: 40px;line-height: 40px;color: #FFFFFF;width: 90%;margin: 0 auto;background-color: #0180CF;border-radius: 5px;font-size: 11pt;}
+.arlogout .logout.co63a9d4{background-color: #63A9D4;border: none}
+.arlogout .operatea{width: 68%;height: 32px;line-height: 32px;font-size: 11pt;padding-left: 5%;}
+.arlogout .operatea a{display: block;width: 92px;height: 30px;line-height: 28px;border-radius: 3px;font-size: 11pt;}
+.arlogout .operatea a.checkall{background-color: #0180CF;border: 1px solid #0180CF;color: #FFFFFF;float: left;}
+.arlogout .operatea a.delete{background-color: #FFFFFF;border: 1px solid #E2E2E2;color: #666666;float: right;}
 .classifylist .txt{height: 16px;line-height: 16px;text-align: left;font-size: 9pt;margin-top: 10px;}
 .classifylist .txt .chk{width: 10%;height: 100%;display: block;overflow: hidden;display: none;}
 .classifylist .txt .left{width: 50%; height: 100%;display: block;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
@@ -202,7 +214,7 @@
 .mt20{margin-top: 20px;}
 
 .resumeconlist{padding: 20px 15px;background-color: #FFFFFF;height: auto;overflow: hidden;margin-top: 10px;color: #666666;box-sizing:border-box;padding-bottom: 0px;}
-.resumeconlistmb{padding-bottom: 15px;}
+.resumeconlistmb{padding-bottom: 40px;}
 .resumeconlist .con{border-bottom: 1px dotted #E2E2E2;padding-bottom: 10px;margin-top: 10px;}
 .resumeconlist .con:first-child{margin-top: 0px;}
 .resumeconlist .con:last-child{border-bottom: none;}
@@ -220,7 +232,7 @@
 .resumeconlist .list.lx.m .call{position: relative;width: 20px;height: 20px;background-image: url(../images/resumeconlist-list-lx-m-call.gif);top:3px;cursor: pointer;display: block;}
 .resumeconlist .list.lx.e{background-position-y: -50px;}
 .resumeconlist .list.lx.d{background-position-y: -78px;}
-.invitecollectresume{width: 100%;height: auto;/*border-top: 1px solid #0180CF;*/padding: 8px 0px;background-color: #fff;}
+.invitecollectresume{width: 100%;height: auto;border-top: 1px solid #0180CF;padding: 8px 0px;background-color: #fff;position: fixed;left: 0;bottom: 0;}
 .makeresumesuccess{border-top: none;padding-bottom: 20px;padding-top: 0px;}
 .invitecollectresume .left{width: 50%;height: 100%;display: block;overflow: hidden;}
 .invitecollectresume .left .invite{width: 110px;height: 38px;line-height: 38px;background-color: #0180CF;margin: 0 auto;border-radius: 3px;text-align: center;font-size: 11pt;color: #FFFFFF;cursor: pointer;}

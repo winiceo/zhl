@@ -1,5 +1,64 @@
 <?php
 $data = array (
+  'Genv_hr' => 
+  array (
+    335 => 
+    array (
+      'id' => '335',
+      'parentid' => '0',
+      'categoryname' => '已成功入职(扣除入职佣金)',
+      'stat_jobs' => '',
+      'stat_resume ' => NULL,
+    ),
+    334 => 
+    array (
+      'id' => '334',
+      'parentid' => '0',
+      'categoryname' => '已成功面试(扣除面试佣金)',
+      'stat_jobs' => '',
+      'stat_resume ' => NULL,
+    ),
+    329 => 
+    array (
+      'id' => '329',
+      'parentid' => '0',
+      'categoryname' => '简历已投通知查看',
+      'stat_jobs' => '',
+      'stat_resume ' => NULL,
+    ),
+    330 => 
+    array (
+      'id' => '330',
+      'parentid' => '0',
+      'categoryname' => '对此求职者无兴趣',
+      'stat_jobs' => '',
+      'stat_resume ' => NULL,
+    ),
+    331 => 
+    array (
+      'id' => '331',
+      'parentid' => '0',
+      'categoryname' => '与企业确认面试时间',
+      'stat_jobs' => '',
+      'stat_resume ' => NULL,
+    ),
+    332 => 
+    array (
+      'id' => '332',
+      'parentid' => '0',
+      'categoryname' => '后期持续跟进',
+      'stat_jobs' => '',
+      'stat_resume ' => NULL,
+    ),
+    333 => 
+    array (
+      'id' => '333',
+      'parentid' => '0',
+      'categoryname' => '撮合失败(企业方不满意)',
+      'stat_jobs' => '',
+      'stat_resume ' => NULL,
+    ),
+  ),
   'QS_trade' => 
   array (
     1 => 
@@ -2129,6 +2188,186 @@ $data = array (
       'id' => '293',
       'parentid' => '0',
       'categoryname' => '精通',
+      'stat_jobs' => '',
+      'stat_resume ' => NULL,
+    ),
+  ),
+  'Genv_check_false' => 
+  array (
+    321 => 
+    array (
+      'id' => '321',
+      'parentid' => '0',
+      'categoryname' => '电话关机',
+      'stat_jobs' => '',
+      'stat_resume ' => NULL,
+    ),
+    322 => 
+    array (
+      'id' => '322',
+      'parentid' => '0',
+      'categoryname' => '电话空号',
+      'stat_jobs' => '',
+      'stat_resume ' => NULL,
+    ),
+    323 => 
+    array (
+      'id' => '323',
+      'parentid' => '0',
+      'categoryname' => '电话无人接',
+      'stat_jobs' => '',
+      'stat_resume ' => NULL,
+    ),
+    324 => 
+    array (
+      'id' => '324',
+      'parentid' => '0',
+      'categoryname' => '电话无信号',
+      'stat_jobs' => '',
+      'stat_resume ' => NULL,
+    ),
+    325 => 
+    array (
+      'id' => '325',
+      'parentid' => '0',
+      'categoryname' => '电话与简历资料不符',
+      'stat_jobs' => '',
+      'stat_resume ' => NULL,
+    ),
+  ),
+  'Genv_check_pass' => 
+  array (
+    326 => 
+    array (
+      'id' => '326',
+      'parentid' => '0',
+      'categoryname' => '已通知面试',
+      'stat_jobs' => '',
+      'stat_resume ' => NULL,
+    ),
+    327 => 
+    array (
+      'id' => '327',
+      'parentid' => '0',
+      'categoryname' => '不符合我司用人需求',
+      'stat_jobs' => '',
+      'stat_resume ' => NULL,
+    ),
+    328 => 
+    array (
+      'id' => '328',
+      'parentid' => '0',
+      'categoryname' => '求职者已经找到工作',
+      'stat_jobs' => '',
+      'stat_resume ' => NULL,
+    ),
+  ),
+  'Genv_prodive' => 
+  array (
+    336 => 
+    array (
+      'id' => '336',
+      'parentid' => '0',
+      'categoryname' => '了解更多信息',
+      'stat_jobs' => '',
+      'stat_resume ' => NULL,
+    ),
+    337 => 
+    array (
+      'id' => '337',
+      'parentid' => '0',
+      'categoryname' => '告知撮合进度',
+      'stat_jobs' => '',
+      'stat_resume ' => NULL,
+    ),
+    338 => 
+    array (
+      'id' => '338',
+      'parentid' => '0',
+      'categoryname' => '通知收取佣金',
+      'stat_jobs' => '',
+      'stat_resume ' => NULL,
+    ),
+  ),
+  'Genv_job' => 
+  array (
+    339 => 
+    array (
+      'id' => '339',
+      'parentid' => '0',
+      'categoryname' => '联络不上',
+      'stat_jobs' => '',
+      'stat_resume ' => NULL,
+    ),
+    340 => 
+    array (
+      'id' => '340',
+      'parentid' => '0',
+      'categoryname' => '无意愿使用此服务',
+      'stat_jobs' => '',
+      'stat_resume ' => NULL,
+    ),
+    341 => 
+    array (
+      'id' => '341',
+      'parentid' => '0',
+      'categoryname' => '确认信息及创建账号',
+      'stat_jobs' => '',
+      'stat_resume ' => NULL,
+    ),
+    342 => 
+    array (
+      'id' => '342',
+      'parentid' => '0',
+      'categoryname' => '对此职位无兴趣',
+      'stat_jobs' => '',
+      'stat_resume ' => NULL,
+    ),
+    343 => 
+    array (
+      'id' => '343',
+      'parentid' => '0',
+      'categoryname' => '通知面试时间',
+      'stat_jobs' => '',
+      'stat_resume ' => NULL,
+    ),
+    344 => 
+    array (
+      'id' => '344',
+      'parentid' => '0',
+      'categoryname' => '了解面试结果',
+      'stat_jobs' => '',
+      'stat_resume ' => NULL,
+    ),
+    345 => 
+    array (
+      'id' => '345',
+      'parentid' => '0',
+      'categoryname' => '确认成功面试',
+      'stat_jobs' => '',
+      'stat_resume ' => NULL,
+    ),
+    346 => 
+    array (
+      'id' => '346',
+      'parentid' => '0',
+      'categoryname' => '后期持续跟进',
+      'stat_jobs' => '',
+      'stat_resume ' => NULL,
+    ),
+    347 => 
+    array (
+      'id' => '347',
+      'parentid' => '0',
+      'categoryname' => '撮合失败(求职者不满意)',
+      'stat_jobs' => '',
+      'stat_resume ' => NULL,
+    ),
+    348 => 
+    array (
+      'id' => '348',
+      'parentid' => '0',
+      'categoryname' => '通知收取佣金',
       'stat_jobs' => '',
       'stat_resume ' => NULL,
     ),

@@ -1,0 +1,85 @@
+{#include file="sys/admin_header.htm"#}
+<script type="text/javascript">
+$(document).ready(function()
+{	
+	//纵向列表排序
+	$(".listod .txt").each(function(i){
+	var li=$(this).children(".select");
+	var htm="<a href=\""+li.attr("href")+"\" class=\""+li.attr("class")+"\">"+li.text()+"</a>";
+	li.detach();
+	$(this).prepend(htm);
+	});
+	$("#ButDel").click(function(){
+		if (confirm('你确定要删除吗？'))
+		{
+			$("form[name=form1]").submit()
+		}
+	});	
+});
+</script>
+<div class="admin_main_nr_dbox">
+	<div class="pagetit">
+		<div class="ptit"> {#$pageheader#}</div>
+	<div class="clear"></div>
+	</div>
+	
+
+
+
+	<form id="form1" name="form1" method="post" action="?act=paper_del">
+	{#$inputtoken#}
+		<table width="100%" border="0" cellpadding="0" cellspacing="0" class="link_lan">
+			<tr>
+
+				<td  class="admin_list_tit" align="center" width="15%">测试者</td>
+				<td  class="admin_list_tit" align="center" width="15%">姓名</td>
+				<td  align="center"  class="admin_list_tit"  width="15%">性别</td>
+				<td  class="admin_list_tit" align="center">测算时间</td>
+				<td  class="admin_list_tit" align="center" >测算类型</td>
+
+				<td    class="admin_list_tit"  width="10%" align="center" >操作</td>
+			</tr>
+			{#if $fortune_list#}
+			{#foreach from=$fortune_list item=list#}
+			<tr>
+				<td  class="admin_list admin_list_first">
+					{#$list.member.username#};	{#$list.member.companyname#} ;{#$list.member.contact#}
+
+				</td>
+				<td  class="admin_list" align="center">
+					<span title="">{#$list.name#} &ensp;</span>
+				</td>
+				<td  class="admin_list" align="center">
+					<span title="">{#if $list.sex==1#}男{#else#}女{#/if#} &ensp;</span>
+				</td>
+				<td  class="admin_list" align="center">
+					<span title="">{#$list.addtime#}&ensp;</span>
+				</td>
+				<td  class="admin_list" align="center">
+					<span title="">{#$list.category_cn#} &ensp;</span>
+				</td>
+				<td  class="admin_list" align="center">
+					<a href="?act=fotrune_show&id={#$list.id#}"  >查看结果</a>
+				</td>
+			</tr>
+
+
+			{#/foreach#}
+
+			{#/if#}
+
+		</table>
+	</form>
+   {#if !$list#}
+<div class="admin_list_no_info">没有任何信息！</div>
+{#/if#}
+
+<div class="page link_bk">{#$page#}</div>
+
+
+
+		
+</div>
+{#include file="sys/admin_footer.htm"#}
+</body>
+</html>

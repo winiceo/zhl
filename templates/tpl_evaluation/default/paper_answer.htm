@@ -6,8 +6,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/> 
 <title>人才测评-测评</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="找葫芦网" />
+<meta name="author" content="找葫芦" />
 <meta name="copyright" content="zhaohulu.com" />
+<link href="{#$QISHI.site_template#}css/common.css" rel="stylesheet" type="text/css" />
+<link href="{#$QISHI.site_template#}css/header.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="{#$QISHI.site_evaluation_template#}css/review.css" />
 <link href="{#$QISHI.site_template#}css/ui-dialog.css" rel="stylesheet" type="text/css" />
 <script src="{#$QISHI.site_evaluation_template#}js/jquery.js"></script>
@@ -56,6 +58,7 @@
 	{#include file="../tpl_evaluation/default/header.htm"#}
 	<div class="review-main container">
 		<div class="review-wrap">
+             <div class="blue-line2"></div>
 			<div class="g-top-box">
 				<h1><span>{#$paper_info.title#}</span></h1>
 				<div class="review-detail-top">
@@ -86,14 +89,14 @@
 							</div>
 						</div>
 					</div>
-					{#/foreach#}
+					{#/foreach#} 
 				</div>
 				<div class="question-control clearfix">
 					<span class="f-left">本部分第{#$page#}/{#$page_num#}页，每页{#$perpage#}题   共有{#$total_val#}道题</span>
 					{#if $next_page#}
 					<input type="submit" name="next_page" id="next_page" value="下一页" class="question-btn f-right next_page">
 					{#else#}
-					<input type="submit" name="submit_button" id="next_page" value="提交" class="question-btn f-right next_page">
+					<input type="submit" name="submit_button" id="next_page" value="提&nbsp;交" class="question-btns next_page" style="font-weight:bold;margin-left:230px;border-radius:5px;">
 					{#/if#}
 					{#if $pre_page#}
 					<input type="submit" name="pre_page" value="上一页" class="question-btn f-right next_page" >
@@ -114,6 +117,6 @@
 		</form>
 		</div>
 	</div>
-	{#include file="../tpl_evaluation/default/footer.htm"#}
+	{#include file="../default/footer.htm"#}
 </body>
 </html>

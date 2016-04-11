@@ -225,7 +225,7 @@ $(document).ready(function()
 		<span style="color: #FF0000">[待开通高级人才]</span>
 		{#/if#}
 		{#if $list.photo_img<>""#}
-		<span style="color: #009900"  class="vtip" title="<img src={#$QISHI.resume_photo_dir_thumb#}{#$list.photo_img#}  border=0  align=absmiddle>">[照片]</span>
+		<span style="color: #009900"  class="vtip" title="<img src={#$QISHI.resume_photo_dir#}{#$list.photo_img#}  border=0  align=absmiddle>">[照片]</span>
 		{#/if#}	
 		<a href="admin_mail.php?act=send&email={#$list.email#}&uid={#$list.uid#}"> <img src="images/email.gif" border="0" title="发送邮件" /></a>	
 		 {#if $list.telephone#}<a href="admin_sms.php?act=send&mobile={#$list.telephone#}&uid={#$list.uid#}"><img src="images/sms.gif" border="0" title="发送短信" /></a>{#/if#}	

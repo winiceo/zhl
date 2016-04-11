@@ -39,7 +39,7 @@
 
 .cominfo .cbox .txt a.edit{ color:#0066CC; text-decoration:none; padding-left:20px;background:url(../images/07.jpg) no-repeat left -103px;}
 .cominfo .cbox .txt a:hover.edit{ color:#009900; text-decoration:underline}
-/*企业会员中 首页 积分模式*/
+/*企业会员中 首页 葫芦币模式*/
 .cominfo .rbox .mode1{}
 .cominfo .rbox .mode1 .titcount{font-size:16px; font-weight:bold}
 .cominfo .rbox .mode1 .titcount span{ color:#FF3300; font-size:22px; font-weight: normal}
@@ -48,7 +48,7 @@
 .cominfo .rbox .mode1 .msg{ padding-top:18px; font-size:14px;}
 .cominfo .rbox .mode1 .msg a { color:#666666}
 .cominfo .rbox .mode1 .msg a span{ color:#FF0000}
-/*企业会员中 首页 积分模式结束*/
+/*企业会员中 首页 葫芦币模式结束*/
 /*企业会员中 首页 套餐模式*/
 .cominfo .rbox .mode2{}
 .cominfo .rbox .mode2 .cmname{font-size:16px; font-weight:bold}

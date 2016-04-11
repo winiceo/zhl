@@ -225,7 +225,7 @@ elseif ($act=='train_map')
 	else
 	{
 		if($_CFG['operation_train_mode']=='1'){
-			$points=get_cache('points_rule');//获取积分消费规则
+			$points=get_cache('points_rule');//获取葫芦币消费规则
 			$smarty->assign('points',$points['train_map']['value']);
 		}elseif($_CFG['operation_train_mode']=='2'){
 			$setmeal=get_user_setmeal($_SESSION['uid']);

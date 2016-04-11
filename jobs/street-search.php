@@ -5,7 +5,7 @@
 define('IN_QISHI', true);
 $alias="QS_street";
 require_once(dirname(__FILE__).'/../include/common.inc.php');
-if(browser()=="mobile" && $_GET['iswap']==""){
+if(browser()=="mobile" && $_SESSION['iswap']==""){
 	header("location:".$_CFG['wap_domain'].'/jobs-near-list.php');
 }
 if($mypage['caching']>0){

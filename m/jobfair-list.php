@@ -11,6 +11,7 @@ $smarty->cache = false;
 $db = new mysql($dbhost,$dbuser,$dbpass,$dbname);
 require_once(dirname(__FILE__).'/weixin_share.php');
 $page = empty($_GET['page'])?1:intval($_GET['page']);
+wap_weixin_openid($_GET['code']);
 $jobstable=table('jobfair');
 $orderbysql=" ORDER BY `addtime` desc";
 $perpage = 5;

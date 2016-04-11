@@ -833,7 +833,7 @@ function allaround(dir) {
 	});
 	$('.filter-drop .filter-item:last').css({'margin-right':0});
 	// 福利展开
-	$('#fliterMore .fl-content-li:gt(10)').hide().css("margin-top","5px");
+	$('#fliterMore .fl-content-li:gt(10)').hide();
 	$('.show-more').on('click', function(event) {
 		if ($(this).hasClass('sq')) {
 			$(this).parent().find('.fl-content-li:gt(10)').hide();
@@ -878,26 +878,32 @@ function allaround(dir) {
 		var type = $(this).attr('type'),
 			code = $(this).attr('code');
 		if (type == 'jobtag') {
-			if ($(this).hasClass('select')) {
-				if ($("#"+type).val()) {
-					var jobtagArray = $("#"+type).val().split(",");
-					jobtagArray.splice($.inArray(code,jobtagArray),1);
-					// jobtagArray.push(code);
-					$("#"+type).val(jobtagArray.join(","));
-				} else {
-					$("#"+type).val(code);
-				}
-				$(this).removeClass('select');
-			} else {
-				if ($("#"+type).val()) {
-					var jobtagArray = $("#"+type).val().split(",");
-					jobtagArray.push(code);
-					$("#"+type).val(jobtagArray.join(","));
-				} else {
-					$("#"+type).val(code);
-				}
-				$(this).addClass('select');
+			if($(this).attr('code')==''){
+				
+					$("#"+type).val('');
+					
 			}
+				if ($(this).hasClass('select')) {
+					if ($("#"+type).val()) {
+						var jobtagArray = $("#"+type).val().split(",");
+						jobtagArray.splice($.inArray(code,jobtagArray),1);
+						// jobtagArray.push(code);
+						$("#"+type).val(jobtagArray.join(","));
+					} else {
+						$("#"+type).val(code);
+					}
+					$(this).removeClass('select');
+				} else {
+					if ($("#"+type).val()) {
+						var jobtagArray = $("#"+type).val().split(",");
+						jobtagArray.push(code);
+						$("#"+type).val(jobtagArray.join(","));
+					} else {
+						$("#"+type).val(code);
+					}
+					$(this).addClass('select');
+				}
+			
 		} else {
 			if ($(this).hasClass('select')) {
 				$(this).removeClass('select');
@@ -1022,6 +1028,7 @@ function generateBackground() {
 $(function(){
 	var subsiteId = $("#citycategory").data('code'),
 		districtIdArr = $("#citycategory").val().split('.'),
+		
 		subsiteHtm = '',
 		ishowMoreOne = true,
 		ishowMoreTwo = true;
@@ -1041,9 +1048,20 @@ $(function(){
 		$('.districtTwo .fl-content-li:gt(12)').hide();
 	};
 
-	function getDistrict(arr, parentid, position, cla) {
+	function getDistrict(arr, parentid, position, cla,citycategory_id) {
 		var showMore = true;
 		subsiteHtm += '<div class="filter-list-wrap clearfix ' + cla + '"><div class="fl-type f-left">' + $("#subsiteBox").data('txt').split(',')[position] + '：</div><div class="fl-content r-choice f-left">';
+		var strstr='';
+		cla=='districtOne'?strstr='':strstr=districtIdArr[0]+'.0';
+		if((districtIdArr[0]==0 && cla=='districtOne') || (districtIdArr[1]==0 && cla=='districtTwo')){
+			
+			subsiteHtm += '<div class="fl-content-li select" type="citycategory" style="margin-right: 20px;" code="'+strstr+'">全部</div>';
+		}else
+		{
+			subsiteHtm += '<div class="fl-content-li " type="citycategory" style="margin-right: 20px;" code="'+strstr+'">全部</div>';
+		}
+		
+		
 		if (arr) {
 			$.each(arr, function(index, val) {
 				subsiteHtm += '<div class="fl-content-li';

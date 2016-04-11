@@ -31,6 +31,9 @@ if ($act=='apply_jobs')
 		if($is_apply==1)
 		{
 			$wheresql.=" AND a.is_apply=1 ";
+		}elseif($is_apply==5)
+		{
+			$wheresql.=" AND a.is_apply=5 ";
 		}
 		else
 		{
@@ -411,7 +414,7 @@ elseif($act == "refresh_appointment")
 		$user_points=get_user_points($_SESSION['uid']);
 		if($points>$user_points)
 		{
-			exit("本次预约需要".$points."积分,您的积分为".$user_points.",积分不足,请充值后再进行预约！");
+			exit("本次预约需要".$points."葫芦币,您的葫芦币为".$user_points.",葫芦币不足,请充值后再进行预约！");
 		}
 		else
 		{
@@ -425,12 +428,63 @@ elseif($act == "refresh_appointment")
 				$db->inserttable(table('jobs_appointment_refresh'),$setarr);
 				$jobarr['auto_refresh']=1;
 				$db->updatetable(table('jobs'),$jobarr,array("id"=>$setarr['jobs_id'],"uid"=>$setarr['uid']));
-				/* 操作积分  */
+				/* 操作葫芦币  */
 			}
 			report_deal($_SESSION['uid'],2,$points);
 			exit("预约刷新成功！");
 		}
 	}
+}
+
+elseif ($act=='edit_resume')
+{
+	require_once(QISHI_ROOT_PATH.'include/fun_company_personal.php');
+
+	$id =!empty($_REQUEST['id'])?$_REQUEST['id']:showmsg("简历不存在！",1);
+
+
+	$pid=intval($id);
+
+	$sql = "select * from ".table('resume')."  WHERE id='{$pid}' LIMIT 1";
+	$rs=$db->getone($sql);
+	$uid=$rs["uid"];
+
+	$smarty->assign('h_title',"查看简历");
+	$_SESSION['send_mobile_key']=mt_rand(100000, 999999);
+	$smarty->assign('send_key',$_SESSION['send_mobile_key']);
+	$resume_basic = get_resume_basic($uid,$pid);
+	$smarty->assign('resume_basic',$resume_basic);
+	$smarty->assign('resume_education',get_resume_education($uid,$pid));
+	$smarty->assign('resume_work',get_resume_work($uid,$pid));
+	$smarty->assign('resume_training',get_resume_training($uid,$pid));
+	$smarty->assign('resume_language',get_resume_language($uid,$pid));
+	$smarty->assign('resume_credent',get_resume_credent($uid,$pid));
+	$smarty->assign('resume_img',get_resume_img($uid,$pid));
+	$smarty->assign('subsite',get_all_subsite());
+	$subsite_cn = explode('/',$resume_basic['district_cn']);
+	$smarty->assign('subsite_cn',$subsite_cn[0]);
+	$smarty->assign('district_cn',$subsite_cn[1]);
+	//地区二级
+	$smarty->assign('district',get_subsite_district($resume_basic['district']));
+
+	$resume_jobs=get_resume_jobs($pid);
+	if ($resume_jobs)
+	{
+		foreach($resume_jobs as $rjob)
+		{
+			$jobsid[]=$rjob['topclass'].".".$rjob['category'].".".$rjob['subclass'];
+		}
+		$resume_jobs_id=implode(",",$jobsid);
+	}
+	$smarty->assign('resume_jobs_id',$resume_jobs_id);
+	$smarty->assign('act',$act);
+	$smarty->assign('pid',$pid);
+	$smarty->assign('user',$user);
+	$smarty->assign('title','我的简历 - 个人会员中心 - '.$_CFG['site_name']);
+	$captcha=get_cache('captcha');
+	$smarty->assign('verify_resume',$captcha['verify_resume']);
+	$smarty->assign('go_resume_show',$_GET['go_resume_show']);
+	$smarty->display('member_company/personal_resume_edit.htm');
 }
 unset($smarty);
 ?>

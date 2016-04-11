@@ -193,7 +193,7 @@ elseif($act == "make_resume_save")
 		set_resume_entrust($pid);
 	}
 
-	// 查看操作记录表 统计创建简历积分所奖励积分  判断是否超过上限   若没超过上限 则继续添加积分
+	// 查看操作记录表 统计创建简历葫芦币所奖励葫芦币  判断是否超过上限   若没超过上限 则继续添加葫芦币
 	$today=mktime(0, 0, 0,date('m'), date('d'), date('Y'));
 	$info=$db->getone("SELECT sum(points) as num FROM ".table('members_handsel')." WHERE uid ='{$_SESSION['uid']}' AND htype='createresume' AND addtime>{$today} ");
 	if(intval($info['num']) >= intval($_CFG['create_resume_points_max']))

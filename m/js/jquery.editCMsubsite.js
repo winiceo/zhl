@@ -737,7 +737,7 @@ $(document).ready(function() {
         content += '<div class="formChild option"><div class="lt">推广职位</div><div class="tx">' + jobName + '</div></div>';
         content += '<div class="formChild option"><div class="lt">推广方式</div><select class="popuOptions"><option value ="1">推荐</option><option value ="2">紧急</option><option value="3">置顶</option><option value="4">套色</option></select></div>';
         content += '<div class="formChild option timeLimit"><div class="lt">推广期限</div><input class="timeInput" value=""><div class="txnum cof90 timeDiv"></div><div class="tx cof90">天</div></div>';
-        content += '<div class="formChild option integral"><div class="lt">消耗积分</div><div class="txnum cof90 numDiv"></div><div class="tx cof90">点</div></div>';
+        content += '<div class="formChild option integral"><div class="lt">消耗葫芦币</div><div class="txnum cof90 numDiv"></div><div class="tx cof90">点</div></div>';
         content += '</div>';
         $.get('?act=set_promotion', {"jobid":jobsid}, function(data) {
             var isArr = true;
@@ -1020,10 +1020,12 @@ $(document).ready(function() {
             };
             $("#loc_level2_" + a + " ul").empty().html(g);
         };
+        var b = new iScroll("loc_level1_" + a);
+        var j = new iScroll("loc_level2_" + a);
 		if (document.documentElement.scrollTop + document.body.scrollTop > 108) {
-            $(".sl_level1,.sl_level2").css("height", window.innerHeight - 45 - 108)
+            $(".sl_level1,.sl_level2").css("height", window.innerHeight - 45 - 108);
         } else {
-            $(".sl_level1,.sl_level2").css("height", window.innerHeight - h.offset().top)
+            $(".sl_level1,.sl_level2").css("height", window.innerHeight - h.offset().top);
         }
         $("#loc_level1_" + a + " li").on("click", function() {
             $('#subsite_id').val($(this).data("code"));
@@ -1042,9 +1044,9 @@ $(document).ready(function() {
                 });
             };
             $("#loc_level2_" + a + " ul").empty().html(n);
+			j.refresh();
         });
-        var b = new iScroll("loc_level1_" + a);
-        var j = new iScroll("loc_level2_" + a);
+		$("#loc_level1_" + a + " li.on").trigger("click");
         return b
 	},
     majors: function(a, i, d) {
@@ -1185,13 +1187,17 @@ $(document).ready(function() {
             var subsiteId = $('#subdistrict_id').val();
             if (subsiteId) {
                 setTimeout(function(){
-                    $(".sl_level2").css("height",255);
+                    $(".sl_level2").css("height","auto");
                 },500)
             } else {
                 setTimeout(function(){
-                    $(".sl_level1").css("height",255);
+                    $(".sl_level1").css("height","auto");
                 },500)
             }
+			setTimeout(function(){
+                $(".sl_level1,.sl_level2").css("height",255)
+                select_city.refresh();
+            },500)
         }
         elem.find(".sl_level2").off("click.checkcity").delegate("li:not(.fail)","click.checkcity",function(){
             console.log($(this).data("txt"));

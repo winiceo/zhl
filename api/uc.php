@@ -16,10 +16,10 @@ define('API_UPDATEBADWORDS', 1);	//note 更新关键字列表 开关
 define('API_UPDATEHOSTS', 1);		//note 更新域名解析缓存 开关
 define('API_UPDATEAPPS', 1);		//note 更新应用列表 开关
 define('API_UPDATECLIENT', 1);		//note 更新客户端缓存 开关
-define('API_UPDATECREDIT', 1);		//note 更新用户积分 开关
-define('API_GETCREDITSETTINGS', 1);	//note 向 UCenter 提供积分设置 开关
-define('API_GETCREDIT', 1);		//note 获取用户的某项积分 开关
-define('API_UPDATECREDITSETTINGS', 1);	//note 更新应用积分设置 开关
+define('API_UPDATECREDIT', 1);		//note 更新用户葫芦币 开关
+define('API_GETCREDITSETTINGS', 1);	//note 向 UCenter 提供葫芦币设置 开关
+define('API_GETCREDIT', 1);		//note 获取用户的某项葫芦币 开关
+define('API_UPDATECREDITSETTINGS', 1);	//note 更新应用葫芦币设置 开关
 define('API_RETURN_SUCCEED', '1');
 define('API_RETURN_FAILED', '-1');
 define('API_RETURN_FORBIDDEN', '-2');
@@ -243,7 +243,7 @@ class uc_note {
 		fclose($fp);
 		return API_RETURN_SUCCEED;
 	}
-//当某应用执行了积分兑换请求的接口函数 uc_credit_exchange_request() 后
+//当某应用执行了葫芦币兑换请求的接口函数 uc_credit_exchange_request() 后
 	function updatecredit($get, $post) {
 		if(!API_UPDATECREDIT) {
 			return API_RETURN_FORBIDDEN;
@@ -251,20 +251,20 @@ class uc_note {
 		 
 		return API_RETURN_SUCCEED;
 	}
-//此接口用于把应用程序中指定用户的积分传递给 UCenter。
+//此接口用于把应用程序中指定用户的葫芦币传递给 UCenter。
 	function getcredit($get, $post) {
 		if(!API_GETCREDIT) {
 			return API_RETURN_FORBIDDEN;
 		}
 	}
-//此接口负责把应用程序的积分设置传递给 UCenter，以供 UCenter 在积分兑换设置中使用。
+//此接口负责把应用程序的葫芦币设置传递给 UCenter，以供 UCenter 在葫芦币兑换设置中使用。
 	function getcreditsettings($get, $post) {
 		if(!API_GETCREDITSETTINGS) {
 			return API_RETURN_FORBIDDEN;
 		}
 		 
 	}
-//此接口负责接收 UCenter 积分兑换设置的参数。
+//此接口负责接收 UCenter 葫芦币兑换设置的参数。
 	function updatecreditsettings($get, $post) {
 		if(!API_UPDATECREDITSETTINGS) {
 			return API_RETURN_FORBIDDEN;

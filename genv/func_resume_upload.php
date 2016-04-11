@@ -10,7 +10,7 @@ function get_upload($offset,$perpage,$get_sql= '')
 {
     global $db;
     $limit=" LIMIT {$offset},{$perpage}";
-    $result = $db->query("SELECT  * FROM ".table('resume_upload')." {$get_sql}  ORDER BY addtime desc  {$limit}");
+    $result = $db->query("SELECT  * FROM ".table('resume_temp')." {$get_sql}  ORDER BY addtime desc  {$limit}");
     while($row = $db->fetch_array($result))
     {
         $row["addtime"]= date('Y-m-d',$row['addtime']);
@@ -48,6 +48,25 @@ function get_resume_temp_list($offset,$perpage,$get_sql= '')
 
          $row["log"]=get_resume_check_log($row["id"]);
          $row_arr[] = $row;
+
+    }
+
+    return $row_arr;
+}
+
+//正式通过的记录
+function get_resume_pass_list($offset,$perpage,$get_sql= '')
+{
+    global $db;
+
+    $limit=" LIMIT ".$offset.','.$perpage;
+    $result = $db->query($get_sql.$limit);
+
+    while($row = $db->fetch_array($result))
+    {
+
+        $row["log"]=get_resume_check_log($row["id"]);
+        $row_arr[] = $row;
 
     }
 
@@ -106,8 +125,9 @@ function get_reg($value)
     if ($obj) {
         return trim($obj->as_array()["value"]);
     }
-    return $value;
+    return false;
 }
+
 
 //有效审核次数；也就是有结果，没结果说明看了，没有审核；
 function resume_log_num($id){
@@ -148,18 +168,48 @@ function resume_check_log_add($id,$result=""){
         $rs->rid=$id;
         $rs->uid=$_SESSION["uid"];
     }
-    if($result==1){
-        $result="审核通过";
-        $rs->result=$result;
-        $rs->pass=1;
-    }elseif($result!=""){
+    $cate=\ORM::for_table(table("category"))->where("c_name",$result)->find_one();
+    $pass=0;
+
+    if($cate){
+        if($cate->c_alias=="Genv_check_pass"){
+            $pass=1;
+        }
+    }
+
+
+    if($result!=""){
+        $rs->pass=$pass;
         $rs->result=$result;
     }
+
     $rs->addtime=time();
     $rs->save();
     update_resume_num($id);
 
+}
 
+//审核提交
+function resume_check_log_save($id,$result=""){
+    // import_resume_temp($id);
+
+
+    $cate=\ORM::for_table(table("category"))->where("c_name",$result)->find_one();
+    $pass=0;
+
+    if($cate){
+        if($cate->c_alias=="Genv_check_pass"){
+            $pass=1;
+        }
+    }
+
+    if($pass==0){
+
+        $resume=\ORM::for_table(table("resume_temp"))->where("id",$id)->find_one();
+        $resume->is_refuse=1;
+        $resume->save();
+
+    }
 
 }
 //匹配简历意向行业
@@ -241,11 +291,9 @@ function resume_intention_jobs($uid,$pid,$str=NULL)
 {
     global $db,$locoyspider;
 
-    $sql = "select * from ".table('category_jobs')." where  categoryname='".$str."'   LIMIT 1";
-
-   // $info=ORM::for_table(table('category_jobs'))->where("categoryname",$str)->find_one();
+     $sql = "select * from ".table('category_jobs')." where  categoryname='".$str."'   LIMIT 1";
+    // $info=ORM::for_table(table('category_jobs'))->where("categoryname",$str)->find_one();
    $info=$db->getone($sql);
-
 
     $tmp=array(0,0,0);
     if($info){
@@ -280,8 +328,7 @@ function resume_intention_jobs($uid,$pid,$str=NULL)
 
     $db->inserttable(table("resume_jobs"), $array, 1);
 
-
-}
+ }
 //获取意向职位
 function get_district_one($pid)
 {
@@ -291,6 +338,29 @@ function get_district_one($pid)
 
     return $db->getone($sql);
 }
+
+//获取城市记录
+function get_district_two($subsite_id)
+{
+    global $db;
+    $tmp=array($subsite_id,0,"");
+    $parentid=intval($subsite_id);
+    $sql = "select * from ".table('category_district')." where id='{$subsite_id}' order by id  LIMIT 1" ;
+    $rs=$db->getone($sql);
+
+    if($rs){
+        $tmp[2]=$rs["categoryname"];
+    }
+    $sql = "select * from ".table('category_district')." where parentid='{$parentid}' order by id  LIMIT 1" ;
+    $rs=$db->getone($sql);
+    if($rs){
+       $tmp[1]=$rs["id"];
+       $tmp[2]=$tmp[2]."/".$rs["categoryname"];
+    }
+
+    return $tmp;
+ }
+
 
 //行业数据处理
 function get_trade($str){
@@ -369,6 +439,29 @@ function replace_word($value){
     return $value;
 
 }
+
+//增加审核记录
+function update_pass($uid){
+    global $db ,$CFG;
+
+    $db->query("update  ".table('members')."  SET resume_passed=resume_passed+1  WHERE uid='{$uid}'")  ;
+
+}
+
+function get_tagss(){
+    $tagss=get_category("QS_resumetag");
+    shuffle($tagss);
+    $cc=array_slice($tagss,3,5);
+    $tag_id=array();
+    $tag_cn=array();
+    foreach($cc as $k=>$v){
+        $tag_id[]=$v["c_id"];
+        $tag_cn[]=$v["c_name"];
+    }
+    return array(implode(",",$tag_id),implode(",",$tag_cn));
+
+}
+
 //导入简历入库
 function import_resume_temp($id)
 {
@@ -378,7 +471,7 @@ function import_resume_temp($id)
     $response["error"]=0;
 
     $rs = \ORM::for_table(table("resume_temp"))->where("id", $id)->find_one();
-
+    update_pass($rs["upload_uid"]);
     if($rs){
         $rs=$rs->as_array();
 
@@ -401,8 +494,15 @@ function import_resume_temp($id)
 
     $username = uniqid() . time();
     $email = trim($rs["email"]);
-    $mobile = trim($rs["telephone"]);
+
+    $mobile = str_replace("086-","",trim($rs["telephone"]));
     $subsite_id=$rs['subsite_id'];
+    if($mobile){
+        $username=$mobile;
+    }
+    if($email){
+        $username=$email;
+    }
     //注册会员
     $userid = import_user_register_upload($username, '123456', 2, $email, $mobile, false,$subsite_id);
     if ($userid > 0) {
@@ -446,6 +546,7 @@ function import_resume_temp($id)
         }
 
         $experience_cn = get_reg($rs["experience_cn"]);
+
         if ($experience_cn) {
             $member_info['experience_cn'] = $experience_cn;
             $member_info['experience'] = getId($experience_cn, "QS_experience")["c_id"];
@@ -453,6 +554,7 @@ function import_resume_temp($id)
             $member_info['experience_cn'] = "1-3年";
             $member_info['experience'] = 77;
         }
+
 
         $member_info['email'] = $email;
         $member_info['phone'] = $mobile;
@@ -525,13 +627,12 @@ function import_resume_temp($id)
         }
 
         if($rs["intention_jobs"]==""){
-            $rs["intention_jobs"]="其它";
+            $rs["intention_jobs"]="其他";
         }
         $intention_jobs=$rs["intention_jobs"];
 
 
         $resume['intention_jobs'] =$intention_jobs;
-        $resume['district_cn'] =$rs["district_cn"];
 
 
 
@@ -558,7 +659,7 @@ function import_resume_temp($id)
         $resume['refreshtime'] = time();
         $resume['specialty'] = addslashes($rs["specialty"]);
         $resume['complete_percent'] = addslashes($rs["complete_percent"]);
-        $resume['display_name'] = 2;
+        $resume['display_name'] = 1;
         $resume['entrust'] = 0;
         $resume['resume_from_pc'] = 1;
         $resume['photo'] = 0;
@@ -566,8 +667,26 @@ function import_resume_temp($id)
         $resume['click'] =1;
         $resume['photo'] = 0;
         $resume['subsite_id'] = $subsite_id;
-        $resume['title'] = $resume["fullname"]."具有".$resume["experience_cn"]."的工作经验，学历".$resume["education_cn"]."寻找新工作";
+        $district_info=get_district_two($subsite_id);
+        $resume['district'] = $subsite_id;
+        $resume['sdistrict']=$district_info[1];
 
+        $resume['district_cn'] =$district_info[2];
+
+        $resume['tmp_id'] =$rs["id"];
+        $tagss=get_tagss();
+        $resume['tag'] =$tagss[0];
+        $resume['tag_cn'] =$tagss[1];
+
+
+        $resume['title'] = $resume["fullname"]."具有".$resume["experience_cn"]."的工作经验，学历".$resume["education_cn"]."寻找新工作";
+//        require_once(QISHI_ROOT_PATH.'include/splitword.class.php');
+//
+//        $sp = new SPWord();
+//        $resume['key']=addslashes($resume['title']).addslashes($resume['recentjobs']).addslashes($resume['specialty']);
+//        $resume['key']=addslashes($resume['fullname']).$sp->extracttag($resume['key']);
+//        $resume['key']=str_replace(","," ",addslashes($resume['intention_jobs']))." {$resume['key']} ".addslashes($resume['education_cn']);
+//        $resume['key']=$sp->pad($resume['key']);
        // dump($resume);
         $pid = $db->inserttable(table("resume"), $resume, 1);
         $response["resume_id"]=$pid;
@@ -719,12 +838,12 @@ function import_resume_temp($id)
 
         }
         \ORM::for_table(table("resume_temp"))->where("id",$id)->delete_many();
-        \ORM::for_table(table("resume_check_log"))->where("rid",$id)->delete_many();
+       // \ORM::for_table(table("resume_check_log"))->where("rid",$id)->delete_many();
         check_pass_add_point($upload_uid,$pid);
 
     }
 
-    //给上传者增加积分；
+    //给上传者增加葫芦币；
 
     return $response;
 
@@ -882,7 +1001,7 @@ function check_pass_add_point($uid,$pid){
     $user=$db->getone($sql);
 
     if($user){
-        // 简历审核通过积分处理
+        // 简历审核通过葫芦币处理
         $rule=get_cache('points_rule');
 
         if ($rule['resume_checked']['value']>0)
@@ -936,7 +1055,10 @@ function import_user_register_upload($username,$password,$member_type=0,$email,$
     $setsqlarr['reg_time']=$timestamp;
     $setsqlarr['reg_ip']=$online_ip;
     $setsqlarr['subsite_id']=$subsite_id;
+    $setsqlarr['remind_email_time']=0;
     $insert_id=$db->inserttable(table('members'),$setsqlarr,true);
+
+    insert_members_points($insert_id);//给注册用户加葫芦币;
     if(defined('UC_API') && $uc_reg)
     {
         include_once(QISHI_ROOT_PATH.'uc_client/client.php');
@@ -944,6 +1066,17 @@ function import_user_register_upload($username,$password,$member_type=0,$email,$
     }
     return $insert_id;
 }
+function insert_members_points($uid){
+
+    global $db;
+    $points=get_cache('points_rule');
+    $arr["uid"]=$uid;
+    $arr["points"]=$points["reg_per_points"];
+
+    $db->inserttable(table('members_points'),$arr,true);
+
+}
+
 function get_user_inemail_import_upload($email)
 {
     global $db;
@@ -987,6 +1120,7 @@ function get_relation($value,$type=2){
 
     if($type==2){
         if($rs){
+            //gv($rs->as_array());
             return $rs->as_array()["value"];
         }else{
             return $value;
@@ -1004,6 +1138,28 @@ function get_telephone($value ){
     if($rs){return true;}
 }
 
+function reg_email($email){
+    if (!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/",$email)) {
+       return false;
+    }
+    return true;
+}
+function reg_mobile($mobile){
+     $mobile=str_replace("086-","",$mobile);
+     if (!preg_match("/^(13|15|14|17|18)\d{9}$/",$mobile)) {
+       return false;
+    }
+    return true;
+}
+function reg_name($name){
+
+     if (strlen($name)<2) {
+       return false;
+    }
+    return true;
+}
+
+
 //获取选项信息
 function get_category($value ){
 
@@ -1013,6 +1169,19 @@ function get_category($value ){
     }
     return array();
 
+
+}
+
+
+function get_array_name($cols,$name){
+
+    foreach($cols as $key=>$value){
+
+        if($value["name"]==$name){
+            return $key;
+        }
+    }
+    return false;
 
 }
 //处理上传简历
@@ -1053,7 +1222,13 @@ function excel_upload($file){
              $colinfo["func"]=$func;
              $cols[$key] = $colinfo;
         }
+    }
+    if(get_array_name($cols,"地址")&&get_array_name($cols,"目前居住地")){
+        unset($cols[get_array_name($cols,"地址")]);
+    }
 
+    if(get_array_name($cols,"最近一个职位")&&get_array_name($cols,"应聘职位")){
+        unset($cols[get_array_name($cols,"应聘职位")]);
     }
 
     $obj=array();
@@ -1066,12 +1241,18 @@ function excel_upload($file){
 
                     $cc[]=get_relation($q);
                 }
+
                 $filter_value=join(",",$cc);
 
-                $obj[$key][$n["value"]]=call_user_func_array(array("Ggven", $n["func"]), array($filter_value));;
+
+
+                $tv=call_user_func_array(array("Ggven", $n["func"]), array($filter_value));;
+
+                $obj[$key][$n["value"]]=$tv;
             }
         }
     }
+
     foreach($obj as $key=> $item){
         if($item["fullname"]==""||$item["telephone"]==""){
             unset($obj[$key]);
@@ -1091,23 +1272,40 @@ function check_resume_check_apply(){
 
 }
 
+function get_upload_name($file_path){
+
+    $path=str_replace("data/xls/","",$file_path);
+    $rs=  \ORM::for_table(table('resume_upload'))->where("path",$path)->find_one();
+
+    if($rs){
+        return $rs->name;
+    }else{
+        return "";
+    }
+
+
+}
+
 //插入临时简历库
 function resume_upload_insert($file_path)
 {
     global $_CFG;
-    $excel=excel_upload($file_path);
+    $excel=excel_upload(QISHI_ROOT_PATH.$file_path);
     $data=$excel["data"];
 
 
     $rs=array();
     foreach ($data as $key => $value) {
-        if(!get_telephone($value["telephone"])){
+        
+        if(!get_telephone($value["telephone"])&&reg_email($value["email"])&&reg_mobile($value["telephone"])&&reg_name($value["fullname"])){
             $value["status"]=0;
             $value["upload_uid"]=$_SESSION["uid"];
             $value["upload_time"]=time();
             $value["file"]=$file_path;
+            $value["file_name"]=get_upload_name($file_path);
             $value["subsite_id"]=$_CFG['subsite_id'];
             $value["district_cn"]=$_CFG['subsite_districtname'];
+            $value["telephone"] = str_replace("086-","",trim($value["telephone"]));
 
 
             $obj = \ORM::for_table(table('resume_temp'))->create($value);
@@ -1127,9 +1325,20 @@ function del_resume_temp($id)
     $return=0;
     if (preg_match("/^(\d{1,10},)*(\d{1,10})$/",$sqlin))
     {
+
+        $rs=$db->getall("select * from ".table('resume_temp')." WHERE id IN ({$sqlin})");
+        foreach($rs as $key=>$val){
+            $db->query("update  ".table('members')."  SET resume_delete=resume_delete+1  WHERE uid='{$val['upload_uid']}'")  ;
+
+        }
+
+
+        if (!$db->query("Delete from ".table('resume_check_log')." WHERE rid IN ({$sqlin})")) return false;
         if (!$db->query("Delete from ".table('resume_temp')." WHERE id IN ({$sqlin})")) return false;
+
         $return=$return+$db->affected_rows();
-        if (!$db->query("Delete from ".table('resume_check_log')." WHERE rid IN ({$sqlin}) ")) return false;
+
+       // if (!$db->query("Delete from ".table('resume_check_log')." WHERE rid IN ({$sqlin}) ")) return false;
 //        if (!$db->query("Delete from ".table('resume_district')." WHERE pid IN ({$sqlin}) ")) return false;
 //        if (!$db->query("Delete from ".table('resume_trade')." WHERE pid IN ({$sqlin}) ")) return false;
 //        if (!$db->query("Delete from ".table('resume_tag')." WHERE pid IN ({$sqlin}) ")) return false;
@@ -1166,7 +1375,17 @@ function get_resume_check_log($id){
 function get_check_info($memberuid)
 {
     global $db;
-    $sql = "select * from ".table('members')." where uid=".intval($memberuid)." LIMIT 1";
+    $sql = "select m.*,c.companyname,c.contact from ".table('members')." as m left join ".table("company_profile")." as c on m.uid=c.uid where m.uid=".intval($memberuid)." LIMIT 1";
+    $val=$db->getone($sql);
+
+    return $val;
+}
+
+
+function get_check_admin_info($memberuid)
+{
+    global $db;
+    $sql = "select * from ".table('admin')." where admin_id=".intval($memberuid)." LIMIT 1";
     $val=$db->getone($sql);
     return $val;
 }
@@ -1174,13 +1393,24 @@ function get_check_info($memberuid)
 //读取简历的审核日志；
 function get_resume_check_loglist($id){
     global $db;
+   // echo vsprintf("select * from %s where rid=%d",array(table("resume_check_log"),$id));
     $rs=$db->getall(vsprintf("select * from %s where rid=%d",array(table("resume_check_log"),$id)));
+     //gv($rs);
     if($rs){
         foreach($rs as $key=>$value){
-            $rs[$key]["member"]=get_check_info($value["uid"]);
+            if($value["cate"]==1){
+                $rs[$key]["admin"]=get_check_admin_info($value["uid"]);
+
+            }elseif($value["cate"]==0){
+                $rs[$key]["member"]=get_check_info($value["uid"]);
+
+            }
         }
     }
+   // gv($rs);
     return $rs;
 }
+
+
 
 

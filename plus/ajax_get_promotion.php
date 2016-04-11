@@ -52,7 +52,7 @@ if ($act=="get_promotion_one")
     </tr>
     <tr>
       <td width="20" height="10">&nbsp;</td>
-      <td height="10"><font color="#FF3300">推广期每天消耗积分： '.$promotion["cat_points"].'点积分</font></td>
+      <td height="10"><font color="#FF3300">推广期每天消耗葫芦币： '.$promotion["cat_points"].'点葫芦币</font></td>
     </tr>
     <tr>
       <td width="20" height="10">&nbsp;</td>

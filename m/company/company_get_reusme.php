@@ -9,6 +9,7 @@ require_once(QISHI_ROOT_PATH.'include/fun_wap.php');
 require_once(QISHI_ROOT_PATH.'include/fun_company.php');
 require_once(QISHI_ROOT_PATH.'include/mysql.class.php');
 $smarty->cache = false;
+wap_weixin_openid($_GET['code']);
 $db = new mysql($dbhost,$dbuser,$dbpass,$dbname);
 $act = !empty($_REQUEST['act']) ? trim($_REQUEST['act']) : 'index';
 if ($_SESSION['uid']=='' || $_SESSION['username']==''||intval($_SESSION['utype'])==2)

@@ -126,16 +126,17 @@ if ($act == 'list') {
     $setsqlarr['parent_name'] = !empty($_POST['parent_name']) ? trim($_POST['parent_name']) : "";
     $setsqlarr['parent_id'] = !empty($_POST['parent_id']) ? trim($_POST['parent_id']) : "";
     $rs=get_replace_one( $_POST['id']);
+    //gv($rs);
     if( $rs['type']==1){
 
         $setsqlarr['parent_id'] = $setsqlarr["value"];
     }elseif($rs['type']==2){
-
-
-        $setsqlarr['parent_id'] = $rs["value"];
+        $setsqlarr['parent_id'] = $rs["parent_id"];
         $setsqlarr['source'] = $rs["source"];
 
     }
+   // gv($setsqlarr);
+
     $wheresql = " id=" . intval($_POST['id']);
     !$db->updatetable(table('relation'), $setsqlarr, $wheresql) ? adminmsg("修改失败！", 0) : adminmsg("修改成功！", 2, $link);
 } elseif ($act == 'del') {

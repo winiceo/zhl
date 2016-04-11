@@ -69,7 +69,7 @@ elseif($act == 'addsave')
 {
 	check_permissions($_SESSION['admin_purview'],"jobfair");
 	check_token();
-	$setsqlarr['subsite_id']=intval($_POST['subsite_id']);	
+	$setsqlarr['subsite_id']='0';
 	$setsqlarr['title']=!empty($_POST['title'])?trim($_POST['title']):adminmsg('您没有填写标题！',1);
 	$setsqlarr['trade']=trim($_POST['trade'])?trim($_POST['trade']):adminmsg('清选择招聘会行业！',1);
 	$setsqlarr['trade_cn']=trim($_POST['trade_cn']);
@@ -100,7 +100,7 @@ elseif($act == "editsave")
 {
 	$jobfair_id=intval($_POST['jobfair_id'])>0?intval($_POST['jobfair_id']):adminmsg("招聘会ID丢失！",1);
 
-	$setsqlarr['subsite_id']=intval($_POST['subsite_id']);	
+	$setsqlarr['subsite_id']='0';
 	$setsqlarr['title']=!empty($_POST['title'])?trim($_POST['title']):adminmsg('您没有填写标题！',1);
 	$setsqlarr['trade']=trim($_POST['trade'])?trim($_POST['trade']):adminmsg('清选择招聘会行业！',1);
 	$setsqlarr['trade_cn']=trim($_POST['trade_cn']);

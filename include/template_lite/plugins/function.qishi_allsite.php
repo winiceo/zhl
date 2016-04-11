@@ -36,8 +36,8 @@ function tpl_function_qishi_allsite($params, &$smarty)
 	$list1 = array();
 	$list2 = array();
 	$list = array();
-	$subsite = $db->getall("select * from ".table('subsite')." where s_effective=1 order by s_index asc ".$limitsql);
 	if($aset['wordcut']==1){
+		$subsite = $db->getall("select * from ".table('subsite')." where s_effective=1 order by s_index asc,s_order desc ".$limitsql);
 		foreach ($subsite as $key => $value) {
 			$value['s_domain'] = 'http://'.$value['s_domain'];
 			$value['s_index'] = strtoupper($value['s_index']);
@@ -54,6 +54,7 @@ function tpl_function_qishi_allsite($params, &$smarty)
 			$list = array($list1,$list2);
 		}
 	}else{
+		$subsite = $db->getall("select * from ".table('subsite')." where s_effective=1 order by s_order desc,s_index asc ".$limitsql);
 		foreach ($subsite as $key => $value) {
 			$value['s_domain'] = 'http://'.$value['s_domain'];
 			$list[] = $value;

@@ -19,7 +19,7 @@ elseif($act=="do_check")
 	$sql_data = array();
 	$local_detail = array();
 	//验证 授权码
-	$rst=https_request("http://www.74cms.com/plus/check_webkey.php?web_key=$_POST[web_key]&web=$_CFG[site_domain]");
+	$rst=https_request("http://www.zhaohulu.com/plus/check_webkey.php?web_key=$_POST[web_key]&web=$_CFG[site_domain]");
 	if($rst===false)
 	{
 		adminmsg("请先开启您php，curl模块!");

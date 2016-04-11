@@ -39,14 +39,14 @@ elseif ($act=='order_sms_add_save')
 	$sms_meal=get_sms_setmeal_one($_POST['meal_id']); 
 	$payment_name=empty($_POST['payment_name'])?showmsg("请选择付款方式！",1):$_POST['payment_name']; 
 	if($payment_name=="points"){
-		//选择积分模式
+		//选择葫芦币模式
 		$p = get_user_points($_SESSION['uid']);
 		$expense = intval($_POST['points_expense_input']);
 		if($p<$expense){
-			showmsg("您的积分不足以支付！",1);
+			showmsg("您的葫芦币不足以支付！",1);
 		}
 		$order['oid']= "P-".date('ymd',time())."-".date('His',time());//订单号
-		$order['v_amount']=$expense;	//支付的积分数量
+		$order['v_amount']=$expense;	//支付的葫芦币数量
 		$order_id=add_sms_order($_SESSION['uid'],$order['oid'],$expense, $payment_name,$sms_meal['setmeal_name'],$timestamp,$expense,intval($_POST['meal_id']));
 	}
 	else

@@ -87,7 +87,7 @@ $(document).ready(function()
       <td width="7%" align="center" class="admin_list_tit">创建时间</td>
 	   <td width="7%" align="center" class="admin_list_tit">刷新时间</td>
 		{#if $QISHI.operation_mode=='1'#}  
-			  <td width="7%" align="center" class="admin_list_tit">目前积分</td>
+			  <td width="7%" align="center" class="admin_list_tit">目前葫芦币</td>
 		{#elseif $QISHI.operation_mode=='2'||$QISHI.operation_mode=='3'#}  
 			  <td width="7%" align="center" class="admin_list_tit">套餐名称</td>
 		{#/if#}
@@ -130,7 +130,7 @@ $(document).ready(function()
 		</td>
 		<td align="center" class="admin_list">
 		{#if $QISHI.operation_mode=='1'#} 
-			<strong>{#$list.points#}</strong> 积分
+			<strong>{#$list.points#}</strong> 葫芦币
 		{#elseif $QISHI.operation_mode=='2'||$QISHI.operation_mode=='3'#}  
 				{#if $list.setmeal_name#}<span style="color: #009900">{#$list.setmeal_name#}</span>{#else#}<span style="color:#FF3300">无套餐</span>{#/if#}
 		{#/if#}

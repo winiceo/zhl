@@ -4,8 +4,8 @@
 		<meta charset="gb2312">
 		<title>个人会员中心-创建简历</title>
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta name="author" content="找葫芦网" />
-<meta name="copyright" content="zhaohulu.com" />
+		<meta name="author" content="找葫芦" />
+		<meta name="copyright" content="zhaohulu.com" />
 		<link rel="stylesheet" href="../css/user-common.css" />
 		<link rel="stylesheet" href="../css/personal.css" />
 		<script type="text/javascript" src="../js/jquery-1.11.3.js" ></script>
@@ -15,7 +15,7 @@
 		<script type="text/javascript" src="../js/jquery.editCVsubsite.js" ></script>
 		<script type="text/javascript" src="../js/iscroll.js" ></script>
 		<script type="text/javascript" src="../js/mb.js" ></script>
-		<script src="{#$QISHI.site_domain#}{#$QISHI.site_dir#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
+		<script src="{#$QISHI.main_domain#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
 		<script type="text/javascript">
 			$(document).ready(function() {
 				wapcheckall();
@@ -34,6 +34,7 @@
 					$(".optionalinfo").show();
 				});
 				// ajax提交保存简历
+				var isFirstResumeSave = true;
 				$("#resume_save").click(function(event) {
 					var fullname = $("input[name=fullname]").val();
 					var sex = $("input[name=sex]").val();
@@ -61,28 +62,32 @@
 					var auto_refresh=$("input[name=auto_refresh]").val();
 					var auto_apply=$("input[name=auto_apply]").val();
 
-					$.post('?act=make_resume_save', {"fullname":fullname,"sex":sex,"sex_cn":sex_cn,"birthdate":birthdate,"education":education,"education_cn":education_cn,"experience":experience,"experience_cn":experience_cn,"telephone":telephone,"email":email,"intention_jobs":intention_jobs,"intention_jobs_id":intention_jobs_id,"wage":wage,"wage_cn":wage_cn,"trade":trade,"trade_cn":trade_cn,"district_cn":district_cn,"district":district,"sdistrict":sdistrict,"subsite_id":subsite_id,"specialty":specialty,"auto_refresh":auto_refresh,"auto_apply":auto_apply,"current_cn":current_cn,"current":current}, 
-						function(data) {
-							$("#resume_save").hide();
-							$("#resume_save_no").show();
-							var   type="^[0-9]*[1-9][0-9]*$";
-							var   re = new RegExp(type); 
-							if (data.match(re)!=null) {
-								layer.msg('创建简历成功！', {icon: 1});
-		                        setTimeout(function () {
-		                            window.location.href='?act=resume_success&pid='+data+'';
-		                        }, 2000);
-							} else if(data == "err") {
-								layer.msg('创建简历失败！', {icon: 2});
-							} else {
-								layer.msg(data);
-								$('.layui-layer').css("left",($(window).width() - $('.layui-layer').outerWidth())/2);
-								$("#resume_save").show();
-								$("#resume_save_no").hide();
-								console.log(data);
+					if (isFirstResumeSave) {
+						isFirstResumeSave =false;
+						$.post('?act=make_resume_save', {"fullname":fullname,"sex":sex,"sex_cn":sex_cn,"birthdate":birthdate,"education":education,"education_cn":education_cn,"experience":experience,"experience_cn":experience_cn,"telephone":telephone,"email":email,"intention_jobs":intention_jobs,"intention_jobs_id":intention_jobs_id,"wage":wage,"wage_cn":wage_cn,"trade":trade,"trade_cn":trade_cn,"district_cn":district_cn,"district":district,"sdistrict":sdistrict,"subsite_id":subsite_id,"specialty":specialty,"auto_refresh":auto_refresh,"auto_apply":auto_apply,"current_cn":current_cn,"current":current}, 
+							function(data) {
+								isFirstResumeSave = true;
+								$("#resume_save").hide();
+								$("#resume_save_no").show();
+								var   type="^[0-9]*[1-9][0-9]*$";
+								var   re = new RegExp(type); 
+								if (data.match(re)!=null) {
+									layer.msg('创建简历成功！', {icon: 1});
+			                        setTimeout(function () {
+			                            window.location.href='?act=resume_success&pid='+data+'';
+			                        }, 2000);
+								} else if(data == "err") {
+									layer.msg('创建简历失败！', {icon: 2});
+								} else {
+									layer.msg(data);
+									$('.layui-layer').css("left",($(window).width() - $('.layui-layer').outerWidth())/2);
+									$("#resume_save").show();
+									$("#resume_save_no").hide();
+									console.log(data);
+								}
 							}
-						}
-					);
+						);
+					};
 				});
 			});
 		</script>

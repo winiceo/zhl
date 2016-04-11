@@ -219,17 +219,17 @@ $(document).ready(function()
   </table>
   </form>
 {#if $QISHI.operation_train_mode=='1'#}  
- <div class="toptit">会员积分设置</div>
+ <div class="toptit">会员葫芦币设置</div>
  <form id="form1" name="form1" method="post" action="?act=userpoints_edit">
  {#$inputtoken#}
   <table width="100%" border="0" cellpadding="4" cellspacing="0"   >
 		 
 		 <tr>
-      <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">会员积分：</td>
+      <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">会员葫芦币：</td>
       <td  style=" border-bottom:1px #CCCCCC dashed; color: #FF6600; font-size:16px;" >{#$userpoints#}&nbsp;</td>
     </tr>
 	<tr>
-      <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">操作积分：</td>
+      <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">操作葫芦币：</td>
       <td  style=" border-bottom:1px #CCCCCC dashed;" >
 	  <label><input name="points_type" type="radio" value="1" checked="checked" />增加</label>
 	  &nbsp;&nbsp;&nbsp;
@@ -237,7 +237,7 @@ $(document).ready(function()
 	  </td>
     </tr>
 			<tr>
-      <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">增减积分：</td>
+      <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">增减葫芦币：</td>
       <td  style=" border-bottom:1px #CCCCCC dashed;" >
 	   <input name="points" type="text"  id="points" maxlength="5" value="0"  class="input_text_50"  />
 	  点        </td>

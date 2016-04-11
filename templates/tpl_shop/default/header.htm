@@ -1,21 +1,101 @@
-<div id="shop-header">
-	<div class="header-top">
-		<div class="container clearfix">
-			<div class="header-title f-left">
-				您好 <a href="{#"QS_login"|qishi_url#}">{#$smarty.session.username#}</a>，欢迎访问找葫芦积分商城  {#if empty($smarty.session.username)#}<a href="{#"QS_login"|qishi_url#}">[登录]</a>{#else#}<a href="{#"QS_login,act:logout"|qishi_url#}" style="color:#0066cc">[退出]</a>{#/if#}
+<div id="header">
+	<div class="top-nav-wrap">
+		<div class="top-nav clearfix" style="width:1100px;margin: 0 auto;position: relative;">
+			<div class="topleft">
+				<p><img original="{#$list.img_path#}" src="{#$QISHI.site_template#}images/header/weixin01.png" alt="{#$list.img_explain#}" width="14" height="14" border="0" />手机找葫芦</p>
 			</div>
-			<div class="top-control f-right">
-				{#if $smarty.session.uid#}
-				<a href="shop_order.php">我的订单</a>|<a href="{#$QISHI.site_dir#}user/company/company_index.php">会员中心</a>|
-				{#else#}
-				<a href="javascript:;" class="account-login">我的订单</a>|<a href="javascript:;" class="account-login">会员中心</a>|
-				{#/if#}
-				<a href="{#$QISHI.site_dir#}">返回人才网</a></div>
+            <div class="hiden-app">
+               <img src="{#$QISHI.site_template#}images/12.jpg"/>
+            </div>
+			<div class="topright">
+				<div class="station-choose">
+					<div class="station-control">
+						<div class="station-item">[ 切换站点 ]&nbsp;&nbsp;{#if $QISHI.subsite_districtname#}{#$QISHI.subsite_districtname#}{#else#}总站{#/if#}</div>
+						<div class="station-drop-wrapper">
+							<div class="drop-title clearfix">
+								<h4 class="f-left">地区分站 · <a href="{#$QISHI.main_domain#}" class="underline">[总站]</a></h4>
+								<span class="f-right">一站注册，多站发布</span>
+							</div>
+							<ul class="station-list clearfix">
+								{#qishi_allsite set="列表名:city"#}
+								{#foreach from=$city item=li#}
+								<li class="f-left"><a href="{#$li.s_domain#}" class="underline">{#$li.s_districtname#}</a></li>
+								{#/foreach#}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+            <div class="nav-right f-right">
+				<span class="nav-items">
+                <span class="underline" id="more" style="cursor:pointer">网站导航<i class="station-arrow f-right"></i></span>
+                </span>
+			</div>
+            <div style="display:none;min-height:150px;height:auto;width:180px;border:1px solid #e7e7e7;float:right;position:absolute;top: 35px;right:0px;background-color:#fff;padding:20px 15px;z-index:64;" id="nav_more">
+            	{#qishi_nav set="调用名称:QS_top,列表名:list,分割:20"#}
+				{#foreach from=$list item=list#}	
+            	<div style="height:20px;width:50px;line-height:20px;float:left;text-align:center;margin:3px;">
+                <a href="{#$list.url#}" target="{#$list.target#}" class="nav-li {#if $list.tag==$page_select && $list.tag!=""#}active{#/if#}">{#$list.title#}</a>
+                </div>
+                 {#/foreach#}
+            </div>
+			<div class="nav-right f-right">
+				<span id="top_loginform"></span>
+				<span class="nav-items"><a href="{#$QISHI.site_dir#}salary" class="underline">薪酬统计</a></span>
+				<span class="nav-items"><a href="{#"QS_helplist"|qishi_url#}" class="underline">帮助中心</a></span>
+				<span class="nav-items"><a href="{#$QISHI.site_dir#}plus/shortcut.php" class="underline">保存到桌面</a></span>
+			</div>
 		</div>
 	</div>
+</div>
+<script src="{#$QISHI.site_template#}js/jquery.header.js" type="text/javascript" language="javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		header();
+		//顶部部登录
+		$.get("{#$QISHI.site_dir#}plus/ajax_user.php", {"act":"top_loginform"},
+		function (data,textStatus)
+		{			
+		$("#top_loginform").html(data);
+		}
+		);
+		$('.station-control').on('click', function(e) {
+			if("{#$QISHI.sel_subsite_method#}"==0){
+				$(this).find('.station-drop-wrapper').toggle();
+				$('.station-item').toggleClass('open');
+				e.stopPropagation();
+				$(document).one('click', function(e) {
+					$('.station-drop-wrapper').hide();
+					$('.station-item').removeClass('open');
+				});
+			}else{
+				location.href='{#$QISHI.site_dir#}substation';
+			}
+		});
+		$('.station-drop-wrapper').on('click', function(e) {
+			e.stopPropagation();
+		});
+		$("#more").toggle(function(){
+			$("#nav_more").show();
+			
+		},function(){
+			$("#nav_more").hide();
+			
+		});
+		
+		$('.topleft').hover(function(){
+		  $(".hiden-app").show();
+	    }, function(){
+		$(".hiden-app").hide();
+	    });
+		
+	});
+</script>
+<div id="shop-header">
 	<div class="header-logo-search clearfix container">
-		<div class="shop-logo f-left"><a href="{#$QISHI.site_dir#}"><img src="{#$QISHI.upfiles_dir#}{#$QISHI.web_logo#}" alt="{#$QISHI.site_name#}" width="260" height="70" /></a></div>
-		<div class="logo-side-title f-left">积分商城</div>
+		<div class="shop-logo f-left"><a href="{#$QISHI.site_dir#}"><img src="{#$QISHI.upfiles_dir#}{#$QISHI.web_logo#}" alt="{#$QISHI.site_name#}" width="200" height="80" /></a></div>
+		<div class="logo-side-title f-left">葫芦币商城</div>
 		<div class="top-search f-left">
 			<form action="shop_list.php" method="get">
 			<div class="search-main clearfix">
@@ -43,7 +123,7 @@
 				{#foreach from=$list item=list#}
 				<li class="f-left"><a href="{#$list.url#}" target="{#$list.target#}" class="nav-item {#if $list.tag==$page_select && $list.tag!=""#} active{#/if#}">{#$list.title#}</a></li>
 				{#/foreach#}
-				<li class="f-left"><a href="shop_esoterica.php" class="nav-item {#if $shop_nav=='esoterica'#}active{#/if#}">积分秘籍</a></li>
+                <li class="f-left"><a href="shop_esoterica.php" class="nav-item {#if $shop_nav=='esoterica'#}active{#/if#}">葫芦币秘籍</a></li>
 			</ul>
 		</div>
 	</div>

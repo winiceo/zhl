@@ -74,7 +74,7 @@ elseif ($act=="verify_code")
 						$db->updatetable(table('members_info'),$infoarr," uid='{$uid}'");
 						$u['email']=$setsqlarr['email'];
 						$db->updatetable(table('resume'),$u," uid='{$uid}'");
-						// 积分操作
+						// 葫芦币操作
 						$rule=get_cache('points_rule');
 						if ($rule['per_verifyemail']['value']>0)
 						{

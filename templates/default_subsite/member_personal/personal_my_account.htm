@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/> 
 <title>{#$title#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="找葫芦网" />
+<meta name="author" content="找葫芦" />
 <meta name="copyright" content="zhaohulu.com" />
 <link rel="stylesheet" href="{#$QISHI.site_template#}css/user_common.css" />
 <link rel="stylesheet" href="{#$QISHI.site_template#}css/user_company.css" />
@@ -45,7 +45,7 @@
 				<div class="topnav get_resume">
 					<div class="titleH1"><div class="h1-title">我的账户</div></div>
 					<div class="navs link_bk">
-						<a href="personal_service.php?act=j_account" {#if $act=='j_account'#}class="se"{#/if#}>我的积分</a>
+						<a href="personal_service.php?act=j_account" {#if $act=='j_account'#}class="se"{#/if#}>我的葫芦币</a>
 						<div class="clear"></div>
 					</div>
 				</div>
@@ -53,12 +53,12 @@
 					<div class="account-top-block clearfix">
 						<div class="account-state f-left">账户状态</div>
 						<div class="a-state-content f-left">
-							<span class="account-type last">当前{#$QISHI.points_byname#}：<span>{#$points#}</span>{#$QISHI.points_quantifier#}<a href="personal_service.php?act=order_add" class="underline">积分充值</a></span>
+							<span class="account-type last">当前{#$QISHI.points_byname#}：<span>{#$points#}</span>{#$QISHI.points_quantifier#}<a href="personal_service.php?act=order_add" class="underline">葫芦币充值</a></span>
 						</div>
 					</div>
 					<div class="account-ctrl-bar clearfix">
-						<h3 class="f-left">积分规则</h3>
-						<a href="personal_service.php?act=j_account&detail=1" class="f-right underline">积分消费明细</a>
+						<h3 class="f-left">葫芦币规则</h3>
+						<a href="personal_service.php?act=j_account&detail=1" class="f-right underline">葫芦币消费明细</a>
 					</div>
 					<div class="account-lost clearfix">
 						{#section name=list loop=$points_rule#}

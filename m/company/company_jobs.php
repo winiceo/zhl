@@ -10,6 +10,7 @@ require_once(QISHI_ROOT_PATH.'include/fun_company.php');
 require_once(QISHI_ROOT_PATH.'include/mysql.class.php');
 $smarty->cache = false;
 $db = new mysql($dbhost,$dbuser,$dbpass,$dbname);
+wap_weixin_openid($_GET['code']);
 $act = !empty($_REQUEST['act']) ? trim($_REQUEST['act']) : 'index';
 if ($_SESSION['uid']=='' || $_SESSION['username']==''||intval($_SESSION['utype'])==2)
 {
@@ -573,7 +574,7 @@ elseif($act=="jobs_refresh")
 	$smarty->cache = false;
 	$id=intval($_POST['id']);
 	$jobs_num = 1;
-	//积分模式
+	//葫芦币模式
 	if($_CFG['operation_mode']=='1'){
 		//限制刷新时间
 		//最经一次的刷新时间
@@ -771,7 +772,7 @@ elseif($act=="set_promotion")
 		}
 	}
 }
-// 职位推广混合模式下判断该推广类型是否使用积分
+// 职位推广混合模式下判断该推广类型是否使用葫芦币
 elseif($act=="set_promotion_operation")
 {
 	$catid = intval($_GET['catid'])?intval($_GET['catid']):exit("参数错误！");
@@ -791,7 +792,7 @@ elseif($act=="set_promotion_operation")
 		exit("1"."|".$promotion['cat_points']."|".$promotion['cat_minday']."|".$promotion['cat_maxday']);
 	}
 }
-// 积分模式下判断返回该推广类型的 每天消耗积分、推广最小天数、最大天数
+// 葫芦币模式下判断返回该推广类型的 每天消耗葫芦币、推广最小天数、最大天数
 elseif($act=="set_promotion_points")
 {
 	$catid = intval($_GET['catid'])?intval($_GET['catid']):exit("参数错误！");

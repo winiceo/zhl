@@ -7,8 +7,15 @@ define('IN_QISHI', true);
 require_once(dirname(__FILE__) . '/company_common.php');
 $smarty->assign('leftmenu', "recruitment");
 //error_reporting(-1);
-
 if ($act == 'upload') {
+
+    if ($company_profile["audit"]!=1){
+
+        $link[0]['text'] = "请上传营业执照,才有资格进行简历置换";
+        $link[0]['href'] = 'company_info.php?act=company_auth';
+        showmsg("请上传营业执照,才有资格进行简历置换",1,$link);
+
+    }
     require_once(QISHI_ROOT_PATH . 'include/page.class.php');
 
     $wheresql .= "where uid=" . $_SESSION['uid'];
@@ -47,10 +54,9 @@ if ($act == 'upload') {
             $link[0]['href'] = '?act=upload_list';
             write_memberslog($_SESSION['uid'], 1, 8003, $_SESSION['username'], "上传了简历");
 
-            $path = QISHI_ROOT_PATH . "data/xls/" . $setsqlarr['path'];
+            $path =  "data/xls/" . $setsqlarr['path'];
 
-            $excel = excel_upload($path);
-
+            $excel = excel_upload(QISHI_ROOT_PATH.$path);
 
             $data = $excel["data"];
             foreach ($data as $key => $value) {
@@ -58,12 +64,17 @@ if ($act == 'upload') {
                 if (get_telephone($value["telephone"])) {
                     $data[$key]["color"] = "#E8AFC5";
                 }
+                if (!reg_email($value["email"])||!reg_mobile($value["telephone"])||!reg_name($value["fullname"])) {
+                    $data[$key]["color"] = "gray";
+                }
+
             }
+
 
             $smarty->assign("colsinfo", $excel["cols"]);
             $smarty->assign("uploads", $data);
             $smarty->assign("file", $path);
-            $smarty->display('member_company/company_upload.htm');
+            $smarty->display('member_company/company_upload_save.htm');
 
             //showmsg('上传成功！',2,$link);
         } else {
@@ -92,19 +103,33 @@ if ($act == 'upload') {
     require_once(QISHI_ROOT_PATH . 'include/page.class.php');
     require_once(QISHI_ROOT_PATH . 'genv/func_resume_upload.php');
 
-    $wheresql .= "where uid=" . $_SESSION['uid'];
+    $wheresql .= "where upload_uid=" . $_SESSION['uid'];
 
     $perpage = 10;
-    $total_sql = "SELECT COUNT(*) AS num FROM " . table('resume_upload') . "  {$wheresql} ";
+    $total_sql = "SELECT COUNT(*) AS num FROM " . table('resume_temp') . "  {$wheresql} ";
     $total = $db->get_total($total_sql);
     $page = new page(array('total' => $total, 'perpage' => $perpage));
     $offset = ($page->nowindex - 1) * $perpage;
+
+
+
     $smarty->assign('act', $act);
     $smarty->assign('title', '批量上传简历 - 企业会员中心 - ' . $_CFG['site_name']);
-    $smarty->assign('uploads', get_upload($offset, $perpage, $wheresql));
+    $data=get_upload($offset, $perpage, $wheresql);
+    foreach($data as $k=>$v){
+        $data[$k]["upload_time"]=date('Y-m-d H:i:s', $v["upload_time"]);
+    }
+
+
+    $smarty->assign('uploads', $data);
     if ($total > $perpage) {
         $smarty->assign('page', $page->show(3));
     }
+    $rs=$db->getone("SELECT *  FROM " . table('members') . " where uid=".$_SESSION['uid']." limit 1");
+
+
+    $smarty->assign('userinfo', $rs);
+    $smarty->assign('total', $total);
 
     $smarty->display('member_company/company_upload_list.htm');
 } elseif ($act == 'cheking_resume') {
@@ -114,6 +139,15 @@ if ($act == 'upload') {
             $link[0]['text'] = "完善企业资料";
             $link[0]['href'] = 'company_info.php?act=company_profile';
             showmsg("为了达到更好的招聘效果，请先完善您的企业资料！",1,$link);
+
+    }
+     $passed = $db->getone("select * from "  . table('members') ." where uid=".$_SESSION["uid"]." and resume_passed>=1000");
+
+
+    if (!$passed){
+
+        $link[0]['text'] = "您的简历审核通过数少于1000,无法审请";
+         showmsg("您的简历审核通过数少于1000,无法审请",1);
 
     }
     //待审核简历
@@ -232,6 +266,8 @@ if ($act == 'upload') {
     $smarty->assign('resume', $resume);
 
     $smarty->assign("check_result", get_category("Genv_check_false"));
+    $smarty->assign("check_result_pass", get_category("Genv_check_pass"));
+
 
     $smarty->display('member_company/resume-show.htm');
 
@@ -243,17 +279,69 @@ if ($act == 'upload') {
     $id = !empty($_REQUEST['id']) ? intval($_REQUEST['id']) : showmsg("你没有选择简历！", 1);
     $result = $_REQUEST['result'] ? trim($_REQUEST['result']) : showmsg("你没有选择审核结果！", 1);;
     resume_check_log_add($id, $result);
+    resume_check_log_save($id, $result);
     $link[0]['text'] = "返回简历列表";
     $link[0]['href'] = '?act=cheking_resume';
     showmsg('简历结果已提交！', 1, $link);
 
 
-}elseif ($act == 'test') {
-    require_once(QISHI_ROOT_PATH . 'include/page.class.php');
-    require_once(QISHI_ROOT_PATH . 'genv/func_resume_upload.php');
-echo 444;
-    resume_intention_jobs(1,1,"销售|市场|客服|贸易");
+}elseif ($act == 'reward_check_list') {
+    //人才线索审核列表;
 
+    require_once(QISHI_ROOT_PATH . 'include/page.class.php');
+    $cate=$_GET["cate"];
+
+    $wheresql = " WHERE 1=1 ";
+    $oederbysql = " order BY addtime DESC ";
+
+
+
+
+
+     $wheresql .= " AND uid = ".$_SESSION["uid"];
+
+
+
+
+    $perpage = 10;
+    $total_sql = "SELECT COUNT(*) AS num FROM " . table('jobs_reward_clue') . "   {$wheresql} ";
+    $total = $db->get_total($total_sql);
+    $page = new page(array('total' => $total, 'perpage' => $perpage));
+    $offset = ($page->nowindex - 1) * $perpage;
+    $smarty->assign('act', $act);
+    $smarty->assign('title', '批量上传简历 - 企业会员中心 - ' . $_CFG['site_name']);
+
+    if ($total > $perpage) {
+        $smarty->assign('page', $page->show(3));
+    }
+
+    $member=get_clue_check_list($offset, $perpage, $wheresql);
+
+
+    $smarty->assign('member',$member );
+    $smarty->assign('page', $page->show(3));
+    $smarty->assign("cate",$cate);
+
+
+
+    $smarty->display('member_company/company_reward_list.htm');
 }
 unset($smarty);
-?>机
+
+
+
+function get_clue_check_list($offset, $perpage, $get_sql = '')
+{
+    global $db;
+    $row_arr = array();
+    $limit = " LIMIT " . $offset . ',' . $perpage;
+    $result = $db->query("SELECT * FROM " . table('jobs_reward_clue') . " as m " . $get_sql . $limit);
+    while ($row = $db->fetch_array($result)) {
+        $row['company_url'] = url_rewrite('QS_companyshow', array('id' => $row['company_id']));
+        $row['jobs_url'] = url_rewrite('QS_jobsshow', array('id' => $row['job_id']));
+
+        $row_arr[] = $row;
+    }
+    return $row_arr;
+}
+?>

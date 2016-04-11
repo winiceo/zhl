@@ -8,7 +8,7 @@
 <meta name="renderer" content="webkit"> 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="找葫芦网" />
+<meta name="author" content="找葫芦" />
 <meta name="copyright" content="zhaohulu.com" />
 <link rel="stylesheet" href="{#$QISHI.site_template#}css/user_common.css" />
 <link rel="stylesheet" href="{#$QISHI.site_template#}css/user_company.css" />
@@ -171,16 +171,16 @@
 						</span>
 						{#/if#}
 						<!--套餐模式结束 -->
-						<!--积分模式  -->
+						<!--葫芦币模式  -->
 						{#if $QISHI.operation_mode=="1"  || $QISHI.operation_mode=="3"#}
 						<span class="account-type last">
 							<span>我的{#$QISHI.points_byname#}：</span>
 							<span class="account-fen">{#$points#}</span>{#$QISHI.points_quantifier#}
-							<a href="company_service.php?act=order_add" class="underline">积分充值</a>
-							<a href="{#"QS_shop_index"|qishi_url#}" class="underline">积分商城</a>
+							<a href="company_service.php?act=order_add" class="underline">葫芦币充值</a>
+							<a href="{#"QS_shop_index"|qishi_url#}" class="underline">葫芦币商城</a>
 						</span>
 						{#/if#}
-						<!--积分模式结束 -->
+						<!--葫芦币模式结束 -->
 					</div>
 				</div>
 				<div class="commanage clearfix">

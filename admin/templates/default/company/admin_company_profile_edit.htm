@@ -233,18 +233,18 @@ $(document).ready(function()
 	</td>
   </tr>
   <tr>
-    <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span>联系手机：</td>
+    <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span>联系电话：</td>
     <td  style=" border-bottom:1px #CCCCCC dashed">
 	<input name="telephone" type="text" class="input_text_200" id="telephone" maxlength="25" value="{#$company_profile.telephone#}"/>
     <label><input name="telephone_show"  type="checkbox" value="1" {#if $company_profile.telephone_show=="1"#}checked="checked"{#/if#} />联系电话在职位详细页中显示
 	</td>
   </tr>
   <tr>
-        <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">固定电话：</td>
+        <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">&nbsp;</td>
         <td  style=" border-bottom:1px #CCCCCC dashed">
-          <input type="text" id="landline_tel_first" name="landline_tel_first" class="input_text_200" style="width:50px;" maxlength="4"   value="{#if $company_profile.landline_tel_first#}{#$company_profile.landline_tel_first#}{#/if#}"/>&nbsp;-
-          <input id="landline_tel_next" name="landline_tel_next" type="text" class="input_text_200" style="width:100px;" maxlength="11"   value="{#if $company_profile.landline_tel_next#}{#$company_profile.landline_tel_next#}{#/if#}"/>&nbsp;-
-          <input id="landline_tel_last" name="landline_tel_last" type="text" class="input_text_200" style="width:80px;" maxlength="6"   value="{#if $company_profile.landline_tel_last#}{#$company_profile.landline_tel_last#}{#/if#}"/>
+          <input type="text" id="landline_tel_first" name="landline_tel_first" class="input_text_200" style="width:30px;" maxlength="4"   value="{#if $company_profile.landline_tel_first#}{#$company_profile.landline_tel_first#}{#/if#}"/>&nbsp;-
+          <input id="landline_tel_next" name="landline_tel_next" type="text" class="input_text_200" style="width:94px;" maxlength="11"   value="{#if $company_profile.landline_tel_next#}{#$company_profile.landline_tel_next#}{#/if#}"/>&nbsp;-
+          <input id="landline_tel_last" name="landline_tel_last" type="text" class="input_text_200" style="width:40px;" maxlength="6"   value="{#if $company_profile.landline_tel_last#}{#$company_profile.landline_tel_last#}{#/if#}"/>
         </td>
         <td>&nbsp;</td>
         </tr>
@@ -287,6 +287,11 @@ $(document).ready(function()
       });
     </script></td>
   </tr>
+      <tr>
+      <td align="right" width="125">&nbsp;</td>
+      <td width="230" style="color:#FF9900;"><input name="telephone_to_jobs" type="checkbox" value="1"/> &nbsp;修改联系方式同步到职位</td>
+      <td>&nbsp;</td>
+      </tr>
   <tr>
             <td height="30" align="right"   >&nbsp;</td>
             <td height="120"   >

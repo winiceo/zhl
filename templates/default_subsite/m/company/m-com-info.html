@@ -4,18 +4,18 @@
 		<meta charset="gb2312">
 		<title>企业会员中心-企业资料</title>
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta name="author" content="找葫芦网" />
-<meta name="copyright" content="zhaohulu.com" />
+		<meta name="author" content="找葫芦" />
+		<meta name="copyright" content="zhaohulu.com" />
 		<link rel="stylesheet" href="../css/user-common.css" />
 		<link rel="stylesheet" href="../css/user-company.css" />
-		<script src="{#$QISHI.site_domain#}{#$QISHI.site_template#}js/jquery.js"></script>
+		<script src="{#$QISHI.main_domain#}templates/{#$QISHI.template_dir#}js/jquery.js"></script>
 		<script type='text/javascript' src="../js/jquery.common.js" ></script>
 		<script type="text/javascript" src="../js/layer/layer.js" ></script>
 		<script type="text/javascript" src="../js/jquery.editCM.js" ></script>
 		<script type="text/javascript" src="../js/iscroll.js" ></script>
 		<script type="text/javascript" src="../js/popWin.js" ></script>
-		<script src="{#$QISHI.site_domain#}{#$QISHI.site_dir#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
-		<script src="{#$QISHI.site_domain#}{#$QISHI.site_template#}js/ajaxfileupload.js" type='text/javascript' language="javascript"></script>
+		<script src="{#$QISHI.main_domain#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
+		<script src="{#$QISHI.main_domain#}templates/{#$QISHI.template_dir#}js/ajaxfileupload.js" type='text/javascript' language="javascript"></script>
 		<script type="text/javascript">
 			$(document).ready(function() {
 				//  修改企业信息
@@ -36,7 +36,10 @@
 					var contact=$("input[name=contact]").val();
 					var telephone=$("input[name=telephone]").val();
 					var email=$("input[name=email]").val();
-					$.post("?act=company_info_save",{companyname:companyname,nature_cn:nature_cn,nature:nature,trade_cn:trade_cn,trade:trade,scale_cn:scale_cn,scale:scale,district_cn:district_cn,district:district,sdistrict:sdistrict,contact:contact,telephone:telephone,email:email,address:address,contents:contents},function(data){
+					var landline_tel_first =$("input[name=landline_tel_first]").val();
+					var landline_tel_next =$("input[name=landline_tel_next]").val();
+					var landline_tel_last =$("input[name=landline_tel_last]").val();
+					$.post("?act=company_info_save",{companyname:companyname,nature_cn:nature_cn,nature:nature,trade_cn:trade_cn,trade:trade,scale_cn:scale_cn,scale:scale,district_cn:district_cn,district:district,sdistrict:sdistrict,contact:contact,telephone:telephone,email:email,address:address,contents:contents,landline_tel_first:landline_tel_first,landline_tel_next:landline_tel_next,landline_tel_last:landline_tel_last},function(data){
 						if(data=="1"){
 							layer.msg('保存企业信息成功！', {icon: 1});
 							setTimeout(function () {
@@ -96,7 +99,7 @@
 			</header>
 			{#if $company_info#}
 			<article class="makeresumetitbox flex-box companyinfotitbox">
-				<div class="left" style="margin-top: 20px;"><img src="{#if $company_info.logo#}{#$QISHI.site_domain#}{#$QISHI.site_dir#}data/logo/{#$company_info.logo#}{#else#}../images/companyinfotitbox-left-bg.gif{#/if#}" alt="点击修改logo" width='150px' height='49px' id="logo">
+				<div class="left" style="margin-top: 20px;"><img src="{#if $company_info.logo#}{#$QISHI.main_domain#}data/logo/{#$company_info.logo#}{#else#}../images/companyinfotitbox-left-bg.gif{#/if#}" alt="点击修改logo" width='150px' height='49px' id="logo">
 				<input type="file" name="logo_img" id="logo_img" style="display: none;">
 				</div>
 				<div class="right">
@@ -160,8 +163,12 @@
 					<div class="mt"><input id="contact" name="contact" value="{#$company_info.contact#}" /></div>
 				</div>
 				<div class="formChild">
-					<div class="lt">联系电话</div>
+					<div class="lt">联系手机</div>
 					<div class="mt"><input id="telephone" name="telephone" value="{#$company_info.telephone#}" /></div>
+				</div>
+				<div class="formChild">
+					<div class="lt">固定电话</div>
+					<div class="mt"><input style="width:20%;" id="landline_tel_first" name="landline_tel_first" maxlength="4" value="{#$company_info.landline_tel_first#}" />-<input style="width:40%;" id="landline_tel_next" name="landline_tel_next" maxlength="11" value="{#$company_info.landline_tel_next#}" />-<input style="width:30%;" id="landline_tel_last" name="landline_tel_last" maxlength="6" value="{#$company_info.landline_tel_last#}" /></div>
 				</div>
 				<div class="formChild">
 					<div class="lt">联系邮箱</div>

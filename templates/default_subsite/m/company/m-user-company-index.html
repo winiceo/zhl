@@ -4,8 +4,8 @@
 		<meta charset="gb2312">
 		<title>企业会员中心-首页</title>
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta name="author" content="找葫芦网" />
-<meta name="copyright" content="zhaohulu.com" />
+		<meta name="author" content="找葫芦" />
+		<meta name="copyright" content="zhaohulu.com" />
 		<link rel="stylesheet" href="../css/user-common.css" />
 		<link rel="stylesheet" href="../css/user-company.css" />
 		<script type="text/javascript" src="../js/jquery-1.11.3.js" ></script>
@@ -62,14 +62,14 @@
 				<div class="title">{#$company_info.companyname#}</div>
 				<div class="left">
 					{#if $company_info.logo==""#}
-					<img class="img" src="{#$QISHI.site_domain#}{#$QISHI.site_template#}images/no_logo.gif" />
+					<img class="img" src="{#$QISHI.main_domain#}templates/{#$QISHI.template_dir#}images/no_logo.gif" />
 					{#else#}
-					<img class="img" src="{#$QISHI.site_domain#}{#$QISHI.site_dir#}data/logo/{#$company_info.logo#}" />
+					<img class="img" src="{#$QISHI.main_domain#}data/logo/{#$company_info.logo#}" />
 					{#/if#}
 				</div>
 				<div class="right pdtop0">
 					<div class="txt">企业认证：<span class="state">{#if $company_info.audit==0#}<a href="?act=company_auth">未认证</a>{#elseif $company_info.audit==1#}认证通过{#elseif $company_info.audit==2#}等待认证{#else#}认证未通过{#/if#}</span></div>
-					<div class="txt down">{#if $QISHI.operation_mode=="1"#}当前积分：{#$user_points#}{#elseif $QISHI.operation_mode=="2"#} {#if $user_setmeal.setmeal_id>'1'#}<img class="img" src="{#$QISHI.site_domain#}{#$QISHI.site_dir#}data/setmealimg/{#$user_setmeal.setmeal_id#}.gif" width="14" height="17" />{#/if#}当前套餐：{#$user_setmeal.setmeal_name#}{#else#} {#if $user_setmeal.setmeal_id>'1'#}<img class="img" src="{#$QISHI.site_domain#}{#$QISHI.site_dir#}data/setmealimg/{#$user_setmeal.setmeal_id#}.gif" width="14" height="17" />{#/if#}{#$user_setmeal.setmeal_name#}&nbsp;{#$user_points#} {#$QISHI.points_byname#}{#/if#}</div>
+					<div class="txt down">{#if $QISHI.operation_mode=="1"#}当前葫芦币：{#$user_points#}{#elseif $QISHI.operation_mode=="2"#} {#if $user_setmeal.setmeal_id>'1'#}<img class="img" src="{#$QISHI.main_domain#}data/setmealimg/{#$user_setmeal.setmeal_id#}.gif" width="14" height="17" />{#/if#}当前套餐：{#$user_setmeal.setmeal_name#}{#else#} {#if $user_setmeal.setmeal_id>'1'#}<img class="img" src="{#$QISHI.main_domain#}data/setmealimg/{#$user_setmeal.setmeal_id#}.gif" width="14" height="17" />{#/if#}{#$user_setmeal.setmeal_name#}&nbsp;{#$user_points#} {#$QISHI.points_byname#}{#/if#}</div>
 				</div>
 			</article>
 			<article class="module">

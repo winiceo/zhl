@@ -186,7 +186,7 @@ $(document).ready(function($) {
 			$("#sms_send").attr("disabled",true);
 			return false;
 		} else {
-			$.post('{#$QISHI.site_dir#}plus/ajax_user.php', {'act':'reg_send_sms','mobile':$('#mobile').val()}, function(data) {
+			$.post('{#$QISHI.site_dir#}plus/ajax_user.php', {'act':'reg_send_sms','mobile':$('#mobile').val(),'sms_type':'reg','hiddentoken':$('#hiddentoken').val()}, function(data) {
 				if($.trim(data)=='success')
 				{
 					$("#sms_send").hide();
@@ -217,6 +217,7 @@ $(document).ready(function($) {
 				else
 				{
 					alert(data);
+					location.reload();
 				}
 			});
 		};
@@ -321,6 +322,7 @@ function run(){
 				<form action="?act=reg_step2" id="reg_by_mobile" method="post">
 					<div class="reg-form-item clearfix">
 						<div class="reg-form-type f-left">手机</div>
+						{#$inputtoken#}
 						<div class="reg-form-content f-left">
 							<input type="text" name="mobile" id="mobile" class="text text-lg span350" placeholder="请输入您的手机号码" />
 						</div>

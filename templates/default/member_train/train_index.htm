@@ -40,7 +40,7 @@
 				  	</div>
 			    </div>
 				<div class="rbox link_lan">
-				<!--积分模式  -->
+				<!--葫芦币模式  -->
 				{#if $QISHI.operation_train_mode=="1"#}
 				<div class="mode1">
 		 		    <div class="titcount">账户{#$QISHI.points_byname#}：<span>{#$points#}</span> {#$QISHI.points_quantifier#}<u><a href="train_service.php?act=account">[查看消费明细]</a></u></div>					
@@ -51,7 +51,7 @@
 					<div class="msg">系统消息：<a href="train_user.php?act=pm">已读({#$msg_total1#})</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="train_user.php?act=pm">未读<span>({#$msg_total2#})</span></a></div>
 				</div>
 				{#/if#}
-				<!--积分模式结束 -->
+				<!--葫芦币模式结束 -->
 				<!--套餐模式 -->
 				{#if $QISHI.operation_train_mode=="2"#}
 				<div class="mode2">

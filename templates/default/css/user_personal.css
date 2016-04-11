@@ -18,16 +18,16 @@
 .pindex-info .cbox .txt .w{ padding-right:20px; background:url(../images/07.jpg) no-repeat right -320px; padding-bottom:5px; padding-top:2px;}
 .pindex-info .cbox .txt .w.n{background:url(../images/07.jpg) no-repeat right -261px;}
 
-.pindex-info .cbox .txt a.edit{ color:#0066CC; text-decoration:none; padding-left:20px;background:url(../images/07.jpg) no-repeat left -103px;}
+.pindex-info .cbox .txt a.edit{ color:#ff7800; text-decoration:none; padding-left:20px;background:url(../images/07.jpg) no-repeat left -103px;}
 .pindex-info .cbox .txt a:hover.edit{ color:#009900; text-decoration:underline}
 .pindex-info .rbox{ /*width:375px;*/ float: left; padding-top:10px;}
 .pindex-info .rbox .mli{ width:107px; float:left; padding-left:50px;}
 .pindex-info .rbox .mli .imgbox{ width:100px; height:130px; text-align:center;background:url(../images/08.jpg) no-repeat center top; cursor:pointer}
-.pindex-info .rbox .mli .imgbox .count{ height:77px; padding-top:26px; font-size:30px; color:#0066CC}
+.pindex-info .rbox .mli .imgbox .count{ height:77px; padding-top:26px; font-size:30px; color:#ff7800}
 .pindex-info .rbox .mli .imgbox .txt{font-size:14px;font-family:"microsoft yahei","宋体"; font-weight:bold; color:#666666}
 .pindex-info .rbox .mli .imgbox.h{background:url(../images/08.jpg) no-repeat center -153px;}
 .pindex-info .rbox .mli .imgbox.h .count{ color: #FFFFFF}
-.pindex-info .rbox .mli .imgbox.h .txt{ color:#4096EE}
+.pindex-info .rbox .mli .imgbox.h .txt{ color:#333}
 /*个人会员中心 首页-我的简历*/
 .myresume{padding-top:20px; padding-bottom:20px; margin-right:20px; margin-left:23px; width:939px; border-bottom:1px #CCCCCC solid;}
 .myresume .lbox{width:210px; height:130px;float: left;}
@@ -56,10 +56,10 @@
 .myresume .cbox .imgbox2-3{background:url(../images/10.jpg) no-repeat center -225px; height:89px; padding-top:13px; }
 .myresume .rbox{width:345px; height:130px;float: left;padding-left: 80px;}
 .myresume .rbox .but{font-family:"microsoft yahei","宋体"; font-weight:bold; height:70px; margin-top:30px;}
-.myresume .rbox .but a{ display:block;width:90px; height:36px; line-height:36px; font-size:14px; text-align:center; background-color:#0180CF; color:#FFFFFF; text-decoration:none; float:left; margin-left:20px;_margin-left:7px; _margin-right:7px;}
-.myresume .rbox .but a:hover{ background-color:#0070BD}
-.myresume .rbox .but a.o{ display:block;width:100px; height:36px; line-height:36px; font-size:14px; text-align:center; background-color:#FF9900; color:#FFFFFF; text-decoration:none; float:left; margin-left:20px;_margin-left:10px; _margin-right:10px;}
-.myresume .rbox .but a:hover.o{ background-color:#FF7700}
+.myresume .rbox .but a{ display:block;width:90px; height:36px; line-height:36px; font-size:14px; text-align:center; background-color:#ff7800; color:#FFFFFF; text-decoration:none; float:left; margin-left:20px;_margin-left:7px; _margin-right:7px;}
+.myresume .rbox .but a:hover{ background-color:#ff9900}
+.myresume .rbox .but a.o{ display:block;width:100px; height:36px; line-height:36px; font-size:14px; text-align:center; background-color:#FF7800; color:#FFFFFF; text-decoration:none; float:left; margin-left:20px;_margin-left:10px; _margin-right:10px;}
+.myresume .rbox .but a:hover.o{ background-color:#FF9900}
 .myresume .rbox .bottomlink{ text-align:right}
 .myresume .rbox .bottomlink a{ padding-left:15px; padding-right:5px;}
 /*个人会员中心 首页-推荐简历*/
@@ -79,7 +79,7 @@
 .myrec .listtxt .listc3{float:left; width:120px;text-align:center; height:37px;overflow: hidden;}
 .myrec .listtxt .listc4{float:left; width:150px;text-align:center; height:37px;overflow: hidden;}
 .myrec .listtxt .listc5{float:left; width:140px;text-align:center; height:37px;overflow: hidden;}
-.myrec .listtxt .listc1 a{color:#0066cc;}
+.myrec .listtxt .listc1 a{color:#ff7800;}
 .myrec .listtxt .listc2 a{color:#009900;}
 /*个人会员中心 添加简历-第一步基本信息*/
 .addresume{ font-size:14px;}
@@ -93,21 +93,21 @@
 .addresume .displaymore{border:1px solid  #CCCCCC ; font-size:14px;color:#666666;padding:9px; background:url(../images/13.gif) no-repeat 108px -122px; font-weight:bold; cursor:pointer; padding-left:12px; width:108px; }
 .addresume .righttip{background:url(../images/13.gif) no-repeat left -98px; height:25px; line-height:25px; padding-left:23px; color:#999999}
 .addresume .mobilesend{ width:100px; height:35px; line-height:35px; text-align:center; background-color:#80C0E6; color:#FFFFFF; cursor:pointer}
-.addresume .mobilesend.h{ background-color:#4095EF}
+.addresume .mobilesend.h{ background-color:#ff7800}
 .addresume .mobilesend.succeed{ background-color: #E3E3E3; color:#999999; cursor:default; width:310px; display: none; }
-.addresume .mobilesend.succeed span{color: #0066CC;padding-right:5px;}
+.addresume .mobilesend.succeed span{color: #ff7800;padding-right:5px;}
 .addresume .input_radio{ float:left; padding-left:15px; padding-right:16px;border:2px #E3E3E3 solid; height:28px; line-height:28px; font-size:14px; background-color:#E3E3E3; color:#666666; margin-right:15px; cursor:pointer}
-.addresume .input_radio.select{ border-color:#4095EF; background-color:#FFFFFF;background:url(../images/13.gif) no-repeat right -230px; color:#4095EF}
+.addresume .input_radio.select{ border-color:#ff9900; background-color:#FFFFFF;background:url(../images/13.gif) no-repeat right -230px; color:#ff7800}
 .addresume .input_checkbox{float:left; padding-left:12px; padding-right:7px; height:32px; line-height:32px; font-size:14px;background-color:#E3E3E3; margin-right:15px; margin-bottom:10px;white-space: nowrap;}
 .addresume .input_checkbox span{background:url(../images/13.gif) no-repeat right -272px;color:#666666;cursor:pointer;padding-right:18px;}
 .addresume .input_checkbox.h{ background-color:#EFEFEF}
 .addresume .input_checkbox_add{float:left; padding-left:12px; padding-right:7px; height:32px; line-height:32px; font-size:14px;background-color:#E3E3E3; margin-right:15px;}
-.addresume .input_checkbox_add span{background:url(../images/13.gif) no-repeat right -308px;color:#0180CF;cursor:pointer;padding-right:14px;}
+.addresume .input_checkbox_add span{background:url(../images/13.gif) no-repeat right -308px;color:#ff7800;cursor:pointer;padding-right:14px;}
 .addresume .input_checkbox_add.h{ background-color:#EFEFE7F}
 .addresume .emailsend{ width:100px; height:35px; line-height:35px; text-align:center; background-color:#80C0E6; color:#FFFFFF; cursor:pointer}
-.addresume .emailsend.h{ background-color:#4095EF}
+.addresume .emailsend.h{ background-color:#ff7800}
 .addresume .emailsend.succeed{ background-color: #E3E3E3; color:#999999; cursor:default; width:310px; display: none; }
-.addresume .emailsend.succeed span{color: #0066CC;padding-right:5px;}
+.addresume .emailsend.succeed span{color: #ff7800;padding-right:5px;}
 /*个人会员中心 添加简历-基本信息完成*/
 .step1succeed{font-family:"microsoft yahei","宋体";}
 .step1succeed .tip{ padding-top:60px; font-size:14px;}
@@ -160,7 +160,7 @@
 .addresume2 .input_checkbox{float:left; padding-left:12px; padding-right:7px; height:32px; line-height:32px; font-size:14px;background-color:#E3E3E3; margin-right:15px; white-space: nowrap;}
 .addresume2 .input_checkbox span{color:#666666;cursor:pointer;padding-right:6px;}
 .addresume2 .input_checkbox.h{ background-color:#EFEFEF}
-.addresume2 .input_checkbox_add{float:left; padding-left:12px; padding-right:7px; height:32px; line-height:32px; font-size:14px;background:url(../images/13.gif) #E3E3E3 no-repeat 27px -299px; margin-right:15px;cursor:pointer;color:#0180CF;padding-right:20px;}
+.addresume2 .input_checkbox_add{float:left; padding-left:12px; padding-right:7px; height:32px; line-height:32px; font-size:14px;background:url(../images/13.gif) #E3E3E3 no-repeat 27px -299px; margin-right:15px;cursor:pointer;color:#ff7800;padding-right:20px;}
 .addresume2 .input_checkbox_add.h{ background-color:#EFEFE7F}
 /*个人会员中心 我的简历列表*/
 .resumelist{ font-size:14px;}
@@ -259,9 +259,9 @@
 .info{}
 .info .displaymore{border:1px solid  #CCCCCC ; font-size:14px;color:#666666;padding:9px; background:url(../images/13.gif) no-repeat 108px -128px; font-weight:bold; cursor:pointer; padding-left:12px; width:108px; }
 .info .input_radio{ float:left; padding-left:15px; padding-right:16px;border:2px #E3E3E3 solid; height:28px; line-height:28px; font-size:14px; background-color:#E3E3E3; color:#666666; margin-right:15px; cursor:pointer}
-.info .input_radio.select{ border-color:#4095EF; background-color:#FFFFFF;background:url(../images/13.gif) no-repeat right -230px; color:#4095EF}
+.info .input_radio.select{ border-color:#ff7800; background-color:#FFFFFF;background:url(../images/13.gif) no-repeat right -230px; color:#ff7800}
 .info .medit{ width:100px; height:35px; line-height:35px; text-align:center; background-color:#80C0E6; color:#FFFFFF; cursor:pointer}
-.info .medit.h{ background-color:#4095EF}
+.info .medit.h{ background-color:#ff7800}
 .info .nec{background:url(../images/13.gif) no-repeat 15px -45px; padding-left:25px;}
 /*个人会员中心 密码修改*/
 .pwd{}
@@ -351,12 +351,12 @@
 /*个人会员中心创建简历地区弹出框 zJF*/
 .resume-tc { border: 1px solid #fff; background: #fff; margin:0 auto;}
 .resume-tc-head { height: 47px; background: #e7eaee; position: relative; }
-.resume-tc-head h3 {height:48px;line-height:48px;position:relative; padding-left: 40px; color: #0180cf; font-size: 14px; font-weight: bold;}
+.resume-tc-head h3 {height:48px;line-height:48px;position:relative; padding-left: 40px; color: #ff7800; font-size: 14px; font-weight: bold;}
 .resume-tc-head h3 i{position:absolute;width:20px;height:30px;left:15px;top:10px;background:url(../images/icon20.png) no-repeat 0 -680px;}
 .resume-tc-head h3 .icon-loc{background-position:3px 3px;}
 .resume-tc-head .close { position: absolute; width: 16px; height: 16px; top: 16px; right: 16px; background: url(../images/icon.png) no-repeat -334px -62px; }
 .sx-yx { padding: 10px 40px; border-bottom: 1px solid #e7eaee;}
-.clr-grn { color: #0180cf; }
+.clr-grn { color: #ff7800; }
 .fnt-b { font-weight: bold; }
 .sx-nomal{padding:15px 30px;overflow:hidden;}
 .sx-nomal li input{margin:2px 6px 0 0;vertical-align: text-top;*vertical-align:middle;*margin:0 6px 0 0}
@@ -364,10 +364,10 @@
 .cf { *zoom:1;}
 .sx-cnt ul{width:600px;}
 .sx-cnt li{float:left;padding:5px 0 5px 20px;width:126px;text-align:left;color:#666;font-size:14px;position:relative;border-top:2px solid #fff;line-height:1.5;}
-.sx-cnt li.current{border-top:2px solid #0180cf;background:#eee;}
+.sx-cnt li.current{border-top:2px solid #ff7800;background:#eee;}
 .sx-cnt li a{color:#666;font-size:14px;display:inline-block;width:100%;height:100%;text-decoration:none;}
 .sx-cnt li i{position:absolute;right:55px;top:13px;width:0;height:0;font-size:0;line-height:0;border-color:#ccc transparent transparent transparent;_border-color:#ccc #ffffff #ffffff #ffffff;border-style:solid;border-width:6px;cursor:pointer;}
-.sx-cnt li.current i{right:55px;top:7px;border-color:transparent transparent #0180cf transparent;_border-color:#eeeeee #eeeeee #0180cf #eeeeee;cursor:pointer;}
+.sx-cnt li.current i{right:55px;top:7px;border-color:transparent transparent #ff7800 transparent;_border-color:#eeeeee #eeeeee #ff7800 #eeeeee;cursor:pointer;}
 .sx-rm{padding:15px 30px;border-bottom:1px dotted #e7eaee;overflow:hidden;}
 .sx-sub{background:#eee;overflow:hidden;padding-top:5px;}
 .sx-sub li{border:none;padding:5px 0 5px 20px;}
@@ -380,7 +380,7 @@
 .sx-yx-cnt:hover { text-decoration: none; }
 .sx-action{padding:10px 30px;height:30px;border-top: 1px solid #e7eaee;text-align:right;}
 .sx-action button{margin:0;padding:0 1em;border:0;height:30px;line-height:30px;font-size:14px;font-weight:bold;cursor:pointer;}
-.sx-action button.grn{background:#0180cf;color:#fff;}
+.sx-action button.grn{background:#ff7800;color:#fff;}
 .sx-action button.gray{background:#eee;color:#666;}
 .sx-lev1-pd{padding:20px 30px 0;}
 .sx-lev1-line{height:20px;border-bottom:1px dotted #e7eaee;position:relative;}
@@ -407,7 +407,7 @@ label.error{line-height: 36px;}
 .qq_no_bind{background-position: left -26px;}
 .taobao_no_bind{background-position: left -79px;}
 .sina_no_bind{background-position: left -133px;}
-.new_bindding .new_bindding_table td a{color:#0180CF;}
+.new_bindding .new_bindding_table td a{color:#ff7800;}
 
 .morelist div.hover{background-color: rgb(218,236,245);cursor: pointer;}
 
@@ -444,10 +444,10 @@ label.error{line-height: 36px;}
 .personal-data-list .c-data-content:hover{background-color: #f8f8f8;}
 .personal-data-list .c-data-top .check-item,
 .personal-data-list .c-data-content .check-item{margin-top: 5px;width: 23px;*margin-top:0;}
-.personal-data-list .c-data-content .jobs-link{font-size: 12px;color:#0180cf;}
+.personal-data-list .c-data-content .jobs-link{font-size: 12px;color:#333;}
 .personal-data-list .c-data-content .com-link{font-size: 12px;color:#666;}
 .data-time{font-family: Arial;}
-.personal-data-list .c-data-content .data-ctrl{color:#0180cf;}
+.personal-data-list .c-data-content .data-ctrl{color:#333;}
 .c-data-row.last{border:0;}
 .c-data-row.last .c-data-content{height:30px;}
 .c-data-row.last .c-data-content:hover{background-color: #fff;height: 30px;}
@@ -550,7 +550,7 @@ label.error{line-height: 36px;}
 .c-data-content.resume_out_send .content6{width: 72px;text-align: center;}
 /*简历外发*/
 .resume-send-wrap{padding:0 15px;}
-.resume-send-wrap h1{height:60px;line-height: 60px;padding-left: 5px;font-size: 20px;color:#666;font-weight: normal;border-bottom: 1px solid #ccc;}
+.resume-send-wrap h1{height:60px;line-height: 60px;padding-left: 5px;font-size: 20px;color:#666;font-weight: normal;border-bottom: 1px solid #ff7800;}
 .resume-send-wrap .resume-send-form{padding-top: 10px;font-family: "SimSun";margin-bottom: 100px}
 .resume-send-wrap .resume-send-form .r-send-item{margin-top: 15px;}
 .resume-send-wrap .resume-send-form .r-send-item .r-send-type{width: 133px;line-height: 38px;font-size: 14px;color:#666;text-align: right;}
@@ -565,23 +565,23 @@ label.error{line-height: 36px;}
 .send-tip-box{font-family: "SimSun";padding-left: 20px;}
 .send-tip-box h3{padding-left: 23px;font-size: 14px;color:#666;font-weight: normal;font-family: "Microsoft Yahei";margin-bottom: 10px;background: url(../images/user-icon36.png) no-repeat 0px -307px;}
 .send-tip-box p{font-size: 12px;color:#666;line-height: 24px;}
-.send-tip-box p a{color:#0180cf;}
+.send-tip-box p a{color:#ff7800;}
 /*首页修改*/
 /*顶部提示*/
 .company-index-tip{height:26px;overflow:hidden;padding:15px 0px 0px 0px;margin:0px 15px 15px 15px;font-family: "SimSun";position:relative;}
 .company-index-tip .index-tip{position: relative;height: 26px;line-height: 26px;background-color: #fff1e5;color:#ff9900;padding:0 10px;font-size: 12px;}
-.company-index-tip a{color:#0180cf;}
+.company-index-tip a{color:#ff7800;}
 .bbox1 .lin{height:1px;background:#ccc;margin:0 15px;}
 .bbox1 .pindex-info .index-account-info{height: 42px;line-height: 42px;background: url(../images/index-account-bg.png) no-repeat 0px 0px;padding-left: 22px;margin-bottom:5px;}
 .bbox1 .pindex-info .index-account-info .account-type{margin-right: 120px;font-size: 14px;color:#666;}
 .bbox1 .pindex-info .index-account-info .account-type.last{margin-right: 0;}
 .bbox1 .pindex-info .index-account-info .account-type span{font-size: 14px;font-weight: bold;color:#666;}
 .bbox1 .pindex-info .index-account-info .account-type em{font-style: normal;font-size: 12px;}
-.bbox1 .pindex-info .index-account-info .account-type a{color:#0180cf;font-size: 12px;margin-left: 10px;}
+.bbox1 .pindex-info .index-account-info .account-type a{color:#333;font-size: 12px;margin-left: 10px;}
 .bbox1 .pindex-info .index-account-info .account-type .account-fen{font-size: 16px;margin-right: 3px;color:#ff9900;}
 
 .close-icon{position: absolute;top:9px;right:14px;width: 8px;height: 8px;background: url(../images/user-icon36.png) no-repeat 0px -458px;cursor: pointer;}
-.pindex-info .cbox .name .personal-edit{padding-left: 18px;color:#0180cf;font-family: "SimSun";font-size: 12px;margin-left: 15px;background: url(../images/user-icon36.png) no-repeat 0px -488px;padding-top: 1px;}
+.pindex-info .cbox .name .personal-edit{padding-left: 18px;color:#ff7800;font-family: "SimSun";font-size: 12px;margin-left: 15px;background: url(../images/user-icon36.png) no-repeat 0px -488px;padding-top: 1px;}
 .pindex-info .cbox .txt{font-family: "SimSun";color:#666;}
 .pindex-info .cbox .txt .personal-auth{position: relative;line-height: 28px;}
 .pindex-info .cbox .txt .personal-auth .n.m{background-position: right -23px;}
@@ -592,7 +592,7 @@ label.error{line-height: 36px;}
 .pindex-info .cbox .txt .personal-auth .w{background-position: right -318px;display: inline-block;line-height: 26px;padding-top:0;padding-bottom: 0}
 .pindex-info .cbox .txt .personal-auth .not-auth-tip{display: none;position: absolute;top:30px;left:15px;width: 240px;padding:6px 7px;border:1px solid #ff9900;background-color: #fff1e5;color: #666;font-size: 12px;line-height: 18px;z-index: 40;}
 .pindex-info .cbox .txt .personal-auth .not-auth-tip .ia-tip-arrow{position: absolute;top:-5px;left:46px;width: 10px;height: 6px;background: url(../images/user-icon36.png) no-repeat -30px -460px;}
-.pindex-info .cbox .txt .personal-auth .not-auth-tip a{color:#0180cf;}
+.pindex-info .cbox .txt .personal-auth .not-auth-tip a{color:#ff7800;}
 .pindex-info .cbox .txt .underline:hover{text-decoration: underline}
 .myresume .lbox .txt{font-family: "SimSun";color:#666;}
 .resume-choose{position: relative;z-index: 6;font-family: "SimSun";}
@@ -606,7 +606,7 @@ label.error{line-height: 36px;}
 .personal-rec-jobs{padding:15px 0;margin:0 20px 0 23px;font-family: "SimSun";font-size: 12px;}
 .personal-rec-jobs .p-rec-job-top{padding: 0 10px 0 5px;}
 .personal-rec-jobs .p-rec-job-top h2{font-size: 14px;color:#666;font-weight: bold; }
-.personal-rec-jobs .p-rec-job-top a{color:#0180cf;font-size: 12px;}
+.personal-rec-jobs .p-rec-job-top a{color:#333;font-size: 12px;}
 .personal-rec-jobs .p-rec-data{margin-top: 10px;}
 .personal-rec-jobs .p-rec-data table{table-layout: fixed;background-color: #fff;width: 100%;max-width: 100%;border-collapse: collapse;border-spacing: 0;color:#666;}
 .personal-rec-jobs .p-rec-data table td{border-bottom: 1px dotted #ccc;padding:16px 0;}
@@ -614,10 +614,10 @@ label.error{line-height: 36px;}
 .personal-rec-jobs .p-rec-data table td .index-line1{overflow: hidden;white-space: nowrap;text-overflow:ellipsis;width: 110px;}
 .personal-rec-jobs .p-rec-data table td .index-line2{overflow: hidden;white-space: nowrap;text-overflow:ellipsis;width: 220px;}
 .personal-rec-jobs .p-rec-data table td .index-line3{overflow: hidden;white-space: nowrap;text-overflow:ellipsis;width: 135px;}
-.personal-rec-jobs .p-rec-data table td .job-link{color:#0180cf;}
+.personal-rec-jobs .p-rec-data table td .job-link{color:#333;}
 .personal-rec-jobs .p-rec-data table td .com-link{color:#666;}
 .personal-rec-jobs .p-rec-data table td span{font-size: 14px;color:#ff9900;font-weight: bold;}
-.personal-rec-jobs .p-rec-data table td .yh{font-family: "Microsoft Yahei";color:#f69400;font-weight:normal;}
+.personal-rec-jobs .p-rec-data table td .yh{font-family: "Microsoft Yahei";color:#333;font-weight:normal;}
 /*无简历*/
 .no-rec-box{margin:65px 0 65px 230px;padding-left: 104px;background: url(../images/null-box.png) no-repeat 0px 0px;height: 90px;}
 .no-rec-box p{font-size: 14px;color:#666;line-height: 26px;margin-bottom: 5px;font-family: "SimSun";}
@@ -638,7 +638,7 @@ label.error{line-height: 36px;}
 .tip-wrap .success-ctrl .resume-bar .mid-progress{margin-left: 5px;color:#ff9900;}
 .tip-wrap .success-ctrl .resume-bar .high-progress{margin-left: 5px;color:#2db228;}
 .tip-wrap .success-ctrl p{margin-bottom: 10px;color:#666;}
-.tip-wrap .success-ctrl p a{color:#0180cf;}
+.tip-wrap .success-ctrl p a{color:#ff7800;}
 .tip-wrap .success-ctrl .success-btn-group{padding-top: 10px;}
 /*微信接收弹出*/
 .resume-weixin-dialog{font-family: "SimSun";text-align: center;}
@@ -647,13 +647,13 @@ label.error{line-height: 36px;}
 .resume-weixin-dialog .erwei-code{width: 105px;height: 105px;padding:7px;border:1px solid #ccc;margin:15px auto 0 auto;}
 .resume-weixin-dialog .small-tips{font-size: 12px;color:#999;line-height: 44px;}
 /*创建简历第二步*/
-.addresume .titleH2 .resume-edit-link{font-family: "SimSun";font-size: 14px;float: right;margin-right: 20px;padding-left: 17px;font-size: 12px;color:#0180cf;background: url(../images/user-icon36.png) no-repeat 0px -476px;}
+.addresume .titleH2 .resume-edit-link{font-family: "SimSun";font-size: 14px;float: right;margin-right: 20px;padding-left: 17px;font-size: 12px;color:#ff7800;background: url(../images/user-icon36.png) no-repeat 0px -476px;}
 .c-resume-info-show{margin:0 15px;position: relative;font-family: "Microsoft Yahei";}
 .c-resume-info-show .avater-edit{position: absolute;top:0;right:35px;}
 .c-resume-info-show .avater-edit .img-wrap{border:1px solid #ccc;width: 100px;height: 110px;}
 .c-resume-info-show .avater-edit p{text-align: center;}
 .c-resume-info-show .avater-edit p a{display: block;text-align: center;background-color: #4ba5dd;color:#fff;height: 20px;line-height: 20px;font-size: 12px;width: 102px;}
-.c-resume-info-show .avater-edit p a:hover{background-color: #0180cf;}
+.c-resume-info-show .avater-edit p a:hover{background-color: #ff7800;}
 .c-resume-info-show .info-list{padding-left: 30px;width:680px;line-height: 30px;color:#666;}
 .c-resume-info-show .info-list .all-row{width:680px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
 .c-resume-info-show .info-list .all-row img{vertical-align: middle;}
@@ -668,15 +668,15 @@ label.error{line-height: 36px;}
 .has-upload-block{margin-right: 25px;width: 150px;}
 .has-upload-block .has-img{border:1px solid #ccc;width: 148px;height: 148px;}
 .has-upload-block .has-img-ctrl{margin-top: 6px;font-size: 12px;}
-.has-upload-block .has-img-ctrl a{color:#0180cf;}
+.has-upload-block .has-img-ctrl a{color:#ff7800;}
 
-.upload-add-btn{width: 70px;text-align: left;height:30px;border:0;color: #fff;padding-left: 28px;cursor: pointer;font-family: "SimSun";background: url(../images/btn-plus.png) no-repeat 12px 10px #0180cf;font-size: 14px;}
+.upload-add-btn{width: 70px;text-align: left;height:30px;border:0;color: #fff;padding-left: 28px;cursor: pointer;font-family: "SimSun";background: url(../images/btn-plus.png) no-repeat 12px 10px #ff7800;font-size: 14px;}
 .upload-add-btn.hover{background-color: #0070bd;}
 .resume-upload .upload-ctrl p{font-size: 12px;color:#999;margin-left: 70px;line-height: 16px;}
 .finish-wrap{margin:60px 15px 50px 15px;padding-left: 295px;font-family: "Microsoft Yahei";font-size: 12px;}
 .finish-wrap p{color:#999;margin-bottom: 8px;}
 .finish-wrap p label{cursor: pointer;}
-.finish-wrap .finish-btn{width: 160px;height: 44px;text-align: center;color:#fff;background-color: #ff9900;font-size: 18px;cursor: pointer;border:0;}
+.finish-wrap .finish-btn{width: 160px;height: 44px;text-align: center;color:#fff;background-color: #ff9900;font-size: 18px;cursor: pointer;border:0;outline: none;}
 .finish-wrap .finish-btn.hover{background-color: #ff7700;}
 input.checkbox{position: relative;top:2px;}
 
@@ -694,7 +694,7 @@ input.checkbox{position: relative;top:2px;}
 .dialog-block .dialog-item .d-content input.checkbox{margin-right: 5px;}
 .short-text-tip{margin-left:10px;line-height: 24px;height:24px;border:1px solid #ff9900;background-color: #fff1e5;padding:0 10px;font-size: 12px;color:#666;border-radius: 3px;font-family: "SimSun";}
 .short-text-tip span{color:#ff9900;font-weight: bold;}
-.short-text-tip a{color:#0180cf;}
+.short-text-tip a{color:#ff7800;}
 /*选择简历模板弹框*/
 .center-btn-wrap{text-align: center;margin-top: 20px;}
 .choose-tpl-dialog{font-family: "SimSun";font-size: 12px;color:#666;}
@@ -710,7 +710,7 @@ input.checkbox{position: relative;top:2px;}
 .choose-tpl-dialog .tpl-choose-wrap .choose-right .tpl-choose-now{padding:10px;width: 200px;overflow: hidden;}
 .choose-tpl-dialog .tpl-choose-wrap .choose-right .tpl-choose-now img{width: 200px;height: 120px;}
 .choose-tpl-dialog .tpl-choose-wrap .choose-right p{text-align: right;padding:0 10px;}
-.choose-tpl-dialog .tpl-choose-wrap .choose-right p a{color:#0180cf;font-size: 12px;}
+.choose-tpl-dialog .tpl-choose-wrap .choose-right p a{color:#ff7800;font-size: 12px;}
 
 /*新添加我的账户页面样式*/
 .page_main{margin-left:20px;margin-right:15px;}
@@ -726,7 +726,7 @@ input.checkbox{position: relative;top:2px;}
 .my_account .row dd.field_value b{font-size:14px;font-weight:bold;color:#666666;}
 .my_account .row dd.field_value .verified{padding-left:20px;position:relative;_zoom:1;color:#7CB615;_display:inline;}
 .my_account .row dd.field_value .verified.mpdl{padding-left:0px;}
-.my_account .row dd.field_value .verified.mpdl a{color:#0180cf;}
+.my_account .row dd.field_value .verified.mpdl a{color:#ff7800;}
 .my_account .row dd.field_value .verified i{height:16px;width:16px;display:block;background:url(../images/ico_warn.png) no-repeat 0 0;position:absolute;top:4px;left:0;}
 .my_account .row dd.field_value .unverified{padding-left:20px;position:relative;*zoom:1;color:#D49922;*display:inline;}
 .my_account .row dd.field_value .unverified i{height:16px;width:16px;display:block;background:url(../images/ico_warn.png) no-repeat 0 -100px;position:absolute;top:4px;left:0;}
@@ -782,7 +782,7 @@ input.checkbox{position: relative;top:2px;}
 .unbindBox a.sclose{color:#666666;text-decoration:none;width:47px;height:25px;line-height:25px;display:block;background:url(../images/btn02.png) no-repeat -150px -100px;text-align:center;font-size:12px;text-decoration:none;}
 .unbindBox a.sclosem{margin-left:10px;}
 .unbindBox a.sclose:hover{background-position:-150px -150px;}
-.co01{color:#0180cf}
+.co01{color:#ff7800}
 
 /*微信支付*/
 .wechat-pay{margin-left: -30px;}
@@ -808,8 +808,8 @@ input.checkbox{position: relative;top:2px;}
 .refresh-resume-dialog .refresh-from .refresh-item .refresh-type,
 .refresh-resume-dialog .refresh-from .refresh-item .refresh-contact{font-size: 14px;color:#666;line-height: 40px;}
 .refresh-resume-dialog .refresh-from .refresh-item .refresh-contact span{margin-right: 20px;padding-left: 11px;}
-.refresh-resume-dialog .refresh-from .refresh-item .refresh-contact a{color:#0180cf;text-decoration: none;}
+.refresh-resume-dialog .refresh-from .refresh-item .refresh-contact a{color:#ff7800;text-decoration: none;}
 .refresh-resume-dialog .refresh-from .refresh-item .refresh-contact a:hover{text-decoration: underline;}
 .refresh-resume-dialog .refresh-from .refresh-btn{text-align: center;margin-top: 20px;}
-.refresh-resume-dialog .refresh-from .refresh-btn input{width: 220px;height: 38px;border:0;font-size: 14px;color:#fff;background-color: #0180cf;cursor: pointer;}
+.refresh-resume-dialog .refresh-from .refresh-btn input{width: 220px;height: 38px;border:0;font-size: 14px;color:#fff;background-color: #ff7800;cursor: pointer;}
 .refresh-resume-dialog .refresh-from .refresh-btn input:hover{background-color: #0070bd;}

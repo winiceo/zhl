@@ -13,12 +13,12 @@ require_once(dirname(__FILE__).'/weixin_share.php');
 $page = empty($_GET['page'])?1:intval($_GET['page']);
 $jobstable=table('article');
 $orderbysql=" ORDER BY `addtime` desc";
-$wheresql = "";
+$wheresql = " WHERE is_display = 1";
 //类型筛选
 $type = intval($_GET['type_id']);
 if($type > 0)
 {
-	$wheresql=" WHERE type_id=".$type;
+	$wheresql=" WHERE type_id=".$type." AND is_display = 1";
 }
 //关键字
 $key = empty($_GET['key'])?"":$_GET['key'];

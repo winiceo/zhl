@@ -23,6 +23,12 @@ elseif ($act == 'save')
 	$setsqlarr['infotype']=intval($_POST['type']);
 	$setsqlarr['feedback']=trim($_POST['feedback']);
 	$setsqlarr['tel']=trim($_POST['tel']);
+	if(empty($setsqlarr['feedback']) || empty($setsqlarr['tel']))
+	{
+		$smarty->assign('err',"请填写反馈内容和联系方式！");
+		$smarty->display("m/feedback.html");
+		die;
+	}
 	$setsqlarr['addtime']=time();
 	$db->inserttable(table('feedback'),$setsqlarr);
 	header("Location: index.php");

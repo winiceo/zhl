@@ -389,7 +389,7 @@ function delay_jobs($id, $days)
                 $deadline = strtotime("+{$days} day");
             }
             $total++;
-            //积分模式
+            //葫芦币模式
             if ($_CFG['operation_mode'] == '1') {
                 $user_points = get_user_points(intval($row['uid']));
                 $points_rule = get_cache('points_rule');
@@ -426,7 +426,7 @@ function delay_jobs($id, $days)
                 $setmeal = get_user_setmeal(intval($row['uid']));
                 //该会员无套餐或者过期
                 if (empty($setmeal) || ($setmeal['endtime'] < time() && $setmeal['endtime'] <> '0')) {
-                    //后台开通   转积分消费
+                    //后台开通   转葫芦币消费
                     if ($_CFG['setmeal_to_points'] == "1") {
                         $user_points = get_user_points(intval($row['uid']));
                         $points_rule = get_cache('points_rule');
@@ -590,11 +590,11 @@ function edit_company_audit($uid, $audit, $reason, $pms_notice)
         }
 
         if ($audit == '1') {
-            //3.4升级修改注意,只有积分模式奖励积分
-            //3.5升级修改注意，积分和混合模式都奖励积分
+            //3.4升级修改注意,只有葫芦币模式奖励葫芦币
+            //3.5升级修改注意，葫芦币和混合模式都奖励葫芦币
             if ($_CFG['operation_mode'] == '1' || ($_CFG['operation_mode'] == '3' && $_CFG['setmeal_to_points'] == '1')) {
                 $points_rule = get_cache('points_rule');
-                if ($points_rule['company_auth']['value'] > 0)//如果设置了认证赠送积分
+                if ($points_rule['company_auth']['value'] > 0)//如果设置了认证赠送葫芦币
                 {
                     gift_points($sqlin, 'companyauth', $points_rule['company_auth']['type'], $points_rule['company_auth']['value']);
                 }
@@ -716,7 +716,7 @@ function get_order_list($offset, $perpage, $get_sql = '')
     $result = $db->query("SELECT o.*,m.username,m.email,c.companyname FROM " . table('order') . " as o " . $get_sql . $limit);
     while ($row = $db->fetch_array($result)) {
         if ($row['payment_name'] == 'points') {
-            $row['payment_name'] = '积分';
+            $row['payment_name'] = '葫芦币';
         } else {
             $row['payment_name'] = get_payment_info($row['payment_name'], true);
         }
@@ -866,7 +866,7 @@ function get_user_points($uid)
     return $points['points'];
 }
 
-//获取积分规则
+//获取葫芦币规则
 function get_points_rule()
 {
     global $db;
@@ -881,9 +881,9 @@ function order_paid($v_oid)
 {
     global $db, $timestamp, $_CFG;
     $order = $db->getone("select * from " . table('order') . " WHERE oid ='{$v_oid}' AND is_paid= '1' LIMIT 1 ");
-    if ($order['pay_type'] == '1' || $order['pay_type'] == '4')            //套餐积分支付
+    if ($order['pay_type'] == '1' || $order['pay_type'] == '4')            //套餐葫芦币支付
     {
-        $order_name = "套餐积分订单";
+        $order_name = "套餐葫芦币订单";
         $user = get_user($order['uid']);
         $sql = "UPDATE " . table('order') . " SET is_paid= '2',payment_time='{$timestamp}' WHERE oid='{$v_oid}' LIMIT 1 ";
         if (!$db->query($sql)) return false;

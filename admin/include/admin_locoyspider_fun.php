@@ -494,8 +494,8 @@ function locoyspider_user_register($email=NULL,$utype='1')
 		{
 			report_deal($reg_id,$points['reg_points']['type'],$points['reg_points']['value']);
 			$operator=$points['reg_points']['type']=="1"?"+":"-";
-			write_memberslog($reg_id,1,9001,$username,"新注册会员,({$operator}{$points['reg_points']['value']}),(剩余:{$points['reg_points']['value']})",1,1010,"注册会员系统自动赠送积分","{$operator}{$points['reg_points']['value']}","{$points['reg_points']['value']}");
-			//积分变更记录
+			write_memberslog($reg_id,1,9001,$username,"新注册会员,({$operator}{$points['reg_points']['value']}),(剩余:{$points['reg_points']['value']})",1,1010,"注册会员系统自动赠送葫芦币","{$operator}{$points['reg_points']['value']}","{$points['reg_points']['value']}");
+			//葫芦币变更记录
 			write_setmeallog($reg_id,$username,"注册会员系统自动赠送：({$operator}{$points['reg_points']['value']}),(剩余:{$points['reg_points']['value']})",1,'0.00','1',1,1);
 		
 		}

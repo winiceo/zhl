@@ -5,7 +5,8 @@
 define('IN_QISHI', true);
 require_once(dirname(__FILE__).'/personal_common.php');
 $smarty->assign('leftmenu',"service");
-//我的账户 -> 积分操作 
+
+//我的账户 -> 葫芦币操作
 if ($act=='j_account')
 {
 	require_once(QISHI_ROOT_PATH.'include/page.class.php');
@@ -13,12 +14,12 @@ if ($act=='j_account')
 	//收支状态(消耗->1 赠送->2)/操作时间
 	$cid=trim($_GET['cid']);
 	$settr=intval($_GET['settr']);
-	//积分
+	//葫芦币
 	$my_points = get_user_points(intval($_SESSION['uid']));
 	$smarty->assign('points',$my_points);
 	$smarty->assign('act','j_account');
 	$smarty->assign('title','我的账户 - 个人会员中心 - '.$_CFG['site_name']);
-	//积分消费明细
+	//葫芦币消费明细
 	if(trim($_GET['detail']) == '1')
 	{
 		$wheresql=" WHERE log_uid='{$_SESSION['uid']}' AND log_type=9001 AND log_mode=2";
@@ -49,7 +50,7 @@ if ($act=='j_account')
 		$smarty->assign('page',$page->show(3));
 		$smarty->display('member_personal/personal_my_account_detail.htm');
 	}
-	//积分规则
+	//葫芦币规则
 	else
 	{
 		$smarty->assign('points_rule',get_points_rule());
@@ -116,7 +117,7 @@ elseif ($act=='order_add_save')
 	$order['v_url']=$_CFG['site_domain'].$_CFG['site_dir']."include/payment/respond_".$paymenttpye['typename'].".php";
 	$order['v_amount']=$amount+$fee; 
 	$points=$amount*$_CFG['payment_rate'];
-	$order_id=add_order($_SESSION['uid'],4,$order['oid'],$amount,$payment_name,"充值积分:".$points,$timestamp,$points,'',2);
+	$order_id=add_order($_SESSION['uid'],4,$order['oid'],$amount,$payment_name,"充值葫芦币:".$points,$timestamp,$points,'',2);
 	if ($order_id)
 	{
 		header("location:?act=payment&order_id=".$order_id);
@@ -172,6 +173,77 @@ elseif ($act=='order_del')
 	$id=intval($_GET['id']);
 	del_order($_SESSION['uid'],$id)?showmsg('取消成功！',2,$link):showmsg('取消失败！',1);
 }
+elseif ($act == 'reward_check_list') {
+	//人才线索审核列表;
 
+
+
+	require_once(QISHI_ROOT_PATH . 'include/page.class.php');
+
+	$cate=$_GET["cate"];
+	$wheresql = " WHERE 1=1 ";
+	$oederbysql = " order BY addtime DESC ";
+
+	if($cate==1){
+		$wheresql .= " AND uid = ".$_SESSION["uid"];
+	}elseif($cate==2){
+		$wheresql .= " AND member_id = ".$_SESSION["uid"];
+	}
+
+
+
+	 // $wheresql .= " AND uid = ".$_SESSION["uid"];
+
+
+
+
+	$perpage = 10;
+	$total_sql = "SELECT COUNT(*) AS num FROM " . table('jobs_reward_clue') . "   {$wheresql} ";
+	$total = $db->get_total($total_sql);
+	$page = new page(array('total' => $total, 'perpage' => $perpage));
+	$offset = ($page->nowindex - 1) * $perpage;
+	$smarty->assign('act', $act);
+	$smarty->assign('title', '批量上传简历 - 企业会员中心 - ' . $_CFG['site_name']);
+
+	if ($total > $perpage) {
+		$smarty->assign('page', $page->show(3));
+	}
+
+	$member=get_clue_check_list($offset, $perpage, $wheresql);
+
+
+
+	$smarty->assign('member',$member );
+	$smarty->assign('page', $page->show(3));
+	$smarty->assign("cate",$cate);
+
+
+
+	if($cate==1){
+		$smarty->display('member_personal/company_reward_list.htm');
+	}elseif($cate==2){
+		$smarty->display('member_personal/company_reward_list1.htm');
+
+	}
+}
 unset($smarty);
+
+
+
+function get_clue_check_list($offset, $perpage, $get_sql = '')
+{
+	global $db;
+	$row_arr = array();
+	$limit = " LIMIT " . $offset . ',' . $perpage;
+	$result = $db->query("SELECT * FROM " . table('jobs_reward_clue') . " as m " . $get_sql . $limit);
+	while ($row = $db->fetch_array($result)) {
+		$row['company_url'] = url_rewrite('QS_companyshow', array('id' => $row['company_id']));
+		$row['jobs_url'] = url_rewrite('QS_jobsshow', array('id' => $row['job_id']));
+		$sql = "select * from ".table('members')." where uid = '{$row["uid"]}' LIMIT 1";
+
+		$row["user"]= $db->getone($sql);
+		$row_arr[] = $row;
+	}
+	return $row_arr;
+}
 ?>

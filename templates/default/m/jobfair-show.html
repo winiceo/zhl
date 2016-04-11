@@ -65,19 +65,7 @@
 				<a href="javascript:;" class="header-back"><i class="w-icon w-icon-back"></i></a>
 			</div>
 			<div class="header-center"><span class="title-only">’–∆∏ª·œÍ«È</span></div>
-			{#if $smarty.session.utype!=1 && $smarty.session.utype!=2#}
-			<div class="header-user"><a href="login.php"><i class="w-icon w-icon-user"></i></a></div>
-			{#else#}
-			<div class="header-user">
-				<a href="{#$QISHI.wap_domain#}/{#if $smarty.session.utype==1#}company/user.php{#else if $smarty.session.utype==2#}personal/user.php{#/if#}">
-					{#if $smarty.session.avatars!=''#}
-					<img src="{#$smarty.session.avatars#}" alt="" width="24" height="24">
-					{#else#}
-					<i class="w-icon w-icon-user"></i>
-					{#/if#}
-				</a>
-			</div>
-			{#/if#}
+			{#include file="navi.html"#}
 		</header>
 		<div class="content-wrap">
 			<div class="jobfair-detail-wrap">
@@ -160,7 +148,6 @@
 				</div>
 			</div>
 		</div>
-		{#include file="m/footer.htm"#}
 	</div>
 	<div class="back-to-top"><i class="w-icon w-icon-up"></i></div>
 	

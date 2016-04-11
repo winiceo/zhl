@@ -109,7 +109,7 @@ elseif ($act=='reg_save')
 	{
 		exit("openid is empty");
 	}
-	$val['qq_nick']= trim(utf8_to_gbk($_POST['nickname']));
+	$val['qq_nick']= trim($_POST['nickname']);
 	$val['email']=!empty($_POST['email'])?trim($_POST['email']):exit("err");
 	$val['mobile']=!empty($_POST['mobile'])?trim($_POST['mobile']):exit("err");
 	$val['member_type']=intval($_POST['utype']);

@@ -18,6 +18,10 @@
           $(".job_btn_list > .tel").attr("href","login.php");
         }
         
+        var isTel = $("#jobs_phone_code").attr('code');
+        if (isTel > 0) {
+          $(".job_btn_list > .tel").attr("href", "tel:"+_job.attr("jobs_tel"));
+        };
     }
 	/* 滑动 效果 */
 	function swipe_self()
@@ -238,6 +242,34 @@
 
 	    });
     };
+	
+	
+		$("#jobs_phone").on('click',function() {
+  			var href= $(this).attr("href");
+  			var reg=/^tel:([0-9]){11}$/;
+  			var result = href.match(reg);
+  			if(result==null) {
+  					var shopping = document.getElementById("jobs_phone");
+  					var phone =  shopping.getAttribute("phone");
+  					showFloatBox();
+            $("#jobs_phone_menu").show();
+  					var height = window.innerHeight;
+  					var choose_menu_h = document.getElementById('jobs_phone_menu').offsetHeight;
+  					var top_ = (height-choose_menu_h)/2;
+  					$("#jobs_phone_menu").css("top",top_+"px");
+  					$("#jobs_phone_menu").css({"opacity":1,"z-index":9999});
+            $(".but_right,.menu_bg_layer").on('click', function(event) {
+               $("#jobs_phone_menu").hide();
+               $(".menu_bg_layer").remove();
+            });
+  			} else {
+  				window.location.href=href;
+  			}
+	  });
+	
+	
+	
+	
     /* 左侧 菜单*/
     function left_menu()
     {

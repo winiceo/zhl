@@ -23,7 +23,7 @@
 .qshowa {float:left;color:#666666;text-decoration:none;height:20px;line-height:20px;display:block;margin-left:15px;}
 .qshowaBoxD {width:200px;height:20px;line-height:20px;float:left;}
 .cominfo .rbox{width:295px; padding-top:8px; float: left; padding-top:40px; padding-left:25px;}
-/*企业会员中 首页 积分模式*/
+/*企业会员中 首页 葫芦币模式*/
 .cominfo .rbox .mode1{}
 .cominfo .rbox .mode1 .titcount{font-size:16px; font-weight:bold}
 .cominfo .rbox .mode1 .titcount span{ color:#FF3300; font-size:22px; font-weight: normal}
@@ -32,7 +32,7 @@
 .cominfo .rbox .mode1 .msg{ padding-top:18px; font-size:14px;}
 .cominfo .rbox .mode1 .msg a { color:#666666}
 .cominfo .rbox .mode1 .msg a span{ color:#FF0000}
-/*企业会员中 首页 积分模式结束*/
+/*企业会员中 首页 葫芦币模式结束*/
 /*企业会员中 首页 套餐模式*/
 .cominfo .rbox .mode2{}
 .cominfo .rbox .mode2 .cmname{font-size:16px; font-weight:bold}
@@ -96,11 +96,11 @@
 .addjob .redtip{ color:#FF0000;padding-left: 20px;background-image: url(../images/05.gif);background-repeat: no-repeat;background-position: left 
 center;margin-left:5px;}
 .addjob .input_radio{ float:left; padding-left:15px; padding-right:16px;border:2px #E3E3E3 solid; height:28px; line-height:28px; font-size:14px; background-color:#E3E3E3; color:#666666; margin-right:15px; cursor:pointer}
-.addjob .input_radio.select{ border-color:#4095EF; background-color:#FFFFFF;background:url(../images/13.gif) no-repeat right -230px; color:#4095EF}
+.addjob .input_radio.select{ border-color:#ff7800; background-color:#FFFFFF;background:url(../images/13.gif) no-repeat right -230px; color:#ff7800}
 .addjob .input_checkbox{float:left; padding-left:12px; padding-right:7px; height:32px; line-height:32px; font-size:14px;background-color:#E3E3E3; margin-right:15px; margin-bottom:10px;white-space: nowrap;}
 .addjob .input_checkbox span{color:#666666;cursor:pointer;padding-right:6px;}
 .addjob .input_checkbox.h{ background-color:#EFEFEF}
-.addjob .input_checkbox_add{float:left; padding-left:12px; padding-right:7px; height:32px; line-height:32px; font-size:14px;background:url(../images/13.gif) #E3E3E3 no-repeat 27px -299px; margin-right:15px;cursor:pointer;color:#0180CF;padding-right:20px;}
+.addjob .input_checkbox_add{float:left; padding-left:12px; padding-right:7px; height:32px; line-height:32px; font-size:14px;background:url(../images/13.gif) #E3E3E3 no-repeat 27px -299px; margin-right:15px;cursor:pointer;color:#ff7800;padding-right:20px;}
 .addjob .input_checkbox_add.h{ background-color:#EFEFE7F}
 .addjob .emailsend{ width:100px; height:35px; line-height:35px; text-align:center; background-color:#80C0E6; color:#FFFFFF; cursor:pointer}
 /*企业会员中心 管理职位*/
@@ -237,7 +237,7 @@ center;margin-left:5px;}
 
 /*企业会员中心 充值订单*/
 .intrgration{padding-top:0px;}
-.intrgration .bar{margin:0 auto 40px auto;height:29px;width:725px;}
+.intrgration .bar{margin:0 auto 40px auto;height:29px;width:730px;}
 .intrgration .bar div{display:inline-block;height:29px;}
 .intrgration .bar div p{padding-top:40px;text-align:center;color:#666666;}
 .intrgration .bar div p.complete{color:#EC8319;}
@@ -319,14 +319,14 @@ center;margin-left:5px;}
 .data .left{padding-left:20px;}
 .data .data_content{background:url(../images/11.jpg) repeat-x bottom;font-family:"SimSun";font-size:12px;color:#666666;}
 .data .data_content input[type="checkbox"]{top:-1px;}
-.data .data_content .bg01{color:#0180cf;}
+.data .data_content .bg01{color:#ff7800;}
 /*企业风采*/
 .pic{padding-top:20px;margin-left:30px;margin-right:15px;}
 .pic .pic_title{font-size:14px;font-weight:bold;padding-bottom:10px;border-bottom:1px solid #ccc;}
 .pic .pic_txt{font-size:12px;padding-top:10px;line-height:2;padding-left: 18px;background-image: url(../images/13.gif);background-repeat: no-repeat;background-position: left -90px;}
 .pic .upload{margin-top:20px;}
 .but_samll{width:59px;height:36px;line-height:35px;font-size:14px;color:#656565;background-color:#fff;border-top:1px solid #ccc;border-right:1px solid #ccc;border-bottom:1px solid #ccc;font-family:"microsoft yahei","microsoft yahei";text-align:center;vertical-align:middle;margin-top:-2px;margin-left:-2px;cursor:pointer;}
-.but_upload{width:70px;height:36px;line-height:35px;font-size:14px;color:#fff;background-color:#0180CF;border:1px solid #0180CF;font-family:"microsoft yahei","microsoft yahei";text-align:center;vertical-align:middle;cursor:pointer;}
+.but_upload{width:70px;height:36px;line-height:35px;font-size:14px;color:#fff;background-color:#ff7800;border:1px solid #ff7800;font-family:"microsoft yahei","microsoft yahei";text-align:center;vertical-align:middle;cursor:pointer;}
 .but_upload.hover{background-color:#0070BD;}
 .but_upload.s{margin-left:50px;}
 .pic .logo_img{padding-top:30px;position:relative;}
@@ -432,12 +432,12 @@ center;margin-left:5px;}
 /*·￠2??°??μˉ3??ò zJF*/
 .resume-tc { border: 1px solid #fff; background: #fff; margin:0 auto;}
 .resume-tc-head { height: 47px; background: #e7eaee; position: relative; }
-.resume-tc-head h3 {height:48px;line-height:48px;position:relative; padding-left: 40px; color: #0180cf; font-size: 14px; font-weight: bold;}
+.resume-tc-head h3 {height:48px;line-height:48px;position:relative; padding-left: 40px; color: #ff7800; font-size: 14px; font-weight: bold;}
 .resume-tc-head h3 i{position:absolute;width:20px;height:30px;left:15px;top:10px;background:url(../images/icon20.png) no-repeat 0 -680px;}
 .resume-tc-head h3 .icon-loc{background-position:3px 3px;}
 .resume-tc-head .close { position: absolute; width: 16px; height: 16px; top: 16px; right: 16px; background: url(../images/icon.png) no-repeat -334px -62px; }
 .sx-yx { padding: 10px 40px; border-bottom: 1px solid #e7eaee;}
-.clr-grn { color: #0180cf; }
+.clr-grn { color: #ff7800; }
 .fnt-b { font-weight: bold; }
 .sx-nomal{padding:15px 30px;overflow:hidden;}
 .sx-nomal li input{margin:2px 6px 0 0;vertical-align: text-top;*vertical-align:middle;*margin:0 6px 0 0}
@@ -445,10 +445,10 @@ center;margin-left:5px;}
 .cf { *zoom:1;}
 .sx-cnt ul{width:600px;}
 .sx-cnt li{float:left;padding:5px 0 5px 20px;width:126px;text-align:left;color:#666;font-size:14px;position:relative;border-top:2px solid #fff;line-height:1.5;}
-.sx-cnt li.current{border-top:2px solid #0180cf;background:#eee;}
+.sx-cnt li.current{border-top:2px solid #ff7800;background:#eee;}
 .sx-cnt li a{color:#666;font-size:14px;display:inline-block;width:100%;height:100%;text-decoration:none;}
 .sx-cnt li i{position:absolute;right:55px;top:13px;width:0;height:0;font-size:0;line-height:0;border-color:#ccc transparent transparent transparent;_border-color:#ccc #ffffff #ffffff #ffffff;border-style:solid;border-width:6px;cursor:pointer;}
-.sx-cnt li.current i{right:55px;top:7px;border-color:transparent transparent #0180cf transparent;_border-color:#eeeeee #eeeeee #0180cf #eeeeee;cursor:pointer;}
+.sx-cnt li.current i{right:55px;top:7px;border-color:transparent transparent #ff7800 transparent;_border-color:#eeeeee #eeeeee #ff7800 #eeeeee;cursor:pointer;}
 .sx-rm{padding:15px 30px;border-bottom:1px dotted #e7eaee;overflow:hidden;}
 .sx-sub{background:#eee;overflow:hidden;padding-top:5px;}
 .sx-sub li{border:none;padding:5px 0 5px 20px;}
@@ -462,7 +462,7 @@ center;margin-left:5px;}
 .sx-yx-cnt:hover .del { background: url(../images/icon.png) no-repeat -357px -13px; }
 .sx-action{padding:10px 30px;height:30px;border-top: 1px solid #e7eaee;text-align:right;}
 .sx-action button{margin:0;padding:0 1em;border:0;height:30px;line-height:30px;font-size:14px;font-weight:bold;cursor:pointer;}
-.sx-action button.grn{background:#0180cf;color:#fff;}
+.sx-action button.grn{background:#ff7800;color:#fff;}
 .sx-action button.gray{background:#eee;color:#666;}
 .sx-lev1-pd{padding:20px 30px 0;}
 .sx-lev1-line{height:20px;border-bottom:1px dotted #e7eaee;position:relative;}
@@ -485,9 +485,9 @@ center;margin-left:5px;}
 
 /*企业会员中心新的账户样式*/
 .my_account .balance .bal_text{font-size:14px;margin-bottom: 10px;}
-.my_account .balance .bal_text a{color:#0180cf;}
+.my_account .balance .bal_text a{color:#ff7800;}
 .my_account .balance .bal_but{position:absolute;top:13px;right:10px;_right:30px;}
-.my_account .balance .bal_link{font-size: 16px;text-decoration: none;color:#0180CF;margin-left: 30px;}
+.my_account .balance .bal_link{font-size: 16px;text-decoration: none;color:#ff7800;margin-left: 30px;}
 .acc_over_box{margin:20px 30px 10px 30px;padding:15px;border:1px solid #ccc;border-radius: 3px;}
 .acc_over_box h3{font-size: 18px;color:#333;font-weight: normal;padding-bottom: 5px; padding-left: 15px;background-image: url(../images/new_acc.gif);background-repeat: no-repeat;background-position: left 7px;border-bottom: 1px solid #ccc;}
 .acc_over_box .acc_over_table{margin-top: 10px;}
@@ -510,10 +510,10 @@ center;margin-left:5px;}
 .jobs_manage .pub_ing td .jobs_area_detail{font-size: 12px;color:#666;padding-left: 15px;}
 .jobs_manage .pub_ing td .jobs_detail_bottom{font-size: 12px;color:#999;padding-top: 5px;padding-left: 17px;}
 .jobs_manage .pub_ing td .jobs_detail_bottom a{color:#999;}
-.jobs_manage .pub_ing td .jobs_detail_bottom a:hover{text-decoration: none;color:#0180CF;}
+.jobs_manage .pub_ing td .jobs_detail_bottom a:hover{text-decoration: none;color:#ff7800;}
 .jobs_manage .pub_ing td .jobs_detail_bottom i{font-style: normal;color:#FE0000;}
-.jobs_manage .pub_ing td .jobs_detail_bottom .f5{color:#0180CF;}
-.jobs_manage .pub_ing td .but_a{color:#0180CF;line-height: 20px;font-size: 12px;margin-right: 13px;cursor: pointer;}
+.jobs_manage .pub_ing td .jobs_detail_bottom .f5{color:#ff7800;}
+.jobs_manage .pub_ing td .but_a{color:#ff7800;line-height: 20px;font-size: 12px;margin-right: 13px;cursor: pointer;}
 .jobs_manage .pub_ing td .but_a:hover{color:#009900;}
 .jobs_manage .pub_ing td .job_times{color:#666;}
 .jobs_manage_but_group{padding-left: 10px;margin-top: 10px;}
@@ -548,7 +548,7 @@ input[type="checkbox"]{position: relative;top:1px;left:2px;}
 .qq_no_bind{background-position: left -26px;}
 .taobao_no_bind{background-position: left -79px;}
 .sina_no_bind{background-position: left -133px;}
-.new_bindding .new_bindding_table td a{color:#0180CF;}
+.new_bindding .new_bindding_table td a{color:#ff7800;}
 
 /*新的礼品卡页面*/
 .gift_input_box{margin:20px 30px 0 30px; border:1px solid #ccc;border-radius: 3px;padding:10px 20px;}
@@ -564,7 +564,7 @@ input[type="checkbox"]{position: relative;top:1px;left:2px;}
 .new_order_span{font-size: 12px;color:#999;padding-top: 5px;}
 .new_order_span .pay{font-style: normal;color:#333;}
 .new_order_span .nopay{font-style: normal;color:#FF0000;}
-.new_order_list .new_order_table td .pay_a{color:#0180CF;}
+.new_order_list .new_order_table td .pay_a{color:#ff7800;}
 
 /*执照认证*/
 .audit_done{padding-left: 23px;background-image: url(../images/yesyan.jpg);background-repeat: no-repeat;background-position: left center;}
@@ -580,7 +580,7 @@ input[type="checkbox"]{position: relative;top:1px;left:2px;}
 /***
 ***以下样式为3.7版本企业会员中心新增样式
 ***/
-.usermain .rightmain .bbox1{min-height: 948px;}
+.usermain .rightmain .bbox1{min-height: 948px;margin-left:5px;}
 
 .company-top-left{border:1px solid #ccc;border-bottom: 0;background-color: #ecf8ff;padding:12px 0;overflow: hidden;width: 179px;}
 .company-top-left .ctrl-item{width: 89px;text-align: center;}
@@ -607,10 +607,10 @@ input[type="checkbox"]{position: relative;top:1px;left:2px;}
 /*产品表格*/
 .price-data{padding:20px 24px 0 24px;font-family: "SimSun";}
 .price-data table{table-layout: fixed;background-color: #fff;width: 100%;max-width: 100%;border-collapse: collapse;border-spacing: 0;font-size: 13px;color:#666;border: 1px solid #ccc;}
-.price-data table thead{background-color: #0180cf;}
-.price-data table thead th{padding:16px 0;font-size: 12px;color:#fff;border:1px dotted #ccc;border-bottom: 0;font-weight: normal;}
+.price-data table thead{background-color: #ccc;}
+.price-data table thead th{padding:16px 0;font-size: 12px;color:#333;border:1px dotted #ccc;border-bottom: 0;font-weight: normal;}
 .price-data table tbody td{padding:16px 0;font-size: 12px;color:#666;text-align: center;border:1px dotted #ccc;}
-.price-data table tbody td a{color:#0180cf;font-size: 14px;}
+.price-data table tbody td a{color:#ff7800;font-size: 14px;}
 .price-data table .align-left{padding-left: 24px;text-align: left;}
 /*更换模板*/
 .tpl-box{margin:0 15px;padding:0 15px;}
@@ -618,7 +618,7 @@ input[type="checkbox"]{position: relative;top:1px;left:2px;}
 .tpl-box .tpl-block .tpl-img{width: 298px;height: 148px;overflow: hidden;border:1px solid #ccc;}
 .tpl-box .tpl-block .tpl-ctrl{padding-left: 20px;font-size: 16px;color:#333;padding-top: 5px;}
 .tpl-box .tpl-block .tpl-ctrl .tpl-text{margin-bottom: 20px;}
-.tpl-box .tpl-block .tpl-ctrl .tpl-text a{color:#0180cf;font-size: 14px;}
+.tpl-box .tpl-block .tpl-ctrl .tpl-text a{color:#ff7800;font-size: 14px;}
 .tpl-box .tpl-block .tpl-ctrl .tpl-text span{color:#ff9900;font-size: 16px;font-weight: bold;}
 .tpl-box .tpl-block .tpl-ctrl .tpl-text em{font-style: normal;font-size: 14px;}
 .tpl-box .tpl-block .tpl-ctrl .use-ctrl{padding-top: 5px;}
@@ -634,10 +634,10 @@ input[type="checkbox"]{position: relative;top:1px;left:2px;}
 .company-data-list .c-data-content:hover{background-color: #f8f8f8;}
 .company-data-list .c-data-top .check-item,
 .company-data-list .c-data-content .check-item{margin-top: 5px;width: 23px;*margin-top:0;}
-.company-data-list .c-data-content .name-link{font-size: 14px;color:#0180cf;}
-.company-data-list .c-data-content .jobs-name-link{font-size: 12px;color:#0180cf;}
+.company-data-list .c-data-content .name-link{font-size: 14px;color:#333;}
+.company-data-list .c-data-content .jobs-name-link{font-size: 12px;color:#333;}
 .data-time{font-family: Arial;}
-.company-data-list .c-data-content .data-ctrl{color:#0180cf;}
+.company-data-list .c-data-content .data-ctrl{color:#333;}
 .c-data-row .data-detail{padding:20px;margin-top: 10px;border:1px solid #ccc;background-color: #f8f8f8;position: relative;padding-top: 15px;display: none;}
 .c-data-row .data-detail .arrow{position: absolute;top:-7px;left:15%;width: 12px;height: 8px;background: url(../images/user-up-arrow.png) no-repeat 0px 0px;}
 .c-data-row .data-detail .detail-block{}
@@ -769,7 +769,7 @@ input[type="checkbox"]{position: relative;top:1px;left:2px;}
 .c-data-content.account-pack-d .content3{width: 204px;}
 .c-data-top.account-pack-d .top-item4,
 .c-data-content.account-pack-d .content4{width: 108px;text-align: center;}
-/*积分消费明细的宽度设置*/
+/*葫芦币消费明细的宽度设置*/
 .c-data-top.account-d .top-item1,
 .c-data-content.account-d .content1{width:266px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
 .c-data-top.account-d .top-item2,
@@ -846,7 +846,7 @@ input[type="checkbox"]{position: relative;top:1px;left:2px;}
 .dialog-block .dialog-item .d-content input.checkbox{margin-right: 5px;}
 .short-text-tip{margin-left:10px;line-height: 24px;height:24px;border:1px solid #ff9900;background-color: #fff1e5;padding:0 10px;font-size: 12px;color:#666;border-radius: 3px;font-family: "SimSun";}
 .short-text-tip span{color:#ff9900;font-weight: bold;}
-.short-text-tip a{color:#0180cf;}
+.short-text-tip a{color:#ff7800;}
 /*发送到邮箱弹出*/
 .send-mail-dialog{font-family: "SimSun";}
 /*提示弹出*/
@@ -873,7 +873,7 @@ input[type="checkbox"]{position: relative;top:1px;left:2px;}
 /*发布职位成功弹出*/
 .addjob-success-dialog{font-family: "SimSun";}
 .addjob-success-dialog .success-tip{width: 240px;margin:0 auto;padding-left: 75px;font-family: "Microsoft Yahei";color:#333;font-size: 22px;font-weight: normal;white-space: nowrap;background: url(../images/big-yes.png) no-repeat 0px 0px;height:64px;line-height: 64px;}
-.addjob-success-dialog .success-tip a{color:#0180cf;font-size: 12px;font-family: "SimSun";margin-left: 10px;white-space: nowrap;}
+.addjob-success-dialog .success-tip a{color:#ff7800;font-size: 12px;font-family: "SimSun";margin-left: 10px;white-space: nowrap;}
 .addjob-success-dialog .sns-tips{font-size: 14px;font-family: "Microsoft Yahei";color: #666;white-space: nowrap;margin-top: 10px;line-height: 34px;}
 .addjob-success-dialog .sns-tips span{color:#ff9900;}
 .sns-block{}
@@ -889,7 +889,7 @@ input[type="checkbox"]{position: relative;top:1px;left:2px;}
 .weixin-code-box .weixin-border img{margin:5px 0 0 6px;}
 .weixin-code-box span{color:#666;font-size: 12px;line-height: 20px;}
 .addjob-success-dialog .succsee-more{padding-top: 18px;font-size: 12px;color:#666;text-align: center;}
-.addjob-success-dialog .succsee-more a{color:#0180cf;font-size: 14px;}
+.addjob-success-dialog .succsee-more a{color:#ff7800;font-size: 14px;}
 /*批量预约弹出*/
 .yuyue-all-dialog{font-family: "SimSun";font-size: 12px;}
 .yuyue-d{margin-top: 15px;}
@@ -904,7 +904,7 @@ input[type="checkbox"]{position: relative;top:1px;left:2px;}
 .yuyue-right .yue-right-block .hasyue-item .hasyue-job{font-size: 12px;color:#666;width: 110px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
 .yuyue-right .yue-right-block .hasyue-item .yue-time{width: 60px;color:#666;}
 .yuyue-right .yue-right-block .hasyue-item .yue-time input{border:1px solid #ccc;font-size: 12px;color:#333;line-height: 14px;height:14px;padding:3px 6px;width: 23px;font-family: "SimSun";outline: none;}
-.yue-btn{width: 35px;height: 20px;border:1px solid #e2e2e2;background-color: #fff;text-align: center;font-size: 12px;line-height: 20px;color:#0180cf;border-radius: 3px;}
+.yue-btn{width: 35px;height: 20px;border:1px solid #e2e2e2;background-color: #fff;text-align: center;font-size: 12px;line-height: 20px;color:#ff7800;border-radius: 3px;}
 .notyue-btn{width: 35px;height: 20px;border:1px solid #e2e2e2;background-color: #fff;text-align: center;font-size: 12px;line-height: 20px;color:#666;border-radius: 3px;}
 .yuyue-all-dialog .yuyue-d-tip{padding-left: 23px;color:#999;font-size: 12px;background: url(../images/user-icon36.png) no-repeat 0px -306px;margin-top: 9px;}
 .yuyue-all-dialog .yuyue-d-tip span{font-size: 14px;color:#ff9900;}
@@ -913,24 +913,24 @@ input[type="checkbox"]{position: relative;top:1px;left:2px;}
 .yuyue-one-dialog .yo-block{}
 .yuyue-one-dialog .yue-one-item{height:30px;line-height: 30px;font-size: 12px;color:#333;margin-top: 10px;}
 .yuyue-one-dialog .yue-one-item .yo-type{color:#666;}
-.yuyue-one-dialog .yue-one-item a{margin-left: 20px;color:#0180cf;}
+.yuyue-one-dialog .yue-one-item a{margin-left: 20px;color:#ff7800;}
 .yuyue-one-dialog .yue-one-item em{font-style: normal;font-size: 14px;color:#ff9900;font-weight: bold;}
 .yuyue-one-dialog .yue-one-item .use-fen{color:#666;}
 .yuyue-one-dialog .yue-one-item input{border:1px solid #ccc;font-size: 14px;color:#333;line-height: 18px;height:18px;padding:5px 6px;width: 23px;font-family: "SimSun";outline: none;}
 
-/*我的积分*/
+/*我的葫芦币*/
 .account-wrap{padding-top:15px;font-family: "SimSun";}
 .account-wrap .account-top-block{height: 50px;overflow: hidden;background-color: #e5f2fa;line-height: 50px;margin:0 15px 20px 15px;}
-.account-wrap .account-top-block .account-state{width: 100px;background-color: #2191d7;color:#fff;font-size: 14px;text-align: center;box-shadow: 0px 0px 3px rgba(0,0,0,.5)}
+.account-wrap .account-top-block .account-state{width: 100px;background-color: #ff7800;color:#fff;font-size: 14px;text-align: center;box-shadow: 0px 0px 3px rgba(0,0,0,.5)}
 .account-wrap .account-top-block .a-state-content{padding-left: 20px;font-size: 14px;}
 .account-wrap .account-top-block .a-state-content .account-type{margin-right: 45px;white-space: nowrap;color: #333;}
 .account-wrap .account-top-block .a-state-content .account-type.last{margin-right: :0;}
 .account-wrap .account-top-block .a-state-content .account-type span{font-size: 16px;color:#ff9900;font-weight: bold;}
 .account-wrap .account-top-block .a-state-content .account-type em{font-style: normal;font-size: 12px;}
-.account-wrap .account-top-block .a-state-content .account-type a{color:#0180cf;font-size: 12px;margin-left:5px;}
+.account-wrap .account-top-block .a-state-content .account-type a{color:#ff7800;font-size: 12px;margin-left:5px;}
 .account-ctrl-bar{margin:0 15px;padding-bottom: 15px;border-bottom:1px solid #ccc;line-height: 16px;}
-.account-ctrl-bar h3{font-family: "Microsoft Yahei";font-size: 14px;color:#333;font-weight: normal;padding-left: 5px;border-left:3px solid #0180cf;margin-left: 5px;}
-.account-ctrl-bar a{color:#0180cf;font-size: 12px;margin-right: 10px;}
+.account-ctrl-bar h3{font-family: "Microsoft Yahei";font-size: 14px;color:#333;font-weight: normal;padding-left: 5px;border-left:3px solid #ff7800;margin-left: 5px;}
+.account-ctrl-bar a{color:#ff7800;font-size: 12px;margin-right: 10px;}
 .account-lost{margin:20px 15px 0 15px;padding-left: 5px;}
 .account-lost .account-item{font-size: 12px;color:#666;width: 454px;margin-right: 35px;margin-bottom: 20px;}
 .account-lost .account-item .ai-text{width: 300px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
@@ -950,14 +950,14 @@ input[type="checkbox"]{position: relative;top:1px;left:2px;}
 .gifts-form .g-form-item .g-form-type{width: 50px;white-space: nowrap;color:#666;font-size: 12px;text-align: right;line-height: 30px;}
 .gifts-form .g-form-item .gift-text{font-size: 12px;color:#666;line-height: 18px;height:18px;padding:5px 10px;border:1px solid #e2e2e2;width: 198px;}
 .gifts-form .g-form-item .gift-text.short{width: 78px;}
-.gifts-form .g-form-item .gift-btn{width: 100px;height: 30px;border:0;color:#fff;background-color: #0180cf;text-align: center;font-size: 12px;cursor: pointer;font-family: "SimSun";}
+.gifts-form .g-form-item .gift-btn{width: 100px;height: 30px;border:0;color:#fff;background-color: #ff7800;text-align: center;font-size: 12px;cursor: pointer;font-family: "SimSun";}
 .gifts-form .g-form-item .gift-btn.hover{background-color: #0070bd;}
 .gifts-wrap .gifts-top-block .gifts-tip{width: 178px;height: 138px;border:1px solid #e2e2e2;background-color: #fff;margin-right: 60px;font-size: 12px;color:#666;margin-top: 29px;}
 .gifts-wrap .gifts-top-block .gifts-tip .g-tip-block{padding:8px 12px;line-height: 20px;}
 .gifts-wrap .gifts-top-block .gift-shop-enter{width: 138px;height: 138px;overflow: hidden;background-color: #fff;border:1px solid #e2e2e2;margin-top: 29px;}
 .gifts-wrap .gifts-top-block .gift-shop-enter .shop-up-block{height: 70px;border-bottom:1px solid #e2e2e2;}
 .gifts-wrap .gifts-top-block .gift-shop-enter .shop-down-block{padding-left: 33px;padding-top: 12px;font-family: "Microsoft Yahei";}
-.gifts-wrap .gifts-top-block .gift-shop-enter .shop-down-block a{color:#0180cf;display: block;padding-right: 20px;width: 65px;background: url(../images/gift-icon.png) no-repeat 68px 24px;}
+.gifts-wrap .gifts-top-block .gift-shop-enter .shop-down-block a{color:#ff7800;display: block;padding-right: 20px;width: 65px;background: url(../images/gift-icon.png) no-repeat 68px 24px;}
 .gifts-wrap .gifts-top-block .gift-shop-enter .shop-down-block a span{font-size: 16px;line-height: 26px;*line-height: 22px;}
 .gifts-wrap .gift-data{margin:15px;}
 .gifts-wrap .gift-data table{table-layout: fixed;background-color: #fff;width: 100%;max-width: 100%;border-collapse: collapse;border-spacing: 0;font-size: 13px;color:#666;}
@@ -989,7 +989,7 @@ input[type="checkbox"]{position: relative;top:1px;left:2px;}
 .vip-data table .align-left{text-align: left;padding-left: 15px;}
 .vip-data table th .vip-head{height: 110px;}
 .vip-data table th .vip-head h3{font-size: 18px;color:#333;font-family: "Microsoft Yahei";font-weight: normal;}
-.vip-data table th .vip-head .vip-contact{font-family: "Microsoft Yahei";color:#0180cf;font-size: 14px;padding-left: 45px;background: url(../images/vip-icon.png) no-repeat 0px -208px;white-space: nowrap;margin-top: 44px;}
+.vip-data table th .vip-head .vip-contact{font-family: "Microsoft Yahei";color:#ff7800;font-size: 14px;padding-left: 45px;background: url(../images/vip-icon.png) no-repeat 0px -208px;white-space: nowrap;margin-top: 44px;}
 .vip-data table th .vip-head .vip-contact span{font-weight: bold;line-height: 26px;}
 .vip-data table th .vip-head del{font-size: 12px;color: #999;margin-top: 14px;display: inline-block;}
 .vip-data table th .vip-head p{margin:8px 0;font-size: 12px;color:#333;}
@@ -1008,11 +1008,11 @@ input[type="checkbox"]{position: relative;top:1px;left:2px;}
 .company-img-wrap .company-img-block .image-ctrl{margin-top: 10px;}
 .company-img-wrap .company-img-block .image-ctrl .up-time{font-size: 14px;color:#666;}
 .company-img-wrap .company-img-block .image-ctrl .ctrl-op{color:#999;}
-.company-img-wrap .company-img-block .image-ctrl .ctrl-op a{color:#0180cf;}
+.company-img-wrap .company-img-block .image-ctrl .ctrl-op a{color:#ff7800;}
 .company-img-wrap .company-img-upload{width: 293px;height: 178px;border:1px dashed #ccc;background-color: #f5f5f5;text-align: center;position:relative;}
 .company-img-wrap .company-img-upload div{margin-top:70px;}
 .company-img-wrap .company-img-upload p{margin-top: 10px;line-height: 20px;color:#999;}
-.company-img-wrap .company-img-upload .upload-btn{width: 75px;height: 26px;line-height: 26px;text-align: center;color:#fff;background-color: #0180cf;cursor: pointer;font-family: "SimSun";font-size: 12px;border:0;position:absolute;top:-30px;left:107px;}
+.company-img-wrap .company-img-upload .upload-btn{width: 75px;height: 26px;line-height: 26px;text-align: center;color:#fff;background-color: #ff7800;cursor: pointer;font-family: "SimSun";font-size: 12px;border:0;position:absolute;top:-30px;left:107px;}
 .company-img-wrap .company-img-upload .upload-btn.hover{background-color: #0070bd;}
 .company-img-wrap .company-img-upload .filestyle{width: 75px;height: 26px;position:absolute;cursor:pointer;filter:alpha(opacity=0);-moz-opacity:0;opacity:0;top:40px;left:84px;}
 /*风采弹出*/
@@ -1027,7 +1027,7 @@ input[type="checkbox"]{position: relative;top:1px;left:2px;}
 /*顶部提示*/
 .company-index-tip{height:26px;overflow:hidden;padding:15px 0 5px 0;margin:0 15px;font-family: "SimSun";}
 .company-index-tip .index-tip{position: relative;height: 26px;line-height: 26px;background-color: #fff1e5;color:#ff9900;padding:0 10px;font-size: 12px;margin-bottom: 10px;}
-.company-index-tip a{color:#0180cf;}
+.company-index-tip a{color:#ff7800;}
 .bbox1 .lin{height:1px;background:#ccc;margin:0 15px;}
 .close-icon{position: absolute;top:9px;right:14px;width: 8px;height: 8px;background: url(../images/user-icon36.png) no-repeat 0px -458px;cursor: pointer;}
 /*公司信息*/
@@ -1045,9 +1045,9 @@ input[type="checkbox"]{position: relative;top:1px;left:2px;}
 .name-auth-info .company-name h2{font-size: 20px;color:#333;font-family: "Microsoft Yahei";font-weight: normal;line-height: 100%;max-width: 450px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
 .name-auth-info .company-name .c-name-edit-text{display: none;width: 230px;border:1px solid #ccc;height:24px;}
 .name-auth-info .company-name .c-name-edit-text input{border:0;padding:3px 10px;width: 210px;font-size: 14px;color:#666;height:18px;line-height: 18px;*padding:2px 10px;font-family: "Microsoft Yahei";}
-.name-auth-info .company-name a{padding-left: 17px;color:#0180cf;font-size: 12px;background: url(../images/user-icon36.png) no-repeat 0px -482px;line-height: 26px;margin-left: 12px;}
+.name-auth-info .company-name a{padding-left: 17px;color:#ff7800;font-size: 12px;background: url(../images/user-icon36.png) no-repeat 0px -482px;line-height: 26px;margin-left: 12px;}
 .name-auth-info .last-login{font-size: 12px;color:#999;margin-bottom: 11px;}
-.name-auth-info .last-login a{color:#0180cf;}
+.name-auth-info .last-login a{color:#ff7800;}
 .name-auth-info .auth-wrap{font-size: 12px;}
 .name-auth-info .auth-wrap .i-auth-item{position: relative;margin-right: 20px;padding-bottom:4px;}
 .name-auth-info .auth-wrap .i-auth-item .auth-block{padding-left: 23px;color:#999;display: inline-block;line-height: 18px;background: url(../images/07.jpg) no-repeat;}
@@ -1062,17 +1062,17 @@ input[type="checkbox"]{position: relative;top:1px;left:2px;}
 .name-auth-info .auth-wrap .i-auth-item .done.phone{background-position: 0px 0px;}
 .name-auth-info .auth-wrap .i-auth-item .not-auth-tip{display: none;position: absolute;top:22px;left:-45px;width: 240px;padding:6px 7px;border:1px solid #ff9900;background-color: #fff1e5;color: #666;font-size: 12px;line-height: 18px;}
 .name-auth-info .auth-wrap .i-auth-item .not-auth-tip .ia-tip-arrow{position: absolute;top:-5px;left:46px;width: 10px;height: 6px;background: url(../images/user-icon36.png) no-repeat -30px -460px;}
-.name-auth-info .auth-wrap .i-auth-item .not-auth-tip a{color:#0180cf;}
+.name-auth-info .auth-wrap .i-auth-item .not-auth-tip a{color:#ff7800;}
 .index-company-wrap .index-account-info{height: 42px;line-height: 42px;background: url(../images/index-account-bg.png) no-repeat 0px 0px;padding-left: 22px;margin-bottom:5px;}
 .index-company-wrap .index-account-info .account-type{margin-right: 120px;font-size: 14px;color:#666;}
 .index-company-wrap .index-account-info .account-type.last{margin-right: 0;}
 .index-company-wrap .index-account-info .account-type span{font-size: 14px;font-weight: bold;color:#666;}
 .index-company-wrap .index-account-info .account-type em{font-style: normal;font-size: 12px;}
-.index-company-wrap .index-account-info .account-type a{color:#0180cf;font-size: 12px;margin-left: 10px;}
+.index-company-wrap .index-account-info .account-type a{color:#ff7800;font-size: 12px;margin-left: 10px;}
 .index-company-wrap .index-account-info .account-type .account-fen{font-size: 16px;margin-right: 3px;color:#ff9900;}
 /*企业会员中 首页 管理列表*/
 .commanage{ border-top:1px #CCCCCC solid; padding-top:20px; margin:0 15px;+background-color: #fff; }
-.commanage .list{ float:left; width:325px; border-right:1px #ccc dotted; text-align:center}
+.commanage .list{ float:left; width:305px; border-right:1px #ccc dotted; text-align:center}
 .commanage .list.last{ border:0px;}
 .commanage .list .t{font-size:18px; font-weight:normal; padding-top:5px; padding-bottom:10px;color:#333;}
 .commanage .list .p{ font-size:14px; color: #666666; line-height:200%;}
@@ -1084,12 +1084,12 @@ input[type="checkbox"]{position: relative;top:1px;left:2px;}
 .rec-resumes .user-company-ad{margin-bottom: 18px;margin-left: -5px;width: 950px;overflow: hidden;}
 .rec-resumes .rec-re-top{margin-bottom: 10px;}
 .rec-resumes .rec-re-top h4{font-size: 14px;color:#666;}
-.rec-resumes .rec-re-top a{color:#0180cf;}
+.rec-resumes .rec-re-top a{color:#333;}
 .rec-resumes .rec-data{}
 .rec-resumes .rec-data table{table-layout: fixed;background-color: #fff;width: 100%;max-width: 100%;border-collapse: collapse;border-spacing: 0;color:#666;}
 .rec-resumes .rec-data table td{border-bottom: 1px dotted #ccc;padding:16px 0;}
 .rec-resumes .rec-data table td.first{padding-left: 14px;}
-.rec-resumes .rec-data table td a{color:#0180cf;}
+.rec-resumes .rec-data table td a{color:#333;}
 .rec-resumes .rec-data table td div{width: 320px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
 
 /*微招聘效果*/
@@ -1097,7 +1097,7 @@ input[type="checkbox"]{position: relative;top:1px;left:2px;}
 .price-data.mobile-effect{padding:20px 0 0 0;font-family: "SimSun";}
 .m-effect-wrap .m-effect-title{padding:15px 0;line-height: 20px;}
 .m-effect-wrap .m-effect-title h3{font-size: 16px;color:#666;font-weight: normal;}
-.m-effect-wrap .m-effect-title a{font-size: 12px;color:#0180cf;}
+.m-effect-wrap .m-effect-title a{font-size: 12px;color:#333;}
 .m-effect-wrap .m-effect-tips{padding:7px 10px;background-color: #e7f3ff;border:1px solid #c7e1fb;font-size: 12px;position: relative;}
 .m-effect-wrap .m-effect-tips p{padding-left: 23px;color:#666;line-height: 20px;}
 .m-effect-wrap .m-effect-tips .me-icon{position: absolute;top:7px;left:10px;width: 20px;height: 20px;background: url(../images/13.gif) no-repeat 0px -101px;}
@@ -1107,7 +1107,7 @@ input[type="checkbox"]{position: relative;top:1px;left:2px;}
 .addjob td,
 .addjob th{padding:8px 0;}
 .topnav .addjob-number{position: absolute;top:22px;right:40px;font-size: 14px;color:#333;}
-.topnav .addjob-number span{color:#0180cf;margin:0 3px;}
+.topnav .addjob-number span{color:#ff7800;margin:0 3px;}
 
 .addjob input[type="checkbox"]{vertical-align: baseline;position: relative;top:2px;left:0;margin-right: 3px;}
 
@@ -1125,7 +1125,7 @@ input[type="checkbox"]{position: relative;top:1px;left:2px;}
 .my_account .row dd.field_value b{font-size:14px;font-weight:bold;color:#666666;}
 .my_account .row dd.field_value .verified{padding-left:20px;position:relative;_zoom:1;color:#7CB615;_display:inline;}
 .my_account .row dd.field_value .verified.mpdl{padding-left:0px;}
-.my_account .row dd.field_value .verified.mpdl a{color:#0180cf;}
+.my_account .row dd.field_value .verified.mpdl a{color:#ff7800;}
 .my_account .row dd.field_value .verified i{height:16px;width:16px;display:block;background:url(../images/ico_warn.png) no-repeat 0 0;position:absolute;top:4px;left:0;}
 .my_account .row dd.field_value .unverified{padding-left:20px;position:relative;*zoom:1;color:#D49922;*display:inline;}
 .my_account .row dd.field_value .unverified i{height:16px;width:16px;display:block;background:url(../images/ico_warn.png) no-repeat 0 -100px;position:absolute;top:4px;left:0;}

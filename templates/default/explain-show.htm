@@ -9,8 +9,12 @@
 <meta name="copyright" content="zhaohulu.com" />
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
 <link href="{#$QISHI.site_template#}css/common.css" rel="stylesheet" type="text/css" />
+<link href="{#$QISHI.site_template#}css/header.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/explain.css" rel="stylesheet" type="text/css" />
 <script src="{#$QISHI.site_template#}js/jquery.js" type='text/javascript' ></script>
+<script src="{#$QISHI.site_template#}js/dialog-min.js" type="text/javascript" language="javascript"></script>
+<script src="{#$QISHI.site_template#}js/dialog-min-common.js" type="text/javascript" language="javascript"></script>
+<link href="{#$QISHI.site_template#}css/ui-dialog.css" rel="stylesheet" type="text/css" />
 </head>
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="header.htm"#}
@@ -25,14 +29,17 @@
       <h2 class="about_tit">关于我们</h2>
       <ul>
         {#foreach from=$explain item=list#}
-        <li {#if $smarty.get.id==$list.id#}class="active"{#/if#}><a href="{#$list.url#}" target="_blank">{#$list.title#}</a></li>
+        <li {#if $smarty.get.id==$list.id#}class="active"{#/if#}><a href="{#$list.url#}" target="_blank" style="color:#333333;">{#$list.title#}</a></li>
         {#/foreach#}
         <li><a href="{#$QISHI.site_dir#}suggest">意见反馈</a></li>
       </ul>
     </div>
     <div class="about_right">
+     <div class="blue-line" style="top: -2px;left: -1px;"></div>
+    <div class="about-title-div">
       <div class="about_r_tit">
         {#$show.title#}
+      </div>
       </div>
       <div class="about_r_content">
         <p>{#$show.content#}</p>

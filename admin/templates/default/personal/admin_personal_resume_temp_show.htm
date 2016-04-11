@@ -279,39 +279,78 @@
   </table>
  </form>
  {#else#}
+	<table width="100%" border="0" cellpadding="4" cellspacing="0">
 
-	<form id="Form3" name="Form3" method="post" action="?act=perform_temp">
+		<tbody><tr>
+			<td class="admin_list admin_list_first">
+				拒绝:
+			</td>
+			<td class="admin_list admin_list_first">
+				{#if $check_result#}
+				{#foreach from=$check_result item=list#}
+				<input type="radio" name="result" value="{#$list.c_name#}">{#$list.c_name#}
+				{#/foreach#}
+				{#/if#}
+			</td>
 
-		<table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF"  >
-			<tr>
-				<td height="30" align="right" bgcolor="#FFFFFF" >&nbsp;</td>
-				<td height="50" bgcolor="#FFFFFF" ><span style="font-size:14px;">
-				  <input name="id" type="hidden" value="{#$resume.id#}">
-				  <input name="set_audit" type="submit" class="admin_submit"    value="审核"  />
+		</tr>
+		<tr>
+			<td class="admin_list admin_list_first">
+				通过:
+			</td>
+			<td class="admin_list admin_list_first">
+				{#if $check_result_pass#}
+				{#foreach from=$check_result_pass item=list#}
+				<input type="radio" name="result" value="{#$list.c_name#}">{#$list.c_name#}
+				{#/foreach#}
+				{#/if#}
+			</td>
 
-				  <input name="submit22" type="button" class="admin_submit"    value="返 回" onclick="window.location.href='{#$url#}'"/>
-				</span></td>
-			  </tr>
-	  </table>
-		</form>
+		</tr>
+
+		<tr>
+			<td class="admin_list admin_list_first">
+			</td>
+			<td class="admin_list admin_list_first" colspan="2">
+
+				<input id="set_audit"  type="submit" class="admin_submit"    value="审核"  />
+
+				{#if $resume.is_refuse==1#}<input id="set_delete"  name="delete" type="submit" class="admin_submit"    value="删除"  />{#/if#}
+				<input name="submit22" type="button" class="admin_submit"    value="返 回" onclick="window.location.href='{#$url#}'"/>
+
+			</td>
+		</tr>
+		</tbody>
+
+	</table>
+
+
+
 
  {#/if#}
 
- {#if $log_list#}
-	<div class="toptit">审核结果</div>
+	{#if $log_list#}
+	<div class="toptit">上传简历审核结果</div>
 
 	<table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF"  >
 
-	{#foreach from=$log_list item=list#}
+		{#foreach from=$log_list item=list#}
 		<tr>
 			<td height="30" width="80" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">审核人：</td>
 			<td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">
-				{#$list.member.email#}
+				{# if $list.member!=false #}
+				{#$list.member.email#} ; {#$list.member.companyname#};{#$list.member.contact#}
+
+
+				{#else#}
+				{#$list.admin.admin_name#}
+
+				{#/if#}
 			</td>
 
 			<td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">审核结果：</td>
 			<td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed" class="link_lan">
-				{#$list.result#}
+				{#$list.result#}(拒绝)
 			</td>
 
 			<td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">审核时间：</td>
@@ -319,10 +358,34 @@
 				{#$list.addtime|date_format:'%Y-%m-%d'#}
 			</td>
 		</tr>
-	{#/foreach#}
+		{#/foreach#}
 	</table>
+	</div>
 	{#/if#}
 </div>
+
+<script>
+	//点击批量删除
+	$("#set_delete").click(function(){
+		if (confirm('你确定要删除吗？'))
+		{
+			//$("form[name=form1]").attr("action",$("form[name=Form3]").attr("action")+"&delete=true");
+			 window.location.href="?act=perform_temp&id={#$resume.id#}&delete=1"
+		}
+	});
+	$("#set_audit").click(function(){
+			var result=$('input[name="result"]:checked ').val();
+
+			if(result==""||result==undefined){
+				alert("请填写审核通过原因");
+				return false;
+			}
+			//$("form[name=form1]").attr("action",$("form[name=Form3]").attr("action")+"&delete=true");
+			 window.location.href="?act=perform_temp&id={#$resume.id#}&set_audit=1&result="+result
+
+	});
+
+</script>
 {#include file="sys/admin_footer.htm"#}
 </body>
 </html>

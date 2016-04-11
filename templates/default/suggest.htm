@@ -7,6 +7,7 @@
 <meta name="author" content="找葫芦" />
 <meta name="copyright" content="zhaohulu.com" />
 <link href="{#$QISHI.site_template#}css/common.css" rel="stylesheet" type="text/css" />
+<link href="{#$QISHI.site_template#}css/header.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/suggest.css" rel="stylesheet" type="text/css" />
 <script src="{#$QISHI.site_template#}js/jquery.js" type="text/javascript" language="javascript"></script>
 <script src="{#$QISHI.site_template#}js/jquery.validate.min.js" type='text/javascript' language="javascript"></script>
@@ -122,8 +123,9 @@ imgcaptcha("#postcaptcha","#imgdiv");
 		      </ul>
 		</div>
 		<div class="about_right">
-			<div class="about_r_tit">
-				意见反馈
+			<div class="blue_line"></div>
+            <div class="about_r_tit">
+				<h4>意见反馈</h4>
 			</div>
 			<form action="suggest_submit.php" method="post" id="Form1" >
         <input type="hidden" name="input_token" value="{#$input_token#}">

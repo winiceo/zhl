@@ -75,7 +75,7 @@ elseif($act == 'set_points_save')
 	!$db->query("UPDATE ".table('members_points_rule')." SET value='{$value[$k]}', operation='{$operation[$k]}' WHERE id='{$id}' LIMIT 1")?adminmsg('保存失败', 1):"";
 	}
 	//填写管理员日志
-	write_log("后台成功更新培训会员积分规则", $_SESSION['admin_name'],3);	
+	write_log("后台成功更新培训会员葫芦币规则", $_SESSION['admin_name'],3);
 	refresh_points_rule_cache();
 	adminmsg("更新设置成功！",2);
 }

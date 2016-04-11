@@ -1,6 +1,6 @@
 <?php
  /*
- * 74cms 积分商城首页
+ * 74cms 葫芦币商城首页
 */
 define('IN_QISHI', true);
 require_once('shop_common.php');
@@ -53,7 +53,7 @@ elseif($act== 'order_add')
 	}
 	$shop_show=get_shop_one($id);
 	$smarty->assign("show",$shop_show);
-	$need_points=$num*$shop_show['shop_points'];   //所需积分
+	$need_points=$num*$shop_show['shop_points'];   //所需葫芦币
 	$smarty->assign("num",$num);
 	$smarty->assign("need_points",$need_points);
 	if($_SESSION['utype']=='1')
@@ -105,11 +105,11 @@ elseif($act== 'order_save')
 					$order_id=$db->inserttable(table("shop_order"),$setarr,1);
 					if($order_id)
 					{
-						//扣除企业积分
+						//扣除企业葫芦币
 						report_deal($setarr['uid'],2,$setarr['order_points']);
 						//写入日志
 						$user_points=get_user_points($_SESSION['uid']);
-						write_memberslog($_SESSION['uid'],$_SESSION['utype'],9001,$_SESSION['username'],$_SESSION['username']."积分兑换商品：<strong>{$setarr['shop_title']}</strong>，数量为：({$setarr['shop_num']})，共扣除 {$setarr['order_points']} 积分。",$_SESSION['utype'],2007,"兑换商品","-{$setarr['order_points']}","{$user_points}");
+						write_memberslog($_SESSION['uid'],$_SESSION['utype'],9001,$_SESSION['username'],$_SESSION['username']."葫芦币兑换商品：<strong>{$setarr['shop_title']}</strong>，数量为：({$setarr['shop_num']})，共扣除 {$setarr['order_points']} 葫芦币。",$_SESSION['utype'],2007,"兑换商品","-{$setarr['order_points']}","{$user_points}");
 						// 写入 兑换记录
 						write_exchange($order_id,$setarr['shop_id'],$setarr['shop_title'],$setarr['order_points'],$setarr['shop_num'],$setarr['uid'],$setarr['company_name'],$setarr['addtime']);
 						showmsg("操作成功！",2,$link);
@@ -133,11 +133,11 @@ elseif($act== 'order_save')
 				{
 					//写入兑换记录
 					write_exchange($order_id,$setarr['shop_id'],$setarr['shop_title'],$setarr['order_points'],$setarr['uid'],$setarr['company_name'],$setarr['addtime']);
-					//扣除企业积分
+					//扣除企业葫芦币
 					report_deal($setarr['uid'],2,$setarr['order_points']);
 					//写入日志
 					$user_points=get_user_points($_SESSION['uid']);
-					write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],$_SESSION['username']."积分兑换商品：<strong>{$setarr['shop_title']}</strong>，数量为：({$setarr['shop_num']})，共扣除 {$setarr['order_points']} 积分。",1,2007,"兑换商品","-{$setarr['order_points']}","{$user_points}");
+					write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],$_SESSION['username']."葫芦币兑换商品：<strong>{$setarr['shop_title']}</strong>，数量为：({$setarr['shop_num']})，共扣除 {$setarr['order_points']} 葫芦币。",1,2007,"兑换商品","-{$setarr['order_points']}","{$user_points}");
 					showmsg("操作成功！",2,$link);
 				}
 				else
@@ -153,7 +153,7 @@ elseif($act== 'order_save')
 	}
 	else
 	{
-		showmsg("您的积分不够！",1);
+		showmsg("您的葫芦币不够！",1);
 	}
 }
 unset($smarty);

@@ -1,6 +1,6 @@
 <?php
 $data = array (
-  'open' => '1',
+  'open' => '0',
   'search_threshold' => '55',
   'article_display' => '1',
   'article_focos' => '1',

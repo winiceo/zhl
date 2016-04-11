@@ -8,7 +8,7 @@ require_once(QISHI_ROOT_PATH . '/genv/func_company.php');
 $smarty->assign('leftmenu',"service");
 $smarty->assign('act',$act);
 
-//我的账户 -> 积分操作 
+//我的账户 -> 葫芦币操作
 if ($act=='j_account')
 {
 	require_once(QISHI_ROOT_PATH.'include/page.class.php');
@@ -19,14 +19,14 @@ if ($act=='j_account')
 	//套餐
 	$my_setmeal = get_user_setmeal($_SESSION['uid']);
 	$smarty->assign('setmeal',$my_setmeal);
-	//积分
+	//葫芦币
 	$my_points = get_user_points(intval($_SESSION['uid']));
     $my_balance = get_user_balance(intval($_SESSION['uid']));
 	$smarty->assign('points',$my_points);
     $smarty->assign('balance', $my_balance);
 	$smarty->assign('act','j_account');
 	$smarty->assign('title','我的账户 - 企业会员中心 - '.$_CFG['site_name']);
-	//积分消费明细
+	//葫芦币消费明细
 	if(trim($_GET['detail']) == '1')
 	{
 		$wheresql=" WHERE log_uid='{$_SESSION['uid']}' AND log_type=9001 AND log_mode=1";
@@ -57,7 +57,7 @@ if ($act=='j_account')
 		$smarty->assign('page',$page->show(3));
 		$smarty->display('member_company/company_my_account_detail.htm');
 	}
-	//积分规则
+	//葫芦币规则
 	else
 	{
 		$smarty->assign('points_rule',get_points_rule());
@@ -70,7 +70,7 @@ elseif ($act=='t_account')
 	$settr=intval($_GET['settr']);
 	require_once(QISHI_ROOT_PATH.'include/page.class.php');
 	$smarty->assign('operation_mode',intval($_CFG['operation_mode']));
-	//积分
+	//葫芦币
 	$my_points = get_user_points(intval($_SESSION['uid']));
 	$smarty->assign('points',$my_points);
 	//套餐
@@ -199,7 +199,7 @@ elseif ($act=='order_add_save')
 	$order['v_url']=$_CFG['site_domain'].$_CFG['site_dir']."include/payment/respond_".$paymenttpye['typename'].".php";
 	$order['v_amount']=$amount+$fee; 
 	$points=$amount*$_CFG['payment_rate'];
-	$order_id=add_order($_SESSION['uid'],4,$order['oid'],$amount,$payment_name,"充值积分:".$points,$timestamp,$points,'',1);
+	$order_id=add_order($_SESSION['uid'],4,$order['oid'],$amount,$payment_name,"充值葫芦币:".$points,$timestamp,$points,'',1);
 		if ($order_id)
 			{
 			header("location:?act=payment&order_id=".$order_id);
@@ -256,7 +256,7 @@ elseif ($act=='order_add_save')
         showmsg("添加订单失败！", 0);
     }
 }elseif ($act == 'pay_add_points_save') {
-    //余额购买积分；
+    //余额购买葫芦币；
     if (!$cominfo_flge) {
         $link[0]['text'] = "填写企业资料";
         $link[0]['href'] = 'company_info.php?act=company_profile';
@@ -290,7 +290,7 @@ elseif ($act=='order_add_save')
     $points=$points+$free_points;
 	balance_deal($_SESSION["uid"],2,$amount);
 
-    $order_id = add_order($_SESSION['uid'], 4, $order['oid'], $amount, $payment_name, "余额购买积分:" . $points, $timestamp, $points, '', 1);
+    $order_id = add_order($_SESSION['uid'], 4, $order['oid'], $amount, $payment_name, "余额购买葫芦币:" . $points, $timestamp, $points, '', 1);
     if ($order_id) {
         $sql = "UPDATE ".table('order')." SET is_paid=2,payment_time='{$timestamp}'  WHERE id='{$order_id}' LIMIT 1";
 
@@ -600,7 +600,7 @@ elseif ($act=='order_adv_add_save')
 		$p = get_user_points($_SESSION['uid']);
 		$expense = intval($_POST['points_expense_input']);
 		if($p<$expense){
-			showmsg("您的积分不足以支付！",1);
+			showmsg("您的葫芦币不足以支付！",1);
 		}
 		$order['oid']= "P-".date('ymd',time())."-".date('His',time());//订单号
 		$order['v_amount']=$expense;			//金额

@@ -45,7 +45,7 @@
 			<header class="global-header flex-box">
 				<div class="header-left flex1"><div class="prev"  id="pageback"></div></div>
 				<div class="header-center flex2"><span class="title-only">ÅàÑµ¾­Àú</span></div>
-				<div class="header-right flex3"></div>
+				{#include file="m/company/navi.html"#}
 			</header>
 			{#foreach from=$resume_train_list item=list#}
 			<article class="classifylist classifylistworke thisurl" data-url="?act=resume_train_add&pid={#$smarty.get.pid#}&id={#$list.id#}">

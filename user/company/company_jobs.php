@@ -5,6 +5,7 @@
 define('IN_QISHI', true);
 require_once(dirname(__FILE__).'/company_common.php');
 $smarty->assign('leftmenu',"jobs");
+
 if ($act=='jobs')
 {
 	$addjobs_save_succeed=intval($_GET['addjobs_save_succeed']);
@@ -603,7 +604,7 @@ elseif ($act=='jobs_perform')
 				showmsg("该职位已到期！",1);
 			}
 		}
-		//积分模式
+		//葫芦币模式
 		if($_CFG['operation_mode']=='1')
 		{
 			$mode = 1;
@@ -635,7 +636,7 @@ elseif ($act=='jobs_perform')
 							$link[1]['href'] = 'company_service.php?act=order_add';
 					showmsg("您的".$_CFG['points_byname']."不足，请先充值！",0,$link);
 					}
-					//加/减 积分
+					//加/减 葫芦币
 					report_deal($_SESSION['uid'],$points_rule['jobs_refresh']['type'],$total_point);
 					$user_points=get_user_points($_SESSION['uid']);
 					$operator=$points_rule['jobs_refresh']['type']=="1"?"+":"-";
@@ -681,14 +682,14 @@ elseif ($act=='jobs_perform')
 		elseif($_CFG['operation_mode']=='3') 
 		{
 			$setmeal=get_user_setmeal($_SESSION['uid']);
-			//该会员套餐过期 (套餐过期后就用积分来刷)
+			//该会员套餐过期 (套餐过期后就用葫芦币来刷)
 			if($setmeal['endtime']<time() && $setmeal['endtime']<>"0")
 			{
-				//后台开通  服务超限时启用积分消费
+				//后台开通  服务超限时启用葫芦币消费
 				if($_CFG['setmeal_to_points']=='1')
 				{
 					$mode = 1;
-					//用积分来刷新职位的话->按照积分模式限制->先看它是否超过次数限制和时间间隔
+					//用葫芦币来刷新职位的话->按照葫芦币模式限制->先看它是否超过次数限制和时间间隔
 					$refrestime=get_last_refresh_date($_SESSION['uid'],"1001",1);
 					$duringtime=time()-$refrestime['max(addtime)'];
 					$space = $setmeal['refresh_jobs_space']*60;
@@ -699,7 +700,7 @@ elseif ($act=='jobs_perform')
 						$link[0]['href'] = 'javascript:history.go(-1)';
 						$link[1]['text'] = "续费延期";
 						$link[1]['href'] = 'company_service.php?act=setmeal_list';
-						showmsg("您的套餐已经过期，刷新职位需消耗积分，但是用积分刷新职位每天最多只能刷新".$_CFG['com_pointsmode_refresh_time']."次,您今天已超过最大刷新次数限制，请续费延期套餐！",2,$link);	
+						showmsg("您的套餐已经过期，刷新职位需消耗葫芦币，但是用葫芦币刷新职位每天最多只能刷新".$_CFG['com_pointsmode_refresh_time']."次,您今天已超过最大刷新次数限制，请续费延期套餐！",2,$link);
 					}
 					elseif($duringtime<=$space)
 					{
@@ -707,7 +708,7 @@ elseif ($act=='jobs_perform')
 						$link[0]['href'] = 'javascript:history.go(-1)';
 						$link[1]['text'] = "续费延期";
 						$link[1]['href'] = 'company_service.php?act=setmeal_list';
-						showmsg("您的套餐已经过期，刷新职位需消耗积分，但是用积分刷新职位".$_CFG['com_pointsmode_refresh_space']."分钟内不能重复刷新！",2,$link);
+						showmsg("您的套餐已经过期，刷新职位需消耗葫芦币，但是用葫芦币刷新职位".$_CFG['com_pointsmode_refresh_space']."分钟内不能重复刷新！",2,$link);
 					}
 					else
 					{
@@ -724,9 +725,9 @@ elseif ($act=='jobs_perform')
 								$link[1]['href'] = 'company_service.php?act=setmeal_list';
 								$link[2]['text'] = "立即充值";
 								$link[2]['href'] = 'company_service.php?act=order_add';
-								showmsg("您的套餐已过期，需消耗积分来刷新职位。但目前您的".$_CFG['points_byname']."不足，请先充值积分或续费延期套餐！",0,$link);
+								showmsg("您的套餐已过期，需消耗葫芦币来刷新职位。但目前您的".$_CFG['points_byname']."不足，请先充值葫芦币或续费延期套餐！",0,$link);
 							}
-							//加/减 积分
+							//加/减 葫芦币
 							report_deal($_SESSION['uid'],$points_rule['jobs_refresh']['type'],$total_point);
 							$user_points=get_user_points($_SESSION['uid']);
 							$operator=$points_rule['jobs_refresh']['type']=="1"?"+":"-";
@@ -734,7 +735,7 @@ elseif ($act=='jobs_perform')
 						}
 					}
 				}
-				//后台没有开通  服务超限时启用积分消费
+				//后台没有开通  服务超限时启用葫芦币消费
 				else
 				{
 					$link[0]['text'] = "立即开通服务";
@@ -757,30 +758,30 @@ elseif ($act=='jobs_perform')
 				//刷新职位数 大于 剩余刷新职位数 (超了)
 				if($setmeal['refresh_jobs_time']!=0&&($jobs_num>$surplus_time))
 				{
-					//后台开通  服务超限时启用积分消费
+					//后台开通  服务超限时启用葫芦币消费
 					if($_CFG['setmeal_to_points']=='1')
 					{
-						//判断当天积分刷新职位数 是否 超过次数和间隔限制
+						//判断当天葫芦币刷新职位数 是否 超过次数和间隔限制
 						$refrestime=get_last_refresh_date($_SESSION['uid'],"1001",1);
 						$duringtime=time()-$refrestime['max(addtime)'];
 						$space = $_CFG['com_pointsmode_refresh_space']*60;
 						$refresh_time = get_today_refresh_times($_SESSION['uid'],"1001",1);
 						if($_CFG['com_pointsmode_refresh_time']!=0&&($refresh_time['count(*)']>=$_CFG['com_pointsmode_refresh_time']))
 						{
-						showmsg("刷新职位数超过了套餐次数限制，刷新职位需消耗积分，每天用积分刷新最多只能刷新".$_CFG['com_pointsmode_refresh_time']."次,您今天已超过最大刷新次数限制！",2);	
+						showmsg("刷新职位数超过了套餐次数限制，刷新职位需消耗葫芦币，每天用葫芦币刷新最多只能刷新".$_CFG['com_pointsmode_refresh_time']."次,您今天已超过最大刷新次数限制！",2);
 						}
 						elseif($duringtime<=$space)
 						{
-						showmsg("刷新职位数超过了套餐次数限制，刷新职位需消耗积分，并且".$_CFG['com_pointsmode_refresh_space']."分钟内不能重复刷新职位！",2);
+						showmsg("刷新职位数超过了套餐次数限制，刷新职位需消耗葫芦币，并且".$_CFG['com_pointsmode_refresh_space']."分钟内不能重复刷新职位！",2);
 						}
 						else
 						{
 							if($points_rule['jobs_refresh']['value']>0)
 							{
-								//超出的职位若想刷新 所需的积分
+								//超出的职位若想刷新 所需的葫芦币
 								$beyond = $jobs_num - $surplus_time;
 								$surplus_total_point=$beyond*$points_rule['jobs_refresh']['value'];
-								//会员积分不足以满足 所需积分
+								//会员葫芦币不足以满足 所需葫芦币
 								if ($surplus_total_point>$user_points && $points_rule['jobs_refresh']['type']=="2")
 								{
 									$link[0]['text'] = "返回上一页";
@@ -789,12 +790,12 @@ elseif ($act=='jobs_perform')
 									$link[1]['href'] = 'company_service.php?act=setmeal_list';
 									$link[2]['text'] = "立即充值";
 									$link[2]['href'] = 'company_service.php?act=order_add';
-									showmsg("您刷新职位数超过了套餐次数限制，超过的次数需消耗您的积分，但是您的".$_CFG['points_byname']."不足，请先充值！",0,$link);
+									showmsg("您刷新职位数超过了套餐次数限制，超过的次数需消耗您的葫芦币，但是您的".$_CFG['points_byname']."不足，请先充值！",0,$link);
 								}
-								//判断超出的职位数是否 大于 积分限制次数
+								//判断超出的职位数是否 大于 葫芦币限制次数
 								if($beyond > $_CFG['com_pointsmode_refresh_time'] && $_CFG['com_pointsmode_refresh_time']!=0)
 								{
-									showmsg("您刷新职位数超过了套餐次数限制，超过的职位数需消耗您的积分，并且也超过了".$_CFG['points_byname']."限制次数，请重新选择职位！",0);
+									showmsg("您刷新职位数超过了套餐次数限制，超过的职位数需消耗您的葫芦币，并且也超过了".$_CFG['points_byname']."限制次数，请重新选择职位！",0);
 								}
 								if(is_array($yid)){
 									for ($i=0; $i < $surplus_time; $i++) 
@@ -816,8 +817,8 @@ elseif ($act=='jobs_perform')
 									write_memberslog($_SESSION['uid'],1,2004,$_SESSION['username'],"刷新职位");
 									write_refresh_log($_SESSION['uid'],1001,1);
 								}
-								//更新会员积分
-								//加/减 积分
+								//更新会员葫芦币
+								//加/减 葫芦币
 								report_deal($_SESSION['uid'],$points_rule['jobs_refresh']['type'],$surplus_total_point);
 								$user_points=get_user_points($_SESSION['uid']);
 								$operator=$points_rule['jobs_refresh']['type']=="1"?"+":"-";
@@ -826,7 +827,7 @@ elseif ($act=='jobs_perform')
 							}
 						}
 					}
-					//后台没有开通  服务超限时启用积分消费
+					//后台没有开通  服务超限时启用葫芦币消费
 					else
 					{
 						$link[0]['text'] = "返回上一页";
@@ -898,14 +899,14 @@ elseif ($act=='jobs_perform')
 		}
 	}
 }
-//混合模式下  :  判断刷新职位是否需要消耗积分
+//混合模式下  :  判断刷新职位是否需要消耗葫芦币
 elseif ($act=='ajax_mode_points')
 {
 	//要刷新的职位数
 	$length = intval($_GET['length']);
 	$points_rule=get_cache('points_rule');
 	$setmeal=get_user_setmeal($_SESSION['uid']);
-	//该会员套餐过期 (套餐过期后就用积分来操作)
+	//该会员套餐过期 (套餐过期后就用葫芦币来操作)
 	if($setmeal['endtime']<time() && $setmeal['endtime']<>"0")
 	{
 		if($_CFG['setmeal_to_points']=='1' && $points_rule['jobs_refresh']['value']>"0")

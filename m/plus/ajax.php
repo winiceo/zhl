@@ -141,7 +141,7 @@ if($act == 'ajaxjobslist'){
 		$jobs=array();
 	}
 	// $jobslistarray=$db->getall("select * from ".table("jobs").$wheresql." ORDER BY `refreshtime` DESC LIMIT {$offset},{$rows}");
-	if (!empty($jobs) && $offset<=100)
+	if (!empty($jobs) && $offset<=1000)
 	{
 		foreach($jobs as $li)
 		{
@@ -200,7 +200,7 @@ elseif($act == 'ajaxnewslist'){
 		$wheresql=$wheresql==''?" where  title LIKE '%{$key}%' ":$wheresql." AND  title LIKE '%{$key}%' ";
 	}
 	$newslistarray=$db->getall("select * from ".table('article').$wheresql." ORDER BY `id` DESC LIMIT {$offset},{$rows}");
-	if (!empty($newslistarray) && $offset<=100)
+	if (!empty($newslistarray) && $offset<=1000)
 	{
 		foreach($newslistarray as $li)
 		{
@@ -242,7 +242,7 @@ elseif($act == 'ajaxjobfairlist'){
 	$offset=intval($_GET['offset']); 
 	$jobfair=$db->getall("select * from ".table('jobfair')." ORDER BY `id` DESC LIMIT {$offset},{$rows}");
 	$time=time();
-	if (!empty($jobfair) && $offset<=100)
+	if (!empty($jobfair) && $offset<=1000)
 	{
 		foreach($jobfair as $key => $li)
 		{
@@ -450,7 +450,7 @@ elseif($act == 'ajaxresumelist'){
 	{
 		$resume=array();
 	}
-	if (!empty($resume) && $offset<=100)
+	if (!empty($resume) && (($offset<=intval($_CFG['resume_list_max']) && intval($_CFG['resume_list_max'])!=0) || intval($_CFG['resume_list_max'])==0) )
 	{
 		foreach($resume as $li)
 		{
@@ -497,7 +497,7 @@ elseif($act == 'ajaxsimplejoblist'){
 		$wheresql.=" AND  likekey LIKE '%{$key}%' ";
 	}
 	$simplelistarray=$db->getall("select * from ".table('simple')." ORDER BY `id` ".$wheresql." DESC LIMIT {$offset},{$rows}");
-	if (!empty($simplelistarray) && $offset<=100)
+	if (!empty($simplelistarray) && $offset<=1000)
 	{
 		foreach($simplelistarray as $li)
 		{
@@ -547,7 +547,7 @@ elseif($act == 'ajaxsimpleresumelist'){
 		$wheresql.=" AND  likekey LIKE '%{$key}%' ";
 	}
 	$simplelistarray=$db->getall("select * from ".table('simple_resume')." ORDER BY `id` ".$wheresql." DESC LIMIT {$offset},{$rows}");
-	if (!empty($simplelistarray) && $offset<=100)
+	if (!empty($simplelistarray) && $offset<=1000)
 	{
 		foreach($simplelistarray as $li)
 		{
@@ -688,10 +688,15 @@ elseif($act == 'jobs_contact')
 					<h2 class="company-title">联系方式</h2>
 					<div class="company-contact">';
 				$contact=$val['contact_show']=='1'?"<div class='contact-item clearfix'><i class='w-icon w-icon-user-two f-left'></i><p><img src=\"{$_CFG['site_domain']}{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=1&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/></p></div>":"<div class='contact-item clearfix'><i class='w-icon w-icon-user-two f-left'></i><p>企业设置不对外公开</p></div>";
-				$telephone=$val['telephone_show']=='1'?"<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><p><img src=\"{$_CFG['site_domain']}{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=2&id={$id}&token={$token}&hashstr={$hashstr}\"  border=\"0\" align=\"absmiddle\"/></p></div>":"<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><p>企业设置不对外公开</p></div>";
-				if($val['landline_tel'] != '0-0-0')
+				if($val['telephone_show']=='1')
 				{
-					$landline_tel="<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><p><img src=\"{$_CFG['site_domain']}{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=6&id={$id}&token={$token}&hashstr={$hashstr}\"  border=\"0\" align=\"absmiddle\"/></p></div>";
+					$telephone=empty($val['telephone'])?'':"<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><p><img src=\"{$_CFG['site_domain']}{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=2&id={$id}&token={$token}&hashstr={$hashstr}\"  border=\"0\" align=\"absmiddle\"/></p></div>";
+					$landline_tel=$val['landline_tel'] == '0-0-0'?'':"<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><p><img src=\"{$_CFG['site_domain']}{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=6&id={$id}&token={$token}&hashstr={$hashstr}\"  border=\"0\" align=\"absmiddle\"/></p></div>";
+				}
+				else
+				{
+					$telephone="<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><p>企业设置不对外公开</p></div>";
+					$landline_tel="<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><p>企业设置不对外公开</p></div>";
 				}
 				$email=$val['email_show']=='1'?"<div class='contact-item clearfix'><i class='w-icon w-icon-mail f-left'></i><p><img src=\"{$_CFG['site_domain']}{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=3&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/></p></div>":"<div class='contact-item clearfix'><i class='w-icon w-icon-mail f-left'></i><p>企业设置不对外公开</p></div>";
 				$address="<div class='contact-item clearfix'><i class='w-icon w-icon-local-two f-left'></i><p><img src=\"{$_CFG['site_domain']}{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=4&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/>&nbsp;</p></div>
@@ -719,10 +724,21 @@ elseif($act == 'jobs_contact')
 					<h2 class="company-title">联系方式</h2>
 					<div class="company-contact">';
 				$contact=$val['contact_show']=='1'?"<div class='contact-item clearfix'><i class='w-icon w-icon-user-two f-left'></i><p>{$val['contact']}</p></div>":"<div class='contact-item clearfix'><i class='w-icon w-icon-user-two f-left'></i><p>企业设置不对外公开</p></div>";
-				$telephone=$val['telephone_show']=='1'?"<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><p>{$val['telephone']}</p></div>":"<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><p>企业设置不对外公开</p></div>";
+				if(!empty($val['telephone']))
+				{
+					$telephone=$val['telephone_show']=='1'?"<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><p>{$val['telephone']}</p></div>":"<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><p>企业设置不对外公开</p></div>";
+				}
+				else
+				{
+					$telephone=$val['telephone_show']=='1'?'':"<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><p>企业设置不对外公开</p></div>";
+				}
 				if(!empty($landline_tel))
 				{
-					$landline_tel = "<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><p>".$landline_tel."</p></div>";
+					$landline_tel=$val['telephone_show']=='1'?"<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><p>{$landline_tel}</p></div>":"<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><p>企业设置不对外公开</p></div>";
+				}
+				else
+				{
+					$landline_tel = $val['telephone_show']=='1'?'':"<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><p>企业设置不对外公开</p></div>";
 				}
 				$email=$val['email_show']=='1'?"<div class='contact-item clearfix'><i class='w-icon w-icon-mail f-left'></i><p>{$val['email']}</p></div>":"<div class='contact-item clearfix'><i class='w-icon w-icon-mail f-left'></i><p>企业设置不对外公开</p></div>";
 				$address="<div class='contact-item clearfix'><i class='w-icon w-icon-local-two f-left'></i><p>{$val['address']}&nbsp;</p></div>
@@ -829,10 +845,15 @@ elseif($act == 'company_contact')
 						<h2 class="company-title">联系方式</h2>
 						<div class="company-contact">';
 				$contact=$val['contact_show']=='1'?"<div class='contact-item clearfix'><i class='w-icon w-icon-user-two f-left'></i><p><img src=\"{$_CFG['site_domain']}{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=1&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/></p></div>":"<div class='contact-item clearfix'><i class='w-icon w-icon-user-two f-left'></i><p>企业设置不对外公开</p></div>";
-				$telephone=$val['telephone_show']=='1'?"<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><p><img src=\"{$_CFG['site_domain']}{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=2&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/></p></div>":"<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><p>企业设置不对外公开</p></div>";
-				if($val['landline_tel'] != '0-0-0')
+				if($val['telephone_show']=='1')
 				{
-					$landline_tel="<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><img src=\"{$_CFG['site_domain']}{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=5&id={$id}&token={$token}&hashstr={$hashstr}\"  border=\"0\" align=\"absmiddle\"/></p></div>";
+					$telephone=empty($val['telephone'])?'':"<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><p><img src=\"{$_CFG['site_domain']}{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=2&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/></p></div>";
+					$landline_tel=$val['landline_tel'] == '0-0-0'?'':"<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><img src=\"{$_CFG['site_domain']}{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=5&id={$id}&token={$token}&hashstr={$hashstr}\"  border=\"0\" align=\"absmiddle\"/></p></div>";
+				}
+				else
+				{
+					$telephone="<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><p>企业设置不对外公开</p></div>";
+					$landline_tel="<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><p>企业设置不对外公开</p></div>";
 				}
 				$email=$val['email_show']=='1'?"<div class='contact-item clearfix'><i class='w-icon w-icon-mail f-left'></i><p><img src=\"{$_CFG['site_domain']}{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=3&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/></p></div>":"<div class='contact-item clearfix'><i class='w-icon w-icon-mail f-left'></i><p>企业设置不对外公开</p></div>";		
 				$address="<div class='contact-item clearfix'><i class='w-icon w-icon-local-two f-left'></i><p><img src=\"{$_CFG['site_domain']}{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=4&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/>&nbsp;</p></div></div>
@@ -859,10 +880,21 @@ elseif($act == 'company_contact')
 					<h2 class="company-title">联系方式</h2>
 					<div class="company-contact">';
 				$contact=$val['contact_show']=='1'?"<div class='contact-item clearfix'><i class='w-icon w-icon-user-two f-left'></i><p>{$val['contact']}</p></div>":"<div class='contact-item clearfix'><i class='w-icon w-icon-user-two f-left'></i><p>企业设置不对外公开</p></div>";
-				$telephone=$val['telephone_show']=='1'?"<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><p>{$val['telephone']}</p></div>":"<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><p>企业设置不对外公开</p></div>";
+				if(!empty($val['telephone']))
+				{
+					$telephone=$val['telephone_show']=='1'?"<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><p>{$val['telephone']}</p></div>":"<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><p>企业设置不对外公开</p></div>";
+				}
+				else
+				{
+					$telephone=$val['telephone_show']=='1'?'':"<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><p>企业设置不对外公开</p></div>";
+				}
 				if(!empty($landline_tel))
 				{
-					$landline_tel = "<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><p>".$landline_tel."</p></div>";
+					$landline_tel=$val['telephone_show']=='1'?"<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><p>{$landline_tel}</p></div>":"<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><p>企业设置不对外公开</p></div>";
+				}
+				else
+				{
+					$landline_tel = $val['telephone_show']=='1'?'':"<div class='contact-item clearfix'><i class='w-icon w-icon-phone f-left'></i><p>企业设置不对外公开</p></div>";
 				}
 				$email=$val['email_show']=='1'?"<div class='contact-item clearfix'><i class='w-icon w-icon-mail f-left'></i><p>{$val['email']}</p></div>":"<div class='contact-item clearfix'><i class='w-icon w-icon-mail f-left'></i><p>企业设置不对外公开</p></div>";		
 				$address="<div class='contact-item clearfix'><i class='w-icon w-icon-local-two f-left'></i><p>{$val['address']}&nbsp;</p></div></div>
@@ -912,11 +944,11 @@ elseif($act == 'resume_contact')
 							<h2 class="title">联系方式</h2>
 							<div class="con">
 								<div class="login-tips">您还没有登录，登录后才可以查看联系方式！</div>
-								<div class="button-group layout-box">
-									<div class="button-box box-col"><a href="login.php"><button class="button blue normal responsive">立即登录</button></a></div>
-									<div class="button-box box-col"><a href="user_reg.php"><button class="button orange normal responsive">注册账号</button></a></div>
-								</div>
 							</div>
+						</article>
+						<article class="invitecollectresume flex-box">
+							<div class="left"><div class="invite" id="down_resume">下载简历</div></div>
+							<div class="right flex2"><div class="collect"  id="collect_resume"></div></div>
 						</article>';
 			}
 		}
@@ -952,11 +984,11 @@ elseif($act == 'resume_contact')
 							<h2 class="title">联系方式</h2>
 							<div class="con">
 								<div class="login-tips">您还没有登录，登录后才可以查看联系方式！</div>
-								<div class="button-group layout-box">
-									<div class="button-box box-col"><a href="login.php"><button class="button blue normal responsive">立即登录</button></a></div>
-									<div class="button-box box-col"><a href="user_reg.php"><button class="button orange normal responsive">注册账号</button></a></div>
-								</div>
 							</div>
+						</article>
+						<article class="invitecollectresume flex-box">
+							<div class="left"><div class="invite" id="down_resume">下载简历</div></div>
+							<div class="right flex2"><div class="collect"  id="collect_resume"></div></div>
 						</article>';
 			}
 		}
@@ -1203,7 +1235,7 @@ elseif ($act == 'invited_add')
 			write_memberslog($_SESSION['uid'],1,6001,$_SESSION['username'],"邀请了 {$resume_user['username']} 面试");				
 		}			
 	}
-	//积分模式	 
+	//葫芦币模式	 
 	elseif($_CFG['operation_mode']=="1")
 	{
 		$mypoints=get_user_points($_SESSION['uid']);
@@ -1212,7 +1244,7 @@ elseif ($act == 'invited_add')
 		$ptype=$resume['talent_']=='2'?$points_rule['interview_invite_advanced']['type']:$points_rule['interview_invite']['type'];
 		if  ($mypoints<$points)
 		{
-			exit("您的积分不够");
+			exit("您的葫芦币不够");
 		}
 		$db->inserttable(table('company_interview'),$addarr);
 		if ($points>0)
@@ -1231,7 +1263,7 @@ elseif ($act == 'invited_add')
 	//混合模式
 	elseif($_CFG['operation_mode']=="3")
 	{
-		//查看他的积分
+		//查看他的葫芦币
 		$mypoints=get_user_points($_SESSION['uid']);
 		$points_rule=get_cache('points_rule');
 		//先看该会员是否有发布通过审核的的职位
@@ -1248,15 +1280,15 @@ elseif ($act == 'invited_add')
 		}
 		elseif($resume['talent_']=='2' && $setmeal['interview_senior']<=0)
 		{
-			//后台开启 启用积分消费
+			//后台开启 启用葫芦币消费
 			if ($_CFG['setmeal_to_points']=="1")
 			{
 				$points=$points_rule['interview_invite_advanced']['value'];
 				$ptype=$points_rule['interview_invite_advanced']['type'];
-				//减积分
+				//减葫芦币
 				if(intval($ptype) == 2 && ($mypoints < $points))
 				{
-					exit("您邀请面试次数已经超出限制 , 并且积分不足 !");
+					exit("您邀请面试次数已经超出限制 , 并且葫芦币不足 !");
 				}
 				$is_points = '1';
 			}
@@ -1267,15 +1299,15 @@ elseif ($act == 'invited_add')
 		}
 		elseif ($resume['talent_']=='1' && $setmeal['interview_ordinary']<=0)
 		{
-			//后台开启 启用积分消费
+			//后台开启 启用葫芦币消费
 			if ($_CFG['setmeal_to_points']=="1")
 			{
 				$points=$points_rule['interview_invite']['value'];
 				$ptype=$points_rule['interview_invite']['type'];
-				//减积分
+				//减葫芦币
 				if(intval($ptype) == 2 && ($mypoints < $points))
 				{
-					exit("您邀请面试次数已经超出限制 , 并且积分不足 !");
+					exit("您邀请面试次数已经超出限制 , 并且葫芦币不足 !");
 				}
 				$is_points = '1';
 			}
@@ -1286,7 +1318,7 @@ elseif ($act == 'invited_add')
 		}
 		//写日志以及插数据库
 		$db->inserttable(table('company_interview'),$addarr);
-		//$is_points为空 : 说明用套餐操作的   不为空 :  说明是用积分操作的
+		//$is_points为空 : 说明用套餐操作的   不为空 :  说明是用葫芦币操作的
 		if(empty($is_points))
 		{
 			$resume_talent = $resume['talent_']=='1'?'interview_ordinary':'interview_senior';
@@ -1406,7 +1438,7 @@ elseif ($act=='booth')
 					$setsqlarr['company_addtime']=$company_profile['addtime'];
 					$setsqlarr['jobfair_title']=$jobfair['title'];
 					$setsqlarr['jobfair_addtime']=$jobfair['addtime'];
-					$setsqlarr['note']="{$_SESSION['username']} 预定了招聘会 《{$jobfair['title']}》 的展位，已成功扣除积分 {$jobfair['predetermined_point']}";	
+					$setsqlarr['note']="{$_SESSION['username']} 预定了招聘会 《{$jobfair['title']}》 的展位，已成功扣除葫芦币 {$jobfair['predetermined_point']}";	
 					if ($db->inserttable(table('jobfair_exhibitors'),$setsqlarr))
 					{
 					if ($jobfair['predetermined_point']>0 && $_CFG['operation_mode']=='1')

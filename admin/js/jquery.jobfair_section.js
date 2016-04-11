@@ -261,6 +261,11 @@ function allaround(dir) {
 			$(this).parent().find('.aui_outer').hide();
 		}
 	});
+	$('.aui_outer').css({ 
+		position:'absolute', 
+		left: ($(window).width() - $('.aui_outer').outerWidth())/2, 
+		top: ($(window).height() - $('.aui_outer').outerHeight())/2 + $(document).scrollTop()
+	});
 	// πÿ±’œ¬¿≠
 	$(".selector-close").die().live('click', function(event) {
 		$('.aui_outer').hide();

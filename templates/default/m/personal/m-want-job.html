@@ -13,7 +13,7 @@
 		<script type="text/javascript" src="../js/layer/layer.js" ></script>
 		<script type="text/javascript" src="../js/jquery.editCVsubsite.js" ></script>
 		<script type="text/javascript" src="../js/iscroll.js" ></script>
-		<script src="{#$QISHI.site_domain#}{#$QISHI.site_dir#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
+		<script src="{#$QISHI.main_domain#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
 		<script type="text/javascript">
 			$(document).ready(function() {
 				// ajax提交保存期望职位
@@ -56,7 +56,7 @@
 			<header class="global-header flex-box">
 				<div class="header-left flex1"><div class="prev" id="pageback"></div></div>
 				<div class="header-center flex2"><span class="title-only">求职意向</span></div>
-				<div class="header-right flex3"></div>
+				{#include file="m/company/navi.html"#}
 			</header>
 			<article class="formDiv">
 				<div class="formChild">

@@ -5,8 +5,10 @@
 <meta name="renderer" content="webkit"> 
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<title>积分商城-搜索结果</title>
+<title>葫芦币商城-搜索结果</title>
 <link rel="stylesheet" href="{#$QISHI.site_shop_template#}css/shop.css" />
+<link rel="stylesheet" href="{#$QISHI.site_shop_template#}css/common.css" />
+<link rel="stylesheet" href="{#$QISHI.site_template#}css/header.css" />
 <script src="{#$QISHI.site_shop_template#}js/jquery.js"></script>
 <script>
 $(document).ready(function() {
@@ -47,6 +49,10 @@ $(document).ready(function() {
 </head>
 <body>
 	{#include file="../tpl_shop/default/header.htm"#}
+    <!-- 当前位置 -->
+	<div style="height:12px;line-height:12px;width:998px;margin:0 auto;padding-top:5px;padding-bottom:10px;color:#999999;">
+		当前位置：<a href="{#$QISHI.site_dir#}" style="color:#999999;">首页</a>>葫芦币商城
+	</div>
 	<div class=" container shop-main clearfix">
 		<!-- left -->
 		<div class="threefour-left">
@@ -76,19 +82,19 @@ $(document).ready(function() {
 			{#if $smarty.get.shop_nav!='ican'#}
 			<div class="shop-filter">
 				<span>按分值浏览：</span>
-				<a href="{#"points_interval:"|qishi_parse_url#}" class="filter-item" {#if $smarty.get.points_interval==''#}style="color: #0180cf;"{#/if#}>全部</a>
-				<a href="{#"points_interval:0-1000"|qishi_parse_url#}" class="filter-item" {#if $smarty.get.points_interval=='0-1000'#}style="color: #0180cf;"{#/if#}>0-1000</a>
-				<a href="{#"points_interval:1000-3000"|qishi_parse_url#}" class="filter-item" {#if $smarty.get.points_interval=='1000-3000'#}style="color: #0180cf;"{#/if#}>1000-3000</a>
-				<a href="{#"points_interval:3000-5000"|qishi_parse_url#}" class="filter-item" {#if $smarty.get.points_interval=='3000-5000'#}style="color: #0180cf;"{#/if#}>3000-5000</a>
-				<a href="{#"points_interval:5000-7000"|qishi_parse_url#}" class="filter-item" {#if $smarty.get.points_interval=='5000-7000'#}style="color: #0180cf;"{#/if#}>5000-7000</a>
-				<a href="{#"points_interval:7000-9000"|qishi_parse_url#}" class="filter-item" {#if $smarty.get.points_interval=='7000-9000'#}style="color: #0180cf;"{#/if#}>7000-9000</a>
-				<a href="{#"points_interval:9000-12000"|qishi_parse_url#}" class="filter-item" {#if $smarty.get.points_interval=='9000-12000'#}style="color: #0180cf;"{#/if#}>9000-12000</a>
-				<a href="{#"points_interval:12000-15000"|qishi_parse_url#}" class="filter-item" {#if $smarty.get.points_interval=='12000-15000'#}style="color: #0180cf;"{#/if#}>12000-15000</a>
-				<a href="{#"points_interval:15000-99999"|qishi_parse_url#}" class="filter-item" {#if $smarty.get.points_interval=='15000-99999'#}style="color: #0180cf;"{#/if#}>15000以上</a>
+				<a href="{#"points_interval:"|qishi_parse_url#}" class="filter-item" {#if $smarty.get.points_interval==''#}style="color: #F75000;"{#/if#}>全部</a>
+				<a href="{#"points_interval:0-1000"|qishi_parse_url#}" class="filter-item" {#if $smarty.get.points_interval=='0-1000'#}style="color: #F75000;"{#/if#}>0-1000</a>
+				<a href="{#"points_interval:1000-3000"|qishi_parse_url#}" class="filter-item" {#if $smarty.get.points_interval=='1000-3000'#}style="color: #F75000;"{#/if#}>1000-3000</a>
+				<a href="{#"points_interval:3000-5000"|qishi_parse_url#}" class="filter-item" {#if $smarty.get.points_interval=='3000-5000'#}style="color: #F75000;"{#/if#}>3000-5000</a>
+				<a href="{#"points_interval:5000-7000"|qishi_parse_url#}" class="filter-item" {#if $smarty.get.points_interval=='5000-7000'#}style="color: #F75000;"{#/if#}>5000-7000</a>
+				<a href="{#"points_interval:7000-9000"|qishi_parse_url#}" class="filter-item" {#if $smarty.get.points_interval=='7000-9000'#}style="color: #F75000;"{#/if#}>7000-9000</a>
+				<a href="{#"points_interval:9000-12000"|qishi_parse_url#}" class="filter-item" {#if $smarty.get.points_interval=='9000-12000'#}style="color: #F75000;"{#/if#}>9000-12000</a>
+				<a href="{#"points_interval:12000-15000"|qishi_parse_url#}" class="filter-item" {#if $smarty.get.points_interval=='12000-15000'#}style="color: #F75000;"{#/if#}>12000-15000</a>
+				<a href="{#"points_interval:15000-99999"|qishi_parse_url#}" class="filter-item" {#if $smarty.get.points_interval=='15000-99999'#}style="color: #F75000;"{#/if#}>15000以上</a>
 			</div>
 			{#/if#}
 			<div class="right-common-box">
-				{#qishi_shop_list set="列表名:list,分页显示:1,分类ID:GET[scategory],关键字:GET[key],显示数目:8,标题长度:10,填补字符:...,积分区间:GET[points_interval],会员积分:GET[user_points],排序:GET[displayorder]"#}
+				{#qishi_shop_list set="列表名:list,分页显示:1,分类ID:GET[scategory],关键字:GET[key],显示数目:8,标题长度:10,填补字符:...,葫芦币区间:GET[points_interval],会员葫芦币:GET[user_points],排序:GET[displayorder]"#}
 				<div class="r-com-top clearfix">
 					<div class="items-filter f-left">
 						<span>筛选：</span>
@@ -110,7 +116,7 @@ $(document).ready(function() {
 					<div class="commodity-item f-left">
 						<div class="comm-img"><a href="{#$li.shop_url#}"><img src="{#if $li.shop_img#}{#$QISHI.site_dir#}data/shop/thumb/{#$li.shop_img#}{#else#}{#$QISHI.site_dir#}data/shop/no_img.png{#/if#}" alt="商品照片" width="175" height="175" /></a></div>
 						<div class="comm-link"><a href="{#$li.shop_url#}" title="{#$li.shop_title#}">{#$li.shop_title#}</a></div>
-						<div class="comm-price">积分：<span>{#$li.shop_points#}</span></div>
+						<div class="comm-price">葫芦币：<span>{#$li.shop_points#}</span></div>
 						<a href="{#$li.shop_url#}" class="exchange-btn">兑换</a>
 					</div>
 					{#/foreach#}

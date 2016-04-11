@@ -1,15 +1,25 @@
 <?php
  /*
  * 74cms 网站首页
+ * ============================================================================
+ * 版权所有: 骑士网络，并保留所有权利。
+ * 网站地址: http://www.zhaohulu.com；
+ * ----------------------------------------------------------------------------
+ * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和
+ * 使用；不允许对程序代码以任何形式任何目的的再发布。
+ * ============================================================================
 */
-
-
-
 if(!file_exists(dirname(__FILE__).'/data/install.lock')) header("Location:install/index.php");
 define('IN_QISHI', true);
 $alias="QS_index";
 require_once(dirname(__FILE__).'/include/common.inc.php');
-if(browser()=="mobile" && $_GET['iswap']==""){
+
+if($_GET['iswap']!=""){
+	
+	$_SESSION['iswap'] = $_GET['iswap'];
+}
+
+if(browser()=="mobile" && $_SESSION['iswap']==""){
 	header("location:".$_CFG['wap_domain']);
 }
 $redirect_to_subsite = false;
@@ -24,9 +34,8 @@ if(intval($_CFG['subsite_id'])==0){
 		$redirect_disname = $subinfo['disname'];
 		$redirect_sitename = $subinfo['sitename'];
 	}
+	header("location:substation");
 }
-
-
 $smarty->assign('redirect_to_subsite',$redirect_to_subsite);
 $smarty->assign('redirect_url',$redirect_url);
 $smarty->assign('redirect_disname',$redirect_disname);

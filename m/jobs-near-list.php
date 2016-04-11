@@ -122,7 +122,7 @@ if($act == 'near')
 		$wheresql .= " AND map_x!='' AND map_y!='' ";
 	}
 	$id = array();
-	if(!empty($lng) && !empty($lat))
+	if(preg_match('/^[-]?(\d|([1-9]\d)|(1[0-7]\d)|(180))(\.\d*)?$/', $lng) && preg_match('/^[-]?(\d|([1-8]\d)|(90))(\.\d*)?$/', $lat))
 	{
 		$idresult = $db->query("SELECT id , ROUND(6378.138*2*ASIN(SQRT(POW(SIN((".$lat."*PI()/180-map_y*PI()/180)/2),2)+COS(".$lat."*PI()/180)*COS(map_y*PI()/180)*POW(SIN((".$lng."*PI()/180-map_x*PI()/180)/2),2)))*1000) AS juli FROM {$jobstable} ".$wheresql." ORDER BY juli ASC   LIMIT {$offset},{$rows}");
 		while($row = $db->fetch_array($idresult))
@@ -262,11 +262,14 @@ elseif($act == 'ajaxjobsnearlist')
 	{
 		$wheresql = " WHERE map_x!='' AND map_y!='' ";
 	}
-
-	$idresult = $db->query("SELECT id , ROUND(6378.138*2*ASIN(SQRT(POW(SIN((".$lat."*PI()/180-map_y*PI()/180)/2),2)+COS(".$lat."*PI()/180)*COS(map_y*PI()/180)*POW(SIN((".$lng."*PI()/180-map_x*PI()/180)/2),2)))*1000) AS juli FROM {$jobstable} {$wheresql} ORDER BY juli ASC   LIMIT {$offset},{$rows}");
-	while($row = $db->fetch_array($idresult))
+	$id = array();
+	if(preg_match('/^[-]?(\d|([1-9]\d)|(1[0-7]\d)|(180))(\.\d*)?$/', $lng) && preg_match('/^[-]?(\d|([1-8]\d)|(90))(\.\d*)?$/', $lat))
 	{
-		$id[]=$row['id'];
+		$idresult = $db->query("SELECT id , ROUND(6378.138*2*ASIN(SQRT(POW(SIN((".$lat."*PI()/180-map_y*PI()/180)/2),2)+COS(".$lat."*PI()/180)*COS(map_y*PI()/180)*POW(SIN((".$lng."*PI()/180-map_x*PI()/180)/2),2)))*1000) AS juli FROM {$jobstable} {$wheresql} ORDER BY juli ASC   LIMIT {$offset},{$rows}");
+		while($row = $db->fetch_array($idresult))
+		{
+			$id[]=$row['id'];
+		}
 	}
 	if (!empty($id))
 	{
@@ -278,7 +281,7 @@ elseif($act == 'ajaxjobsnearlist')
 	{
 		$jobs_list=array();
 	}
-	if(!empty($jobs_list) && $offset<=100)
+	if(!empty($jobs_list) && $offset<=1000)
 	{
 		foreach ($jobs_list as $key => $li) 
 		{

@@ -24,7 +24,7 @@
 			<header class="global-header flex-box">
 				<div class="header-left flex1"><div class="prev" id="pageback"></div></div>
 				<div class="header-center flex2"><span class="title-only">谁看过我</span></div>
-				<div class="header-right flex3"><div class="operatebox" id="{#if $view_list#}operateaction{#/if#}">管理</div></div>
+				{#include file="m/personal/navi.html"#}
 			</header>
 			{#if $view_list#}
 				<div id="container">
@@ -60,7 +60,7 @@
 						<div class="right cof90 flex2 nobm">没有更多申请职位了！</div>
 					</section>
 				</article>
-				<article class="flex-box arlogout chkabaout dn">
+				<article class="flex-box arlogout arlogoutedit chkabaout dn">
 					<div class="operatea">
 						<a class="checkall flex-box" id="opecheckall" href="javascript:;">全选</a>
 						<a class="delete flex-box" id="opecheckdelete" href="javascript:;">删除</a>

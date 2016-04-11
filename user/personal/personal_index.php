@@ -5,6 +5,22 @@
 define('IN_QISHI', true);
 require_once(dirname(__FILE__) . '/personal_common.php');
 $smarty->assign('leftmenu',"index");
+
+if($act=="test"){
+
+	require_once(QISHI_ROOT_PATH.'genv/func_resume_upload.php');
+
+	$tagss=get_category("QS_resumetag");
+	shuffle($tagss);
+	$cc=array_slice($tagss,3,5);
+	$tag_id=array();
+	$tag_cn=array();
+	foreach($cc as $k=>$v){
+		$tag_id[]=$v["c_id"];
+		$tag_cn[]=$v["c_name"];
+	}
+}
+
 if ($act=='index')
 {
 	$uid=intval($_SESSION['uid']);

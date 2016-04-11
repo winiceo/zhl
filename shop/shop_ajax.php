@@ -1,6 +1,6 @@
 <?php
  /*
- * 74cms 积分商城首页
+ * 74cms 葫芦币商城首页
 */
 define('IN_QISHI', true);
 require_once('shop_common.php');
@@ -10,7 +10,7 @@ if($act == 'check')
 	$id=intval($_GET['id']); //商品id
 	$num=$_GET['num']?intval($_GET['num']):1;//兑换数目
 	$uid=intval($_SESSION['uid']);
-	// 获取企业积分
+	// 获取企业葫芦币
 	$uesr_points=get_user_points($uid);
 	// 获取商品信息
 	$shop_one=get_shop_one($id);
@@ -92,7 +92,7 @@ if($act == 'check')
 					    <tr>
 							<td width="20" align="right"></td>
 							<td style="text-align:center;">
-								您的积分不足，请重新选择礼品兑换！<br>
+								您的葫芦币不足，请重新选择礼品兑换！<br>
 								<a class="prevListIndex" href="shop_list.php">返回首页</a>
 							</td>
 					    </tr>

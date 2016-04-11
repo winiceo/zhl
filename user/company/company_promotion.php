@@ -51,7 +51,7 @@ elseif ($act=='tpl_save')
 		{
 			$link[0]['text'] = "返回上一页";
 			$link[0]['href'] = 'javascript:history.go(-1)';
-			$link[1]['text'] = "充值积分";
+			$link[1]['text'] = "充值葫芦币";
 			$link[1]['href'] = 'company_service.php?act=order_add';
 			showmsg("你的".$_CFG['points_byname']."不够进行此次操作，请先充值！",1,$link);
 		}

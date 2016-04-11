@@ -14,9 +14,9 @@ a.underline:hover{text-decoration: underline;}
 .f-right{float: right;}
 input.checkbox{position: relative;margin-right: 3px;top:2px;vertical-align: baseline;}
 .sub-container{width: 1200px;margin:0 auto;}
-.sub-page-header{height: 240px;width: 100%;background-color: #fff;border-bottom:2px solid #ff7200;}
+.sub-page-header{height: 215px;width: 100%;background-color: #fff;border-bottom:2px solid #ff7200;}
 .sub-page-header .logo-box{margin-top: 73px;}
-.sub-page-header .sub-bg-text{margin-left: 45px;background: url(../images/substation-bg.jpg) no-repeat 0px 0px;width: 632px;height: 195px;margin-top: 25px;}
+.sub-page-header .sub-bg-text{margin-left: 45px;background: url(../images/substation-bg.jpg) no-repeat 0px 0px;width: 632px;height: 190px;margin-top: 25px;}
 .sub-page-header .sub-bg-text p{margin:45px 0 0 195px;line-height: 30px;font-size: 13px;color:#333;text-indent:3em;vertical-align: bottom;letter-spacing: 1px;}
 .sub-page-header .sub-bg-text p a{color:#ff7200;font-size: 18px;}
 .sub-page-header .sub-right-code{width: 87px;margin-right: 52px;margin-top:76px;text-align: center;white-space: nowrap;}
@@ -28,13 +28,13 @@ input.checkbox{position: relative;margin-right: 3px;top:2px;vertical-align: base
 .s-page-wrapper .s-page-filter .puick-enter .puick-enter-text input{font-size: 12px;color:#666;padding:;line-height: 18px;height:18px;padding:9px;border:1px solid #d9d9d9;width: 205px;background-color: #f7f7f7;}
 .s-page-wrapper .s-page-filter .puick-enter .puick-hot{margin-left: 34px;font-size: 14px;color:#999;}
 .s-page-wrapper .s-page-filter .puick-enter .puick-hot a{color:#666;margin-left:15px;}
-.s-page-wrapper .s-page-filter .enter-index{font-size: 14px;color:#0180cf;line-height: 38px;}
+.s-page-wrapper .s-page-filter .enter-index{font-size: 14px;color:#666;line-height: 38px;}
 .station-set{padding:25px 20px;}
 .station-set h3{font-size: 14px;font-weight: normal;color:#666;}
 .station-set .set-list{width: 579px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
 .station-set .set-list .set-item{margin-top: 15px;height: 32px;width: 579px;}
 .station-set .set-list .set-item .station-word{width: 30px;height: 30px;border:1px solid #ddd;display: inline-block;line-height: 30px;text-align: center;font-size: 14px;color:#666;background-color: #f0f0f0;font-weight: bold;}
-.station-set .set-list .set-item a{color:#0180cf;font-size: 12px;margin-left: 17px;}
+.station-set .set-list .set-item a{color:#666;font-size: 12px;margin-left: 17px;}
 .sub-page-footer{padding:25px 0;text-align: center;font-size: 12px;line-height: 20px;color:#999;}
 
 /*框计算*/

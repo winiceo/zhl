@@ -59,7 +59,7 @@ elseif($act == 'set_points_save')
 	}
 	refresh_points_rule_cache();
 	//填写管理员日志
-	write_log("后台成功更新积分规则", $_SESSION['admin_name'],3);
+	write_log("后台成功更新葫芦币规则", $_SESSION['admin_name'],3);
 	adminmsg("更新设置成功！",2);
 }
 elseif($act == 'set_points_config_save')

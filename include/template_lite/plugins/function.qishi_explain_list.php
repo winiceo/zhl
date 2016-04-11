@@ -86,7 +86,7 @@ else
 	}
 	if (intval($_CFG['subsite_id'])>0)
 	{
-		$wheresql.=" AND subsite_id=".intval($_CFG['subsite_id'])." ";
+		$wheresql.=" AND (subsite_id=".intval($_CFG['subsite_id'])." or subsite_id = 0)";
 	}
 	$limit=" LIMIT ".abs($aset['start']).','.$aset['row'];
 	$result = $db->query("SELECT subsite_id,tit_color,tit_b,title,id,addtime,is_url FROM ".table('explain')." ".$wheresql.$orderbysql.$limit);

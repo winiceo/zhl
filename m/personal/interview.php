@@ -12,6 +12,8 @@ require_once(QISHI_ROOT_PATH.'include/fun_personal.php');
 $smarty->cache = false;
 $db = new mysql($dbhost,$dbuser,$dbpass,$dbname);
 $act = !empty($_REQUEST['act']) ? trim($_REQUEST['act']) : 'interview';
+wap_weixin_openid($_GET['code']);
+
 if ($_SESSION['uid']=='' || $_SESSION['username']==''||intval($_SESSION['utype'])==1)
 {
 	header("Location: ../login.php");

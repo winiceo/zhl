@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312">
 <title>{#$title#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="找葫芦网" />
+<meta name="author" content="找葫芦" />
 <meta name="copyright" content="zhaohulu.com" />
 <link href="{#$QISHI.site_template#}css/user_common.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/user_train.css" rel="stylesheet" type="text/css" />
@@ -13,7 +13,7 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
-  //计算获得积分数量
+  //计算获得葫芦币数量
   $("#amount").keyup(function(){  
     if((/^(\+|-)?\d+$/.test($(this).val())) && $(this).val()>={#$QISHI.train_payment_min#})
     {
@@ -81,14 +81,14 @@ $(document).ready(function() {
 			</div>
 
 			<div class="navs">
-				<a href="?act=order_add" class="se">积分充值</a>
+				<a href="?act=order_add" class="se">葫芦币充值</a>
         <a href="?act=order_list">我的订单</a>
 					
 				<div class="clear"></div>
 			</div>
 		</div>
 		<div class="balance">
-  			<div class="bal_text">您的账户剩余<span> {#$points#} </span>{#$QISHI.train_points_quantifier#}{#$QISHI.train_points_byname#}&nbsp;&nbsp;&nbsp;&nbsp;<a href="train_service.php?act=account">[积分明细]</a>&nbsp;&nbsp;<a href="train_service.php?act=account">[积分消费规则]</a></div>
+  			<div class="bal_text">您的账户剩余<span> {#$points#} </span>{#$QISHI.train_points_quantifier#}{#$QISHI.train_points_byname#}&nbsp;&nbsp;&nbsp;&nbsp;<a href="train_service.php?act=account">[葫芦币明细]</a>&nbsp;&nbsp;<a href="train_service.php?act=account">[葫芦币消费规则]</a></div>
   		</div>
   		<div class="bar">
   			<div class="bar_step1">

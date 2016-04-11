@@ -292,7 +292,7 @@ function refresh_resume($pid,$uid)
 	if (!$db->query("update  ".table('resume_search_rtime')."  SET refreshtime='{$time}'  WHERE id='{$pid}' AND uid='{$uid}'")) return false;
 	if (!$db->query("update  ".table('resume_search_key')."  SET refreshtime='{$time}'  WHERE id='{$pid}' AND uid='{$uid}'")) return false;
 
-	// 查看操作记录表 统计刷新简历所奖励积分  判断是否超过上限   若没超过上限 则继续添加积分
+	// 查看操作记录表 统计刷新简历所奖励葫芦币  判断是否超过上限   若没超过上限 则继续添加葫芦币
 	$today=mktime(0, 0, 0,date('m'), date('d'), date('Y'));
 	$info=$db->getone("SELECT sum(points) as num FROM ".table('members_handsel')." WHERE uid ='{$_SESSION['uid']}' AND htype='refreshresume' AND addtime>{$today} ");
 	if(intval($info['num']) >= intval($_CFG['resume_refresh_points_max']))
@@ -342,7 +342,7 @@ function del_resume($uid,$pid)
 	if (!$db->query("Delete from ".table('resume_search_key')." WHERE id='{$pid}' AND uid='{$uid}' ")) return false;
 	if (!$db->query("Delete from ".table('view_resume')." WHERE resumeid='{$pid}'")) return false;
 	$db->query("delete from ".table('resume_entrust')." where id=".$pid);
-	// 积分操作 和 写日志
+	// 葫芦币操作 和 写日志
 	$points_rule=get_cache('points_rule');
 	$user_points=get_user_points($_SESSION['uid']);
 	if ($points_rule['delete_resume']['value']>0)
@@ -1652,7 +1652,7 @@ function report_deal($uid,$i_type=1,$points=0)
 	if (!$db->query($sql))return false;
 	return true;
 }
-//修改简历 积分日志操作 方法
+//修改简历 葫芦币日志操作 方法
 function perfect_resume($uid,$username,$pid,$type="1")
 {
 	$uid = intval($_SESSION['uid']);
@@ -1674,7 +1674,7 @@ function perfect_resume($uid,$username,$pid,$type="1")
 }
 
 
-//算命减积分
+//算命减葫芦币
 function fortune($uid,$username,$pid,$type="2")
 {
 	$uid = intval($_SESSION['uid']);
@@ -1716,7 +1716,7 @@ function get_payment_info($typename,$name=false)
 	global $db;
 	if($typename == 'points')
 	{
-		return '积分兑换';
+		return '葫芦币兑换';
 	}
 	$sql = "select * from ".table('payment')." where typename ='".$typename."' AND p_install='2' LIMIT 1";
 	$val=$db->getone($sql);

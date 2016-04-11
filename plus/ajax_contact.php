@@ -1,6 +1,6 @@
 <?php
  /*
- * 74cms ajax 联系方式
+ * ajax 联系方式
 */
 define('IN_QISHI', true);
 require_once(dirname(dirname(__FILE__)).'/include/plus.common.inc.php');
@@ -90,10 +90,15 @@ if($act == 'jobs_contact')
 			$hashstr=$_GET['hashstr'];
 			$token=md5($val['contact'].$id.$val['telephone']);
 			$contact=$val['contact_show']=='1'?"<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=1&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/></li>":"企业设置不对外公开";
-			$telephone=$val['telephone_show']=='1'?"<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=2&id={$id}&token={$token}&hashstr={$hashstr}\"  border=\"0\" align=\"absmiddle\"/><a style=\"color:#017fcf\" id=\"tel_show_pic\" href=\"javascript:;\" >[查看]</a> <span  id=\"show_detail\" style='color:#666;display:none'>[联系我时请说明是在&nbsp;".$_CFG['site_name']."&nbsp;上看到的]</span>":"企业设置不对外公开";
-			if($val['landline_tel'] != '0-0-0')
+			if($val['telephone_show']=='1')
 			{
-				$landline_tel="<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=6&id={$id}&token={$token}&hashstr={$hashstr}\"  border=\"0\" align=\"absmiddle\"/>";
+				$telephone=empty($val['telephone'])?'':"<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=2&id={$id}&token={$token}&hashstr={$hashstr}\"  border=\"0\" align=\"absmiddle\"/><a style=\"color:#017fcf\" id=\"tel_show_pic\" href=\"javascript:;\" >[查看]</a> <span  id=\"show_detail\" style='color:#666;display:none'>[联系我时请说明是在&nbsp;".$_CFG['site_name']."&nbsp;上看到的]</span>";
+				$landline_tel=$val['landline_tel'] == '0-0-0'?'':"<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=6&id={$id}&token={$token}&hashstr={$hashstr}\"  border=\"0\" align=\"absmiddle\"/>";
+			}
+			else
+			{
+				$telephone="企业设置不对外公开";
+				$landline_tel="企业设置不对外公开";
 			}
 			$email=$val['email_show']=='1'?"<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=3&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/>":"企业设置不对外公开";
 
@@ -101,11 +106,14 @@ if($act == 'jobs_contact')
 									<div class="contact-item clearfix">
 										<div class="contact-type f-left">联 系 人：</div>
 										<div class="contact-content f-left">'.$contact.'</div>
-									</div>
-									<div class="contact-item clearfix">
+									</div>';
+			if(!empty($telephone))
+			{
+				$html.='<div class="contact-item clearfix">
 										<div class="contact-type f-left">联系手机：</div>
 										<div class="contact-content f-left">'.$telephone.'</div>
 									</div>';
+			}
 			if(!empty($landline_tel))
 			{
 				$landline_tel='<div class="contact-item clearfix">
@@ -142,16 +150,20 @@ if($act == 'jobs_contact')
 				}
 			$contact=$val['contact_show']=='1'?"{$val['contact']}":"企业设置不对外公开";
 			$telephone=$val['telephone_show']=='1'?"{$val['telephone']}":"企业设置不对外公开</li>";
+			$landline_tel=$val['telephone_show']=='1'?"{$landline_tel}":"企业设置不对外公开</li>";
 			$email=$val['email_show']=='1'?"{$val['email']}":"企业设置不对外公开</li>";
 						$html='<div class="c-contact">
 									<div class="contact-item clearfix">
 										<div class="contact-type f-left">联 系 人：</div>
 										<div class="contact-content f-left">'.$contact.'</div>
-									</div>
-									<div class="contact-item clearfix">
+									</div>';
+						if(!empty($telephone))
+						{	
+							$html.='<div class="contact-item clearfix">
 										<div class="contact-type f-left">联系手机：</div>
 										<div class="contact-content f-left"><span>'.$telephone.'</span></div>
 									</div>';
+						}		
 						if(!empty($landline_tel))
 						{
 							$landline_tel = '<div class="contact-item clearfix">
@@ -260,10 +272,15 @@ elseif($act == 'company_contact')
 			{
 			$token=md5($val['contact'].$id.$val['telephone']);
 			$contact=$val['contact_show']=='1'?"<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=1&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/></li>":"企业设置不对外公开";
-			$telephone=$val['telephone_show']=='1'?"<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=2&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/>":"企业设置不对外公开";
-			if($val['landline_tel'] != '0-0-0')
+			if($val['telephone_show']=='1')
 			{
-				$landline_tel="<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=5&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/>";
+				$telephone=empty($val['telephone'])?'':"<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=2&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/>";
+				$landline_tel=$val['landline_tel'] == '0-0-0'?'':"<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=5&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/>";
+			}
+			else
+			{
+				$telephone="企业设置不对外公开";
+				$landline_tel="企业设置不对外公开";
 			}
 			$email=$val['email_show']=='1'?"<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=3&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/>":"企业设置不对外公开";
 
@@ -271,11 +288,14 @@ elseif($act == 'company_contact')
 									<div class="contact-item clearfix">
 										<div class="contact-type f-left">联 系 人：</div>
 										<div class="contact-content f-left">'.$contact.'</div>
-									</div>
-									<div class="contact-item clearfix">
+									</div>';
+			if(!empty($telephone))
+			{
+				$html.='<div class="contact-item clearfix">
 										<div class="contact-type f-left">联系手机：</div>
 										<div class="contact-content f-left">'.$telephone.'</div>
 									</div>';
+			}					
 			if(!empty($landline_tel))
 			{
 				$landline_tel='<div class="contact-item clearfix">
@@ -312,16 +332,20 @@ elseif($act == 'company_contact')
 				}
 			$contact=$val['contact_show']=='1'?"{$val['contact']}":"企业设置不对外公开";
 			$telephone=$val['telephone_show']=='1'?"{$val['telephone']}":"企业设置不对外公开</li>";
+			$landline_tel=$val['telephone_show']=='1'?"{$landline_tel}":"企业设置不对外公开</li>";
 			$email=$val['email_show']=='1'?"{$val['email']}":"企业设置不对外公开</li>";
 						$html='<div class="c-contact">
 									<div class="contact-item clearfix">
 										<div class="contact-type f-left">联 系 人：</div>
 										<div class="contact-content f-left">'.$contact.'</div>
-									</div>
-									<div class="contact-item clearfix">
+									</div>';
+						if(!empty($telephone))
+						{
+							$html.='<div class="contact-item clearfix">
 										<div class="contact-type f-left">联系手机：</div>
 										<div class="contact-content f-left"><span>'.$telephone.'</span></div>
 									</div>';
+						}		
 						if(!empty($landline_tel))
 						{
 							$landline_tel = '<div class="contact-item clearfix">

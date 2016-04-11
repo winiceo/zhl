@@ -9,6 +9,7 @@ function header() {
 		clearTimeout(isShow);
 		$('.weMinBoxWx',$(this)).hide();
 	})
+	
 	// ¶¥²¿navÕ¹¿ª
 	$('.nav-list').hover(function(){
 		$(this).find('.nav-li').css({'background-color':'#005eac'});

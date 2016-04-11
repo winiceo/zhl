@@ -2,14 +2,23 @@
 **此样式文件为3.6版本的企业主页默认模板相关样式，不与其他样式文件冲突，只用于公司主页相关页面
 **/
 li{line-height: 100%;}
-a{text-decoration: none;color:#0180cf;}
+a{text-decoration: none;color:#333;}
+a:hover{text-decoration: underline;color:#333;}
 .f-left{float: left;}
 .f-right{float: right;}
-.company-wrap{border:1px solid #ccc;background-color: #fff;font-family: "SimSun"}
-.company-wrap .com-left{float:left;width: 875px;border-right:1px solid #ccc;min-height: 720px;}
-.company-wrap .com-right{float:right;width: 322px;}
+.company-wrap{background-color: #fff;font-family: "SimSun"}
+.company-wrap .com-left{float:left;width: 875px;min-height: 720px;border-top: 2px solid #ff9900;border-left: 1px solid #ccc;border-bottom: 1px solid #ccc;border-right: 1px solid #ccc;}
+.company-wrap .com-right{float:right;width: 310px;border: 1px solid #ccc;border-top: 2px solid #ff9900;min-height: 720px;}
+
 /*左边*/
-.compnay-main{padding:17px 20px;}
+.company-detail-title{margin-top: -41px;}
+.company-detail-title .c-name{padding-left: 10px;width: 490px;height: 35px;overflow: hidden;}
+.company-detail-title .c-name h2{font-size: 28px;color: rgb(89, 89, 89);margin-left: 10px;}
+.company-detail-title .company-control {font-family: "Microsoft Yahei";margin-top: 7px;}
+.company-detail-title .company-control .c-control-item{text-decoration: none;font-size: 16px;color:#666;padding: 3px 11px 3px 11px;}
+.company-detail-title .company-control .c-control-item.active,
+.company-detail-title .company-control .c-control-item:hover{color: #ff9900;background-color: #eeeeee;border-radius: 20px;}
+.compnay-main{padding:40px 17px 20px;}
 .compnay-main .c-top-wrap{height: 70px;overflow: hidden;margin-bottom: 20px;}
 .compnay-main .c-top-wrap .c-logo{width: 198px;height: 68px;overflow: hidden;border:1px solid #dfdfdf;}
 .compnay-main .c-top-wrap .c-name{padding-left: 20px;width:460px;overflow: hidden;}
@@ -21,13 +30,25 @@ a{text-decoration: none;color:#0180cf;}
 .compnay-main .company-control .c-control-item.active,
 .compnay-main .company-control .c-control-item:hover{border-bottom: 3px solid #0180cf;color:#0180cf;}
 /*右边*/
-.com-right .ring-group{width: 236px;background: url(../images/com-ring.png) no-repeat top left;margin:38px auto 15px auto;padding-left:16px;}
-.com-right .ring-group .ring-item{text-align: center;}
-.com-right .ring-group .ring-item h4{font-family: Verdana;width: 62px;height: 62px;line-height: 62px;margin:20px 5px;font-size: 14px;font-weight: bold;}
+.com-right .ring-group{width: 263px;background: url(../images/com-ring.png) no-repeat top left;margin:15px auto 15px auto;}
+.com-right .ring-group .ring-item{text-align: center;margin-left: 12px;}
+.com-right .ring-group .ring-item h4{font-family: Verdana;width: 62px;height: 62px;line-height: 55px;margin:20px 5px;font-size: 14px;font-weight: bold;}
 .com-right .ring-group .ring-item h4.resumes{color:#9aec9a;}
 .com-right .ring-group .ring-item h4.jobs{color:#fddb89;}
 .com-right .ring-group .ring-item h4.interest{color:#59b2fd;}
 .com-right .ring-group .ring-item p{font-size: 12px;color:#999;}
+.com-right .right-logo{text-align: center;margin-top: -102px;}
+.com-right .right-zilao{text-align: center;m}
+.com-right .right-zilao .c-logo{margin-top: 20px;}
+.com-right .right-zilao .c-name{margin-top: 5px;margin-bottom: 5px;}
+.com-right .right-zilao .c-name  h2{font-size: 14px;color: #333333;}
+.com-right .right-zilao .c-xinyong{background: url("../images/title-img.png") 53px 9px no-repeat;}
+.com-right .right-zilao .c-xinyong .c-xinyong-title{font-size: 14px;color: #ff9900;}
+.com-right .right-zilao .c-xinyong .c-xinyong-img{margin: 20px 0px;}
+.com-right .right-zilao .c-xinyong .c-xinyong-img img{}
+.com-right .right-zilao .c-xinyong .company-info-list{margin-top: 10px;}
+.com-right .right-zilao .c-xinyong .company-info-list  li{font-size: 12px;line-height: 26px;color: #333;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;text-align: left;margin-left: 70px;}
+.com-right .right-zilao .c-xinyong .company-info-list  li span{font-size: 12px;color: #666666;font-weight: bold;}
 .com-right .c-right-block{padding:20px 15px 0 25px;}
 .com-right .c-right-block .c-right-title{font-family: "Microsoft Yahei";font-size: 14px;color:#333;margin-bottom: 13px;font-weight: normal;}
 .com-right .c-right-block .company-info-list li{font-size: 12px;line-height: 26px;color:#666;width: 290px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
@@ -37,20 +58,20 @@ a{text-decoration: none;color:#0180cf;}
 .com-right .c-right-block .company-img p{margin-top: 6px;color:#999;}
 .com-right .c-right-block .company-img p a{color:#0180cf;margin-left: 5px;}
 .com-right .c-right-block .company-img p a:hover{text-decoration: underline;}
-.com-right .c-right-block .com-code{width: 100px;margin:0 auto;}
+.com-right .c-right-block .com-code{width: 100px;margin:0 auto;padding-bottom: 30px;}
 /*公司介绍*/
 .company-info-wrap{font-size: 14px;color:#666;position: relative;margin-bottom: 25px;}
 .company-info-wrap div{max-height: 187px;overflow: hidden;line-height: 22px;}
-.company-info-wrap div p{line-height: 26px;}
+.company-info-wrap div p{line-height: 59px;}
 .company-info-wrap .c-info-more{position: absolute;width: 476px;height: 25px;left:50%;margin-left: -238px;bottom:-25px;background: url(../images/com-more.png) no-repeat center center;}
 .company-info-wrap .c-info-more.upup{background: url(../images/com-more-up.png) no-repeat center center;}
 
-.c-left-title{padding-left: 6px;font-size: 14px;color:#333;font-family: "Microsoft Yahei";border-left: 3px solid #0180cf;line-height: 16px;height:16px;margin-bottom: 10px;font-weight: normal;}
+.c-left-title{padding-left: 6px;font-size: 16px;color:#ff9900;font-family: "Microsoft Yahei";border-bottom: 2px solid #ff9900;line-height: 24px;height:16px;padding-bottom: 7px;font-weight: bold;}
 /*职位列表*/
 .company-jobs-list{padding-top: 10px;}
-.company-jobs-list .c-jobs-item{width: 208px;margin-bottom: 15px;}
+.company-jobs-list .c-jobs-item{width: 170px;margin-bottom: 15px;padding-left: 38px;}
 .company-jobs-list .c-jobs-item .job-name{margin-bottom: 10px;font-size: 14px;width: 198px;padding-right: 10px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
-.company-jobs-list .c-jobs-item .job-name a{color:#0180cf;}
+.company-jobs-list .c-jobs-item .job-name a{color:#333;font-weight:bold;}
 .company-jobs-list .c-jobs-item .job-name a:hover{text-decoration: underline;}
 .company-jobs-list .c-jobs-item .job-info{font-size: 12px;color:#e6e6e6;line-height: 16px;height:16px;}
 .company-jobs-list .c-jobs-item .job-info span{color:#666;}
@@ -59,7 +80,7 @@ a{text-decoration: none;color:#0180cf;}
 .company-jobs-list .c-jobs-item .job-pay{background-position: 0px 1px;}
 .company-jobs-list .c-jobs-item .job-area{background-position: 0px -30px;}
 .job-all{margin-bottom: 20px;font-size: 12px;}
-.job-all a{text-align: right;color:#0180cf;}
+.job-all a{text-align: right;color:#333;}
 .job-all a:hover{text-decoration: underline;}
 /*联系方式*/
 .com-contact{}
@@ -69,13 +90,13 @@ a{text-decoration: none;color:#0180cf;}
 .com-contact .c-contact .contact-item .contact-content{width: 600px;}
 .com-contact .c-contact .contact-item .contact-content span{font-family: "Microsoft Yahei";font-weight: bold;color:#ff9900;font-size: 16px;}
 .com-contact .contact-map{border:1px solid #eeeeee;padding:2px;margin-top: 15px;border-radius: 3px;overflow: hidden;}
-.no-login{height:70px;line-height: 70px;white-space: nowrap;position: relative;background-color: #eef8ff;text-align: center;margin-top:25px;}
+.no-login{height:59px;line-height: 70px;white-space: nowrap;position: relative;background-color: #eef8ff;text-align: center;margin-top:25px;}
 .no-login .border-item{position: absolute;width: 12px;height: 12px;background-color: #eef8ff;}
 .no-login .border-item.topleft{top:0;left:0;border-top:1px solid #ccc;border-left:1px solid #ccc;}
 .no-login .border-item.topright{top:0;right:0;border-top:1px solid #ccc;border-right:1px solid #ccc;}
 .no-login .border-item.bottomleft{bottom:0;left:0;border-bottom:1px solid #ccc;border-left:1px solid #ccc;}
 .no-login .border-item.bottomright{bottom:0;right:0;border-bottom:1px solid #ccc;border-right:1px solid #ccc;}
-.no-login p{line-height: 70px;font-size: 14px;color:#666;}
+.no-login p{line-height: 59px;font-size: 14px;color:#666;}
 .no-login p a{color:#666;}
 .no-login p a.login{color:#0180cf;}
 .no-login p a:hover{text-decoration: underline;}
@@ -85,7 +106,7 @@ a{text-decoration: none;color:#0180cf;}
 .job-main .job-top .job-name{font-family: "Microsoft Yahei";font-size: 22px;color:#333;margin-bottom: 10px;font-weight: normal;padding-top: 10px;}
 .job-main .job-top .job-company{font-family: "Microsoft Yahei";font-size: 14px;color:#333;margin-bottom: 10px;line-height: 16px;}
 .job-main .job-top .job-company a{color:#333;}
-.job-main .job-top .job-company a:hover{color:#0180cf;}
+.job-main .job-top .job-company a:hover{color:#333;}
 .job-main .job-top .job-company .icon-auth{width: 23px;height: 16px;margin-left: 10px;background: url(../images/noyan.jpg) no-repeat 0px 0px;}
 .job-main .job-top .job-company .icon-auth.yes{background: url(../images/yesyan.jpg) no-repeat 0px 0px;}
 .job-main .job-top .job-watch-info{margin-bottom: 23px;line-height: 16px;line-height: 16px;}
@@ -99,13 +120,13 @@ a{text-decoration: none;color:#0180cf;}
 .job-main .job-top .welfare-box .welfare-block{height: 28px;line-height: 28px;border:1px solid #ccc;padding:0 8px 0 23px;margin-right: 7px;border-radius: 3px;background: url(../images/company-icon.png) no-repeat 4px -332px #f2f4f7;cursor: default;}
 .job-main .job-top .app-job-item{position: absolute;top:50%;margin-top: -18px;height: 34px;right:10px;}
 .app-button{width: 115px;height: 34px;background-color: #ff9900;color:#fff;font-family: "Microsoft Yahei";border:0;font-size: 16px;cursor: pointer;border-radius:3px;}
-.app-button:hover{background-color: #ff7700;}
-.collect{margin-left: 15px;padding-left: 18px;font-size: 14px;color:#3d90e5;background: url(../images/company-icon.png) no-repeat 0px -280px;font-family: "Microsoft Yahei";line-height: 34px;}
-.collect.done{background-position: 0px -250px;}
+.app-button:hover{background-color: #ff7700;color:#fff;font-family: "Microsoft Yahei";text-decoration:none;}
+.collect{margin-left: 15px;padding-left: 18px;font-size: 14px;color:#ff9900;background: url(../images/company-icon.png) no-repeat 0px -280px;font-family: "Microsoft Yahei";line-height: 34px;}
+.collect.done{background-position: 0px -250px;color:#ff9900;}
 .job-block{margin-bottom: 20px;}
 .job-block .job-info-detail{border-bottom: 1px dotted #ccc;padding:10px 0;}
 .job-block .job-info-detail .job-id-item{font-size: 14px;color:#666;line-height: 20px;margin-bottom: 10px;width: 267px;padding-right: 10px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;height:20px;}
-.job-block .job-info-detail .job-id-item span{color:#ff9900;font-size: 16px;line-height: 20px;font-family: "Microsoft Yahei";}
+.job-block .job-info-detail .job-id-item span{color:#666;font-size: 14px;line-height: 20px;}
 .job-block .job-info-content{font-size: 14px;padding-bottom: 10px;border-bottom: 1px dotted #ccc;line-height: 28px;color: #666;word-break:break-word;}
 .job-block .job-info-content{font-size: 14px;padding-bottom: 10px;border-bottom: 1px dotted #ccc;line-height: 28px;color: #666;table-layout:fixed; word-break: break-all; overflow:hidden;padding: 5px 0;}
 .job-block .com-contact{border-bottom: 1px dotted #ccc;padding-bottom: 18px;}
@@ -113,7 +134,7 @@ a{text-decoration: none;color:#0180cf;}
 .job-bottom-share{margin-top: 20px;}
 .job-bottom-share .app-job-item{position: static;}
 .job-bottom-share .jubao{text-align: right;padding-right: 5px;margin-bottom: 2px;}
-.job-bottom-share .jubao a{color:#0180cf;}
+.job-bottom-share .jubao a{color:#ff7800;}
 .job-bottom-share .jubao a:hover{text-decoration: underline;}
 .share-item{line-height: 28px;}
 .share-item span{color:#666;margin-right: 5px;}
@@ -125,27 +146,27 @@ a{text-decoration: none;color:#0180cf;}
 .jobs-list-block .jobs-item .jitem-main{margin-bottom: 9px;}
 .jobs-list-block .jobs-item .jitem-left{width: 560px;overflow: hidden;}
 .jobs-list-block .jobs-item .jitem-left .job-name{font-size: 14px;color:#999;margin-bottom: 7px;}
-.jobs-list-block .jobs-item .jitem-left .job-name a{color:#0180cf;}
+.jobs-list-block .jobs-item .jitem-left .job-name a{color:#333;}
 .jobs-list-block .jobs-item .jitem-left .job-name a:hover{text-decoration: underline;}
 .jobs-list-block .jobs-item .jitem-left .job-name .reflash-time{font-size: 12px;margin-left: 20px;}
 .jobs-list-block .jobs-item .jitem-left .jitem-info{font-size: 12px;color:#666;}
-.jobs-list-block .jobs-item .jitem-left .jitem-info em{font-size: 14px;color:#ff9900;font-weight: bold;font-style: normal;}
+.jobs-list-block .jobs-item .jitem-left .jitem-info em{font-size: 12px;color:#666;font-weight: normal;font-style: normal;}
 .jobs-list-block .jobs-item .jitem-content{line-height: 20px;color:#666;font-size: 12px;table-layout:fixed; word-break: break-all; overflow:hidden;}
-.jobs-list-block .jobs-item .jitem-content a{color:#0180cf;white-space: nowrap;margin-left: 3px;}
+.jobs-list-block .jobs-item .jitem-content a{color:#333;white-space: nowrap;margin-left: 3px;}
 .jobs-list-block .jobs-item .jitem-content a:hover{text-decoration: underline;}
 .list-job-btn{width: 92px;height: 30px;color:#fff;font-size: 12px;background: url(../images/apply-job-btn.png) no-repeat 0px 0px;border:0;cursor: pointer;}
-.list-job-btn:hover{background-position: 0px -40px;}
+.list-job-btn:hover{width: 92px;height: 30px;color:#fff;font-size: 12px;background: url(../images/apply-job-btn.png) no-repeat 0px -40px;border:0;cursor: pointer;text-decoration:none;}
 /*新闻列表*/
 .company-news-list{}
 .company-news-list .company-news-caption{font-size: 12px;color:#999;}
 .company-news-list .news-item{padding:13px 0 10px 0;border-bottom: 1px dotted #ccc;}
 .company-news-list .news-item h3{font-size: 14px;font-weight:normal;color:#0180cf;width: 690px;overflow: hidden;white-space: nowrap;text-overflow:hidden;margin-bottom: 9px;}
-.company-news-list .news-item h3 a{color:#0180cf;}
+.company-news-list .news-item h3 a{color:#333;font-weight:bold;}
 .company-news-list .news-item h3 a:hover{text-decoration: underline;}
 .company-news-list .news-item p{font-size: 12px;color:#999;margin-bottom: 9px;}
 .company-news-list .news-item p span{margin-right: 15px;}
 .company-news-list .news-item div{color:#666;}
-.company-news-list .news-item div a{color: #0180cf;white-space: nowrap;margin-left: 3px;}
+.company-news-list .news-item div a{color: #333;white-space: nowrap;margin-left: 3px;}
 .company-news-list .news-item div a:hover{text-decoration: underline;}
 /*分页*/
 .page-wrap{float: left;position: relative;left:50%;}
@@ -198,14 +219,14 @@ a{text-decoration: none;color:#0180cf;}
 .news-content-wrap .news-title h2{font-size: 18px;color:#333;font-weight: normal;text-align: center;font-family: "Microsoft Yahei";margin-bottom: 15px;}
 .news-info{text-align: center;padding-bottom: 13px;border-bottom:1px solid #e2e2e2;}
 .news-info span{display: inline-block;width: 150px;color:#666;}
-.news-info span a{color:#0180cf;}
+.news-info span a{color:#333;}
 .news-info span a:hover{text-decoration: underline;}
 .news-content-wrap .news-content-block{line-height: 26px;color:#666;font-size: 12px;}
 .news-next-prev{margin-top: 20px;font-size: 12px;}
 .news-next-prev .news-prev,
 .news-next-prev .news-next{width: 300px;color: #0180cf;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
 .news-next-prev .news-next{text-align: right;}
-.news-next-prev a{color:#0180cf;}
+.news-next-prev a{color:#333;}
 .news-next-prev a:hover{text-decoration: underline;}
 
 /* 焦点图 */
@@ -222,13 +243,14 @@ a{text-decoration: none;color:#0180cf;}
 .salary .salary_box h3{font-size:14px;color:#333333;font-weight:normal;margin-bottom:10px;font-family:"microsoft yahei";}
 .salary .salary_box .s_content{width:657px;height:147px;background-color:#fff;border:1px solid #fff;}
 .salary .salary_box .s_content .salary_left{float:left;padding:15px;padding-top:20px;width:181px;font-size:16px;font-family:"microsoft yahei";}
-.salary .salary_box .s_content .salary_left div{color:#0180CF;line-height:25px;margin-bottom:15px;}
+.salary .salary_box .s_content .salary_left div{color:#ff9900;line-height:25px;margin-bottom:15px;}
 .salary .salary_box .s_content .salary_left p{font-size:14px;color:#666666;line-height:30px;}
-.salary .salary_box .s_content .salary_left p span{color:#0180CF;}
+.salary .salary_box .s_content .salary_left p span{color:#ff9900;}
 .salary .salary_box .s_content .salary_right{position:relative;float:left;width:446px;height:147px;background:url(../images/salary.jpg)no-repeat;+background-image:url(../images/salary.jpg);_background-image:url(../images/salary.jpg);}
 .salary .salary_box .s_content .salary_right .value{position:absolute;left:0;top:40%;}
-.salary .salary_box .s_content .salary_right .value .blue_bar{float:left;margin-right:5px;background-color:#0180CF;height:35px;}
-.salary .salary_box .s_content .salary_right .value .number{float:left;height:35px;line-height:35px;font-size:16px;color:#0180CF;}
+.salary .salary_box .s_content .salary_right .value .blue_bar{float:left;margin-right:5px;background-color:#ff9900;height:35px;}
+.salary .salary_box .s_content .salary_right .value .number{float:left;height:35px;line-height:35px;font-size:16px;color:#ff9900;}
 .salary .salary_box .salary_bot{font-size:12px;color:#999999;font-family:"microsoft yahei";margin-top:10px;}
 .salary .salary_box .salary_bot .tip{font-family:"microsoft yahei";float:left;}
 .salary .salary_box .salary_bot .data{font-family:"microsoft yahei";float:right;padding-right:5px;}
+.collect:hover{color:#ff9900;}

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>{#$title#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="找葫芦网" />
+<meta name="author" content="找葫芦" />
 <meta name="copyright" content="zhaohulu.com" />
 <meta name="renderer" content="webkit"> 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -799,15 +799,15 @@ $("#Form1").validate({
 <script type="text/javascript">
 $(document).ready(function()
 {
-	//积分默认
+	//葫芦币默认
 	total();
-	//计算总计积分
+	//计算总计葫芦币
 	function total()
 	{
 			var points = {#$points_total#};
 			var jobs_edit = {#$points.jobs_edit.value#};
 			var totals=jobs_edit;			
-			$("#total").html("修改本条信息总计扣除&nbsp;<span style=\"font-size:20px; color: #FF0000\" >"+totals+"</span>&nbsp;{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}，你目前共有<strong style=\"color:#0033FF\"> {#$points_total#}  </strong>{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}，<a href=\"company_service.php?act=order_add\">[充值积分]</a><br />");
+			$("#total").html("修改本条信息总计扣除&nbsp;<span style=\"font-size:20px; color: #FF0000\" >"+totals+"</span>&nbsp;{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}，你目前共有<strong style=\"color:#0033FF\"> {#$points_total#}  </strong>{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}，<a href=\"company_service.php?act=order_add\">[充值葫芦币]</a><br />");
 			$("#totals").val({#$points_total#}-totals);	
 	}				
 	$("#editsubmit").click(function()
@@ -817,13 +817,13 @@ $(document).ready(function()
 			{#if $QISHI.operation_mode=="2"#}
 			dialog({
 			  title: '系统提示',
-			  content: "您的积分不足，请申请新的服务或者充值积分！",
+			  content: "您的葫芦币不足，请申请新的服务或者充值葫芦币！",
 			  width:'300px'
 			}).showModal();
 			{#else#}
 			dialog({
 			  title: '系统提示',
-			  content: "您的积分不足，请充值后再发布！",
+			  content: "您的葫芦币不足，请充值后再发布！",
 			  width:'300px'
 			}).showModal();
 			{#/if#}

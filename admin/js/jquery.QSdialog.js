@@ -1,6 +1,6 @@
 /* 
 * QSdialog 1.0
-* http://www.74cms.com/
+* http://www.zhaohulu.com/
 * Date: 2011-5-15 
 * Requires jQuery
 */ 

@@ -7,6 +7,7 @@ require_once(dirname(__FILE__).'/../data/config.php');
 require_once(dirname(__FILE__).'/include/admin_common.inc.php');
 require_once(ADMIN_ROOT_PATH.'include/admin_evaluation_fun.php');
 require_once(ADMIN_ROOT_PATH.'include/upload.php');
+
 $act = !empty($_GET['act']) ? trim($_GET['act']) : 'list';
 $smarty->assign('act',$act);
 check_permissions($_SESSION['admin_purview'],"set_evaluation");
@@ -532,10 +533,12 @@ elseif($act == 'add_result_save')
 	$setarr["paper_id"]=$paper_id;
 	if($setarr["result_type"]==1){
 		$setarr["result_options"]=$_POST["result_options"]?($_POST["result_options"]):adminmsg("选项不能为空");
-		$setarr["result_num"]=$_POST["result_num"]?intval($_POST["result_num"]):adminmsg("数目不能为空");
+		$setarr["result_num"]=!is_null($_POST["result_num"])?($_POST["result_num"]):adminmsg("数目不能为空且必须为数字");
+		$setarr["result_num1"]=!is_null($_POST["result_num1"])?($_POST["result_num1"]):adminmsg("数目不能为空且必须为数字");
 
 	}elseif($setarr["result_type"]==2){
-		$setarr["result_score"]=$_POST["result_score"]?intval($_POST["result_score"]):adminmsg("得分不能为空");
+		$setarr["result_score"]=!is_null($_POST["result_score"])?($_POST["result_score"]):adminmsg("得分不能为空且必须为数字");
+		$setarr["result_score1"]=!is_null($_POST["result_score1"])?($_POST["result_score1"]):adminmsg("得分不能为空且必须为数字");
 
 	}
 	$setarr["result_description"]=$_POST["result_description"]?($_POST["result_description"]):adminmsg("结果不能为空");
@@ -560,6 +563,8 @@ elseif($act == 'result_edit')
 	$smarty->assign('paper',$paper);
 	$smarty->assign('pageheader',"人才测评");
 	$smarty->assign('result',$result);
+
+
 	$smarty->display('evaluation/admin_result_edit.htm');
 }
 // 修改保存测题
@@ -580,10 +585,12 @@ elseif($act == 'edit_result_save')
 	$setarr["paper_id"]=$paper_id;
 	if($setarr["result_type"]==1){
 		$setarr["result_options"]=$_POST["result_options"]?($_POST["result_options"]):adminmsg("选项不能为空");
-		$setarr["result_num"]=$_POST["result_num"]?intval($_POST["result_num"]):adminmsg("数目不能为空");
+		$setarr["result_num"]=!is_null($_POST["result_num"])?($_POST["result_num"]):adminmsg("数目不能为空且必须为数字");
+		$setarr["result_num1"]=!is_null($_POST["result_num1"])?($_POST["result_num1"]):adminmsg("数目不能为空且必须为数字");
 
 	}elseif($setarr["result_type"]==2){
-		$setarr["result_score"]=$_POST["result_score"]?intval($_POST["result_score"]):adminmsg("得分不能为空");
+		$setarr["result_score"]=!is_null($_POST["result_score"])?($_POST["result_score"]):adminmsg("得分不能为空且必须为数字3");
+		$setarr["result_score1"]=!is_null($_POST["result_score1"])?($_POST["result_score1"]):adminmsg("得分不能为空且必须为数字");
 
 	}
 	$setarr["result_description"]=$_POST["result_description"]?($_POST["result_description"]):adminmsg("结果不能为空");
@@ -591,6 +598,9 @@ elseif($act == 'edit_result_save')
 
 	$link[0]['text'] = "返回试卷答案列表";
 	$link[0]['href'] = '?act=result_list&id='.$paper_id;
+
+
+
 	!$db->updatetable(table("evaluation_result"),$setarr," id=".$rid)?adminmsg("添加失败！"):adminmsg("更新成功！",2,$link);
 
 
@@ -618,5 +628,58 @@ elseif($act=="result_del")
 	{
 		adminmsg("删除失败！",0);
 	}
+}
+
+// 周易测评记录结果
+elseif($act=="zhouyi_list")
+{
+	//error_reporting(-1);
+	require_once(QISHI_ROOT_PATH . 'genv/func_company.php');
+
+	require_once(QISHI_ROOT_PATH.'include/page.class.php');
+	$wheresql = " ";
+
+	$perpage = 10;
+	$total_sql = "SELECT COUNT(*) AS num FROM " . table('fotrune') . "  {$wheresql} ";
+	$total = $db->get_total($total_sql);
+	$page = new page(array('total' => $total, 'perpage' => $perpage));
+	$offset = ($page->nowindex - 1) * $perpage;
+	$smarty->assign('act', $act);
+	$smarty->assign('title', '周易性格测算 - 个人会员中心 - ' . $_CFG['site_name']);
+
+	$rs=get_fortune($offset, $perpage, $wheresql);
+	require_once(QISHI_ROOT_PATH.'genv/func_resume_upload.php');
+
+	foreach($rs as $key=>$value){
+		$rs[$key]["member"]=get_check_info($value["uid"]);
+ 	}
+	//var_dump($rs);
+	$smarty->assign('fortune_list', $rs);
+	if ($total > $perpage) {
+		$smarty->assign('page', $page->show(3));
+	}
+	//var_dump(get_fortune($offset, $perpage, $wheresql));
+
+	$smarty->assign('pageheader',"周易性格评测");
+	$smarty->display('evaluation/admin_fotrune_list.htm');
+}elseif ($act=='fotrune_show')
+{
+	require_once(QISHI_ROOT_PATH.'genv/lib.php');
+
+	global $db;
+
+	$id=$_GET["id"];
+	$sql="select * from ".table("fotrune"). " where id=".$id;
+	$rs=ORM::for_table(table("fotrune"))->find_one($id);
+ 	if(!$rs){
+		showmsg("没找到测算记录",2);
+	}
+	$rs=$rs->as_array();
+
+	$smarty->assign('title','周易性格测算 - 个人会员中心 - '.$_CFG['site_name']);
+	$smarty->assign('result',$rs	);
+	$smarty->assign('pageheader'," 周易性格评测结果"	);
+ 	$smarty->display('evaluation/admin_fotrune_show.htm');
+
 }
 ?>

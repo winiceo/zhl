@@ -10,11 +10,12 @@
 	{#qishi_pageinfo set="列表名:page,调用:QS_index"#}
 	<meta name="description" content="{#$page.description#}" id="description">
 	<meta name="keywords" content="{#$page.keywords#}">
-<meta name="author" content="找葫芦网" />
-<meta name="copyright" content="zhaohulu.com" />
+	<meta name="author" content="找葫芦" />
+	<meta name="copyright" content="zhaohulu.com" />
 
 	<link rel="stylesheet" href="css/common.css">
 	<link rel="stylesheet" href="css/simple.css">
+	<link rel="stylesheet" href="css/login-reg.css">
 	<script type="text/javascript" src="./js/jquery-1.11.3.js" ></script>
 	<script type='text/javascript' src="./js/jquery.common.js" ></script>
 </head>
@@ -64,6 +65,11 @@
 					<div class="edit-content"><input type="text" name="tel" id="tel" class="text-input" placeholder="请输入您的邮箱或者电话"></div>
 				</div>
 				<div class="edit-bottom-submit"><a href="javascript:;"><button class="button blue hundred-percent">提交反馈</button></a></div>
+				{#if $err#}
+				<div class="binding-error">
+				{#$err#}
+				</div>
+				{#/if#}
 			</div>
 			</form>
 		</div>

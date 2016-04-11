@@ -388,7 +388,7 @@ function send_sms($mobile, $content)
     if ($sms['open'] != "1" || empty($sms['notice_sms_name']) || empty($sms['notice_sms_key']) || empty($mobile) || empty($content)) {
         return false;
     } else {
-        return https_request("http://www.74cms.com/SMSsend.php?sms_name={$sms['notice_sms_name']}&sms_key={$sms['notice_sms_key']}&mobile={$mobile}&content={$content}");
+        return https_request("http://www.zhaohulu.com/SMSsend.php?sms_name={$sms['notice_sms_name']}&sms_key={$sms['notice_sms_key']}&mobile={$mobile}&content={$content}");
 
     }
 }
@@ -401,7 +401,7 @@ function captcha_send_sms($mobile, $content)
     if ($sms['open'] != "1" || empty($sms['captcha_sms_name']) || empty($sms['captcha_sms_key']) || empty($mobile) || empty($content)) {
         return false;
     } else {
-        return https_request("http://www.74cms.com/SMSsend.php?sms_name={$sms['captcha_sms_name']}&sms_key={$sms['captcha_sms_key']}&mobile={$mobile}&content={$content}");
+        return https_request("http://www.zhaohulu.com/SMSsend.php?sms_name={$sms['captcha_sms_name']}&sms_key={$sms['captcha_sms_key']}&mobile={$mobile}&content={$content}");
     }
 }
 
@@ -413,7 +413,7 @@ function free_send_sms($mobile, $content)
     if ($sms['open'] != "1" || empty($sms['free_sms_name']) || empty($sms['free_sms_key']) || empty($mobile) || empty($content)) {
         return false;
     } else {
-        return https_request("http://www.74cms.com/SMSsend.php?sms_name={$sms['free_sms_name']}&sms_key={$sms['free_sms_key']}&mobile={$mobile}&content={$content}");
+        return https_request("http://www.zhaohulu.com/SMSsend.php?sms_name={$sms['free_sms_name']}&sms_key={$sms['free_sms_key']}&mobile={$mobile}&content={$content}");
     }
 }
 
@@ -1290,9 +1290,13 @@ function get_cookiedomain()
 {
     global $_CFG, $QS_cookiedomain;
     $cookiedomain = explode('.', str_replace('http://', '', $_CFG['site_domain']));
+
+    // gv( $cookiedomain[$cookiedomain_length - 2] . '.' . $cookiedomain[$cookiedomain_length - 1]);
     $cookiedomain_length = count($cookiedomain);
-    return $cookiedomain[$cookiedomain_length - 2] . '.' . $cookiedomain[$cookiedomain_length - 1];
+    return  $cookiedomain[$cookiedomain_length - 2] . '.' . $cookiedomain[$cookiedomain_length - 1];
 }
+
+
 
 function gv($var, $echo = true, $label = null, $strict = true)
 {
@@ -1301,7 +1305,7 @@ function gv($var, $echo = true, $label = null, $strict = true)
         if (ini_get('html_errors')) {
 
             $output = print_r($var, true);
-            $output = "<pre>" . $label . htmlspecialchars($output, ENT_QUOTES) . "</pre>";
+            $output = "<pre>" . $label . ($output) . "</pre>";
         } else {
             $output = $label . " : " . print_r($var, true);
         }

@@ -43,6 +43,17 @@ elseif($act == 'list')
 elseif($act == 'add')
 {		
 	get_token();
+	//风格模板
+	$dirs = getsubdirs('../templates');
+	unset($dirs[array_search(".svn",$dirs)]);
+	unset($dirs[array_search("tpl_company",$dirs)]);
+	unset($dirs[array_search("tpl_resume",$dirs)]);
+	unset($dirs[array_search("tpl_hunter",$dirs)]);
+	unset($dirs[array_search("tpl_train",$dirs)]);
+	unset($dirs[array_search("tpl_shop",$dirs)]);
+	unset($dirs[array_search("tpl_campus",$dirs)]);
+	unset($dirs[array_search("tpl_evaluation",$dirs)]);
+	$smarty->assign('dirs',$dirs);
 	$smarty->assign('district',get_category_district());
 	$smarty->assign('navlabel',"add");
 	$smarty->display('subsite/admin_subsite_add.htm');
@@ -88,6 +99,17 @@ elseif ($act == 'edit')
 	$id=intval($_GET['id']);	
 	$subsite=get_subsite_one($id);
 	$subsite['s_district']=explode('-',$subsite['s_district']);
+	//风格模板
+	$dirs = getsubdirs('../templates');
+	unset($dirs[array_search(".svn",$dirs)]);
+	unset($dirs[array_search("tpl_company",$dirs)]);
+	unset($dirs[array_search("tpl_resume",$dirs)]);
+	unset($dirs[array_search("tpl_hunter",$dirs)]);
+	unset($dirs[array_search("tpl_train",$dirs)]);
+	unset($dirs[array_search("tpl_shop",$dirs)]);
+	unset($dirs[array_search("tpl_campus",$dirs)]);
+	unset($dirs[array_search("tpl_evaluation",$dirs)]);
+	$smarty->assign('dirs',$dirs);
 	$smarty->assign('district',get_category_district());
 	$smarty->assign('subsite',$subsite);
 	$smarty->assign('rand',rand(1,100));

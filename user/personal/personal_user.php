@@ -30,23 +30,30 @@ elseif ($act=='userprofile_save')
 {
 	$setsqlarr['uid']=intval($_SESSION['uid']);
 	$setsqlarr['email']=trim($_POST['email'])?trim($_POST['email']):showmsg('请填写邮箱！',1);
-	if($user['email_audit']!="1")
-	{
+
+	$setsqlarr['phone']=trim($_POST['mobile'])?trim($_POST['mobile']):showmsg('请填写手机号！',1);
+
+	$sql = "select * from " . table('members') . " where (email = '{$setsqlarr['email']}' or mobile='{$setsqlarr['phone']}') and uid!='".intval($_SESSION['uid'])."' LIMIT 1";
+	$obj = $db->getone($sql);
+	if ($obj) {
+		showmsg('邮箱或电话已存在,请检查是否有误！', 1);
+	}
+//	if($user['email_audit']!="1")
+//	{
 		$members['email']=$setsqlarr['email'];
 		$resume['email']=$setsqlarr['email'];
 		$db->updatetable(table("members"),$members,array("uid"=>intval($_SESSION['uid'])));
 		$db->updatetable(table("resume"),$resume,array("uid"=>intval($_SESSION['uid'])));
 		unset($members['email'],$resume['email']);
-	}
-	$setsqlarr['phone']=trim($_POST['mobile'])?trim($_POST['mobile']):showmsg('请填写手机号！',1);
-	if($user['mobile_audit']!="1")
-	{
+	//}
+//	if($user['mobile_audit']!="1")
+//	{
 		$members['mobile']=$setsqlarr['phone'];
 		$resume['telephone']=$setsqlarr['phone'];
 		$db->updatetable(table("members"),$members,array("uid"=>intval($_SESSION['uid'])));
 		$db->updatetable(table("resume"),$resume,array("uid"=>intval($_SESSION['uid'])));
 		unset($members['mobile'],$resume['telephone']);
-	}
+//	}
 	$setsqlarr['realname']=trim($_POST['realname'])?trim($_POST['realname']):showmsg('请填写真实姓名！',1);
 	$setsqlarr['sex']=intval($_POST['sex'])?intval($_POST['sex']):showmsg('请选择性别！',1);
 	$setsqlarr['sex_cn']=trim($_POST['sex_cn']);
@@ -188,6 +195,10 @@ elseif ($act=='save_username')
 	$arr['uid']=$_SESSION['uid'];
 	$_POST['newusername'] = utf8_to_gbk($_POST['newusername']);
 	$arr['newusername']=trim($_POST['newusername'])?trim($_POST['newusername']):showmsg('新用户名！',1);
+	if(!preg_match("/^[".chr(0xa1)."-".chr(0xff)."a-zA-Z0-9_]{3,18}$/", $arr['newusername']))
+	{
+		exit("-4");
+	}
 	$row_newname = $db->getone("SELECT * FROM ".table('members')." WHERE username='{$arr['newusername']}' LIMIT 1");
 	if($row_newname)
 	{

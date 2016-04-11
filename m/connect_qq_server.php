@@ -1,6 +1,6 @@
 <?php
  /*
- * 74cms QQ互联 server-side模式
+ * QQ互联 server-side模式
 */
 define('IN_QISHI', true);
 define('REQUEST_MOBILE',true);
@@ -154,7 +154,7 @@ elseif ($act=='reg_save')
 	if(!empty($row)){
 		exit("用户名或邮箱已经存在！");
 	}
-	$userid=user_register($val['username'],$val['password'],$val['member_type'],$val['email']);
+	$userid=user_register(2,$val['password'],$val['member_type'],$val['email']);
 	if ($userid)
 	{
 		$db->query("UPDATE ".table('members')." SET qq_openid = '{$_SESSION['openid']}'  WHERE uid='{$userid}' AND qq_openid='' LIMIT 1");

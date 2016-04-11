@@ -111,9 +111,9 @@
 
 /*推荐职位*/
 .recommend-list{padding:18px 0 0 15px;font-size: 14px;}
-.recommend-list .reco-job-item{width: 204px;margin-right: 90px;margin-bottom: 18px;}
+.recommend-list .reco-job-item{width: 230px;margin-right: 40px;margin-bottom: 18px;margin-left: 20px;}
 .recommend-list .reco-job-item .rjob-top{margin-bottom: 5px;}
-.recommend-list .reco-job-item .rjob-top div{width: 135px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;line-height: 20px;}
+.recommend-list .reco-job-item .rjob-top div{width: 129px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;line-height: 20px;}
 .recommend-list .reco-job-item .rjob-top div a{color:#0180cf;}
 .recommend-list .reco-job-item .rjob-top span{font-size: 13px;color:#ff7800;line-height: 20px;}
 .recommend-list .reco-job-item .rjon-company{font-size: 12px;width: 204px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
@@ -121,7 +121,7 @@
 
 /*最新职位*/
 .newst-job-list{padding:15px 0 0 15px;font-size: 14px;}
-.newst-job-list .njob-item{width: 380px;line-height: 20px;margin:0 5px 10px 0;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
+.newst-job-list .njob-item{width: 369px;line-height: 20px;margin:0 5px 10px 20px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
 .newst-job-list .njob-item .njob-company{margin-right: 10px;}
 .newst-job-list .njob-item .njob-company a{color:#0180cf;}
 .newst-job-list .njob-item .njob{margin-right: 5px;color:#999;}

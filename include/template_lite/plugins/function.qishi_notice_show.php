@@ -28,7 +28,7 @@ if (empty($val))
 			$smarty->display("404.htm");
 			exit();
 	}
-	check_url($val['subsite_id'],$smarty,$_CFG['notice_url']);
+	//check_url($val['subsite_id'],$smarty,$_CFG['notice_url']);
 	if ($val['seo_keywords']=="")
 	{
 	$val['keywords']=$val['title'];

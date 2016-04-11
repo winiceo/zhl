@@ -38,10 +38,10 @@ function tpl_function_qishi_shop_list($params, &$smarty)
 		case "分页显示":
 			$aset['paged'] = $a[1];
 			break;
-		case "积分区间":
+		case "葫芦币区间":
 			$aset['points_interval'] = $a[1];//0|1000
 			break;
-		case "会员积分":
+		case "会员葫芦币":
 			$aset['user_points'] = $a[1]; //我能兑换的
 			break;
 		}
@@ -89,7 +89,7 @@ function tpl_function_qishi_shop_list($params, &$smarty)
 		}
 
 	}
-	// 积分区间
+	// 葫芦币区间
 	if(isset($aset['points_interval']) && !empty($aset['points_interval']))
 	{
 		$points_arr=explode('-', $aset['points_interval']);

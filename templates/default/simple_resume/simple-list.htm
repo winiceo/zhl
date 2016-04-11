@@ -12,6 +12,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
 <link href="{#$QISHI.site_template#}css/common.css" rel="stylesheet" type="text/css" />
+<link href="{#$QISHI.site_template#}css/header.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/simple.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/jobs.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/ui-dialog.css" rel="stylesheet" type="text/css" />
@@ -173,7 +174,7 @@ $(function(){
 						<div class="keybox">
 					 		<input type="text" id="searckey" name="key" value="{#$smarty.get.key|default:ÇëÊäÈë¹Ø¼ü×Ö#}" />
 					 	</div>
-						<input type="button" id="searcnbtn" detype="QS_simpleresumelist" value="ËÑË÷" class="but100lan simpleso" />
+						<input type="button" id="searcnbtn" detype="QS_simpleresumelist" value="ËÑ&nbsp;Ë÷" class="but100lan simpleso" />
 					</div>
 				</div>
 				<input id="citycategory" type="hidden" value="{#$smarty.get.citycategory#}" name="citycategory"  data-code="{#$QISHI.districtid#}" />

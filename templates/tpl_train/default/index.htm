@@ -6,8 +6,8 @@
 <title>{#$page.title#}</title>
 <meta name="description" content="{#$page.description#}">
 <meta name="keywords" content="{#$page.keywords#}">
-<meta name="author" content="骑士CMS" />
-<meta name="copyright" content="74cms.com" />
+<meta name="author" content="找葫芦" />
+<meta name="copyright" content="zhaohulu.com" />
 <meta name="renderer" content="webkit"> 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
@@ -33,12 +33,13 @@
 <div class="container" style="padding-top:0px;">
 	<div id="filterSearch" style="border:none;">
 		<div class="fliter-wrap">
+            
 			<div class="filter-drop clearfix" style="margin-bottom:0px;">
 				<div class="filter-item f-left">
 					<div class="choose-item" id="select_train_category">
 						<div class="choose-control">
 							<span class="cc-default">选择课程</span><i class="choose-icon"></i>
-							<div class="trainshowdiv" id="trainshowdiv">
+							<div class="trainshowdiv" id="trainshowdiv" style="z-index:100">
 								<ul>
 									{#qishi_get_classify set="列表名:c_nature,类型:QS_train_category"#}
 									{#foreach from=$c_nature item=list#}
@@ -105,6 +106,7 @@
 <div class="talents_information">
 	<!-- 推荐课程 -->
 	<div class="hunterbox_container senior_talents">
+    <div class="blue-line"></div>
 		<div class="h">
 			<div class="t">推荐课程</div>
 			<div class="m"><a href="{#"QS_train_curriculum"|qishi_url#}">更多>></a></div>
@@ -127,13 +129,14 @@
 	<!-- 推荐课程 End-->
 	<!-- 培训公告 -->
 	<div class="hunterbox_container search_information ">
+      <div class="blue-line"></div>
 		<div class="h">
 			<div class="t">培训公告</div>
 			<div class="m"><a href="{#"QS_noticelist"|qishi_url#}?id=2">更多>></a></div>
 			<div class="clear"></div>
 		</div>
 		<div class="box_content">
-			{#qishi_notice_list set="列表名:notice,显示数目:9,标题长度:24,分类:2,填补字符:..."#}
+			{#qishi_notice_list set="列表名:notice,显示数目:20,标题长度:14,分类:2,填补字符:..."#}
 			{#foreach from=$notice item=list#}
 			<div class="c"><a href="{#$list.url#}" target="_blank" title="{#$list.title_#}">{#$list.title#}</a></div>
 			{#/foreach#}
@@ -156,6 +159,7 @@
 </div>
 <!-- 推荐机构 -->
 <div class="hunterbox_container recommend_headhunter">
+  <div class="blue-line"></div>
 	<div class="h">
 		<div class="t">推荐机构</div>
 		<div class="m"><a href="{#"QS_train_agency"|qishi_url#}">更多>></a></div>
@@ -182,6 +186,7 @@
 <div class="talents_information">
 	<!-- 即将开课 -->
 	<div class="hunterbox_container senior_talents">
+     <div class="blue-line"></div>
 		<div class="h">
 			<div class="t">即将开课</div>
 			<div class="m"><a href="{#"QS_train_curriculum"|qishi_url#}">更多>></a></div>
@@ -204,6 +209,7 @@
 	<!-- 即将开课 End-->
 	<!-- 推荐讲师 -->
 	<div class="hunterbox_container search_information ">
+      <div class="blue-line"></div>
 		<div class="h">
 			<div class="t">推荐讲师</div>
 			<div class="m"><a href="{#"QS_train_lecturer"|qishi_url#}">更多>></a></div>

@@ -119,6 +119,7 @@ elseif ($_SESSION['username'] && $_SESSION['utype'] &&  $_COOKIE['QS']['username
 // 注册第一步
 elseif ($act=='reg')
 {
+	if($_CFG['subsite_id']==0)showmsg("主站不允许注册,请到您所在城市的分站注册",1);
 	if ($_CFG['closereg']=='1')showmsg("网站暂停会员注册，请稍后再次尝试！",1);
 	if(intval($_GET['type'])==3 && $_PLUG['hunter']['p_install']==1){
 		showmsg("管理员已关闭猎头模块,禁止注册！",1);
@@ -152,6 +153,7 @@ elseif ($act=='reg')
 	$_SESSION['reg_token']=$token;
 	$smarty->assign('token',$token);
 	$captcha=get_cache('captcha');
+	sms_get_token();
 	$smarty->assign('verify_userreg',$captcha['verify_userreg']);
 	$smarty->display('user/reg-step1.htm');
 }
@@ -334,7 +336,12 @@ elseif($act =="reg_step3")
 		}
 		if(in_array("telephone", $reg_com_config) && $reg_type==2)
 		{
-			$com_setarr['telephone']=$_POST['telephone']?trim($_POST['telephone']):showmsg("请输入企业联系电话");
+			$com_setarr['telephone']=$_POST['telephone']?trim($_POST['telephone']):'';
+			//座机
+			$landline_tel[]=trim($_POST['landline_tel_first'])?trim($_POST['landline_tel_first']):"0";
+			$landline_tel[]=trim($_POST['landline_tel_next'])?trim($_POST['landline_tel_next']):"0";
+			$landline_tel[]=trim($_POST['landline_tel_last'])?trim($_POST['landline_tel_last']):"0";
+			$com_setarr['landline_tel']=implode('-', $landline_tel);
 		}
 		if(in_array("email", $reg_com_config) && $reg_type==1)
 		{

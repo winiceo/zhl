@@ -31,7 +31,7 @@ elseif ($act == 'index')
 	if(empty($company_info)){
 		header("Location: ?act=company_info");
 	}else{
-		//»ý·Ö
+		//ºùÂ«±Ò
 		$user_points  = get_user_points(intval($_SESSION['uid']));
 		$smarty->assign('user_points',$user_points);
 		//Ì×²Í

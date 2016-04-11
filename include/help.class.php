@@ -76,8 +76,7 @@ class help {
         return $string;
     }
     static function new_html_special_chars($string) {
-
-        $string = str_replace(array('&amp;', '&quot;', '&lt;', '&gt;'), array('&', '"', '<', '>'), $string);
+        $string = str_replace(array('&amp;', '&quot;', '&lt;', '&gt;','&#'), array('&', '"', '<', '>','***'), $string);
         return $string;
     }
     // ΚµΜε³φΏβ

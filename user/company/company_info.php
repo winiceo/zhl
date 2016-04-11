@@ -5,6 +5,16 @@
 define('IN_QISHI', true);
 require_once(dirname(__FILE__).'/company_common.php');
 $smarty->assign('leftmenu',"info");
+
+//获取地区;
+function get_area($subsite_id){
+	global  $db;
+	$rs=$db->getone("select * from ".table("subsite")." where s_id=".$subsite_id);
+	if($rs){
+		return $rs["s_district"].",".$rs["s_districtname"];
+	}
+	return false;
+}
 if ($act=='company_profile')
 {
 	$company_profile['contents'] = htmlspecialchars_decode($company_profile['contents'],ENT_QUOTES);
@@ -29,6 +39,10 @@ if ($act=='company_profile')
 	{
 		$smarty->assign('company_jobs',$jobs);
 	}
+	if($user["subsite_id"]==""||$user["subsite_id"]==0){
+		showmsg('此会员没有分站信息！',1);
+	}
+	$smarty->assign("myarea",get_area($user["subsite_id"]));
 	// 新注册会员 邮箱调取注册邮箱
 	$smarty->assign('user',$user);
 	$smarty->display('member_company/company_profile.htm');
@@ -85,7 +99,12 @@ elseif ($act=='company_profile_save')
 	{
 		showmsg('请填写手机或固话，二选一即可！',1);
 	}
-	
+
+	$sql = "select * from " . table('company_profile') . " where  telephone='{$setsqlarr['telephone']}' and uid!='".intval($_SESSION['uid'])."' LIMIT 1";
+	$obj = $db->getone($sql);
+	if ($obj) {
+		showmsg('手机号已存在,请检查是否有误！', 1);
+	}
 	$setsqlarr['contact_show']=intval($_POST['contact_show']);
 	$setsqlarr['email_show']=intval($_POST['email_show']);
 	$setsqlarr['telephone_show']=intval($_POST['telephone_show']);
@@ -127,8 +146,8 @@ elseif ($act=='company_profile_save')
 				$db->query("update ".table("jobs_search_key")." set `key`=replace(`key`,'{$company_profile["companyname"]}','{$setsqlarr[companyname]}'),`likekey`=replace(`likekey`,'{$company_profile["companyname"]}','{$setsqlarr[companyname]}') where uid=".intval($_SESSION['uid'])." ");
 				$db->query("update ".table("jobs")." set `key`=replace(`key`,'{$company_profile["companyname"]}','{$setsqlarr[companyname]}') where uid=".intval($_SESSION['uid'] )." ");
 				//同步到职位联系方式
-				if(intval($_POST['telephone_to_jobs'])==1)
-				{
+//				if(intval($_POST['telephone_to_jobs'])==1)
+//				{
 					$jobsid_arr=$db->getall("select id from ".table("jobs")." where uid=".intval($_SESSION['uid']));
 					
 					foreach ($jobsid_arr as $key => $value) {
@@ -136,7 +155,7 @@ elseif ($act=='company_profile_save')
 					}
 					$jobsid_str=implode(',', $jobsid_arr_);
 					$db->query("update ".table('jobs_contact')." set telephone='$setsqlarr[telephone]',email='$setsqlarr[email]',contact='$setsqlarr[contact]' where pid in ($jobsid_str)");
-				}
+				//}
 				unset($setsqlarr);
 				write_memberslog($_SESSION['uid'],$_SESSION['utype'],8001,$_SESSION['username'],"修改企业资料");
 				showmsg("修改成功",2);
@@ -154,7 +173,7 @@ elseif ($act=='company_profile_save')
 			$insertid = $db->inserttable(table('company_profile'),$setsqlarr,1);
 			if ($insertid)
 			{
-				// 完善企业资料 获得积分 
+				// 完善企业资料 获得葫芦币
 				$rule=get_cache('points_rule');
 				if ($rule['company_profile_points']['value']>0)
 				{
@@ -273,7 +292,7 @@ elseif ($act=='company_logo_save')
 			$link[0]['text'] = "查看LOGO";
 			$link[0]['href'] = '?act=company_logo';
 			write_memberslog($_SESSION['uid'],1,8003,$_SESSION['username'],"上传了企业LOGO");
-			// 上传logo 获得积分 
+			// 上传logo 获得葫芦币
 			$rule=get_cache('points_rule');
 			if ($rule['company_logo_points']['value']>0)
 			{
@@ -330,7 +349,7 @@ elseif ($act=='company_logo_del')
 	{
 		if($_CFG['operation_mode']=='1'){
 			$smarty->assign('operation_mode',1);
-			$points=get_cache('points_rule');//获取积分消费规则
+			$points=get_cache('points_rule');//获取葫芦币消费规则
 			$smarty->assign('points',$points['company_map']['value']);
 		}elseif($_CFG['operation_mode']=='2'){
 			$smarty->assign('operation_mode',2);
@@ -341,7 +360,7 @@ elseif ($act=='company_logo_del')
 			if ($setmeal['endtime']<time() && $setmeal['endtime']<>'0'){
 				if($_CFG['setmeal_to_points']==1){
 					$smarty->assign('operation_mode',1);
-					$points=get_cache('points_rule');//获取积分消费规则
+					$points=get_cache('points_rule');//获取葫芦币消费规则
 					$smarty->assign('points',$points['company_map']['value']);
 				}else{
 					$smarty->assign('operation_mode',2);
@@ -516,7 +535,7 @@ elseif ($act=='company_news_add_save')
 	if(!$insertid){
 		showmsg("添加失败！",0);
 	}else{
-		// 发布企业动态 获得积分 
+		// 发布企业动态 获得葫芦币
 		$rule=get_cache('points_rule');
 		if ($rule['company_news_points']['value']>0)
 		{
@@ -637,7 +656,7 @@ elseif ($act=='company_img_save')
 		$img_id = $db->inserttable(table('company_img'),$setsqlarr,true);
 		if ($img_id > 0)
 		{
-			// 上传企业风采 获得积分 
+			// 上传企业风采 获得葫芦币
 			$rule=get_cache('points_rule');
 			if ($rule['company_img_points']['value']>0)
 			{

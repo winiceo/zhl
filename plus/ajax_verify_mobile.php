@@ -81,7 +81,7 @@ elseif ($act=="verify_code")
 						
 						$u['telephone']=$setsqlarr['mobile'];
 						$db->updatetable(table('resume'),$u," uid='{$uid}'");
-						// 积分操作
+						// 葫芦币操作
 						$rule=get_cache('points_rule');
 						if ($rule['per_verifymobile']['value']>0)
 						{

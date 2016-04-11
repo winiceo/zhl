@@ -34,19 +34,24 @@
                 {#if $paper.result_type==1#}
 
                 <tr class="">
-                    <td width="120" align="right">选项：</td>
-                    <td><input name="result_options" type="text" class="input_text_200"  value="{#$result.result_options#}"/></td>
-                </tr>
+                    <td width="120" align="right">选项： </td>
+                    <td><select name="result_options">
+                        {#foreach from=$paper.question item=qq#}
+                        <option value="{#$qq.name#}" {#if $result.result_options==$qq.name #}selected{#/if#}>{#$qq.name#}</option>
+                        {#/foreach#}
+                        </select>
+                 </tr>
                 <tr class="resultA">
                     <td width="120" align="right">数量：</td>
-                    <td><input name="result_num" type="text" class="input_text_200"  value="{#$result.result_num#}"/></td>
+                    <td><input name="result_num" type="text" class="input_text_100"  value="{#$result.result_num#}" onKeyUp="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/[^0-9-]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^0-9-]/g,''))"/>~<input name="result_num1" type="text" class="input_text_100"  value="{#$result.result_num1#}" onKeyUp="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/[^0-9-]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^0-9-]/g,''))"/></td>
                 </tr>
                 {#elseif $paper.result_type==2#}
 
 
                     <tr class="resultS">
                         <td width="120" align="right">得分：</td>
-                        <td><input name="result_score" type="text" class="input_text_200"  value="{#$result.result_score#}"/></td>
+                        <td><input name="result_score" type="text" class="input_text_100"  value="{#$result.result_score#}" onKeyUp="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/[^0-9-]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^0-9-]/g,''))"/>
+                            ~<input name="result_score1" type="text" class="input_text_100"  value="{#$result.result_score1#}" onKeyUp="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/[^0-9-]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^0-9-]/g,''))" /></td>
                     </tr>
                 {#/if#}
 

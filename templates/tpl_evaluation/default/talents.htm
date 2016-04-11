@@ -7,8 +7,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/> 
 <title>»À≤≈≤‚∆¿-{#$evalinfo.name#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="’“∫˘¬´Õ¯" />
+<meta name="author" content="’“∫˘¬´" />
 <meta name="copyright" content="zhaohulu.com" />
+<link href="{#$QISHI.site_template#}css/common.css" rel="stylesheet" type="text/css" />
+<link href="{#$QISHI.site_template#}css/header.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="{#$QISHI.site_evaluation_template#}css/review.css" />
 <script src="{#$QISHI.site_evaluation_template#}js/jquery.js"></script>
 <link href="{#$QISHI.site_evaluation_template#}css/ui-dialog.css" rel="stylesheet" type="text/css" />
@@ -25,8 +27,9 @@ $(document).ready(function(){
 	{#include file="../tpl_evaluation/default/header.htm"#}
 	<div class="review-main container">
 		<div class="review-wrap">
+            <div class="blue-line2"></div>
 			<div class="g-top-box">
-				<h1><span>{#$evalinfo.name#}</span></h1>
+				<h1>{#$evalinfo.name#}</h1>
 				<div class="main-type-box clearfix">
 					<div class="type-box f-left"><img src="{#if $evalinfo.logo#}{#$QISHI.site_domain#}{#$QISHI.site_dir#}/data/eval/logo/{#$evalinfo.logo#}{#else#}{#$QISHI.site_evaluation_template#}images/review-type1.jpg{#/if#}" alt="" width="130" /></div>
 					<div class="type-content">
@@ -62,7 +65,7 @@ $(document).ready(function(){
 			</div>
 		</div>
 	</div>
-	{#include file="../tpl_evaluation/default/footer.htm"#}
+	{#include file="../default/footer.htm"#}
 	<script src="{#$QISHI.site_evaluation_template#}js/jquery.js"></script>
 	<script>
 		$(function() {
