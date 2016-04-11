@@ -227,6 +227,10 @@ $(document).ready(function(){
 	});
 	// 职位推广
 	set_promotion_dialog(".set_promotion");
+    set_reward_dialog(".set_reward");
+    set_date_dialog(".set_date");
+
+
 	// 推广下拉
 	$(".spread").toggle(function() {
 		$(this).find(".spread_but_group").slideDown("fast");
@@ -367,6 +371,12 @@ $(document).ready(function(){
 						<a href="javascript:void(0);" class="data-ctrl set_promotion" catid="1" jobid="{#$li.id#}">推荐</a>
 						{#else#}
 						<a  href="javascript:void(0);" class="data-ctrl underline" style="color:#999" title="该职位已紧急推荐">推荐</a>
+ 						{#/if#}<br>
+                        {#if $li.reward=="0"#}
+                        <a href="javascript:void(0);" class="data-ctrl set_reward" catid="5" jobid="{#$li.id#}">悬赏</a>
+                        {#else#}
+                        <a  href="javascript:void(0);" class="data-ctrl underline set_date" catid="5" jobid="{#$li.id#}" style="color:#999" title="该职位已悬赏">悬赏</a>
+                    
 						{#/if#}
 					</div>
 				</div>

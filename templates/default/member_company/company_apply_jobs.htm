@@ -126,6 +126,9 @@ $(document).ready(function(){
 							<li><a href="{#"is_apply:,is_apply_cn:全部"|qishi_parse_url#}">全部</a></li>
 							<li><a href="{#"is_apply:2,is_apply_cn:委托投递"|qishi_parse_url#}">委托投递</a></li>
 							<li><a href="{#"is_apply:1,is_apply_cn:主动投递"|qishi_parse_url#}">主动投递</a></li>
+							<li><a href="{#"is_apply:5,is_apply_cn:悬赏推荐"|qishi_parse_url#}">悬赏推荐</a></li>
+							<li><a href="{#"is_apply:6,is_apply_cn:认证推荐"|qishi_parse_url#}">认证推荐</a></li>
+
 						</ul>
 					</div>
 				</div>
@@ -149,12 +152,17 @@ $(document).ready(function(){
 								</div>
 							</div>
 						</div>
-						<div class="c-item f-left content2"><a href="javascript:;" class="name-link underline">{#$list.fullname#}</a></div>
+						<div class="c-item f-left content2">{#if $list.is_apply==5#}***{#else#}<a href="javascript:;" class="name-link underline">{#$list.fullname#}{#/if#}</a></div>
 						<div class="c-item f-left content3">{#if $list.age#}{#$list.age#}岁/{#/if#}{#$list.education_cn#}/{#$list.experience_cn#}</div>
 						<div class="c-item f-left content4">{#$list.jobs_name#}</div>
 						<div class="c-item f-left content5"><span class="data-time">{#$list.apply_addtime|date_format:"%Y-%m-%d"#}</span></div>
-						<div class="c-item f-left content6">{#if $list.is_apply==1#}主动投递{#else#}委托投递{#/if#}</div>
+						<div class="c-item f-left content6">{#if $list.is_apply==1#}主动投递{#elseif $list.is_apply==5#}悬赏推荐{#elseif $list.is_apply==6#}认证推荐{#else#}委托投递{#/if#}</div>
+						{#if $list.is_apply!=5#}
 						<div class="c-item f-left content7"><a href="javascript:;" class="data-ctrl underline inter-job" resume_id="{#$list.resume_id#}">邀请面试</a>&nbsp;<a href="javascript:;" class="data-ctrl underline ctrl-del" url="?act=apply_jobs_del&y_id={#$list.did#}">删除</a></div>
+						{#else#}
+							<div class="c-item f-left content7"><a href="?act=edit_resume&id={#$list.resume_id#}" class="data-ctrl underline inter-job">查看简历</a>&nbsp;<a href="javascript:;" class="data-ctrl underline ctrl-del" url="?act=apply_jobs_del&y_id={#$list.did#}">删除</a></div>
+
+						{#/if#}
 					</div>
 					<div class="data-detail">
 						<i class="arrow"></i>

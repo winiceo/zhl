@@ -66,6 +66,7 @@ $(document).ready(function()
 	// 所属行业填充数据
 	trade_filldata("#trad_list", QS_trade, "#aui_outer", "#result-list-trade", "#trade_result_show", "#trade", "{#$QISHI.site_dir#}");
 	// 所在地区填充数据
+	var QS_city_parent=new Array("{#$myarea#}")
 	city_filldata("#city_list", QS_city_parent, QS_city, "#result-list-city", "#aui_outer_city", "#city_result_show", "#district", "{#$QISHI.site_dir#}");
 	// 所在街道选择
 	street_filldata("#street_list", "#street");
@@ -269,6 +270,9 @@ $(document).ready(function()
 		  <tr>
 			<td width="125" align="right"><span class="nec">企业性质</span>：</td>
 			<td width="230">
+				{#if $company_profile.audit==1#}
+				{#$company_profile.nature_cn#}
+				{#else#}
 				<div style="position:relateve;">
              	 	<div id="nature_menu" class="input_text_200_bg">{#$company_profile.nature_cn|default:"请选择"#}</div>	
              	 	<div class="menu" id="menu1">
@@ -279,7 +283,8 @@ $(document).ready(function()
 	              			{#/foreach#}
 	              		</ul>
 	              	</div>
-	            </div>				
+	            </div>
+				{#/if#}
              	<input name="nature" type="hidden" id="nature" value="{#$company_profile.nature#}" />
              	<input name="nature_cn" type="hidden" id="nature_cn" value="{#$company_profile.nature_cn#}" />
 			</td>
@@ -288,6 +293,9 @@ $(document).ready(function()
 		  <tr class="jobmain">
 			<td align="right"><span class="nec">所属行业</span>：</td>
 			<td id="jobsTrad" style="position:relative;z-index:1;">
+				{#if $company_profile.audit==1#}
+				{#$company_profile.trade_cn#}
+				{#else#}
 				<div class="input_text_200_bg ucc-default" id="tradText">{#$company_profile.trade_cn|default:"请选择"#}</div>
 				<!-- 所属行业弹出框 -->
 				<div class="aui_outer" id="aui_outer">
@@ -324,6 +332,7 @@ $(document).ready(function()
 						</tbody>
 					</table>
 				</div>
+				{#/if#}
 				<!-- 所属行业弹出框 End-->
 				<input type="hidden" id="trade" name="trade" value="{#$company_profile.trade#}">
 				<input type="hidden" id="trade_cn" name="trade_cn" value="{#$company_profile.trade_cn#}">
@@ -354,8 +363,15 @@ $(document).ready(function()
 			<td colspan="2">
 			  <table border="0" cellpadding="0" cellspacing="0" >
 	              <tr>
-	                <td width="80" style="padding:0px"><input name="registered" type="text" class="input_text_100" id="registered" maxlength="20"   value="{#$company_profile.registered#}"/></td>
-	                <td width="20" align="center" style="padding:0px">万</td>
+	                <td width="80" style="padding:0px">
+
+						{#if $company_profile.audit==1#}
+						{#$company_profile.registered#}万{#$company_profile.currency|default:"人民币"#}
+						{#else#}
+
+						<input name="registered" type="text" class="input_text_100" id="registered" maxlength="20"   value="{#$company_profile.registered#}"/></td>
+
+	                 <td width="20" align="center" style="padding:0px">万</td>
 	                <td width="80"  style="padding:0px">
 	                	<div style="position:relateve;">
 		             	 	<div id="currency_menu" class="input_text_60_bg">{#$company_profile.currency|default:"人民币"#}</div>	
@@ -368,6 +384,7 @@ $(document).ready(function()
 			            </div>				
 		             	 <input name="currency" type="hidden" id="currency" value="{#$company_profile.currency|default:"人民币"#}" />
 	                </td>
+					  {#/if#}
 	              </tr>
 	            </table>
 			</td>
@@ -546,7 +563,7 @@ $(document).ready(function()
 		  {#if $company_jobs #}
 		  <tr>
 			<td align="right" width="125">&nbsp;</td>
-			<td width="230"><label style="color:#FF9900;"><input name="telephone_to_jobs" type="checkbox" value="1"/> &nbsp;修改联系方式同步到职位</label></td>
+			<td width="230"><label style="color:#FF9900;"><input name="telephone_to_jobs" type="checkbox" value="1" checked/> &nbsp;修改联系方式同步到职位</label></td>
 			<td>&nbsp;</td>
 		  </tr>
 		  {#/if#}

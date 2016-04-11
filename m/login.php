@@ -257,7 +257,7 @@ function weixin_login($openid,$uid,$event_key){
 	{
 		if(file_exists(QISHI_ROOT_PATH."data/weixin/".($event_key%10).'/'.$event_key.".txt")){
 			ini_set('session.save_handler', 'files');
-			session_save_path(QISHI_ROOT_PATH.'data/sessions/');
+			session_save_path(QISHI_ROOT_PATH.'data/sessions');
 			session_start();
 			$fp = @fopen(QISHI_ROOT_PATH . 'data/weixin/'.($event_key%10).'/'.$event_key.'.txt', 'wb+');
 			@fwrite($fp, $uid);

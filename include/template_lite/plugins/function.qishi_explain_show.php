@@ -26,7 +26,10 @@ function tpl_function_qishi_explain_show($params, &$smarty)
 			$smarty->display("404.htm");
 			exit();
 	}
-	check_url($val['subsite_id'],$smarty,$_CFG['explain_url']);
+	 
+
+	//check_url($val['subsite_id'],$smarty,$_CFG['explain_url']);
+
 		if ($val['seo_keywords']=="")
 		{
 		$val['keywords']=$val['title'];

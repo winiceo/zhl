@@ -988,7 +988,7 @@ function get_me_subsite()
 {
     global $db;
 
-    return $db->getall("select * from " . table('subsite') . " where s_effective=1 and s_id=".$_SESSION["subsite_id"]);
+    return $db->getall("select * from " . table('subsite') . " where s_effective=1 and s_id=" . $_SESSION["subsite_id"]);
 }
 
 function replace_special_url($url, $alias, $subsite_id)
@@ -1088,9 +1088,11 @@ function get_m_subsiteurl_by_id($subsite_id)
 function check_url($subsite_id, &$smarty, $page_url)
 {
     global $_CFG;
+
     $current_host = 'http://' . $_SERVER['HTTP_HOST'];//取得当前域名
     $current_url = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';//判断地址后面部分
     $url = $current_host . $current_url;
+
     if ($page_url) {
         if ($current_host != rtrim($page_url, '/')) {
             if ($_CFG['subsite_method'] == 1) {
@@ -1107,6 +1109,8 @@ function check_url($subsite_id, &$smarty, $page_url)
             if ($_CFG['subsite_method'] == 1) {
                 $suburl = get_subsiteurl_by_id($subsite_id);
                 $url = str_replace($current_host, rtrim($suburl, '/'), $url);
+
+
                 redirect301($url);
             } else {
                 header("HTTP/1.1 404 Not Found");
@@ -1116,6 +1120,7 @@ function check_url($subsite_id, &$smarty, $page_url)
         }
     }
 }
+
 
 function check_m_url($subsite_id, &$smarty, $page_url)
 {
@@ -1138,7 +1143,7 @@ function check_m_url($subsite_id, &$smarty, $page_url)
         if ($_CFG['subsite_id'] != $subsite_id) {
             if ($_CFG['subsite_method'] == 1) {
                 $suburl = get_m_subsiteurl_by_id($subsite_id);
-                $url = str_replace($current_host, rtrim($suburl, '/'), $url);
+                $url = str_replace($current_host . '/m', rtrim($suburl, '/'), $url);
                 redirect301($url);
             } else {
                 header("HTTP/1.1 404 Not Found");
@@ -1185,7 +1190,7 @@ function subsiteinfo(&$_CFG)
 
 function mobile_subsiteinfo(&$_CFG)
 {
-    global $_M_SUBSITE;
+    global $_M_SUBSITE, $_SUBSITE;
     foreach ($_M_SUBSITE as $key => $sub) {
         $_CFG['m_district_array'][] = array('subsite' => $sub['districtname'], 'url' => "http://" . $key);
     }
@@ -1199,140 +1204,133 @@ function mobile_subsiteinfo(&$_CFG)
         $_CFG['site_name'] = $subsite['sitename'];
         $_CFG['districtid'] = $subsite['district'];
         if (empty($_GET['district_cn'])) {
-            $_GET['district_cn'] = $_CFG['subsite_districtname'];
+            {
+                $_GET['district_cn'] = $_CFG['subsite_districtname'];
+            }
+            $_CFG['subsite_id'] = $subsite['id'];
+            $subsite['logo'] ? $_CFG['web_logo'] = $subsite['logo'] : '';
+            $subsite['tpl'] ? $_CFG['template_dir'] = $subsite['tpl'] . '/' : '';
+            $subsite['title'] ? $_CFG['title'] = $subsite['title'] : '';
+            $subsite['keywords'] ? $_CFG['keywords'] = $subsite['keywords'] : '';
+            $subsite['description'] ? $_CFG['description'] = $subsite['description'] : '';
+        } elseif (array_key_exists($host, $_SUBSITE)) {
+            $subsite = $_SUBSITE[$host];
+            $_CFG['site_domain'] = "http://" . $host;
+            $_CFG['wap_domain'] = rtrim($subsite['m_domain'], '/');
+            $_CFG['subsite_districtname'] = str_replace('市', '', $subsite['districtname']);
+            $_CFG['subsite_districtname'] = str_replace('省', '', $_CFG['subsite_districtname']);
+            //$_CFG['site_name']=$subsite['sitename'];
+            $_CFG['districtid'] = $subsite['district'];
+            if (empty($_GET['district_cn'])) {
+                $_GET['district_cn'] = $_CFG['subsite_districtname'];
+            }
+            $_CFG['subsite_id'] = $subsite['id'];
+            $subsite['logo'] ? $_CFG['web_logo'] = $subsite['logo'] : '';
+            $subsite['tpl'] ? $_CFG['template_dir'] = $subsite['tpl'] . '/' : '';
+            $subsite['title'] ? $_CFG['title'] = $subsite['title'] : '';
+            $subsite['keywords'] ? $_CFG['keywords'] = $subsite['keywords'] : '';
+            $subsite['description'] ? $_CFG['description'] = $subsite['description'] : '';
         }
-        $_CFG['subsite_id'] = $subsite['id'];
-        $subsite['logo'] ? $_CFG['web_logo'] = $subsite['logo'] : '';
-        $subsite['tpl'] ? $_CFG['template_dir'] = $subsite['tpl'] . '/' : '';
-        $subsite['title'] ? $_CFG['title'] = $subsite['title'] : '';
-        $subsite['keywords'] ? $_CFG['keywords'] = $subsite['keywords'] : '';
-        $subsite['description'] ? $_CFG['description'] = $subsite['description'] : '';
     }
 }
-
 // 获取分站 地区列表
-function get_subsite_district($pid)
-{
-    global $db;
-    $pid = intval($pid);
-    return $db->getall("select * from " . table("category_district") . " where parentid=$pid ");
-}
+    function get_subsite_district($pid)
+    {
+        global $db;
+        $pid = intval($pid);
+        return $db->getall("select * from " . table("category_district") . " where parentid=$pid ");
+    }
 
-function getIpLookup($ip = '')
-{
-    if (empty($ip)) {
-        $ip = getip();
+    function getIpLookup($ip = '')
+    {
+        if (empty($ip)) {
+            $ip = getip();
+        }
+        if ($ip === false) {
+            return false;
+        }
+        $res = @file_get_contents('http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js&ip=' . $ip);
+        if (empty($res)) {
+            return false;
+        }
+        $jsonMatches = array();
+        preg_match('#\{.+?\}#', $res, $jsonMatches);
+        if (!isset($jsonMatches[0])) {
+            return false;
+        }
+        $json = json_decode($jsonMatches[0], true);
+        if (isset($json['ret']) && $json['ret'] == 1) {
+            $json['ip'] = $ip;
+            unset($json['ret']);
+        } else {
+            return false;
+        }
+        return $json;
     }
-    if ($ip === false) {
-        return false;
-    }
-    $res = @file_get_contents('http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js&ip=' . $ip);
-    if (empty($res)) {
-        return false;
-    }
-    $jsonMatches = array();
-    preg_match('#\{.+?\}#', $res, $jsonMatches);
-    if (!isset($jsonMatches[0])) {
-        return false;
-    }
-    $json = json_decode($jsonMatches[0], true);
-    if (isset($json['ret']) && $json['ret'] == 1) {
-        $json['ip'] = $ip;
-        unset($json['ret']);
-    } else {
-        return false;
-    }
-    return $json;
-}
 
-function check_subsite_url()
-{
-    global $dbhost, $dbuser, $dbpass, $dbname;
-    require_once(QISHI_ROOT_PATH . 'include/mysql.class.php');
-    $db = new mysql($dbhost, $dbuser, $dbpass, $dbname);
-    unset($dbhost, $dbuser, $dbpass, $dbname);
-    $districtinfo = getIpLookup();
-    if ($districtinfo === false) {
-        return false;
+    function check_subsite_url()
+    {
+        global $dbhost, $dbuser, $dbpass, $dbname;
+        require_once(QISHI_ROOT_PATH . 'include/mysql.class.php');
+        $db = new mysql($dbhost, $dbuser, $dbpass, $dbname);
+        unset($dbhost, $dbuser, $dbpass, $dbname);
+        $districtinfo = getIpLookup();
+        if ($districtinfo === false) {
+            return false;
+        }
+        $province = utf8_to_gbk($districtinfo['province']);
+        $city = utf8_to_gbk($districtinfo['city']);
+        $subinfo = $db->getone("select * from " . table('subsite') . " where s_effective=1 and (s_districtname like '%" . $province . "%' or s_districtname like '%" . $city . "%') order by s_id desc limit 1");
+        if ($subinfo) {
+            return array('disname' => $subinfo['s_districtname'], 'sitename' => $subinfo['s_sitename'], 'url' => 'http://' . $subinfo['s_domain']);
+        } else {
+            return false;
+        }
     }
-    $province = utf8_to_gbk($districtinfo['province']);
-    $city = utf8_to_gbk($districtinfo['city']);
-    $subinfo = $db->getone("select * from " . table('subsite') . " where s_effective=1 and (s_districtname like '%" . $province . "%' or s_districtname like '%" . $city . "%') order by s_id desc limit 1");
-    if ($subinfo) {
-        return array('disname' => $subinfo['s_districtname'], 'sitename' => $subinfo['s_sitename'], 'url' => 'http://' . $subinfo['s_domain']);
-    } else {
-        return false;
-    }
-}
 
-function check_m_subsite_url()
-{
-    global $dbhost, $dbuser, $dbpass, $dbname;
-    require_once(QISHI_ROOT_PATH . 'include/mysql.class.php');
-    $db = new mysql($dbhost, $dbuser, $dbpass, $dbname);
-    unset($dbhost, $dbuser, $dbpass, $dbname);
-    $districtinfo = getIpLookup();
-    if ($districtinfo === false) {
-        return false;
+    function check_m_subsite_url()
+    {
+        global $dbhost, $dbuser, $dbpass, $dbname;
+        require_once(QISHI_ROOT_PATH . 'include/mysql.class.php');
+        $db = new mysql($dbhost, $dbuser, $dbpass, $dbname);
+        unset($dbhost, $dbuser, $dbpass, $dbname);
+        $districtinfo = getIpLookup();
+        if ($districtinfo === false) {
+            return false;
+        }
+        $province = utf8_to_gbk($districtinfo['province']);
+        $city = utf8_to_gbk($districtinfo['city']);
+        $subinfo = $db->getone("select * from " . table('subsite') . " where s_effective=1 and (s_districtname like '%" . $province . "%' or s_districtname like '%" . $city . "%') order by s_id desc limit 1");
+        if ($subinfo) {
+            return array('disname' => $subinfo['s_districtname'], 'sitename' => $subinfo['s_sitename'], 'url' => 'http://' . ($subinfo['s_m_domain'] ? $subinfo['s_m_domain'] : ($subinfo['s_domain'] . '/m/')));
+        } else {
+            return false;
+        }
     }
-    $province = utf8_to_gbk($districtinfo['province']);
-    $city = utf8_to_gbk($districtinfo['city']);
-    $subinfo = $db->getone("select * from " . table('subsite') . " where s_effective=1 and (s_districtname like '%" . $province . "%' or s_districtname like '%" . $city . "%') order by s_id desc limit 1");
-    if ($subinfo) {
-        return array('disname' => $subinfo['s_districtname'], 'sitename' => $subinfo['s_sitename'], 'url' => 'http://' . ($subinfo['s_m_domain'] ? $subinfo['s_m_domain'] : ($subinfo['s_domain'] . '/m/')));
-    } else {
-        return false;
-    }
-}
 
 //拼装cookiedomain
-function get_cookiedomain()
-{
-    global $_CFG, $QS_cookiedomain;
-    $cookiedomain = explode('.', str_replace('http://', '', $_CFG['site_domain']));
+    function get_cookiedomain()
+    {
+        global $_CFG, $QS_cookiedomain;
+        $cookiedomain = explode('.', str_replace('http://', '', $_CFG['site_domain']));
 
-    // gv( $cookiedomain[$cookiedomain_length - 2] . '.' . $cookiedomain[$cookiedomain_length - 1]);
-    $cookiedomain_length = count($cookiedomain);
-    return  $cookiedomain[$cookiedomain_length - 2] . '.' . $cookiedomain[$cookiedomain_length - 1];
-}
-
-
-
-function gv($var, $echo = true, $label = null, $strict = true)
-{
-    $label = ($label === null) ? '' : rtrim($label) . ' ';
-    if (!$strict) {
-        if (ini_get('html_errors')) {
-
-            $output = print_r($var, true);
-            $output = "<pre>" . $label . ($output) . "</pre>";
-        } else {
-            $output = $label . " : " . print_r($var, true);
-        }
-    } else {
-
-        ob_start();
-        var_dump($var);
-        $output = ob_get_clean();
-
-
-        if (!extension_loaded('xdebug')) {
-
-            $output = preg_replace("/\]\=\>\n(\s+)/m", "] => ", $output);
-
-            $output = '<pre>'
-                . $label
-                . htmlspecialchars($output, ENT_QUOTES, "GB2312")
-                . '</pre>';
-        }
+        // gv( $cookiedomain[$cookiedomain_length - 2] . '.' . $cookiedomain[$cookiedomain_length - 1]);
+        $cookiedomain_length = count($cookiedomain);
+        return $cookiedomain[$cookiedomain_length - 2] . '.' . $cookiedomain[$cookiedomain_length - 1];
     }
-    if ($echo) {
 
-        echo($output);
-        return null;
-    } else {
-        return $output;
+//短信验证
+    function sms_get_token()
+    {
+        global $_CFG;
+        global $smarty;
+        if (!empty($_SESSION['token'])) {
+            unset($_SESSION['token']);
+        }
+        $hash = md5(uniqid(rand(), true));
+        $n = mt_rand(1, 24);
+        $token = substr($hash, $n, 8);
+        $_SESSION['token'] = $token;
+        $smarty->assign('inputtoken', "<input type=\"hidden\"  name=\"hiddentoken\" id=\"hiddentoken\" value=\"{$_SESSION['token']}\" />");
     }
-}
 
-?>
